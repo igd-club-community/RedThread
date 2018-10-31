@@ -203,15 +203,15 @@ MonoBehaviour:
     height: 439
   m_MinSize: {x: 204, y: 221}
   m_MaxSize: {x: 4004, y: 4021}
-  m_ActualView: {fileID: 14}
+  m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
   - {fileID: 14}
   - {fileID: 17}
   - {fileID: 13}
   - {fileID: 12}
-  m_Selected: 1
-  m_LastSelected: 3
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_AnimEditor: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 11478
+  m_LastSelectedObjectID: -66084
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -415,7 +415,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -474,23 +474,23 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: cc2c0000
-    m_LastClickedID: 11468
-    m_ExpandedIDs: e6fbffff00000000
+    m_SelectedIDs: 9469feff
+    m_LastClickedID: -104044
+    m_ExpandedIDs: 9669feff5074feffb887feff7e8efeffdcfdfeff9acaffffe6fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Door3rdFloorStairs
+      m_OriginalName: Door3rdFloorStairs
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: -96328
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 8}
     m_SearchString: 
@@ -526,14 +526,14 @@ MonoBehaviour:
     height: 418
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 725.8232830492016
+  lastFramingTime: 1188.8087851210566
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -15.0559, y: 7.8074284, z: 0.6357744}
+    m_Target: {x: -8.182842, y: 9.739174, z: 3.2685802}
     speed: 2
-    m_Value: {x: -15.0559, y: 7.8074284, z: 0.6357744}
+    m_Value: {x: -8.182842, y: 9.739174, z: 3.2685802}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -561,13 +561,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.19844025, y: -0.02209099, z: 0.0042556273, w: -0.97985476}
+    m_Target: {x: -0.1405273, y: 0.064954616, z: -0.00945605, w: -0.9878986}
     speed: 2
-    m_Value: {x: -0.19844025, y: -0.02209099, z: 0.0042556277, w: -0.97985476}
+    m_Value: {x: -0.1405273, y: 0.064954616, z: -0.00945605, w: -0.9878986}
   m_Size:
-    m_Target: 15.142296
+    m_Target: 17.883091
     speed: 2
-    m_Value: 15.142296
+    m_Value: 17.883091
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -641,19 +641,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scripts/Interaction
   m_ViewMode: 1
   m_StartGridSize: 78
   m_LastFolders:
-  - Assets
+  - Assets/Scripts/Interaction
   m_LastFoldersGridSize: 78
   m_LastProjectPath: C:\GitHub\RedThread
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: fa290000
-    m_LastClickedID: 10746
+    m_SelectedIDs: 942c0000
+    m_LastClickedID: 11412
     m_ExpandedIDs: 00000000fa290000da2b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -709,7 +709,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300004e3900009c3b000018360000fa3e000000000000004b0000ec2d0000beb7feff
     m_RenameOverlay:
       m_UserAcceptedRename: 0

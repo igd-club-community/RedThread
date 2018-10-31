@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{9FDDE03C-7438-F5A1-67EB-6E8825B4D9F5}</ProjectGuid>
+    <ProjectGuid>{6B95ACD7-CCA4-C59F-4DB3-D239D18BB70C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -61,21 +61,20 @@
      <Compile Include="Assets\Scripts\Interaction\DialogController.cs" />
      <Compile Include="Assets\Scripts\Interaction\DoorController.cs" />
      <Compile Include="Assets\Scripts\Interaction\DoorIntreaction.cs" />
-     <Compile Include="Assets\Scripts\Interaction\ElevatorController.cs" />
      <Compile Include="Assets\Scripts\Interaction\Interactive.cs" />
      <Compile Include="Assets\Scripts\Interaction\InteractsAnother.cs" />
      <Compile Include="Assets\Scripts\Interaction\ShowsDialog.cs" />
  <Reference Include="UnityEditor.StandardEvents">
- <HintPath>C:/Users/Vladislav/Documents/RedThread2/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+ <HintPath>C:/GitHub/RedThread/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/Vladislav/Documents/RedThread2/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/GitHub/RedThread/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>C:/Users/Vladislav/Documents/RedThread2/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>C:/GitHub/RedThread/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/Vladislav/Documents/RedThread2/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/GitHub/RedThread/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
