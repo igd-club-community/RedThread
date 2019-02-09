@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class ToBrokenLayer : MonoBehaviour
@@ -16,5 +15,11 @@ public class ToBrokenLayer : MonoBehaviour
     private void Broken()
     {
         gameObject.layer = 11;
+    }
+
+    private void Start()
+    {
+        Physics.IgnoreLayerCollision(10, 10);
+        Physics.IgnoreLayerCollision(10, 11);
     }
 }
