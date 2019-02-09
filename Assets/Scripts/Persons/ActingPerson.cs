@@ -20,26 +20,26 @@ public class ActingPerson : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentAction = actions[curActNum];
         navAgent = GetComponent<NavMeshAgent>();
-        setAction(curActNum);
     }
 
     // Update is called once per frame
     void Update()
     {
-        distance = Vector3.Distance(currentAction.target.position, transform.position);
-        if (distance < 1)
-        {
-            curActNum = (curActNum + 1) % actions.Length;
-        }
-        setAction(curActNum);
+        //Если мы долши до нужной точки
+        //distance = Vector3.Distance(currentAction.target.position, transform.position);
+        //if (distance < 0.1)
+        //{
+        //    //Тогда запускаем нужную анимацию.
+        //}
+
     }
 
-    private void setAction(int curActNum)
+    public void setAction(PersonAct newAct)
     {
-        currentAction = actions[curActNum];
+        currentAction = newAct;
         navAgent.SetDestination(currentAction.target.position);
+
     }
 }
 
