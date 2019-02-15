@@ -13,15 +13,18 @@ public class Inventory : MonoBehaviour
 {
     delegate void ItemFunction();
     Dictionary<Item, ItemFunction> ItemFunctions;
+
+    private LevelController levelController;
     void Start()
     {
+        levelController = FindObjectOfType<LevelController>();
         ItemFunctions = new Dictionary<Item, ItemFunction>()
         {
             {
                 Item.Test,
                 delegate ()
                 {
-                    Debug.Log("Test");
+                    levelController.generateNeedCoffeEvent();
                 }
             }
         };
