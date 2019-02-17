@@ -11,6 +11,8 @@ public enum Item
 
 public class Inventory : MonoBehaviour
 {
+    public List<ItemSlot> itemSlots;
+
     delegate void ItemFunction();
     Dictionary<Item, ItemFunction> ItemFunctions;
     void Start()
@@ -31,5 +33,34 @@ public class Inventory : MonoBehaviour
     {
         if (ItemFunctions.ContainsKey(itemSlot.CurrentItem))
             ItemFunctions[itemSlot.CurrentItem]();
+    }
+
+    public void PutItem(Item item)
+    {
+        foreach (ItemSlot itemSlot in itemSlots)
+        {
+            if (itemSlot.CurrentItem == Item.NoItem)
+            {
+                itemSlot.CurrentItem = item;
+                break;
+            }
+        }
+    }
+
+    public void PutItem(ItemSlot itemContainer)
+    {
+        PutItem(itemContainer.CurrentItem);
+    }
+
+    public void RemoveItem(Item item)
+    {
+        foreach (ItemSlot itemSlot in itemSlots)
+        {
+            if (itemSlot.CurrentItem == item)
+            {
+                itemSlot.CurrentItem = Item.NoItem;
+                break;
+            }
+        }
     }
 }
