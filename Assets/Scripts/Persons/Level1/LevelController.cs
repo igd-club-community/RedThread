@@ -24,6 +24,7 @@ public class LevelController : MonoBehaviour
     public bool CleanerOn2floor;
 
     Level1States states;
+    public GameObject pigeons;
 
     // Start is called before the first frame update
     void Start()
@@ -78,7 +79,10 @@ public class LevelController : MonoBehaviour
     {
         Debug.Log("generatePigeonsInBossRoom");
         //PigeonsInBossRoom();
+        if (!states.BossShelterLocked)
+            states.BossShelterEmpty = true;
         states.PigeonsInBossRoom = true;
+        pigeons.GetComponent<MeshRenderer>().enabled = true;
     }
 
     // Update is called once per frame

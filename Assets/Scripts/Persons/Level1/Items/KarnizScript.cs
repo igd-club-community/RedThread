@@ -6,6 +6,7 @@ public class KarnizScript : ItemScript
 {
     public Level1States states;
     private LevelController levelController;
+    public GameObject shelves;
 
     new void Start()
     {
@@ -20,7 +21,9 @@ public class KarnizScript : ItemScript
         {
             states.MusorOnBossKarniz = true;
             states.MusorInInvertory = false;
-            levelController.generatePigeonsInBossRoom();
+            shelves.SetActive(true);
+            states.PigeonsInBossRoom = true;
+            //levelController.generatePigeonsInBossRoom();
         }
     }
 }

@@ -180,6 +180,7 @@ public class Boss1Script : MonoBehaviour
         actingPerson.setAction(goToVault);
         currentAction = goToVault;
     }
+
     public void doPigeonsGetOut()
     {
         actingPerson.say("Пошли вон летучие крысы!");
@@ -190,11 +191,13 @@ public class Boss1Script : MonoBehaviour
     }
     public void doCry()
     {
-        actingPerson.say("АААЫЫАЫАаыаыЫААА!!!!");
+        actingPerson.say("АААааыыыыаааа!!");
         Debug.Log("doCry");
         actingPerson.noAction = true;
         GetComponent<NavMeshAgent>().enabled = false;
         GetComponent<Rigidbody>().isKinematic = false;
+        Debug.Log(transform.rotation);
+        transform.rotation.Set(10f, 10f, 10f, 1f);
     }
 
     private void OnTriggerEnter(Collider other)
