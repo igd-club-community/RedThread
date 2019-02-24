@@ -14,6 +14,10 @@ public class LevelsLoader : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
 
     public void LoadLevel(int i)
     {

@@ -93,7 +93,7 @@ public class Boss1Script : MonoBehaviour
         else if (currentAction == talkWithProgrammer && distance < 1)
         {
             if (states.ProgrammerDeskClear)
-                doRememberVaultPassword();
+                doReadPapers();
             else
                 doFireProgrammer();
         }
@@ -131,7 +131,7 @@ public class Boss1Script : MonoBehaviour
     {
         actingPerson.say("Что за мудак");
         Debug.Log("doFireProgrammer");
-        doRememberVaultPassword(); //Временно пока нет плана что будет когда увольняем
+        doReadPapers(); //Временно пока нет плана что будет когда увольняем
 
     }
 

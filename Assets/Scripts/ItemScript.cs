@@ -11,11 +11,11 @@ public abstract class ItemScript : MonoBehaviour
     public void Start()
     {
         materialRenderer = gameObject.GetComponent<Renderer>();
-        storedColor = materialRenderer.material.color;
     }
 
     public void onHover()
     {
+        storedColor = materialRenderer.material.color;
         materialRenderer.material.color = Color.red;
     }
 
