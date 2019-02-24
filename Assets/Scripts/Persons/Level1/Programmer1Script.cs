@@ -12,6 +12,7 @@ public class Programmer1Script : MonoBehaviour
     public PersonAct watchOnDesk;
     public PersonAct writeOnDesk;
     public PersonAct watchOnCat;
+    public PersonAct switchPowerOn;
 
     public float timeOfWorkingWithPC;
     public float timeOfWatchingOnDesk;
@@ -24,6 +25,7 @@ public class Programmer1Script : MonoBehaviour
         levelController = FindObjectOfType<LevelController>();
         //levelController.BossNeedsCoffee += doWorkWirkPC;
         //levelController.CoffeeDelivered += doBackToDesk;
+        levelController.PowerOff += doSwitchPowerOn;
 
         doWorkWirkPC();
     }
@@ -31,42 +33,43 @@ public class Programmer1Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distance;
+        float distance = Vector3.Distance(currentAction.target.position, transform.position);
         if (currentAction == workWithPC)
         {
-            distance = Vector3.Distance(currentAction.target.position, transform.position);
             if (distance < 1 && (Time.fixedTime - timeOfWorkingWithPC > 5))
             {
                 doWatchOnDesk();
             }
-        }
+        } else 
 
         if (currentAction == watchOnDesk)
         {
-            distance = Vector3.Distance(currentAction.target.position, transform.position);
             if (distance < 1 && (Time.fixedTime - timeOfWatchingOnDesk > 5))
             {
                 doWriteOnDesk();
             }
-        }
+        } else 
 
         if (currentAction == writeOnDesk)
         {
-            distance = Vector3.Distance(currentAction.target.position, transform.position);
             if (distance < 1 && (Time.fixedTime - timeOfWritingOnDesk > 5))
             {
                 doWatchOnCat();
             }
-        }
+        } else 
 
         if (currentAction == watchOnCat)
         {
-            distance = Vector3.Distance(currentAction.target.position, transform.position);
             if (distance < 1 && (Time.fixedTime - timeOfWatchingOnCat > 5))
             {
                 doWorkWirkPC();
             }
+        } else if (currentAction == switchPowerOn & distance <2)
+        {
+            levelController.generatePowerOn();
+            doWorkWirkPC();
         }
+
     }
 
     void doWorkWirkPC()
@@ -92,5 +95,10 @@ public class Programmer1Script : MonoBehaviour
         actingPerson.setAction(watchOnCat);
         currentAction = watchOnCat;
         timeOfWatchingOnCat = Time.fixedTime;
+    }
+    void doSwitchPowerOn()
+    {
+        actingPerson.setAction(switchPowerOn);
+        currentAction = switchPowerOn;
     }
 }
