@@ -14,7 +14,9 @@ public class Boss1Script : MonoBehaviour
     public PersonAct askSecretaryAboutNewPapers;
     public PersonAct goToBossCabinet;
     public PersonAct talkWithProgrammer;
+    public PersonAct sayGoodbytoPigeons;
     public PersonAct askSecretaryToRepairWindows;
+
 
     private ActingPerson actingPerson;
     LevelController levelController;
@@ -35,6 +37,7 @@ public class Boss1Script : MonoBehaviour
 
     public float timeOfReadingStarted;
     public float timeOfCoffeeDelivered;
+    public float timeOfTalkingWithPigeons;
     // Update is called once per frame
     void Update()
     {
@@ -47,7 +50,7 @@ public class Boss1Script : MonoBehaviour
                 doAskSecretaryAboutCoffee();
             }
         }
-        else if (currentAction == askSecretaryAboutCoffee || currentAction == askSecretaryAboutNewPapers)
+        else if (currentAction == askSecretaryAboutCoffee || currentAction == askSecretaryAboutNewPapers || currentAction == askSecretaryToRepairWindows)
         {
             if (distance < 1.5)
             {
@@ -60,6 +63,9 @@ public class Boss1Script : MonoBehaviour
                 {
                     levelController.generateNeedPapersEvent();
                     doUnlockShelter();
+                } else if (currentAction == askSecretaryToRepairWindows)
+                {
+                    doReadPapers();
                 }
             }
         }
@@ -96,6 +102,9 @@ public class Boss1Script : MonoBehaviour
                 doReadPapers();
             else
                 doFireProgrammer();
+        } else if (currentAction == sayGoodbytoPigeons && distance < 1 && Time.fixedTime - timeOfTalkingWithPigeons > 10)
+        {
+            doAskSecretaryToRepairWindows();
         }
     }
 
@@ -117,6 +126,7 @@ public class Boss1Script : MonoBehaviour
         actingPerson.setAction(unlockShelter);
         currentAction = unlockShelter;
 
+        states.BossShelterPassIsKnown = true;
     }
     public void doTalkWithProgrammer()
     {
@@ -152,6 +162,14 @@ public class Boss1Script : MonoBehaviour
         actingPerson.setAction(askSecretaryAboutNewPapers);
         currentAction = askSecretaryAboutNewPapers;
     }
+    public void doAskSecretaryToRepairWindows()
+    {
+        actingPerson.say("Окна теперь новые ставить");
+        Debug.Log("doAskSecretaryToRepairWindows");
+
+        actingPerson.setAction(askSecretaryToRepairWindows);
+        currentAction = askSecretaryToRepairWindows;
+    }
 
     public void doRememberVaultPassword()
     {
@@ -161,6 +179,46 @@ public class Boss1Script : MonoBehaviour
             Debug.Log("BossShelter Un Locked");
         actingPerson.setAction(goToVault);
         currentAction = goToVault;
+    }
+    public void doPigeonsGetOut()
+    {
+        actingPerson.say("Пошли вон летучие крысы!");
+        Debug.Log("doPigeonsGetOut");
+        actingPerson.setAction(sayGoodbytoPigeons);
+        currentAction = sayGoodbytoPigeons;
+        timeOfTalkingWithPigeons = Time.fixedTime;
+    }
+    public void doCry()
+    {
+        actingPerson.say("АААЫЫАЫАаыаыЫААА!!!!");
+        Debug.Log("doCry");
+        actingPerson.noAction = true;
+        GetComponent<NavMeshAgent>().enabled = false;
+        GetComponent<Rigidbody>().isKinematic = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (states.PigeonsInBossRoom && other.CompareTag("Boss room"))
+        {
+            Debug.Log("Boss enter his room");
+            if (states.BossShelterEmpty)
+                doCry();
+            else
+                doPigeonsGetOut();
+        }
+        if (other.CompareTag("2 floor"))
+            levelController.BossOn2floor = true;
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (states.PigeonsInBossRoom && other.CompareTag("Boss room"))
+        {
+            levelController.generatePigeonsInBossRoom();
+        }
+        if (other.CompareTag("2 floor"))
+            levelController.BossOn2floor = false;
     }
 
     //public void doDrinkCoffee()

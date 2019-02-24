@@ -21,5 +21,7 @@ public class Level1States : MonoBehaviour
     public bool Electropower;
     public bool BossWindowBroken;
     public bool PigeonsInBossRoom;
+    public bool BossShelterEmpty;
+    public bool BossOffline;
 
 }

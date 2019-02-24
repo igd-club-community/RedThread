@@ -18,6 +18,11 @@ public class LevelController : MonoBehaviour
     public event PersonEvent PowerOn;
     public event PersonEvent PigeonsInBossRoom;
 
+    public bool SecretaryOn2floor;
+    public bool ProgrammerOn2floor;
+    public bool BossOn2floor;
+    public bool CleanerOn2floor;
+
     Level1States states;
 
     // Start is called before the first frame update
@@ -72,14 +77,15 @@ public class LevelController : MonoBehaviour
     public void generatePigeonsInBossRoom()
     {
         Debug.Log("generatePigeonsInBossRoom");
-        PigeonsInBossRoom();
+        //PigeonsInBossRoom();
         states.PigeonsInBossRoom = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (SecretaryOn2floor && ProgrammerOn2floor && !BossOn2floor && !CleanerOn2floor)
+            FindObjectOfType<LevelsLoader>().LoadCredits();
     }
 
 }

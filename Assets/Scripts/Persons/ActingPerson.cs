@@ -31,7 +31,7 @@ public class ActingPerson : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        navAgent.SetDestination(currentAction.target.position);
+        if (!noAction) navAgent.SetDestination(currentAction.target.position);
         //Если мы долши до нужной точки
         //distance = Vector3.Distance(currentAction.target.position, transform.position);
         //if (distance < 0.1)

@@ -450,9 +450,9 @@ GameObject:
   - component: {fileID: 95437445}
   - component: {fileID: 95437444}
   - component: {fileID: 95437447}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: shelves
-  m_TagString: ActionItem
+  m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -684,6 +684,22 @@ MonoBehaviour:
   textBackground: {fileID: 258142367}
   bubbleText: {fileID: 1313345585}
   sayTime: 0
+--- !u!54 &173113688
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173113684}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &187871097
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1327,6 +1343,22 @@ MonoBehaviour:
   textBackground: {fileID: 655052781}
   bubbleText: {fileID: 655052780}
   sayTime: 0
+--- !u!54 &387167567
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387167564}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &412207162
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1593,6 +1625,10 @@ MonoBehaviour:
     target: {fileID: 636695701}
     animationName: 
     phrases: []
+  sayGoodbytoPigeons:
+    target: {fileID: 1561065683}
+    animationName: 
+    phrases: []
   askSecretaryToRepairWindows:
     target: {fileID: 1741532850}
     animationName: 
@@ -1622,6 +1658,22 @@ MonoBehaviour:
   textBackground: {fileID: 412207164}
   bubbleText: {fileID: 412207163}
   sayTime: 0
+--- !u!54 &439059546
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439059543}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &464497543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1808,6 +1860,22 @@ MonoBehaviour:
   textBackground: {fileID: 792748958}
   bubbleText: {fileID: 792748957}
   sayTime: 0
+--- !u!54 &514009451
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514009448}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &547040987
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,9 +1886,9 @@ GameObject:
   m_Component:
   - component: {fileID: 547040988}
   - component: {fileID: 547040989}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BossRoomTrigger
-  m_TagString: Untagged
+  m_TagString: Boss room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1850,8 +1918,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 7.8026657, y: 2.6, z: 5.73}
-  m_Center: {x: 2.1433768, y: 0, z: 0}
+  m_Size: {x: 6.9993057, y: 2.6, z: 5.73}
+  m_Center: {x: 2.5450568, y: 0, z: 0}
 --- !u!1 &550433227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1897,6 +1965,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eb5cba50ffe24744b150791dfa90ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SecretaryOn2floor: 0
+  ProgrammerOn2floor: 0
+  BossOn2floor: 0
+  CleanerOn2floor: 0
 --- !u!114 &550433230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1928,8 +2000,8 @@ MonoBehaviour:
   PaperInPrinter: 1
   GrassInBossRoomIsFine: 0
   MusorOnBossKarniz: 0
-  ProgrammerDeskClear: 0
-  BossShelterLocked: 0
+  ProgrammerDeskClear: 1
+  BossShelterLocked: 1
   BossShelterPassIsKnown: 0
   CoolerOnFirstFloor: 0
   CoolerOnSecondFloor: 0
@@ -1937,6 +2009,8 @@ MonoBehaviour:
   Electropower: 0
   BossWindowBroken: 0
   PigeonsInBossRoom: 0
+  BossShelterEmpty: 0
+  BossOffline: 0
 --- !u!1 &575704543
 GameObject:
   m_ObjectHideFlags: 0
@@ -3902,7 +3976,7 @@ GameObject:
   - component: {fileID: 961771392}
   m_Layer: 2
   m_Name: 2floorTrigger
-  m_TagString: Untagged
+  m_TagString: 2 floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3932,8 +4006,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 16.536747, y: 2.6, z: 5.73}
-  m_Center: {x: 0.16837311, y: 0, z: 0}
+  m_Size: {x: 16.614937, y: 2.6, z: 5.435618}
+  m_Center: {x: 0.12927818, y: 0, z: -0.14719105}
 --- !u!1 &1005558386
 GameObject:
   m_ObjectHideFlags: 0
@@ -5450,7 +5524,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561065682}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.47}
+  m_LocalPosition: {x: 0, y: -0.6, z: -20.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 189563066}

@@ -86,4 +86,15 @@ public class Cleaner1Script : MonoBehaviour
         currentAction = deliverPapers;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("2 floor"))
+            levelController.CleanerOn2floor = true;
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("2 floor"))
+            levelController.CleanerOn2floor = false;
+    }
 }
