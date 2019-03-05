@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InteractionMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+// if something broke, uncomment interfaces lower and add OnPointerEnter, OnPointerExit
+public class InteractionMenu : MonoBehaviour //, IPointerEnterHandler, IPointerExitHandler
 {
     bool isMouseOver;
     
@@ -19,24 +20,13 @@ public class InteractionMenu : MonoBehaviour, IPointerEnterHandler, IPointerExit
         }
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        isMouseOver = true;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        Debug.Log("Mouse exited");
-        isMouseOver = false;
-    }
-
     void OnMouseExit()
     {
-        Debug.Log("Mouse exited");
         isMouseOver = false;
     }
     void OnMouseOver()
     {
         isMouseOver = true;
     }
+    
 }

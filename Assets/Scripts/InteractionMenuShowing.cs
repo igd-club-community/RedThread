@@ -4,28 +4,27 @@ using UnityEngine;
 
 public class InteractionMenuShowing : MonoBehaviour
 {
-    public GameObject InteractionMenu;
+    public GameObject interactionMenu;
 
-    void Update()
+    private InteractionMenu _interactionMenu;
+
+    private void Start()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            InteractionMenu interactionMenu = InteractionMenu.GetComponent<InteractionMenu>();
-            if (Physics.Raycast(ray, out hit) && hit.collider.name == gameObject.name)
-            {
-                if (!InteractionMenu.activeSelf)
-                    InteractionMenu.transform.position = Input.mousePosition;
-                InteractionMenu.SetActive(true);
-                if (interactionMenu)
-                    interactionMenu.isMouseOverInteractiveObject = true;
-            }
-            else
-            {
-                if (interactionMenu)
-                    interactionMenu.isMouseOverInteractiveObject = false;
-            }
-        }
+        _interactionMenu = interactionMenu.GetComponent<InteractionMenu>();
+    }
+
+    private void OnMouseDown()
+    {
+        if (!interactionMenu.activeSelf)
+            interactionMenu.transform.position = Input.mousePosition;
+        interactionMenu.SetActive(true);
+        if (_interactionMenu)
+            _interactionMenu.isMouseOverInteractiveObject = true;
+    }
+
+    private void OnMouseExit()
+    {
+        if (_interactionMenu)
+            _interactionMenu.isMouseOverInteractiveObject = false;
     }
 }

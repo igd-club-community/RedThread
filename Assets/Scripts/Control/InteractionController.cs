@@ -25,9 +25,7 @@ public class InteractionController : MonoBehaviour {
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		if (Physics.Raycast(ray, out hit, maxRaycastRange, _layerMask)) {
 			if (hit.collider != null) {
-				if (hit.collider.gameObject.GetComponent<Interactive>() != null) {
-					return hit.collider.gameObject.GetComponent<Interactive>();
-				}
+				return hit.collider.gameObject.GetComponent<Interactive>();
 			}
 		}
 		return null;

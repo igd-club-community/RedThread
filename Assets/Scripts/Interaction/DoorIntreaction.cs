@@ -10,7 +10,7 @@ public class DoorIntreaction : Interactive {
 
 		mainDoorObject = GetComponentInParent<DoorController>();
 	}
-	override public void Interact() {
+	public override void Interact() {
 		mainDoorObject.Interact();
 	}
 }
