@@ -4,25 +4,24 @@ using UnityEngine;
 
 public class KarnizScript : ItemScript
 {
-    public Level1States states;
-    private LevelController levelController;
+    private Level1Controller levelController;
     public GameObject shelves;
 
     new void Start()
     {
         base.Start();
-        levelController = FindObjectOfType<LevelController>();
+        levelController = FindObjectOfType<Level1Controller>();
     }
 
     public override void Act()
     {
         Debug.Log("KarnizScript");
-        if (states.MusorInInvertory)
+        if (levelController.MusorInInvertory)
         {
-            states.MusorOnBossKarniz = true;
-            states.MusorInInvertory = false;
+            levelController.MusorOnBossKarniz = true;
+            levelController.MusorInInvertory = false;
             shelves.SetActive(true);
-            states.PigeonsInBossRoom = true;
+            levelController.PigeonsInBossRoom = true;
             //levelController.generatePigeonsInBossRoom();
         }
     }

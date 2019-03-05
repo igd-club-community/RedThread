@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class PrinterScript : ItemScript
 {
-    public Level1States states;
+    private Level1Controller levelController;
 
+    new void Start()
+    {
+        base.Start();
+        levelController = FindObjectOfType<Level1Controller>();
+    }
     public override void Act()
     {
         Debug.Log("PrinterScript");
 
-        states.PaperInPrinter = !states.PaperInPrinter;
+        levelController.PaperInPrinter = false;
     }
 }

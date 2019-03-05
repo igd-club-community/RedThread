@@ -456,7 +456,7 @@ GameObject:
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &95437443
 Transform:
   m_ObjectHideFlags: 0
@@ -465,7 +465,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 95437442}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.003, y: 0.544, z: 0}
+  m_LocalPosition: {x: 0.18, y: 0.544, z: 0}
   m_LocalScale: {x: 0.28, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 1551580669}
@@ -541,7 +541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00ec650403fbf74f8f0f183dce4f73f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 550433231}
 --- !u!1 &127890426
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,6 +615,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127890426}
   m_CullTransparentMesh: 0
+--- !u!1 &130261639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 130261640}
+  m_Layer: 0
+  m_Name: CleanerGrassInteractionPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &130261640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130261639}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.4, y: -0.33, z: -5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 911961609}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &173113684 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 480206511843132657, guid: 23a584daf1c02cf409198f972f27047f,
@@ -634,10 +663,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8dc45356ac35ea4e85d77900e3f68be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actions: []
   currentAction:
     target: {fileID: 0}
     animationName: 
     phrases: []
+  noAction: 0
+  distance: 0
+  textBackground: {fileID: 258142367}
+  bubbleText: {fileID: 1313345585}
+  sayTime: 0
   workWithPC:
     target: {fileID: 1283196553}
     animationName: 
@@ -662,28 +697,6 @@ MonoBehaviour:
   timeOfWatchingOnDesk: 0
   timeOfWritingOnDesk: 0
   timeOfWatchingOnCat: 0
---- !u!114 &173113686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173113684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4c69d87808e165468a21ae694d13774, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actions: []
-  currentAction:
-    target: {fileID: 0}
-    animationName: 
-    phrases: []
-  noAction: 0
-  distance: 0
-  textBackground: {fileID: 258142367}
-  bubbleText: {fileID: 1313345585}
-  sayTime: 0
 --- !u!54 &173113688
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -695,7 +708,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
@@ -936,11 +949,10 @@ GameObject:
   - component: {fileID: 189563069}
   - component: {fileID: 189563068}
   - component: {fileID: 189563067}
-  - component: {fileID: 189563070}
   m_Layer: 0
   m_Name: window
   m_TagString: ActionItem
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
   m_IsActive: 1
@@ -1017,19 +1029,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189563065}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &189563070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189563065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1599270c84326448aea8474c499a97b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  states: {fileID: 550433231}
 --- !u!1 &213572669
 GameObject:
   m_ObjectHideFlags: 0
@@ -1295,10 +1294,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e2ffefa9b1daf440888e59a5ea07051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actions: []
   currentAction:
     target: {fileID: 0}
     animationName: 
     phrases: []
+  noAction: 0
+  distance: 0
+  textBackground: {fileID: 655052781}
+  bubbleText: {fileID: 655052780}
+  sayTime: 0
   talkWithSecretary:
     target: {fileID: 1741532850}
     animationName: 
@@ -1319,30 +1324,24 @@ MonoBehaviour:
     target: {fileID: 950924007}
     animationName: 
     phrases: []
-  distance: 0
-  shelvesOnSecretaryTable: {fileID: 95437442}
---- !u!114 &387167566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 387167564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4c69d87808e165468a21ae694d13774, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actions: []
-  currentAction:
-    target: {fileID: 0}
+  fixBossGrass:
+    target: {fileID: 130261640}
     animationName: 
     phrases: []
-  noAction: 0
-  distance: 0
-  textBackground: {fileID: 655052781}
-  bubbleText: {fileID: 655052780}
-  sayTime: 0
+  fixCoolerOn1Level:
+    target: {fileID: 1902095932}
+    animationName: 
+    phrases: []
+  fixCoolerOn2Level:
+    target: {fileID: 659416298}
+    animationName: 
+    phrases: []
+  fixCoolerOn3Level:
+    target: {fileID: 802767518}
+    animationName: 
+    phrases: []
+  shelvesOnSecretaryTable: {fileID: 95437442}
+  askedToBringPapers: 0
 --- !u!54 &387167567
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1589,10 +1588,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af1d19be4676164aab19f9715ac8e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actions: []
   currentAction:
     target: {fileID: 0}
     animationName: 
     phrases: []
+  noAction: 0
+  distance: 0
+  textBackground: {fileID: 412207164}
+  bubbleText: {fileID: 412207163}
+  sayTime: 0
   readPapers:
     target: {fileID: 1031852456}
     animationName: 
@@ -1633,32 +1638,10 @@ MonoBehaviour:
     target: {fileID: 1741532850}
     animationName: 
     phrases: []
-  distance: 0
+  secretaryAskedToRepairWindow: 0
   timeOfReadingStarted: 0
   timeOfCoffeeDelivered: 0
   timeOfTalkingWithPigeons: 0
---- !u!114 &439059545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 439059543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4c69d87808e165468a21ae694d13774, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actions: []
-  currentAction:
-    target: {fileID: 0}
-    animationName: 
-    phrases: []
-  noAction: 0
-  distance: 0
-  textBackground: {fileID: 412207164}
-  bubbleText: {fileID: 412207163}
-  sayTime: 0
 --- !u!54 &439059546
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1796,10 +1779,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1037a3a7f9ce8b1478f5165e98f484f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actions: []
   currentAction:
     target: {fileID: 0}
     animationName: 
     phrases: []
+  noAction: 0
+  distance: 0
+  textBackground: {fileID: 792748958}
+  bubbleText: {fileID: 792748957}
+  sayTime: 0
   bringCoffee:
     target: {fileID: 947941091}
     animationName: 
@@ -1836,31 +1825,18 @@ MonoBehaviour:
     target: {fileID: 790539952}
     animationName: 
     phrases: []
-  distance: 0
-  visionPoint: {fileID: 1777400696}
-  programmer: {fileID: 414088645}
---- !u!114 &514009450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 514009448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4c69d87808e165468a21ae694d13774, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actions: []
-  currentAction:
+  goForSugar:
     target: {fileID: 0}
     animationName: 
     phrases: []
-  noAction: 0
-  distance: 0
-  textBackground: {fileID: 792748958}
-  bubbleText: {fileID: 792748957}
-  sayTime: 0
+  bringSugar:
+    target: {fileID: 0}
+    animationName: 
+    phrases: []
+  visionPoint: {fileID: 1777400696}
+  programmer: {fileID: 414088645}
+  askedToPrintPapers: 0
+  CleanerAskedToBringPapers: 0
 --- !u!54 &514009451
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1930,9 +1906,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 550433228}
-  - component: {fileID: 550433229}
   - component: {fileID: 550433230}
-  - component: {fileID: 550433231}
+  - component: {fileID: 550433229}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -1966,11 +1941,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eb5cba50ffe24744b150791dfa90ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossCupFilled: 0
+  BossCupMoved: 0
+  MusorSpawned: 0
+  MusorInInvertory: 0
+  PaperInPrinter: 1
+  MusorOnBossKarniz: 0
+  ProgrammerDeskClear: 0
+  BossShelterLocked: 0
+  BossShelterPassIsKnown: 0
+  Electropower: 0
+  BossWindowBroken: 0
+  PigeonsInBossRoom: 0
+  GrassInBossRoomIsFine: 1
+  CoolerOnFirstFloorIsFine: 1
+  CoolerOnSecondFloorIsFine: 1
+  CoolerOnThirdFloorIsFine: 1
+  BossShelterEmpty: 0
+  SecretaryIsBisy: 0
   SecretaryOn2floor: 0
   ProgrammerOn2floor: 0
   BossOn2floor: 0
   CleanerOn2floor: 0
-  pigeons: {fileID: 189563065}
+  BossInBossRoom: 0
+  BossOffline: 0
+  pigeons: {fileID: 0}
 --- !u!114 &550433230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1983,36 +1978,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bdb004170c1da5448d46e4fc83351cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &550433231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 550433227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcadbfd90f070654e9e12c18a6413f06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BossCupFilled: 0
-  BossCupMoved: 0
-  MusorSpawned: 0
-  MusorInInvertory: 0
-  PaperInPrinter: 1
-  GrassInBossRoomIsFine: 0
-  MusorOnBossKarniz: 0
-  ProgrammerDeskClear: 1
-  BossShelterLocked: 1
-  BossShelterPassIsKnown: 0
-  CoolerOnFirstFloor: 0
-  CoolerOnSecondFloor: 0
-  CoolerOnThirdFloor: 0
-  Electropower: 0
-  BossWindowBroken: 0
-  PigeonsInBossRoom: 0
-  BossShelterEmpty: 0
-  BossOffline: 0
 --- !u!1 &575704543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2028,7 +1993,7 @@ GameObject:
   m_Layer: 0
   m_Name: PC
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
   m_IsActive: 1
@@ -2768,6 +2733,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Person
       objectReference: {fileID: 0}
+    - target: {fileID: 480206511843132657, guid: 23a584daf1c02cf409198f972f27047f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3438173544247990131, guid: 23a584daf1c02cf409198f972f27047f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3112,10 +3082,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 796857547}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5887a58459915ec44be70d01a291f06e, type: 3}
+  m_Script: {fileID: 11500000, guid: 634a78941cbdfa04496f476412a92ef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 550433231}
 --- !u!65 &796857550
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3198,7 +3167,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 802767517}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.47}
+  m_LocalPosition: {x: 1.33, y: 0, z: -0.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1029242073}
@@ -3337,6 +3306,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Person
+      objectReference: {fileID: 0}
+    - target: {fileID: 480206511843132657, guid: 23a584daf1c02cf409198f972f27047f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3438173544247990131, guid: 23a584daf1c02cf409198f972f27047f,
         type: 3}
@@ -3596,7 +3570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc3fe39e0a64744180497f70dcd9d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 550433231}
 --- !u!1 &875470568
 GameObject:
   m_ObjectHideFlags: 0
@@ -3611,7 +3584,7 @@ GameObject:
   m_Layer: 10
   m_Name: shelvesOnKarniz
   m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
@@ -3704,7 +3677,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.16, y: 10.49, z: 4.09}
   m_LocalScale: {x: 0.21, y: 1.71, z: 0.29}
-  m_Children: []
+  m_Children:
+  - {fileID: 130261640}
+  - {fileID: 1274581750}
   m_Father: {fileID: 704049109}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3778,7 +3753,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d69b12f996a54c4b97e3272dd312d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 550433231}
 --- !u!1 &919823416
 GameObject:
   m_ObjectHideFlags: 0
@@ -4318,10 +4292,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1029242072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5887a58459915ec44be70d01a291f06e, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c1cc8a08d448dc4abef4cf6151b0c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 550433231}
 --- !u!65 &1029242075
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5124,6 +5097,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 139.01, y: -30, z: 0}
+--- !u!1 &1274581749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1274581750}
+  m_Layer: 0
+  m_Name: BossGrassInteractionPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1274581750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274581749}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.2, y: -0.3300003, z: -5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 911961609}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1283196552
 GameObject:
   m_ObjectHideFlags: 0
@@ -5273,7 +5276,7 @@ GameObject:
   m_Layer: 0
   m_Name: paperStorage
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5394,10 +5397,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1470777149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5887a58459915ec44be70d01a291f06e, type: 3}
+  m_Script: {fileID: 11500000, guid: ada7178a862d927498b57df746887c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 550433231}
 --- !u!65 &1470777152
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5719,7 +5721,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0da34d78864234daab5af3082f99af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 550433231}
   shelves: {fileID: 875470568}
 --- !u!1 &1585597087
 GameObject:
@@ -6216,6 +6217,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Person
       objectReference: {fileID: 0}
+    - target: {fileID: 480206511843132657, guid: 23a584daf1c02cf409198f972f27047f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3438173544247990131, guid: 23a584daf1c02cf409198f972f27047f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6593,7 +6599,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c241c4f8ff11d6f4dbdbf4c53efdda87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 550433231}
 --- !u!1 &1896565966
 GameObject:
   m_ObjectHideFlags: 0
@@ -6907,7 +6912,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5b13f85c0f44a4290f7da812113024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 550433231}
 --- !u!1 &1986506381
 GameObject:
   m_ObjectHideFlags: 0
@@ -7013,7 +7017,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c034b3c92a156034aac20ca5e86f48f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 550433231}
 --- !u!1 &1989388085
 GameObject:
   m_ObjectHideFlags: 0
@@ -7272,7 +7275,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5887a58459915ec44be70d01a291f06e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 550433231}
 --- !u!1 &2142572611
 GameObject:
   m_ObjectHideFlags: 0

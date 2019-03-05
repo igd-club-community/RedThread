@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Класс секретарши
-public class Secterary1Script : MonoBehaviour
+public class Secterary1Script : ActingPerson
 {
     //Секретарша подписывается на событие босса когда он хочет кофе.
 
-    public PersonAct currentAction;
     public PersonAct bringCoffee;
     public PersonAct printPapers;
     public PersonAct bringPapersFrom2level;
@@ -17,43 +16,46 @@ public class Secterary1Script : MonoBehaviour
     public PersonAct prepareCoffee;
     public PersonAct talkWithCleaner;
     public PersonAct askCleanerToBringPapers;
-    public float distance;
+    public PersonAct goForSugar;
+    public PersonAct bringSugar;
+
     public Transform visionPoint;
     public Transform programmer;
 
-    private ActingPerson actingPerson;
-    private LevelController levelController;
-    Level1States states;
+    private Level1Controller levelController;
 
-    void Start()
+    public bool askedToPrintPapers = false;
+    public bool CleanerAskedToBringPapers = false;
+
+    new void Start()
     {
-        actingPerson = GetComponent<ActingPerson>();
-        levelController = FindObjectOfType<LevelController>();
+        base.Start();
+        levelController = FindObjectOfType<Level1Controller>();
         levelController.BossNeedsCoffee += doPrepareCoffee;
         levelController.BossNeedsPapers += doPrintPapers;
-        levelController.CleanerDeliverPapers += doPrintPapers;
-        //levelController.CoffeeDelivered += doBackToDesk;
+        levelController.CleanerBringPapers += doPrintPapers;
+        levelController.BossNeedsToRepairWindow += doCallToRepair;
 
-        states = FindObjectOfType<Level1States>();
 
-        actingPerson.setAction(talkWithCleaner);
-        currentAction = talkWithCleaner;
+        setAction(talkWithCleaner);
     }
 
     float timeCoffeePreparingStarted;
-    void Update()
+    float timeTalkingWithCleaner;
+
+    new void Update()
     {
+        base.Update();
+        noAction = false;
         distance = Vector3.Distance(currentAction.target.position, transform.position);
-        if (currentAction == talkWithCleaner)
+
+        //если нас попросили напечатать бумагу, то мы идём к принтеру. Если бумаги в нём нет, то идём за ней
+        if (currentAction == printPapers && distance < 1)
         {
-            if (distance < 2)
-            {
-                //Стоять на месте и говорить с уборщицей.
-            }
-            if (distance > 2)
-            {
-                //идти к уборщице
-            }
+            if (levelController.PaperInPrinter)
+                doBringPapersFrom2level();
+            else
+                setAction(bringPapersToBoss);
         }
         else if (currentAction == prepareCoffee)
         {
@@ -64,28 +66,41 @@ public class Secterary1Script : MonoBehaviour
         }
         else if (currentAction == bringCoffee && distance < 1)
         {
-            states.BossCupFilled = true;
+            levelController.BossCupFilled = true;
             levelController.generateCoffeeDelivered();
             doBackToDesk();
         }
-        else if (currentAction == backToDesk && distance < 1 && states.PaperInPrinter)
+        else if (currentAction == talkWithCleaner)
         {
-            levelController.generateSecretaryIsBack();
-            actingPerson.setAction(talkWithCleaner);
-            currentAction = talkWithCleaner;
-        }
-        else if (currentAction == printPapers && distance < 1)
-        {
-            if (states.PaperInPrinter)
+            if (levelController.BossOffline && Time.fixedTime - timeTalkingWithCleaner > 10)
+                doGoForSugar();
+            //Если уборщица занята, то есть если сломан один из кулеров или растение у босса,
+            //то Мы вместо того чтобы поговорить с уборщицей ничего не делаем
+
+
+            if (distance > 2)
             {
-                actingPerson.setAction(bringPapersToBoss);
-                currentAction = bringPapersToBoss;
+                setAction(talkWithCleaner);
+                //идти к уборщице
             }
             else
             {
-                actingPerson.setAction(bringPapersFrom2level);
-                currentAction = bringPapersFrom2level;
+                noAction = true;
+                //Стоять на месте и говорить с уборщицей.
             }
+        }
+        else if (currentAction == goForSugar && distance < 1)
+        {
+            doBringSugar();
+        }
+        else if (currentAction == bringSugar && distance < 1)
+        {
+            doBackToDesk();
+        }
+        else if (currentAction == backToDesk && distance < 1)// && levelController.PaperInPrinter)
+        {
+            levelController.generateSecretaryIsBack();
+            doTalkWithCleaner();
         }
         else if (currentAction == bringPapersToBoss && distance < 1)
         {
@@ -100,7 +115,7 @@ public class Secterary1Script : MonoBehaviour
                 //Debug.Log("HIT " + hit.collider.tag);
                 if (hit.collider.CompareTag("Person"))
                 {
-                    if(hit.collider.gameObject.GetComponentInParent<Programmer1Script>() != null)
+                    if (hit.collider.gameObject.GetComponentInParent<Programmer1Script>() != null)
                     {
                         doAskCleanerToBringPapers();
                     }
@@ -111,7 +126,7 @@ public class Secterary1Script : MonoBehaviour
         }
         else if (currentAction == bringPapersToPrinter && distance < 1)
         {
-            states.PaperInPrinter = true;
+            levelController.PaperInPrinter = true;
             doPrintPapers();
         }
         else if (currentAction == askCleanerToBringPapers && distance < 1.5)
@@ -123,56 +138,85 @@ public class Secterary1Script : MonoBehaviour
 
     public void doPrepareCoffee()
     {
-        actingPerson.say("Как же он вкусно пахнет!");
+        say("Как же он вкусно пахнет!");
         Debug.Log("doPrepareCoffee");
         //Запустить анимацию приготовления кофе,
         //Animator.SetState("CookCoffee");
-        actingPerson.setAction(prepareCoffee);
-        currentAction = prepareCoffee;
+        setAction(prepareCoffee);
         timeCoffeePreparingStarted = Time.fixedTime;
     }
-
+    public void doTalkWithCleaner()
+    {
+        say("Как дела?");
+        Debug.Log("doTalkWithCleaner");
+        if (!levelController.SecretaryIsBisy)
+            setAction(talkWithCleaner);
+        levelController.SecretaryIsBisy = false;
+        timeTalkingWithCleaner = Time.fixedTime;
+    }
+    public void doCallToRepair()
+    {
+        say("Хорошо, вызову на завтра.");
+        Debug.Log("doCallToRepair");
+    }
     public void doPrintPapers()
     {
-        actingPerson.say("Бумажки, бумажки, я несу бумажки");
+        askedToPrintPapers = true;
+        say("Бумажки, бумажки, я несу бумажки");
         Debug.Log("doPrintPapers");
 
-        actingPerson.setAction(printPapers);
-        currentAction = printPapers;
+        setAction(printPapers);
+    }
+
+    public void doBringPapersFrom2level()
+    {
+        say("Надо взять бумаги.");
+        Debug.Log("doBringPapersFrom2level");
+        setAction(bringPapersFrom2level);
     }
 
     public void doBringPapersToPrinter()
     {
-        actingPerson.say("Нашла!");
+        say("Нашла!");
         Debug.Log("doBringPapersToPrinter");
 
-        actingPerson.setAction(bringPapersToPrinter);
-        currentAction = bringPapersToPrinter;
+        setAction(bringPapersToPrinter);
     }
+
     public void doAskCleanerToBringPapers()
     {
-        actingPerson.say("Не-не-не, я туда сама не пойду");
+        say("Не-не-не, я туда сама не пойду");
         Debug.Log("doAskCleanerToBringPapers");
 
-        actingPerson.setAction(askCleanerToBringPapers);
-        currentAction = askCleanerToBringPapers;
+        setAction(askCleanerToBringPapers);
     }
 
     public void doBringCoffeeToBoss()
     {
-        actingPerson.say("Не дай бог разолью");
+        say("Не дай бог разолью");
         Debug.Log("doBringCoffeeToBoss");
         //Принести кофе боссу
-        actingPerson.setAction(bringCoffee);
-        currentAction = bringCoffee;
+        setAction(bringCoffee);
     }
 
     public void doBackToDesk()
     {
-        actingPerson.say("Можно и отдохнуть");
+        say("Можно и отдохнуть");
         Debug.Log("doBackToDesk");
-        actingPerson.setAction(backToDesk);
-        currentAction = backToDesk;
+        setAction(backToDesk);
+    }
+    public void doGoForSugar()
+    {
+        levelController.SecretaryIsBisy = true;
+        say("Сахар кончился");
+        Debug.Log("doGoForSugar");
+        setAction(goForSugar);
+    }
+    public void doBringSugar()
+    {
+        say("Налью себе чаю");
+        Debug.Log("doBringSugar");
+        setAction(bringSugar);
     }
 
     private void OnTriggerEnter(Collider other)

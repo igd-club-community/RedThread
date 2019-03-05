@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class BossCupScript : ItemScript
 {
-    public Level1States states;
+    private Level1Controller levelController;
 
+    new void Start()
+    {
+        base.Start();
+        levelController = FindObjectOfType<Level1Controller>();
+    }
     public override void Act()
     {
         Debug.Log("BossCupScript");
         //Изменить положение чашки
         //Изменить состояние сцены
-        if (states.BossCupFilled)
-            states.BossCupMoved = true;
+        if (levelController.BossCupFilled)
+            levelController.BossCupMoved = true;
     }
 }

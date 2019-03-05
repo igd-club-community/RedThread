@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class ShelvesScript : ItemScript
 {
-    public Level1States states;
+    private Level1Controller levelController;
 
+    new void Start()
+    {
+        base.Start();
+        levelController = FindObjectOfType<Level1Controller>();
+    }
     public override void Act()
     {
         Debug.Log("ShelvesScript");
         if (gameObject.activeSelf)
         {
-            states.MusorSpawned = false;
-            states.MusorInInvertory = true;
+            levelController.MusorSpawned = false;
+            levelController.MusorInInvertory = true;
             gameObject.SetActive(false);
         }
     }

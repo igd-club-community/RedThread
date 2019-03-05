@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Programmer1Script : MonoBehaviour
+public class Programmer1Script : ActingPerson
 {
-    private ActingPerson actingPerson;
-    private LevelController levelController;
-
-    public PersonAct currentAction;
+    private Level1Controller levelController;
+    
     public PersonAct workWithPC;
     public PersonAct watchOnDesk;
     public PersonAct writeOnDesk;
@@ -19,20 +17,19 @@ public class Programmer1Script : MonoBehaviour
     public float timeOfWritingOnDesk;
     public float timeOfWatchingOnCat;
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
-        actingPerson = GetComponent<ActingPerson>();
-        levelController = FindObjectOfType<LevelController>();
-        //levelController.BossNeedsCoffee += doWorkWirkPC;
-        //levelController.CoffeeDelivered += doBackToDesk;
+        base.Start();
+        levelController = FindObjectOfType<Level1Controller>();
         levelController.PowerOff += doSwitchPowerOn;
 
         doWorkWirkPC();
     }
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
+        base.Update();
         float distance = Vector3.Distance(currentAction.target.position, transform.position);
         if (currentAction == workWithPC)
         {
@@ -40,25 +37,19 @@ public class Programmer1Script : MonoBehaviour
             {
                 doWatchOnDesk();
             }
-        } else 
-
-        if (currentAction == watchOnDesk)
+        } else if (currentAction == watchOnDesk)
         {
             if (distance < 1 && (Time.fixedTime - timeOfWatchingOnDesk > 5))
             {
                 doWriteOnDesk();
             }
-        } else 
-
-        if (currentAction == writeOnDesk)
+        } else if (currentAction == writeOnDesk)
         {
             if (distance < 1 && (Time.fixedTime - timeOfWritingOnDesk > 5))
             {
                 doWatchOnCat();
             }
-        } else 
-
-        if (currentAction == watchOnCat)
+        } else if (currentAction == watchOnCat)
         {
             if (distance < 1 && (Time.fixedTime - timeOfWatchingOnCat > 5))
             {
@@ -74,32 +65,28 @@ public class Programmer1Script : MonoBehaviour
 
     void doWorkWirkPC()
     {
-        actingPerson.setAction(workWithPC);
-        currentAction = workWithPC;
+        Debug.Log("doWorkWirkPC");
+        setAction(workWithPC);
         timeOfWorkingWithPC = Time.fixedTime;
     }
     void doWatchOnDesk()
     {
-        actingPerson.setAction(watchOnDesk);
-        currentAction = watchOnDesk;
+        setAction(watchOnDesk);
         timeOfWatchingOnDesk = Time.fixedTime;
     }
     void doWriteOnDesk()
     {
-        actingPerson.setAction(writeOnDesk);
-        currentAction = writeOnDesk;
+        setAction(writeOnDesk);
         timeOfWritingOnDesk = Time.fixedTime;
     }
     void doWatchOnCat()
     {
-        actingPerson.setAction(watchOnCat);
-        currentAction = watchOnCat;
+        setAction(watchOnCat);
         timeOfWatchingOnCat = Time.fixedTime;
     }
     void doSwitchPowerOn()
     {
-        actingPerson.setAction(switchPowerOn);
-        currentAction = switchPowerOn;
+        setAction(switchPowerOn);
     }
     private void OnTriggerEnter(Collider other)
     {

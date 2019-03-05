@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Boss1Script : MonoBehaviour
+public class Boss1Script : ActingPerson
 {
-    public PersonAct currentAction;
     public PersonAct readPapers;
     public PersonAct drinkCoffee;
     public PersonAct askSecretaryAboutCoffee;
@@ -16,22 +15,18 @@ public class Boss1Script : MonoBehaviour
     public PersonAct talkWithProgrammer;
     public PersonAct sayGoodbytoPigeons;
     public PersonAct askSecretaryToRepairWindows;
+    
+    Level1Controller levelController;
 
-
-    private ActingPerson actingPerson;
-    LevelController levelController;
-    Level1States states;
-    public float distance;
+    public bool secretaryAskedToRepairWindow = false;
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
-        actingPerson = GetComponent<ActingPerson>();
-        levelController = FindObjectOfType<LevelController>();
+        base.Start();
+        levelController = FindObjectOfType<Level1Controller>();
         levelController.CoffeeDelivered += doReadPapers;
-
-        states = FindObjectOfType<Level1States>();
-
+        
         doReadPapers();
     }
 
@@ -39,8 +34,10 @@ public class Boss1Script : MonoBehaviour
     public float timeOfCoffeeDelivered;
     public float timeOfTalkingWithPigeons;
     // Update is called once per frame
-    void Update()
+
+    new void Update()
     {
+        base.Update();
         distance = Vector3.Distance(currentAction.target.position, transform.position);
         if (currentAction == drinkCoffee)
         {
@@ -73,7 +70,7 @@ public class Boss1Script : MonoBehaviour
         {
             if (distance < 1)
             {
-                states.BossShelterPassIsKnown = true;
+                levelController.BossShelterPassIsKnown = true;
                 doTalkWithProgrammer();
             }
         }
@@ -81,24 +78,24 @@ public class Boss1Script : MonoBehaviour
         {
             if (Time.fixedTime - timeOfReadingStarted > 3)
             {
-                if (states.BossCupMoved)
+                if (levelController.BossCupMoved)
                 {
                     //Если чашку подвинули, значит босс проливает кофе и идёт к программисту
                     doAskSecretaryAboutNewPapers();
-                    states.BossCupFilled = false;
-                    states.BossCupMoved = false;
+                    levelController.BossCupFilled = false;
+                    levelController.BossCupMoved = false;
                 }
             }
             if (Time.fixedTime - timeOfReadingStarted > 5)
             {
                 doAskSecretaryAboutCoffee();
                 //levelController.generateNeedCoffeEvent();
-                states.BossCupFilled = false;
+                levelController.BossCupFilled = false;
             }
         }
         else if (currentAction == talkWithProgrammer && distance < 1)
         {
-            if (states.ProgrammerDeskClear)
+            if (levelController.ProgrammerDeskClear)
                 doReadPapers();
             else
                 doFireProgrammer();
@@ -110,36 +107,34 @@ public class Boss1Script : MonoBehaviour
 
     public void doReadPapers()
     {
-        actingPerson.say("Опять рубль падает");
+        say("Опять рубль падает");
         Debug.Log("doReadPapers");
         //Здесь можно запустить таймер сколько читать газеты например.
-        actingPerson.setAction(readPapers);
+        setAction(readPapers);
         currentAction = readPapers;
         timeOfReadingStarted = Time.fixedTime;
     }
 
     public void doUnlockShelter()
     {
-        actingPerson.say("Точно! Вспомнил пароль");
+        say("Точно! Вспомнил пароль");
         Debug.Log("doUnlockShelter");
         
-        actingPerson.setAction(unlockShelter);
-        currentAction = unlockShelter;
+        setAction(unlockShelter);
 
-        states.BossShelterPassIsKnown = true;
+        levelController.BossShelterPassIsKnown = true;
     }
     public void doTalkWithProgrammer()
     {
-        actingPerson.say("Надо поговорить с программистом.");
+        say("Надо поговорить с программистом.");
         Debug.Log("doTalkWithProgrammer");
 
-        actingPerson.setAction(talkWithProgrammer);
-        currentAction = talkWithProgrammer;
+        setAction(talkWithProgrammer);
 
     }
     public void doFireProgrammer()
     {
-        actingPerson.say("Что за мудак");
+        say("Что за мудак");
         Debug.Log("doFireProgrammer");
         doReadPapers(); //Временно пока нет плана что будет когда увольняем
 
@@ -147,53 +142,50 @@ public class Boss1Script : MonoBehaviour
 
     public void doAskSecretaryAboutCoffee()
     {
-        actingPerson.say("Хочу кофе");
+        say("Хочу кофе");
         Debug.Log("doAskSecretaryAboutCoffee");
-        actingPerson.setAction(askSecretaryAboutCoffee);
-        currentAction = askSecretaryAboutCoffee;
+        setAction(askSecretaryAboutCoffee);
     }
 
     public void doAskSecretaryAboutNewPapers()
     {
-        actingPerson.say("Твоюж мать");
+        say("Твоюж мать");
         Debug.Log("doAskSecretaryAboutNewPapers");
         //Запустить движение к секретарше,
         //Запустить анимацию просьбы
-        actingPerson.setAction(askSecretaryAboutNewPapers);
-        currentAction = askSecretaryAboutNewPapers;
+        setAction(askSecretaryAboutNewPapers);
     }
     public void doAskSecretaryToRepairWindows()
     {
-        actingPerson.say("Окна теперь новые ставить");
+        say("Окна теперь новые ставить");
         Debug.Log("doAskSecretaryToRepairWindows");
 
-        actingPerson.setAction(askSecretaryToRepairWindows);
-        currentAction = askSecretaryToRepairWindows;
+        setAction(askSecretaryToRepairWindows);
     }
 
     public void doRememberVaultPassword()
     {
-        actingPerson.say("Какой тут был пароль?");
+        say("Какой тут был пароль?");
         Debug.Log("doRememberVaultPassword");
-        if (!states.BossShelterLocked)
+        if (!levelController.BossShelterLocked)
             Debug.Log("BossShelter Un Locked");
-        actingPerson.setAction(goToVault);
-        currentAction = goToVault;
+        setAction(goToVault);
     }
 
     public void doPigeonsGetOut()
     {
-        actingPerson.say("Пошли вон летучие крысы!");
+        say("Пошли вон летучие крысы!");
         Debug.Log("doPigeonsGetOut");
-        actingPerson.setAction(sayGoodbytoPigeons);
-        currentAction = sayGoodbytoPigeons;
+        setAction(sayGoodbytoPigeons);
         timeOfTalkingWithPigeons = Time.fixedTime;
     }
+
     public void doCry()
     {
-        actingPerson.say("АААааыыыыаааа!!");
+        levelController.BossOffline = true;
+        say("АААааыыыыаааа!!");
         Debug.Log("doCry");
-        actingPerson.noAction = true;
+        noAction = true;
         GetComponent<NavMeshAgent>().enabled = false;
         GetComponent<Rigidbody>().isKinematic = false;
         Debug.Log(transform.rotation);
@@ -202,10 +194,10 @@ public class Boss1Script : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (states.PigeonsInBossRoom && other.CompareTag("Boss room"))
+        if (levelController.PigeonsInBossRoom && other.CompareTag("Boss room"))
         {
             Debug.Log("Boss enter his room");
-            if (states.BossShelterEmpty)
+            if (levelController.BossShelterEmpty)
                 doCry();
             else
                 doPigeonsGetOut();
@@ -216,7 +208,7 @@ public class Boss1Script : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        if (states.PigeonsInBossRoom && other.CompareTag("Boss room"))
+        if (levelController.PigeonsInBossRoom && other.CompareTag("Boss room"))
         {
             levelController.generatePigeonsInBossRoom();
         }

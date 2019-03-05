@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrassScript : ItemScript
+public class Cooler2Script : ItemScript
 {
     private Level1Controller levelController;
 
@@ -13,10 +13,8 @@ public class GrassScript : ItemScript
     }
     public override void Act()
     {
-        Debug.Log("GrassScript");
+        Debug.Log("Cooler2Script");
 
-        //if (states.BossInBossRoom)
-        levelController.GrassInBossRoomIsFine = false;
-
+        levelController.CoolerOnSecondFloorIsFine = false;
     }
 }

@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class ElectroScript : ItemScript
 {
-    public Level1States states;
-    private LevelController levelController;
+    private Level1Controller levelController;
 
     new void Start()
     {
         base.Start();
-        levelController = FindObjectOfType<LevelController>();
+        levelController = FindObjectOfType<Level1Controller>();
     }
-
     public override void Act()
     {
         Debug.Log("ElectroScript");
 
-        states.Electropower = !states.Electropower;
+        levelController.Electropower = false; // !states.Electropower;
         levelController.generatePowerOff();
         
     }

@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class VaultScript : ItemScript
 {
-    public Level1States states;
+    private Level1Controller levelController;
 
+    new void Start()
+    {
+        base.Start();
+        levelController = FindObjectOfType<Level1Controller>();
+    }
     public override void Act()
     {
         Debug.Log("VaultScript");
 
-        if (states.BossShelterPassIsKnown)
-            states.BossShelterLocked = false;
+        if (levelController.BossShelterPassIsKnown)
+            levelController.BossShelterLocked = false;
     }
 }

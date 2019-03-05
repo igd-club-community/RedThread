@@ -14,10 +14,10 @@ public class Inventory : MonoBehaviour
     delegate void ItemFunction();
     Dictionary<Item, ItemFunction> ItemFunctions;
 
-    private LevelController levelController;
+    private Level1Controller levelController;
     void Start()
     {
-        levelController = FindObjectOfType<LevelController>();
+        levelController = FindObjectOfType<Level1Controller>();
         ItemFunctions = new Dictionary<Item, ItemFunction>()
         {
             {
