@@ -13,6 +13,7 @@ public class Level1Controller : MonoBehaviour
     public bool MusorSpawned; //положила шелуху на стол уборщицы
     public bool MusorInInvertory;
     public bool PaperInPrinter = true;
+    public bool PaperInBossRoom = true;
     public bool MusorOnBossKarniz;
     public bool ProgrammerDeskClear;
     public bool BossShelterLocked;
@@ -31,6 +32,7 @@ public class Level1Controller : MonoBehaviour
     public event PersonEvent BossNeedsToRepairWindow;
     public event PersonEvent CleanerBringPapers;
     public event PersonEvent CoffeeDelivered;
+    public event PersonEvent PapersDelivered;
     public event PersonEvent SecretaryIsBack;
     public event PersonEvent PowerOff;
     public event PersonEvent PowerOn;
@@ -54,44 +56,71 @@ public class Level1Controller : MonoBehaviour
 
     }
 
+    //Босс попросил секретаршу сделать кофе
     public void generateNeedCoffeEvent()
     {
         SecretaryIsBisy = true;
         Debug.Log("generateNeedCoffeEvent");
         BossNeedsCoffee();
     }
+
+    //Босс попросил секретаршу напечатать бумаги
     public void generateNeedPapersEvent()
     {
+        SecretaryIsBisy = true;
         Debug.Log("generateNeedPapersEvent");
         BossNeedsPapers();
     }
+
+    //Секретарша принесла кофе
     public void generateCoffeeDelivered()
     {
         Debug.Log("generateCoffeeDelivered");
         CoffeeDelivered();
     }
+
+    //Секретарша принесла бумаги
+    public void generatePapersToBossDelivered()
+    {
+        PaperInBossRoom = true;
+        Debug.Log("generatePapersToBossDelivered");
+        //PapersDelivered();
+    }
+
+    //Босс просит секретаршу вызвать монтажников
     public void generateBossNeedsToRepairWindow()
     {
         Debug.Log("generateBossNeedsToRepairWindow");
         BossNeedsToRepairWindow();
     }
+
+
     public void generateSecretaryIsBack()
     {
         SecretaryIsBisy = false;
         Debug.Log("generateSecretaryIsBack");
-        SecretaryIsBack();
+        //SecretaryIsBack();
     }
 
+    //Просьба секретарши к уборщице принести бумаги
     public void generateCleanerBringPapersEvent()
     {
+        CleanerIsBisy = true;
+        SecretaryIsBisy = false; //В принципе не обязательно, так как сразу секретарша пойдет к столу и станет свободна
         Debug.Log("generateCleanerBringPapersEvent");
         CleanerBringPapers();
     }
-    public void generatePapersDelivered()
+
+    //Просьба уборщица принесла бумаги
+    public void generatePapersToPrinterDelivered()
     {
+        CleanerIsBisy = false;
+        SecretaryIsBisy = true;
         PaperInPrinter = true;
-        Debug.Log("generatePapersDelivered");
+        Debug.Log("generatePapersToPrinterDelivered");
+        PapersDelivered();
     }
+
     public void generatePowerOff()
     {
         Electropower = false;

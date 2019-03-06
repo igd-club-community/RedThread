@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class Boss1Script : ActingPerson
 {
+    public PersonAct prevAction; 
     public PersonAct readPapers;
     public PersonAct drinkCoffee;
     public PersonAct askSecretaryAboutCoffee;
@@ -12,10 +13,11 @@ public class Boss1Script : ActingPerson
     public PersonAct unlockShelter;
     public PersonAct askSecretaryAboutNewPapers;
     public PersonAct goToBossCabinet;
+    public PersonAct goToProgrammer;
     public PersonAct talkWithProgrammer;
     public PersonAct sayGoodbytoPigeons;
     public PersonAct askSecretaryToRepairWindows;
-    
+
     Level1Controller levelController;
 
     public bool secretaryAskedToRepairWindow = false;
@@ -26,7 +28,8 @@ public class Boss1Script : ActingPerson
         base.Start();
         levelController = FindObjectOfType<Level1Controller>();
         levelController.CoffeeDelivered += doReadPapers;
-        
+        //levelController.PapersDelivered += doReadPapers;asdsad
+
         doReadPapers();
     }
 
@@ -37,7 +40,13 @@ public class Boss1Script : ActingPerson
 
     new void Update()
     {
+        if (levelController.BossOffline)
+            return;
         base.Update();
+        noAction = false;
+        //Если у нас растение было сломано и мы ждали что оно починится, то начинаем двигаться.
+        if (noAction && levelController.GrassInBossRoomIsFine)
+            noAction = false;
         distance = Vector3.Distance(currentAction.target.position, transform.position);
         if (currentAction == drinkCoffee)
         {
@@ -60,9 +69,10 @@ public class Boss1Script : ActingPerson
                 {
                     levelController.generateNeedPapersEvent();
                     doUnlockShelter();
-                } else if (currentAction == askSecretaryToRepairWindows)
+                }
+                else if (currentAction == askSecretaryToRepairWindows)
                 {
-                    doReadPapers();
+                    setAction(prevAction);
                 }
             }
         }
@@ -71,7 +81,7 @@ public class Boss1Script : ActingPerson
             if (distance < 1)
             {
                 levelController.BossShelterPassIsKnown = true;
-                doTalkWithProgrammer();
+                doGoToProgrammer();
             }
         }
         else if (currentAction == readPapers)
@@ -93,15 +103,33 @@ public class Boss1Script : ActingPerson
                 levelController.BossCupFilled = false;
             }
         }
-        else if (currentAction == talkWithProgrammer && distance < 1)
+        else if (currentAction == goToProgrammer && distance < 1)
         {
             if (levelController.ProgrammerDeskClear)
-                doReadPapers();
+            {
+                if (levelController.ProgrammerOn2floor)
+                    doTalkWithProgrammer();
+            }
             else
                 doFireProgrammer();
-        } else if (currentAction == sayGoodbytoPigeons && distance < 1 && Time.fixedTime - timeOfTalkingWithPigeons > 10)
+        }
+        else if (currentAction == talkWithProgrammer)
         {
-            doAskSecretaryToRepairWindows();
+            if (distance < 1.5)
+            {
+                noAction = true;
+
+                //если подходим к программисту то говорим с ним до тех пор пока секретарша не распечатает бумаги
+                if (levelController.PaperInBossRoom)
+                    doReadPapers();
+            }
+        }
+        else if (currentAction == sayGoodbytoPigeons && distance < 1 && Time.fixedTime - timeOfTalkingWithPigeons > 5)
+        {
+            if (!secretaryAskedToRepairWindow)
+                doAskSecretaryToRepairWindows();
+            else
+                setAction(prevAction);
         }
     }
 
@@ -119,14 +147,22 @@ public class Boss1Script : ActingPerson
     {
         say("Точно! Вспомнил пароль");
         Debug.Log("doUnlockShelter");
-        
+
         setAction(unlockShelter);
 
         levelController.BossShelterPassIsKnown = true;
     }
-    public void doTalkWithProgrammer()
+    public void doGoToProgrammer()
     {
         say("Надо поговорить с программистом.");
+        Debug.Log("doGoToProgrammer");
+
+        setAction(goToProgrammer);
+
+    }
+    public void doTalkWithProgrammer()
+    {
+        say("Что ты решил?");
         Debug.Log("doTalkWithProgrammer");
 
         setAction(talkWithProgrammer);
@@ -159,7 +195,7 @@ public class Boss1Script : ActingPerson
     {
         say("Окна теперь новые ставить");
         Debug.Log("doAskSecretaryToRepairWindows");
-
+        secretaryAskedToRepairWindow = true;
         setAction(askSecretaryToRepairWindows);
     }
 
@@ -176,6 +212,7 @@ public class Boss1Script : ActingPerson
     {
         say("Пошли вон летучие крысы!");
         Debug.Log("doPigeonsGetOut");
+        prevAction = currentAction;
         setAction(sayGoodbytoPigeons);
         timeOfTalkingWithPigeons = Time.fixedTime;
     }
@@ -206,11 +243,24 @@ public class Boss1Script : ActingPerson
             levelController.BossOn2floor = true;
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (!levelController.GrassInBossRoomIsFine && other.CompareTag("grass"))
+        {
+            noAction = true;
+        }
+        else
+        {
+            noAction = false;
+        }
+    }
+
     public void OnTriggerExit(Collider other)
     {
         if (levelController.PigeonsInBossRoom && other.CompareTag("Boss room"))
         {
             levelController.generatePigeonsInBossRoom();
+
         }
         if (other.CompareTag("2 floor"))
             levelController.BossOn2floor = false;

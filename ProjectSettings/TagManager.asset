@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - Boss room
   - 2 floor
+  - grass
   layers:
   - Default
   - TransparentFX

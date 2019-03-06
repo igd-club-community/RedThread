@@ -30,7 +30,10 @@ public class Programmer1Script : ActingPerson
     new void Update()
     {
         base.Update();
+        noAction = false;
         float distance = Vector3.Distance(currentAction.target.position, transform.position);
+        if (levelController.BossOn2floor)
+            noAction = true;
         if (currentAction == workWithPC)
         {
             if (distance < 1 && (Time.fixedTime - timeOfWorkingWithPC > 5))

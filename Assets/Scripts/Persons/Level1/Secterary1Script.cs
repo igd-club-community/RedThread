@@ -33,9 +33,8 @@ public class Secterary1Script : ActingPerson
         levelController = FindObjectOfType<Level1Controller>();
         levelController.BossNeedsCoffee += doPrepareCoffee;
         levelController.BossNeedsPapers += doPrintPapers;
-        levelController.CleanerBringPapers += doPrintPapers;
+        levelController.PapersDelivered += doPrintPapers;
         levelController.BossNeedsToRepairWindow += doCallToRepair;
-
 
         setAction(talkWithCleaner);
     }
@@ -52,7 +51,7 @@ public class Secterary1Script : ActingPerson
         //если нас попросили напечатать бумагу, то мы идём к принтеру. Если бумаги в нём нет, то идём за ней
         if (currentAction == printPapers && distance < 1)
         {
-            if (levelController.PaperInPrinter)
+            if (!levelController.PaperInPrinter)
                 doBringPapersFrom2level();
             else
                 setAction(bringPapersToBoss);
@@ -77,6 +76,8 @@ public class Secterary1Script : ActingPerson
             //Если уборщица занята, то есть если сломан один из кулеров или растение у босса,
             //то Мы вместо того чтобы поговорить с уборщицей ничего не делаем
 
+            if (levelController.CleanerIsBisy)
+                doBackToDesk();
 
             if (distance > 2)
             {
@@ -100,10 +101,12 @@ public class Secterary1Script : ActingPerson
         else if (currentAction == backToDesk && distance < 1)// && levelController.PaperInPrinter)
         {
             levelController.generateSecretaryIsBack();
-            doTalkWithCleaner();
+            if (!levelController.CleanerIsBisy)
+                doTalkWithCleaner();
         }
         else if (currentAction == bringPapersToBoss && distance < 1)
         {
+            levelController.generatePapersToBossDelivered();
             doBackToDesk();
         }
         else if (currentAction == bringPapersFrom2level)
@@ -223,6 +226,18 @@ public class Secterary1Script : ActingPerson
     {
         if (other.CompareTag("2 floor"))
             levelController.SecretaryOn2floor = true;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (!levelController.GrassInBossRoomIsFine && other.CompareTag("grass"))
+        {
+            noAction = true;
+        }
+        else
+        {
+            noAction = false;
+        }
     }
 
     public void OnTriggerExit(Collider other)

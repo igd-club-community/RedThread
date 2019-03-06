@@ -17,6 +17,9 @@ public class BossCupScript : ItemScript
         //Изменить положение чашки
         //Изменить состояние сцены
         if (levelController.BossCupFilled)
+        {
             levelController.BossCupMoved = true;
+            levelController.PaperInBossRoom = false;
+        }
     }
 }

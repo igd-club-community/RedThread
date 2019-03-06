@@ -25,9 +25,9 @@ public class Cleaner1Script : ActingPerson
     {
         base.Start();
         levelController = FindObjectOfType<Level1Controller>();
-        levelController.SecretaryIsBack += doTalkWithSecretary;
-        levelController.BossNeedsCoffee += doPutsHandfulOfSeeds;
-        levelController.BossNeedsPapers += doPutsHandfulOfSeeds;
+        //levelController.SecretaryIsBack += doTalkWithSecretary;
+        //levelController.BossNeedsCoffee += doPutsHandfulOfSeeds;
+        //levelController.BossNeedsPapers += doPutsHandfulOfSeeds;
         levelController.CleanerBringPapers += doRememberToBringPapersFrom2level;
 
         setAction(talkWithSecretary);
@@ -41,19 +41,48 @@ public class Cleaner1Script : ActingPerson
         distance = Vector3.Distance(currentAction.target.position, transform.position);
         //Если сломалось растение или один из кулеров а у нас задача принести бумагу, то после ремонта надо таки принести бумагу
         if (!levelController.GrassInBossRoomIsFine)
-            doFixBossGrass();
+        {
+            if (currentAction == fixBossGrass && distance < 1)
+                levelController.GrassInBossRoomIsFine = true;
+            else 
+                doFixBossGrass();
+        }
         else if (!levelController.CoolerOnFirstFloorIsFine)
-            doFixCoolerOn1Level();
+        {
+            if (currentAction == fixCoolerOn1Level && distance < 1)
+                levelController.CoolerOnFirstFloorIsFine = true;
+            else
+                doFixCoolerOn1Level();
+        }
         else if (!levelController.CoolerOnSecondFloorIsFine)
-            doFixCoolerOn2Level();
+        {
+            if (currentAction == fixCoolerOn2Level && distance < 1)
+                levelController.CoolerOnSecondFloorIsFine = true;
+            else
+                doFixCoolerOn2Level();
+        }
         else if (!levelController.CoolerOnThirdFloorIsFine)
-            doFixCoolerOn3Level();
+        {
+            if (currentAction == fixCoolerOn3Level && distance < 1)
+                levelController.CoolerOnThirdFloorIsFine = true;
+            else
+                doFixCoolerOn3Level();
+        }
         else if (askedToBringPapers)
         {
-            if (currentAction == bringPapersFrom2level && distance < 1)
-                doDeliverPapers();
-            else if (currentAction == deliverPapers && distance < 1)
-                levelController.generateCleanerBringPapersEvent();
+            if (currentAction == bringPapersFrom2level)
+            {
+                if (distance < 1)
+                    doDeliverPapers();
+            }
+            else if (currentAction == deliverPapers)
+            {
+                if (distance < 1)
+                {
+                    levelController.generatePapersToPrinterDelivered();
+                    askedToBringPapers = false;
+                }
+            }
             else
                 doBringPapersFrom2level();
         }
@@ -82,11 +111,12 @@ public class Cleaner1Script : ActingPerson
     }
     public void doPutsHandfulOfSeeds()
     {
-        Debug.Log("doPutsHandfulOfSeeds");
+        //Debug.Log("doPutsHandfulOfSeeds");
         setAction(putsHandfulOfSeeds);
     }
     public void doWashTheShelf()
     {
+        levelController.CleanerIsBisy = false;
         //Debug.Log("doWashTheShelf");
         setAction(washTheShelf);
     }
@@ -107,21 +137,25 @@ public class Cleaner1Script : ActingPerson
     }
     public void doFixBossGrass()
     {
+        levelController.CleanerIsBisy = true;
         Debug.Log("doFixBossGrass");
         setAction(fixBossGrass);
     }
     public void doFixCoolerOn1Level()
     {
+        levelController.CleanerIsBisy = true;
         Debug.Log("doFixCoolerOn1Level");
         setAction(fixCoolerOn1Level);
     }
     public void doFixCoolerOn2Level()
     {
+        levelController.CleanerIsBisy = true;
         Debug.Log("doFixCoolerOn2Level");
         setAction(fixCoolerOn2Level);
     }
     public void doFixCoolerOn3Level()
     {
+        levelController.CleanerIsBisy = true;
         Debug.Log("doFixCoolerOn3Level");
         setAction(fixCoolerOn3Level);
     }
