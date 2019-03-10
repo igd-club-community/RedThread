@@ -96,7 +96,7 @@ public class Boss1Script : ActingPerson
                     levelController.BossCupMoved = false;
                 }
             }
-            if (Time.fixedTime - timeOfReadingStarted > 5)
+            if (Time.fixedTime - timeOfReadingStarted > 15)
             {
                 doAskSecretaryAboutCoffee();
                 //levelController.generateNeedCoffeEvent();
@@ -241,6 +241,10 @@ public class Boss1Script : ActingPerson
         }
         if (other.CompareTag("2 floor"))
             levelController.BossOn2floor = true;
+        if (other.CompareTag("chair")) {
+            Debug.Log("Time to sit");
+            anim.SetBool("Sit", true);
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -264,6 +268,10 @@ public class Boss1Script : ActingPerson
         }
         if (other.CompareTag("2 floor"))
             levelController.BossOn2floor = false;
+        if (other.CompareTag("chair"))
+        {
+            anim.SetBool("Sit", false);
+        }
     }
 
     //public void doDrinkCoffee()

@@ -10,6 +10,7 @@ TagManager:
   - Boss room
   - 2 floor
   - grass
+  - chair
   layers:
   - Default
   - TransparentFX
