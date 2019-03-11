@@ -31,23 +31,25 @@ public class ActingPerson : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         navAgent = GetComponent<NavMeshAgent>();
-        navAgent.updatePosition = false;
+        if (anim != null)
+            navAgent.updatePosition = false;
     }
 
     public float sayTime = 0;
     // Update is called once per frame
     protected virtual void Update()
     {
-        NavAgentUpdate();
-        navAgent.SetDestination(currentAction.target.position);
-        //if (noAction)
-        //{
-        //    navAgent.enabled = false;
-        //}
-        //else
-        //{
-        //    navAgent.enabled = true;
-        //}
+        if (anim != null)
+            NavAgentUpdate();
+        if (noAction)
+        {
+            navAgent.enabled = false;
+        }
+        else
+        {
+            navAgent.enabled = true;
+            navAgent.SetDestination(currentAction.target.position);
+        }
         //Если мы долши до нужной точки
         //distance = Vector3.Distance(currentAction.target.position, transform.position);
         //if (distance < 0.1)
@@ -82,8 +84,8 @@ public class ActingPerson : MonoBehaviour
         //float result = Vector3.SignedAngle(worldDeltaPosition, transform.forward, Vector3.up);
         Vector2 forward = new Vector2(transform.forward.x, transform.forward.z);
         Debug.Log("forward = " + forward.x + " " + forward.y);
-        float result = Vector2.SignedAngle(smoothWorld2dDelta, forward);
-        Debug.Log(result);
+        float resultAngle = Vector2.SignedAngle(smoothWorld2dDelta, forward);
+        Debug.Log(resultAngle);
         Debug.Log("world2dDelta = " + world2dDelta.magnitude);
 
         //// Map 'worldDeltaPosition' to local space
@@ -94,30 +96,28 @@ public class ActingPerson : MonoBehaviour
 
 
         // Update velocity if delta time is safe
-        if (Time.deltaTime > 1e-5f)
-            velocity = smoothDeltaPosition / Time.deltaTime;
+        //if (Time.deltaTime > 1e-5f)
+        //    velocity = smoothDeltaPosition / Time.deltaTime;
 
         //bool shouldMove = velocity.magnitude > 0.5f && navAgent.remainingDistance > navAgent.radius;
 
         // Update animation parameters
         float linearSpeed;
-        if (navAgent.remainingDistance < 0.01) {
+        if (navAgent.remainingDistance < 0.01 || Math.Abs(resultAngle) > 130)
+        {
             Debug.Log("zero speed");
             linearSpeed = 0;
         }
-        //if (world2dDelta.magnitude < 0.1)
-        //    linearSpeed = 0;
-        //else if (world2dDelta.magnitude > 0.2)
-        //    linearSpeed = 0.7f;
+        else if (navAgent.remainingDistance < 2)
+        {
+            Debug.Log("half speed");
+            linearSpeed = 0.5f;
+        }
         else
             linearSpeed = 1;
         //linearSpeed = world2dDelta.magnitude;
 
-        float angularSpeed = result/180*((float)Math.PI);
-        //if (Math.Abs(angularSpeed) < 0.1)
-        //{
-        //    angularSpeed = 0;
-        //}
+        float angularSpeed = resultAngle/180*((float)Math.PI);
 
         Debug.Log("Linear = " + linearSpeed + " angular " + angularSpeed);
         anim.SetFloat("LinearSpeed", linearSpeed);
@@ -125,10 +125,7 @@ public class ActingPerson : MonoBehaviour
 
         navAgent.nextPosition = transform.position;
         //transform.rotation = navAgent.transform.rotation;
-
-        //anim.SetBool("move", shouldMove);
-        //anim.SetFloat("velx", velocity.x);
-        //anim.SetFloat("vely", velocity.y);
+        
 
         //LookAt lookAt = GetComponent<LookAt>();
         //if (lookAt)
@@ -144,6 +141,8 @@ public class ActingPerson : MonoBehaviour
     }
     public void setAction(PersonAct newAct)
     {
+        if (anim != null)
+            anim.SetBool("Sit", false);
         currentAction = newAct;
         //say(newAct.phrases[UnityEngine.Random.Range(0, newAct.phrases.Length)]);
     }
@@ -154,16 +153,16 @@ public class ActingPerson : MonoBehaviour
         bubbleText.text = text;
         sayTime = Time.fixedTime;
     }
-    //void OnAnimatorMove()
-    //{
-    //    // Update postion to agent position
-    //    transform.position = navAgent.nextPosition;
+    void OnAnimatorMove()
+    {
+        // Update postion to agent position
+        transform.position = navAgent.nextPosition;
 
-    //    // Update position based on animation movement using navigation surface height
-    //    Vector3 position = anim.rootPosition;
-    //    position.y = navAgent.nextPosition.y;
-    //    transform.position = position;
-    //}
+        // Update position based on animation movement using navigation surface height
+        Vector3 position = anim.rootPosition;
+        position.y = navAgent.nextPosition.y;
+        transform.position = position;
+    }
 }
 
 public enum PersonState
