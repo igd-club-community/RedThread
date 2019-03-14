@@ -12,16 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
-  EditorBanks:
-  - {fileID: 114749985398581842}
-  - {fileID: 114052257981009478}
-  EditorEvents:
-  - {fileID: 114891667051219694}
-  MasterBanks:
-  - {fileID: 114052257981009478}
-  StringsBanks:
-  - {fileID: 114749985398581842}
-  stringsBankWriteTime: 636881236212905447
+  EditorBanks: []
+  EditorEvents: []
+  MasterBanks: []
+  StringsBanks: []
+  stringsBankWriteTime: 0
   cacheVersion: 3
 --- !u!114 &114001008216608332
 MonoBehaviour:
@@ -76,12 +71,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: C:\Users\Vitaliy\Documents\Unity\RedThread\Assets\StreamingAssets\Master Bank.bank
-  lastModified: 636881236212835625
+  lastModified: 636881912140559993
   LoadResult: 0
   FileSizes:
   - Name: 
     Value: 49056
-  Exists: 1
+  Exists: 0
+--- !u!114 &114192634491242568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/soloed
+  guid: fa2b73871832ab4b965c5885e9aa0dc0
+  Banks:
+  - {fileID: 114792178856266502}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 5511
 --- !u!114 &114322946454577850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,10 +303,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Path: Assets\StreamingAssets\Master Bank.strings.bank
-  lastModified: 636881236212905447
+  lastModified: 636881912151199207
   LoadResult: 0
   FileSizes:
   - Name: 
+    Value: 742
+  Exists: 0
+--- !u!114 &114792178856266502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Vitaliy\Documents\FMOD Studio\RedThreadSoundProject\Build\Desktop\Master
+    Bank.bank
+  lastModified: 636881928817483423
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 67488
+  Exists: 1
+--- !u!114 &114836038656010958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Vitaliy\Documents\FMOD Studio\RedThreadSoundProject\Build\Desktop\Master
+    Bank.strings.bank
+  lastModified: 636881923438270619
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
     Value: 742
   Exists: 1
 --- !u!114 &114862679661760026
@@ -326,11 +384,11 @@ MonoBehaviour:
   Path: event:/Monsters/Undead/Zombie Ambience
   guid: d4712a527705a045bbde20e2b7bf04f8
   Banks:
-  - {fileID: 114052257981009478}
+  - {fileID: 114792178856266502}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 3200
+  Length: 3400
