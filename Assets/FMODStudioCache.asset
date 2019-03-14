@@ -13,18 +13,15 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 114516219321229234}
-  - {fileID: 114726188111159264}
+  - {fileID: 114464822423591482}
+  - {fileID: 114307312485375068}
   EditorEvents:
-  - {fileID: 114444035314501366}
-  - {fileID: 114962242161185810}
+  - {fileID: 114729360679388434}
   MasterBanks:
-  - {fileID: 114441897871497342}
-  - {fileID: 114726188111159264}
+  - {fileID: 114307312485375068}
   StringsBanks:
-  - {fileID: 114708670926009322}
-  - {fileID: 114516219321229234}
-  stringsBankWriteTime: 636881932004485759
+  - {fileID: 114464822423591482}
+  stringsBankWriteTime: 636881937807685832
   cacheVersion: 3
 --- !u!114 &114001008216608332
 MonoBehaviour:
@@ -108,6 +105,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 5511
+--- !u!114 &114307312485375068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Vitaliy\Documents\FMOD Studio\test\tessproj\Build\Desktop\Master
+    Bank.bank
+  lastModified: 636881937807546183
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 266048
+  Exists: 1
 --- !u!114 &114322946454577850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +226,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 3200
+--- !u!114 &114464822423591482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Vitaliy\Documents\FMOD Studio\test\tessproj\Build\Desktop\Master
+    Bank.strings.bank
+  lastModified: 636881937807685832
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 716
+  Exists: 1
 --- !u!114 &114486943035929502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,6 +436,29 @@ MonoBehaviour:
   - Name: 
     Value: 67488
   Exists: 1
+--- !u!114 &114729360679388434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/soloed
+  guid: 032c07b7ded3f4428cb4da5e951f7ca9
+  Banks:
+  - {fileID: 114307312485375068}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
 --- !u!114 &114749985398581842
 MonoBehaviour:
   m_ObjectHideFlags: 0
