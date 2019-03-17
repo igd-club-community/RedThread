@@ -76,6 +76,7 @@ public class ActingPerson : MonoBehaviour
         Vector3 worldDeltaPosition = navAgent.nextPosition - transform.position;
         //Debug.Log("transform.position = " + transform.position);
         //Debug.Log("navAgent.nextPosition = " + navAgent.nextPosition);
+        //Debug.Log("navAgent.desiredVelocity = " + navAgent.desiredVelocity); //полезная штука, потом может пригодиться
         Debug.Log("worldDeltaPosition = " + worldDeltaPosition.x + " " + worldDeltaPosition.y + " " +worldDeltaPosition.z);
         Vector2 world2dDelta = new Vector2(worldDeltaPosition.x, worldDeltaPosition.z);
         Debug.Log("world2dDelta = " + world2dDelta.x + " " + world2dDelta.y);
@@ -107,25 +108,25 @@ public class ActingPerson : MonoBehaviour
         Debug.Log("navAgent.remainingDistance = " + navAgent.remainingDistance);
         // Update animation parameters
         float linearSpeed;
-        if (navAgent.remainingDistance < 0.2 || Math.Abs(resultAngle) > 130)
+        if (navAgent.remainingDistance < 0.2 || Math.Abs(resultAngle) > 90)
         {
             Debug.Log("zero speed");
             linearSpeed = 0;
         }
-        else if (navAgent.remainingDistance < 2)
+        else if (navAgent.remainingDistance < 1)
         {
             Debug.Log("half speed");
-            linearSpeed = 0.5f;
+            linearSpeed = 1f;
         }
         else
-            linearSpeed = 1;
+            linearSpeed = 2;
         //linearSpeed = world2dDelta.magnitude;
 
         float angularSpeed = resultAngle/180*((float)Math.PI);
 
         Debug.Log("Linear = " + linearSpeed + " angular " + angularSpeed);
-        anim.SetFloat("LinearSpeed", linearSpeed);
-        anim.SetFloat("AngularSpeed", -angularSpeed);
+        anim.SetFloat("LinearSpeed", linearSpeed, 0.1f, Time.deltaTime);
+        anim.SetFloat("AngularSpeed", angularSpeed, 0.1f, Time.deltaTime);
 
         navAgent.nextPosition = transform.position;
         //transform.rotation = navAgent.transform.rotation;
@@ -157,16 +158,16 @@ public class ActingPerson : MonoBehaviour
         bubbleText.text = text;
         sayTime = Time.fixedTime;
     }
-    void OnAnimatorMove()
-    {
-        // Update postion to agent position
-        transform.position = navAgent.nextPosition;
+    //void OnAnimatorMove()
+    //{
+    //    // Update postion to agent position
+    //    transform.position = navAgent.nextPosition;
 
-        // Update position based on animation movement using navigation surface height
-        Vector3 position = anim.rootPosition;
-        position.y = navAgent.nextPosition.y;
-        transform.position = position;
-    }
+    //    // Update position based on animation movement using navigation surface height
+    //    Vector3 position = anim.rootPosition;
+    //    position.y = navAgent.nextPosition.y;
+    //    transform.position = position;
+    //}
 }
 
 public enum PersonState
