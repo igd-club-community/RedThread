@@ -77,20 +77,20 @@ public class ActingPerson : MonoBehaviour
         //Debug.Log("transform.position = " + transform.position);
         //Debug.Log("navAgent.nextPosition = " + navAgent.nextPosition);
         //Debug.Log("navAgent.desiredVelocity = " + navAgent.desiredVelocity); //полезная штука, потом может пригодиться
-        Debug.Log("worldDeltaPosition = " + worldDeltaPosition.x + " " + worldDeltaPosition.y + " " +worldDeltaPosition.z);
+        //Debug.Log("worldDeltaPosition = " + worldDeltaPosition.x + " " + worldDeltaPosition.y + " " +worldDeltaPosition.z);
         Vector2 world2dDelta = new Vector2(worldDeltaPosition.x, worldDeltaPosition.z);
-        Debug.Log("world2dDelta = " + world2dDelta.x + " " + world2dDelta.y);
+        //Debug.Log("world2dDelta = " + world2dDelta.x + " " + world2dDelta.y);
         // Low-pass filter the deltaMove
         float smooth = Mathf.Min(1.0f, Time.deltaTime / 0.15f);
-        Debug.Log("smooth = " + smooth);
+        //Debug.Log("smooth = " + smooth);
         smoothWorld2dDelta = Vector2.Lerp(smoothWorld2dDelta, world2dDelta, smooth);
-        Debug.Log("smoothWorld2dDelta = " + smoothWorld2dDelta.x + " " + smoothWorld2dDelta.y);
+        //Debug.Log("smoothWorld2dDelta = " + smoothWorld2dDelta.x + " " + smoothWorld2dDelta.y);
         //float result = Vector3.SignedAngle(worldDeltaPosition, transform.forward, Vector3.up);
         Vector2 forward = new Vector2(transform.forward.x, transform.forward.z);
-        Debug.Log("forward = " + forward.x + " " + forward.y);
+        //Debug.Log("forward = " + forward.x + " " + forward.y);
         float resultAngle = Vector2.SignedAngle(smoothWorld2dDelta, forward);
-        Debug.Log("resultAngle = " + resultAngle);
-        Debug.Log("world2dDelta = " + world2dDelta.magnitude);
+        //Debug.Log("resultAngle = " + resultAngle);
+        //Debug.Log("world2dDelta = " + world2dDelta.magnitude);
 
         //// Map 'worldDeltaPosition' to local space
         //float dx = Vector3.Dot(transform.right, worldDeltaPosition);
@@ -105,24 +105,29 @@ public class ActingPerson : MonoBehaviour
 
         //bool shouldMove = velocity.magnitude > 0.5f && navAgent.remainingDistance > navAgent.radius;
 
-        Debug.Log("navAgent.remainingDistance = " + navAgent.remainingDistance);
+        //Debug.Log("navAgent.remainingDistance = " + navAgent.remainingDistance);
         // Update animation parameters
         float linearSpeed;
-        if (navAgent.remainingDistance < 0.2 || Math.Abs(resultAngle) > 90)
+        float angularSpeed = resultAngle / 180 * ((float)Math.PI);
+        if (navAgent.remainingDistance < 0.2)
         {
-            Debug.Log("zero speed");
+            Debug.Log("target reached");
+            linearSpeed = 0;
+            angularSpeed = 0;
+        } else if (Math.Abs(resultAngle) > 90)
+        {
+            Debug.Log("zero speed, turning");
             linearSpeed = 0;
         }
         else if (navAgent.remainingDistance < 1)
         {
-            Debug.Log("half speed");
+            //Debug.Log("half speed");
             linearSpeed = 1f;
         }
         else
             linearSpeed = 2;
         //linearSpeed = world2dDelta.magnitude;
 
-        float angularSpeed = resultAngle/180*((float)Math.PI);
 
         Debug.Log("Linear = " + linearSpeed + " angular " + angularSpeed);
         anim.SetFloat("LinearSpeed", linearSpeed, 0.1f, Time.deltaTime);
@@ -158,16 +163,17 @@ public class ActingPerson : MonoBehaviour
         bubbleText.text = text;
         sayTime = Time.fixedTime;
     }
-    //void OnAnimatorMove()
-    //{
-    //    // Update postion to agent position
-    //    transform.position = navAgent.nextPosition;
+    void OnAnimatorMove()
+    {
+        // Update postion to agent position
+        transform.position = navAgent.nextPosition;
 
-    //    // Update position based on animation movement using navigation surface height
-    //    Vector3 position = anim.rootPosition;
-    //    position.y = navAgent.nextPosition.y;
-    //    transform.position = position;
-    //}
+        // Update position based on animation movement using navigation surface height
+        Vector3 position = anim.rootPosition;
+        position.y = navAgent.nextPosition.y;
+        transform.position = position;
+        transform.rotation = anim.rootRotation;
+    }
 }
 
 public enum PersonState
