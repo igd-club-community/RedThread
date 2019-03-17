@@ -32,7 +32,10 @@ public class ActingPerson : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         navAgent = GetComponent<NavMeshAgent>();
         if (anim != null)
+        {
             navAgent.updatePosition = false;
+            navAgent.updateRotation = false;
+        }
     }
 
     public float sayTime = 0;
@@ -85,7 +88,7 @@ public class ActingPerson : MonoBehaviour
         Vector2 forward = new Vector2(transform.forward.x, transform.forward.z);
         Debug.Log("forward = " + forward.x + " " + forward.y);
         float resultAngle = Vector2.SignedAngle(smoothWorld2dDelta, forward);
-        Debug.Log(resultAngle);
+        Debug.Log("resultAngle = " + resultAngle);
         Debug.Log("world2dDelta = " + world2dDelta.magnitude);
 
         //// Map 'worldDeltaPosition' to local space
@@ -101,9 +104,10 @@ public class ActingPerson : MonoBehaviour
 
         //bool shouldMove = velocity.magnitude > 0.5f && navAgent.remainingDistance > navAgent.radius;
 
+        Debug.Log("navAgent.remainingDistance = " + navAgent.remainingDistance);
         // Update animation parameters
         float linearSpeed;
-        if (navAgent.remainingDistance < 0.01 || Math.Abs(resultAngle) > 130)
+        if (navAgent.remainingDistance < 0.2 || Math.Abs(resultAngle) > 130)
         {
             Debug.Log("zero speed");
             linearSpeed = 0;
