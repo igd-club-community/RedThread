@@ -32,7 +32,10 @@ public class ActingPerson : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         navAgent = GetComponent<NavMeshAgent>();
         if (anim != null)
+        {
             navAgent.updatePosition = false;
+            navAgent.updateRotation = false;
+        }
     }
 
     public float sayTime = 0;
@@ -73,20 +76,21 @@ public class ActingPerson : MonoBehaviour
         Vector3 worldDeltaPosition = navAgent.nextPosition - transform.position;
         //Debug.Log("transform.position = " + transform.position);
         //Debug.Log("navAgent.nextPosition = " + navAgent.nextPosition);
-        Debug.Log("worldDeltaPosition = " + worldDeltaPosition.x + " " + worldDeltaPosition.y + " " +worldDeltaPosition.z);
+        //Debug.Log("navAgent.desiredVelocity = " + navAgent.desiredVelocity); //полезная штука, потом может пригодиться
+        //Debug.Log("worldDeltaPosition = " + worldDeltaPosition.x + " " + worldDeltaPosition.y + " " +worldDeltaPosition.z);
         Vector2 world2dDelta = new Vector2(worldDeltaPosition.x, worldDeltaPosition.z);
-        Debug.Log("world2dDelta = " + world2dDelta.x + " " + world2dDelta.y);
+        //Debug.Log("world2dDelta = " + world2dDelta.x + " " + world2dDelta.y);
         // Low-pass filter the deltaMove
         float smooth = Mathf.Min(1.0f, Time.deltaTime / 0.15f);
-        Debug.Log("smooth = " + smooth);
+        //Debug.Log("smooth = " + smooth);
         smoothWorld2dDelta = Vector2.Lerp(smoothWorld2dDelta, world2dDelta, smooth);
-        Debug.Log("smoothWorld2dDelta = " + smoothWorld2dDelta.x + " " + smoothWorld2dDelta.y);
+        //Debug.Log("smoothWorld2dDelta = " + smoothWorld2dDelta.x + " " + smoothWorld2dDelta.y);
         //float result = Vector3.SignedAngle(worldDeltaPosition, transform.forward, Vector3.up);
         Vector2 forward = new Vector2(transform.forward.x, transform.forward.z);
-        Debug.Log("forward = " + forward.x + " " + forward.y);
+        //Debug.Log("forward = " + forward.x + " " + forward.y);
         float resultAngle = Vector2.SignedAngle(smoothWorld2dDelta, forward);
-        Debug.Log(resultAngle);
-        Debug.Log("world2dDelta = " + world2dDelta.magnitude);
+        //Debug.Log("resultAngle = " + resultAngle);
+        //Debug.Log("world2dDelta = " + world2dDelta.magnitude);
 
         //// Map 'worldDeltaPosition' to local space
         //float dx = Vector3.Dot(transform.right, worldDeltaPosition);
@@ -101,27 +105,33 @@ public class ActingPerson : MonoBehaviour
 
         //bool shouldMove = velocity.magnitude > 0.5f && navAgent.remainingDistance > navAgent.radius;
 
+        //Debug.Log("navAgent.remainingDistance = " + navAgent.remainingDistance);
         // Update animation parameters
         float linearSpeed;
-        if (navAgent.remainingDistance < 0.01 || Math.Abs(resultAngle) > 130)
+        float angularSpeed = resultAngle / 180 * ((float)Math.PI);
+        if (navAgent.remainingDistance < 0.2)
         {
-            Debug.Log("zero speed");
+            Debug.Log("target reached");
+            linearSpeed = 0;
+            angularSpeed = 0;
+        } else if (Math.Abs(resultAngle) > 90)
+        {
+            Debug.Log("zero speed, turning");
             linearSpeed = 0;
         }
-        else if (navAgent.remainingDistance < 2)
+        else if (navAgent.remainingDistance < 1)
         {
-            Debug.Log("half speed");
-            linearSpeed = 0.5f;
+            //Debug.Log("half speed");
+            linearSpeed = 1f;
         }
         else
-            linearSpeed = 1;
+            linearSpeed = 2;
         //linearSpeed = world2dDelta.magnitude;
 
-        float angularSpeed = resultAngle/180*((float)Math.PI);
 
         Debug.Log("Linear = " + linearSpeed + " angular " + angularSpeed);
-        anim.SetFloat("LinearSpeed", linearSpeed);
-        anim.SetFloat("AngularSpeed", -angularSpeed);
+        anim.SetFloat("LinearSpeed", linearSpeed, 0.1f, Time.deltaTime);
+        anim.SetFloat("AngularSpeed", angularSpeed, 0.1f, Time.deltaTime);
 
         navAgent.nextPosition = transform.position;
         //transform.rotation = navAgent.transform.rotation;
@@ -162,6 +172,7 @@ public class ActingPerson : MonoBehaviour
         Vector3 position = anim.rootPosition;
         position.y = navAgent.nextPosition.y;
         transform.position = position;
+        transform.rotation = anim.rootRotation;
     }
 }
 

@@ -58,7 +58,7 @@ public class Secterary1Script : ActingPerson
         }
         else if (currentAction == prepareCoffee)
         {
-            if (distance < 1 && (Time.fixedTime - timeCoffeePreparingStarted > 5))
+            if (distance < 1 && (Time.fixedTime - timeCoffeePreparingStarted > 10))
             {
                 doBringCoffeeToBoss();
             }

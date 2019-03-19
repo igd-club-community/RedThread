@@ -178,6 +178,7 @@ public class Boss1Script : ActingPerson
 
     public void doAskSecretaryAboutCoffee()
     {
+        anim.SetBool("Sit", false);
         say("Хочу кофе");
         Debug.Log("doAskSecretaryAboutCoffee");
         setAction(askSecretaryAboutCoffee);
@@ -185,6 +186,7 @@ public class Boss1Script : ActingPerson
 
     public void doAskSecretaryAboutNewPapers()
     {
+        anim.SetBool("Sit", false);
         say("Твоюж мать");
         Debug.Log("doAskSecretaryAboutNewPapers");
         //Запустить движение к секретарше,
