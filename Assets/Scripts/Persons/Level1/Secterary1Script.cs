@@ -46,70 +46,8 @@ public class Secterary1Script : ActingPerson
     {
         base.Update();
         noAction = false;
-        distance = Vector3.Distance(currentAction.target.position, transform.position);
 
-        //если нас попросили напечатать бумагу, то мы идём к принтеру. Если бумаги в нём нет, то идём за ней
-        if (currentAction == printPapers && distance < 1)
-        {
-            if (!levelController.PaperInPrinter)
-                doBringPapersFrom2level();
-            else
-                setAction(bringPapersToBoss);
-        }
-        else if (currentAction == prepareCoffee)
-        {
-            if (distance < 1 && (Time.fixedTime - timeCoffeePreparingStarted > 10))
-            {
-                doBringCoffeeToBoss();
-            }
-        }
-        else if (currentAction == bringCoffee && distance < 1)
-        {
-            levelController.BossCupFilled = true;
-            levelController.generateCoffeeDelivered();
-            doBackToDesk();
-        }
-        else if (currentAction == talkWithCleaner)
-        {
-            if (levelController.BossOffline && Time.fixedTime - timeTalkingWithCleaner > 10)
-                doGoForSugar();
-            //Если уборщица занята, то есть если сломан один из кулеров или растение у босса,
-            //то Мы вместо того чтобы поговорить с уборщицей ничего не делаем
-
-            if (levelController.CleanerIsBisy)
-                doBackToDesk();
-
-            if (distance > 2)
-            {
-                setAction(talkWithCleaner);
-                //идти к уборщице
-            }
-            else
-            {
-                noAction = true;
-                //Стоять на месте и говорить с уборщицей.
-            }
-        }
-        else if (currentAction == goForSugar && distance < 1)
-        {
-            doBringSugar();
-        }
-        else if (currentAction == bringSugar && distance < 1)
-        {
-            doBackToDesk();
-        }
-        else if (currentAction == backToDesk && distance < 1)// && levelController.PaperInPrinter)
-        {
-            levelController.generateSecretaryIsBack();
-            if (!levelController.CleanerIsBisy)
-                doTalkWithCleaner();
-        }
-        else if (currentAction == bringPapersToBoss && distance < 1)
-        {
-            levelController.generatePapersToBossDelivered();
-            doBackToDesk();
-        }
-        else if (currentAction == bringPapersFrom2level)
+        if (currentAction == bringPapersFrom2level)
         {
             RaycastHit hit;
             Vector3 direction = programmer.position - visionPoint.position;
@@ -124,15 +62,70 @@ public class Secterary1Script : ActingPerson
                     }
                 }
             }
-            if (distance < 1)
-                doBringPapersToPrinter();
         }
-        else if (currentAction == bringPapersToPrinter && distance < 1)
+    }
+
+    protected override void goToNextAction()
+    {
+        //если нас попросили напечатать бумагу, то мы идём к принтеру. Если бумаги в нём нет, то идём за ней
+        if (currentAction == printPapers)
+        {
+            if (!levelController.PaperInPrinter)
+                doBringPapersFrom2level();
+            else
+                setAction(bringPapersToBoss);
+        }
+        else if (currentAction == prepareCoffee)
+        {
+                doBringCoffeeToBoss();
+        }
+        else if (currentAction == bringCoffee)
+        {
+            levelController.BossCupFilled = true;
+            levelController.generateCoffeeDelivered();
+            doBackToDesk();
+        }
+        else if (currentAction == talkWithCleaner)
+        {
+            if (levelController.BossOffline)
+                doGoForSugar();
+            //Если уборщица занята, то есть если сломан один из кулеров или растение у босса,
+            //то Мы вместо того чтобы поговорить с уборщицей ничего не делаем
+
+            else if (levelController.CleanerIsBisy)
+                doBackToDesk();
+            
+            setAction(talkWithCleaner);
+        }
+        else if (currentAction == goForSugar)
+        {
+            doBringSugar();
+        }
+        else if (currentAction == bringSugar)
+        {
+            doBackToDesk();
+        }
+        else if (currentAction == backToDesk)// && levelController.PaperInPrinter)
+        {
+            levelController.generateSecretaryIsBack();
+            if (!levelController.CleanerIsBisy)
+                doTalkWithCleaner();
+        }
+        else if (currentAction == bringPapersToBoss)
+        {
+            levelController.generatePapersToBossDelivered();
+            doBackToDesk();
+        }
+        else if (currentAction == bringPapersFrom2level)
+        {
+            doBringPapersToPrinter();
+        }
+        else if (currentAction == bringPapersToPrinter)
         {
             levelController.PaperInPrinter = true;
             doPrintPapers();
         }
-        else if (currentAction == askCleanerToBringPapers && distance < 1.5)
+        else if (currentAction == askCleanerToBringPapers)
         {
             levelController.generateCleanerBringPapersEvent();
             doBackToDesk();

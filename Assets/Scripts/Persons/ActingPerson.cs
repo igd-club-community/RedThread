@@ -7,11 +7,11 @@ using UnityEngine.UI;
 
 public class ActingPerson : MonoBehaviour
 {
-    public PersonAct[] actions;
     public PersonAct currentAction;
     public bool noAction = false;
     int curActNum = 0;
-    public float distance = 0;
+    public float distance = 100;//начальное значение должно быть больше дистанции первой задачи, чтобы не сработал переход к следующей задаче пока навмешагент в первый раз просчитывает путь
+    public float timeOfStart = 0;
 
     public GameObject textBackground;
     public Text bubbleText;
@@ -22,6 +22,8 @@ public class ActingPerson : MonoBehaviour
     Vector2 smoothWorld2dDelta = Vector2.zero;
     Vector2 velocity = Vector2.zero;
 
+    public float linearSpeed;
+    public float angularSpeed;
     //У персоны есть его целевая позиция куда он хочет идти
     //Есть базовый цикл из задач которые он делает пока ничего не происходит
     //У каждой отдельной персоны будет свой цикл.
@@ -52,13 +54,22 @@ public class ActingPerson : MonoBehaviour
         {
             navAgent.enabled = true;
             navAgent.SetDestination(currentAction.target.position);
+            if (!navAgent.pathPending)
+                distance = navAgent.remainingDistance;
         }
         //Если мы долши до нужной точки
         //distance = Vector3.Distance(currentAction.target.position, transform.position);
-        //if (distance < 0.1)
-        //{
-        //    //Тогда запускаем нужную анимацию.
-        //}
+        //if (distance < currentAction.targetDistance)
+        //Если таймер не нулевой и дистанция не нулевая,
+        if (currentAction.byTimer && Time.fixedTime - timeOfStart > currentAction.targetTimer)
+        {
+            goToNextAction();
+        }
+        else if (!currentAction.byTimer && distance < currentAction.targetDistance)
+        {
+            if (!navAgent.pathPending)
+                goToNextAction();
+        }
 
         //bubbleText.text = textBackground.gameObject.transform.rotation.ToString();
         textBackground.gameObject.transform.rotation = Quaternion.identity; //new Quaternion(0,0,0,1);
@@ -70,6 +81,10 @@ public class ActingPerson : MonoBehaviour
             bubbleText.text = "";
         }
     }
+    protected virtual void goToNextAction() {
+        Debug.Log("Acting person next Action");
+    }
+
     void NavAgentUpdate()
     {
         //Debug.Log(navAgent.updatePosition);
@@ -107,16 +122,15 @@ public class ActingPerson : MonoBehaviour
 
         //Debug.Log("navAgent.remainingDistance = " + navAgent.remainingDistance);
         // Update animation parameters
-        float linearSpeed;
-        float angularSpeed = resultAngle / 180 * ((float)Math.PI);
-        if (navAgent.remainingDistance < 0.2)
+        angularSpeed = resultAngle / 180 * ((float)Math.PI);
+        if (navAgent.remainingDistance < currentAction.targetDistance - 0.1)
         {
-            Debug.Log("target reached");
+            //Debug.Log("target reached");
             linearSpeed = 0;
             angularSpeed = 0;
         } else if (Math.Abs(resultAngle) > 90)
         {
-            Debug.Log("zero speed, turning");
+            //Debug.Log("zero speed, turning");
             linearSpeed = 0;
         }
         else if (navAgent.remainingDistance < 1)
@@ -129,7 +143,7 @@ public class ActingPerson : MonoBehaviour
         //linearSpeed = world2dDelta.magnitude;
 
 
-        Debug.Log("Linear = " + linearSpeed + " angular " + angularSpeed);
+        //Debug.Log("Linear = " + linearSpeed + " angular " + angularSpeed);
         anim.SetFloat("LinearSpeed", linearSpeed, 0.1f, Time.deltaTime);
         anim.SetFloat("AngularSpeed", angularSpeed, 0.1f, Time.deltaTime);
 
@@ -151,9 +165,10 @@ public class ActingPerson : MonoBehaviour
     }
     public void setAction(PersonAct newAct)
     {
-        if (anim != null)
-            anim.SetBool("Sit", false);
+        Debug.Log(newAct.name);
         currentAction = newAct;
+        if (currentAction.byTimer)
+            timeOfStart = Time.fixedTime;
         //say(newAct.phrases[UnityEngine.Random.Range(0, newAct.phrases.Length)]);
     }
 

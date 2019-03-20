@@ -923,15 +923,15 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 7410206273036391086, guid: 711aa188046359c488d4703c730bfc55,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 306.26
-      objectReference: {fileID: 0}
     - target: {fileID: 7410206273036391087, guid: 711aa188046359c488d4703c730bfc55,
         type: 3}
       propertyPath: m_Text
       value: "\u041A\u0443\u043B\u0435\u0440 \u0441 \u0432\u043E\u0434\u043E\u0439"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410206273036391086, guid: 711aa188046359c488d4703c730bfc55,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 306.26
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 711aa188046359c488d4703c730bfc55, type: 3}
@@ -959,34 +959,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8dc45356ac35ea4e85d77900e3f68be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions: []
   currentAction:
+    name: 
     target: {fileID: 0}
+    targetDistance: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   noAction: 0
   distance: 0
+  timeOfStart: 0
   textBackground: {fileID: 258142367}
   bubbleText: {fileID: 1313345585}
+  linearSpeed: 0
+  angularSpeed: 0
   sayTime: 0
   workWithPC:
+    name: 
     target: {fileID: 1283196553}
+    targetDistance: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   watchOnDesk:
+    name: 
     target: {fileID: 269543733}
+    targetDistance: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   writeOnDesk:
+    name: 
     target: {fileID: 269543733}
+    targetDistance: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   watchOnCat:
+    name: 
     target: {fileID: 1896730347}
+    targetDistance: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   switchPowerOn:
+    name: 
     target: {fileID: 1868588185}
+    targetDistance: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   timeOfWorkingWithPC: 0
@@ -1790,64 +1816,136 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af1d19be4676164aab19f9715ac8e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions: []
   currentAction:
+    name: 
     target: {fileID: 0}
+    targetDistance: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   noAction: 0
-  distance: 0
+  distance: 100
+  timeOfStart: 0
   textBackground: {fileID: 337474795}
   bubbleText: {fileID: 337474794}
+  linearSpeed: 0
+  angularSpeed: 0
   sayTime: 0
-  prevAction:
+  rememberedAction:
+    name: 
     target: {fileID: 0}
+    targetDistance: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+  goToBossTable:
+    name: "\u0411\u043E\u0441\u0441 \u0438\u0434\u0435\u0442 \u043A \u0441\u0432\u043E\u0435\u043C\u0443
+      \u0441\u0442\u043E\u043B\u0443"
+    target: {fileID: 1031852456}
+    targetDistance: 0.4
+    byTimer: 0
+    targetTimer: 0
+    animationName: 
+    phrases:
+    - "\u041F\u043E\u0440\u0430 \u043F\u043E\u0447\u0438\u0442\u0430\u0442\u044C"
   readPapers:
+    name: "\u0447\u0438\u0442\u0430\u0435\u043C \u0431\u0443\u043C\u0430\u0433\u0438"
     target: {fileID: 1031852456}
+    targetDistance: 1
+    byTimer: 1
+    targetTimer: 10
     animationName: 
     phrases: []
-  drinkCoffee:
-    target: {fileID: 1031852456}
+  goToSecretary:
+    name: "\u0438\u0434\u0435\u043C \u043A \u0441\u0435\u043A\u0440\u0435\u0442\u0430\u0440\u0448\u0435"
+    target: {fileID: 1741532850}
+    targetDistance: 1
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   askSecretaryAboutCoffee:
+    name: "\u043F\u0440\u043E\u0441\u0438\u043C \u043A\u043E\u0444\u0435"
     target: {fileID: 1741532850}
+    targetDistance: 1
+    byTimer: 1
+    targetTimer: 3
     animationName: 
     phrases: []
   goToVault:
+    name: "\u0438\u0434\u0435\u043C \u043A \u0441\u0435\u0439\u0444\u0443"
     target: {fileID: 1250904704}
+    targetDistance: 0.4
+    byTimer: 0
+    targetTimer: 0
+    animationName: 
+    phrases: []
+  tryToRememberPassword:
+    name: "\u0412\u0441\u043F\u043E\u043C\u0438\u043D\u0430\u0435\u043C \u043F\u0430\u0440\u043E\u043B\u044C"
+    target: {fileID: 1250904704}
+    targetDistance: 0.4
+    byTimer: 1
+    targetTimer: 300
     animationName: 
     phrases: []
   unlockShelter:
+    name: "\u041E\u0442\u043A\u0440\u044B\u0432\u0430\u0435\u043C \u0441\u0435\u0439\u0444"
     target: {fileID: 1250904704}
+    targetDistance: 0.4
+    byTimer: 0
+    targetTimer: 0
     animationName: 
-    phrases: []
+    phrases:
+    - "\u0422\u043E\u0447\u043D\u043E! \u0412\u0441\u043F\u043E\u043C\u043D\u0438\u043B
+      \u043F\u0430\u0440\u043E\u043B\u044C"
   askSecretaryAboutNewPapers:
+    name: "\u043F\u0440\u043E\u0441\u0438\u043C \u0440\u0430\u0441\u043F\u0435\u0447\u0430\u0442\u0430\u0442\u044C
+      \u0431\u0443\u043C\u0430\u0433\u0438"
     target: {fileID: 1741532850}
-    animationName: 
-    phrases: []
-  goToBossCabinet:
-    target: {fileID: 0}
+    targetDistance: 1
+    byTimer: 1
+    targetTimer: 3
     animationName: 
     phrases: []
   goToProgrammer:
+    name: "\u0438\u0434\u0435\u043C \u043A \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0441\u0442\u0443"
     target: {fileID: 201894386}
+    targetDistance: 1
+    byTimer: 0
+    targetTimer: 0
     animationName: 
-    phrases: []
+    phrases:
+    - "\u041D\u0430\u0434\u043E \u043F\u043E\u0433\u043E\u0432\u043E\u0440\u0438\u0442\u044C
+      \u0441 \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0441\u0442\u043E\u043C."
   talkWithProgrammer:
+    name: "\u0440\u0430\u0437\u0433\u043E\u0432\u043E\u0440 \u0441 \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0441\u0442\u043E\u043C"
     target: {fileID: 636695701}
+    targetDistance: 1
+    byTimer: 1
+    targetTimer: 15
     animationName: 
-    phrases: []
+    phrases:
+    - "\u0427\u0442\u043E \u0442\u044B \u0440\u0435\u0448\u0438\u043B?"
   sayGoodbytoPigeons:
+    name: "\u043F\u0440\u043E\u0433\u043E\u043D\u044F\u0435\u043C \u0433\u043E\u043B\u0443\u0431\u0435\u0439"
     target: {fileID: 1561065683}
+    targetDistance: 1
+    byTimer: 1
+    targetTimer: 5
     animationName: 
     phrases: []
   askSecretaryToRepairWindows:
+    name: "\u043F\u0440\u043E\u0441\u0438\u043C \u0432\u044B\u0437\u0432\u0430\u0442\u044C
+      \u0440\u0435\u043C\u043E\u043D\u0442 \u043E\u043A\u043D\u0430"
     target: {fileID: 1741532850}
+    targetDistance: 1
+    byTimer: 1
+    targetTimer: 3
     animationName: 
     phrases: []
+  passwordRemembered: 0
   secretaryAskedToRepairWindow: 0
   timeOfReadingStarted: 0
   timeOfCoffeeDelivered: 0
@@ -2006,50 +2104,92 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e2ffefa9b1daf440888e59a5ea07051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions: []
   currentAction:
+    name: 
     target: {fileID: 0}
+    targetDistance: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   noAction: 0
   distance: 0
+  timeOfStart: 0
   textBackground: {fileID: 655052781}
   bubbleText: {fileID: 655052780}
+  linearSpeed: 0
+  angularSpeed: 0
   sayTime: 0
   talkWithSecretary:
+    name: 
     target: {fileID: 1741532850}
+    targetDistance: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   putsHandfulOfSeeds:
+    name: 
     target: {fileID: 1896565967}
+    targetDistance: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   washTheShelf:
+    name: 
     target: {fileID: 1857632498}
+    targetDistance: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   bringPapersFrom2level:
+    name: 
     target: {fileID: 434091958}
+    targetDistance: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   deliverPapers:
+    name: 
     target: {fileID: 950924007}
+    targetDistance: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   fixBossGrass:
+    name: 
     target: {fileID: 130261640}
+    targetDistance: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   fixCoolerOn1Level:
+    name: 
     target: {fileID: 1902095932}
+    targetDistance: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   fixCoolerOn2Level:
+    name: 
     target: {fileID: 659416298}
+    targetDistance: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   fixCoolerOn3Level:
+    name: 
     target: {fileID: 802767518}
+    targetDistance: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   shelvesOnSecretaryTable: {fileID: 95437442}
@@ -2251,58 +2391,112 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1037a3a7f9ce8b1478f5165e98f484f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions: []
   currentAction:
+    name: 
     target: {fileID: 0}
+    targetDistance: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   noAction: 0
   distance: 0
+  timeOfStart: 0
   textBackground: {fileID: 792748958}
   bubbleText: {fileID: 792748957}
+  linearSpeed: 0
+  angularSpeed: 0
   sayTime: 0
   bringCoffee:
+    name: "\u041F\u0440\u0438\u043D\u0435\u0441\u0442\u0438 \u043A\u043E\u0444\u0435"
     target: {fileID: 947941091}
+    targetDistance: 0.4
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   printPapers:
+    name: "\u0440\u0430\u0441\u043F\u0435\u0447\u0430\u0442\u0430\u0442\u044C \u0431\u0443\u043C\u0430\u0433\u0438"
     target: {fileID: 950924007}
+    targetDistance: 0.4
+    byTimer: 1
+    targetTimer: 5
     animationName: 
     phrases: []
   bringPapersFrom2level:
+    name: "\u0441\u0445\u043E\u0434\u0438\u0442\u044C \u0437\u0430 \u0431\u0443\u043C\u0430\u0433\u0430\u043C\u0438
+      \u043D\u0430 2 \u044D\u0442\u0430\u0436"
     target: {fileID: 434091958}
+    targetDistance: 0.4
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   bringPapersToPrinter:
+    name: "\u043F\u0440\u0438\u043D\u0435\u0441\u0442\u0438 \u0431\u0443\u043C\u0430\u0433\u0438
+      \u0441\u043E \u0432\u0442\u043E\u0440\u043E\u0433\u043E \u044D\u0442\u0430\u0436\u0430"
     target: {fileID: 950924007}
+    targetDistance: 0.4
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   bringPapersToBoss:
+    name: "\u043F\u0440\u0438\u043D\u0435\u0441\u0442\u0438 \u0431\u0443\u043C\u0430\u0433\u0438
+      \u0431\u043E\u0441\u0441\u0443"
     target: {fileID: 947941091}
+    targetDistance: 0.4
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   backToDesk:
+    name: "\u0432\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F \u043A \u0441\u0442\u043E\u043B\u0443"
     target: {fileID: 1896565967}
+    targetDistance: 0.4
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   prepareCoffee:
+    name: "\u043F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u0438\u0442\u044C \u043A\u043E\u0444\u0435"
     target: {fileID: 1625024868}
+    targetDistance: 0.4
+    byTimer: 1
+    targetTimer: 5
     animationName: 
     phrases: []
   talkWithCleaner:
+    name: "\u043F\u043E\u0433\u043E\u0432\u043E\u0440\u0438\u0442\u044C \u0441 \u0441\u0435\u043A\u0440\u0435\u0442\u0430\u0440\u0448\u0435\u0439"
     target: {fileID: 790539952}
+    targetDistance: 1
+    byTimer: 1
+    targetTimer: 30000
     animationName: 
     phrases: []
   askCleanerToBringPapers:
+    name: "\u043F\u043E\u043F\u0440\u043E\u0441\u0438\u0442\u044C \u0443\u0431\u043E\u0440\u0449\u0438\u0446\u0443
+      \u043F\u0440\u0438\u043D\u0435\u0441\u0442\u0438 \u0431\u0443\u043C\u0430\u0433\u0443"
     target: {fileID: 790539952}
+    targetDistance: 1
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   goForSugar:
+    name: 
     target: {fileID: 0}
+    targetDistance: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   bringSugar:
+    name: 
     target: {fileID: 0}
+    targetDistance: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
   visionPoint: {fileID: 1777400696}
@@ -2939,6 +3133,11 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2976042052539886022, guid: 23a584daf1c02cf409198f972f27047f,
+        type: 3}
+      propertyPath: m_Speed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 411038710984746628, guid: 23a584daf1c02cf409198f972f27047f,
         type: 3}
       propertyPath: m_TagString
@@ -3558,6 +3757,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Radius
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2976042052539886022, guid: 23a584daf1c02cf409198f972f27047f,
+        type: 3}
+      propertyPath: m_Speed
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7036413843791794331, guid: 23a584daf1c02cf409198f972f27047f, type: 3}
@@ -4743,7 +4947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1005558387
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6152,15 +6356,15 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 7410206273036391086, guid: 711aa188046359c488d4703c730bfc55,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 303.72
-      objectReference: {fileID: 0}
     - target: {fileID: 7410206273036391087, guid: 711aa188046359c488d4703c730bfc55,
         type: 3}
       propertyPath: m_Text
       value: "\u041A\u0443\u043B\u0435\u0440 \u0441 \u0432\u043E\u0434\u043E\u0439"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410206273036391086, guid: 711aa188046359c488d4703c730bfc55,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 303.72
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 711aa188046359c488d4703c730bfc55, type: 3}
@@ -6480,21 +6684,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 7410206273036391086, guid: 711aa188046359c488d4703c730bfc55,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 476.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7410206273036391086, guid: 711aa188046359c488d4703c730bfc55,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 103.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 7410206273036391086, guid: 711aa188046359c488d4703c730bfc55,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.04
-      objectReference: {fileID: 0}
     - target: {fileID: 7410206273036391087, guid: 711aa188046359c488d4703c730bfc55,
         type: 3}
       propertyPath: m_Text
@@ -6514,6 +6703,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_MinSize
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410206273036391086, guid: 711aa188046359c488d4703c730bfc55,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 476.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410206273036391086, guid: 711aa188046359c488d4703c730bfc55,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 103.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410206273036391086, guid: 711aa188046359c488d4703c730bfc55,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.04
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 711aa188046359c488d4703c730bfc55, type: 3}
@@ -7820,6 +8024,11 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2976042052539886022, guid: 23a584daf1c02cf409198f972f27047f,
+        type: 3}
+      propertyPath: m_Speed
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7036413843791794331, guid: 23a584daf1c02cf409198f972f27047f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 23a584daf1c02cf409198f972f27047f, type: 3}
@@ -8095,15 +8304,15 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.19999999
       objectReference: {fileID: 0}
-    - target: {fileID: 7410206273036391086, guid: 711aa188046359c488d4703c730bfc55,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 303.72
-      objectReference: {fileID: 0}
     - target: {fileID: 7410206273036391087, guid: 711aa188046359c488d4703c730bfc55,
         type: 3}
       propertyPath: m_Text
       value: "\u041A\u0443\u043B\u0435\u0440 \u0441 \u0432\u043E\u0434\u043E\u0439"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410206273036391086, guid: 711aa188046359c488d4703c730bfc55,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 303.72
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 711aa188046359c488d4703c730bfc55, type: 3}

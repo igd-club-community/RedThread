@@ -5,14 +5,16 @@ using UnityEngine.AI;
 
 public class Boss1Script : ActingPerson
 {
-    public PersonAct prevAction; 
+    //public PersonAct prevAction;
+    public PersonAct rememberedAction;
+    public PersonAct goToBossTable;
     public PersonAct readPapers;
-    public PersonAct drinkCoffee;
+    public PersonAct goToSecretary;
     public PersonAct askSecretaryAboutCoffee;
     public PersonAct goToVault;
+    public PersonAct tryToRememberPassword;
     public PersonAct unlockShelter;
     public PersonAct askSecretaryAboutNewPapers;
-    public PersonAct goToBossCabinet;
     public PersonAct goToProgrammer;
     public PersonAct talkWithProgrammer;
     public PersonAct sayGoodbytoPigeons;
@@ -20,6 +22,7 @@ public class Boss1Script : ActingPerson
 
     Level1Controller levelController;
 
+    public bool passwordRemembered = false;
     public bool secretaryAskedToRepairWindow = false;
 
     // Start is called before the first frame update
@@ -27,10 +30,10 @@ public class Boss1Script : ActingPerson
     {
         base.Start();
         levelController = FindObjectOfType<Level1Controller>();
-        levelController.CoffeeDelivered += doReadPapers;
-        //levelController.PapersDelivered += doReadPapers;asdsad
+        levelController.CoffeeDelivered += doGoToBossTable;
+        //levelController.PapersDelivered += doReadPapers;
 
-        doReadPapers();
+        doGoToBossTable();
     }
 
     public float timeOfReadingStarted;
@@ -47,63 +50,71 @@ public class Boss1Script : ActingPerson
         //Если у нас растение было сломано и мы ждали что оно починится, то начинаем двигаться.
         if (noAction && levelController.GrassInBossRoomIsFine)
             noAction = false;
-        distance = Vector3.Distance(currentAction.target.position, transform.position);
-        if (currentAction == drinkCoffee)
+
+        if (currentAction == readPapers)
         {
-            distance = Vector3.Distance(currentAction.target.position, transform.position);
-            if (distance < 1 && (Time.fixedTime - timeOfCoffeeDelivered > 5))
+            if (levelController.BossCupMoved)
             {
-                doAskSecretaryAboutCoffee();
+                //Если чашку подвинули, значит босс проливает кофе и идёт просить новые бумаги
+                if (anim != null)
+                    anim.SetBool("Sit", false);
+
+                say("Твоюж мать");
+                setAction(goToSecretary);
+                rememberedAction = askSecretaryAboutNewPapers;
+
+                levelController.BossCupFilled = false;
+                levelController.BossCupMoved = false;
             }
         }
-        else if (currentAction == askSecretaryAboutCoffee || currentAction == askSecretaryAboutNewPapers || currentAction == askSecretaryToRepairWindows)
+    }
+    protected override void goToNextAction()
+    {
+        Debug.Log("BossScript next Action");
+        if (currentAction == goToBossTable)
         {
-            if (distance < 1.5)
-            {
-                if (currentAction == askSecretaryAboutCoffee)
-                {
-                    levelController.generateNeedCoffeEvent();
-                    doRememberVaultPassword();
-                }
-                else if (currentAction == askSecretaryAboutNewPapers)
-                {
-                    levelController.generateNeedPapersEvent();
-                    doUnlockShelter();
-                }
-                else if (currentAction == askSecretaryToRepairWindows)
-                {
-                    setAction(prevAction);
-                }
-            }
-        }
-        else if (currentAction == unlockShelter)
-        {
-            if (distance < 1)
-            {
-                levelController.BossShelterPassIsKnown = true;
-                doGoToProgrammer();
-            }
+            anim.SetBool("Sit", true);
+            Debug.Log("BossScript readPapers");
+            setAction(readPapers);
         }
         else if (currentAction == readPapers)
         {
-            if (Time.fixedTime - timeOfReadingStarted > 3)
-            {
-                if (levelController.BossCupMoved)
-                {
-                    //Если чашку подвинули, значит босс проливает кофе и идёт к программисту
-                    doAskSecretaryAboutNewPapers();
-                    levelController.BossCupFilled = false;
-                    levelController.BossCupMoved = false;
-                }
-            }
-            if (Time.fixedTime - timeOfReadingStarted > 15)
-            {
-                doAskSecretaryAboutCoffee();
-                //levelController.generateNeedCoffeEvent();
-                levelController.BossCupFilled = false;
-            }
+            if (anim != null)
+                anim.SetBool("Sit", false);
+            setAction(goToSecretary);
+            rememberedAction = askSecretaryAboutCoffee;
+            //doAskSecretaryAboutCoffee();
+            //levelController.generateNeedCoffeEvent();
+            levelController.BossCupFilled = false;
         }
-        else if (currentAction == goToProgrammer && distance < 1)
+        else if (currentAction == goToSecretary)
+        {
+            setAction(rememberedAction);
+        }
+        else if (currentAction == askSecretaryAboutCoffee)
+        {
+            levelController.generateNeedCoffeEvent();
+            doRememberVaultPassword();
+        }
+        else if (currentAction == askSecretaryAboutNewPapers)
+        {
+            levelController.generateNeedPapersEvent();
+            setAction(unlockShelter);
+        }
+        else if (currentAction == askSecretaryToRepairWindows)
+        {
+            setAction(rememberedAction);
+        }
+        else if (currentAction == goToVault)
+        {
+            setAction(tryToRememberPassword);
+        }
+        else if (currentAction == unlockShelter)
+        {
+            levelController.BossShelterPassIsKnown = true;
+            setAction(goToProgrammer);
+        }
+        else if (currentAction == goToProgrammer)
         {
             if (levelController.ProgrammerDeskClear)
             {
@@ -115,56 +126,28 @@ public class Boss1Script : ActingPerson
         }
         else if (currentAction == talkWithProgrammer)
         {
-            if (distance < 1.5)
-            {
-                noAction = true;
+            noAction = true;
 
-                //если подходим к программисту то говорим с ним до тех пор пока секретарша не распечатает бумаги
-                if (levelController.PaperInBossRoom)
-                    doReadPapers();
-            }
+            //если подходим к программисту то говорим с ним до тех пор пока секретарша не распечатает бумаги
+            if (levelController.PaperInBossRoom)
+                doGoToBossTable();
+
         }
-        else if (currentAction == sayGoodbytoPigeons && distance < 1 && Time.fixedTime - timeOfTalkingWithPigeons > 5)
+        else if (currentAction == sayGoodbytoPigeons)
         {
             if (!secretaryAskedToRepairWindow)
                 doAskSecretaryToRepairWindows();
             else
-                setAction(prevAction);
+                setAction(rememberedAction);
         }
     }
 
-    public void doReadPapers()
+    public void doGoToBossTable()
     {
-        say("Опять рубль падает");
-        Debug.Log("doReadPapers");
-        //Здесь можно запустить таймер сколько читать газеты например.
-        setAction(readPapers);
-        currentAction = readPapers;
-        timeOfReadingStarted = Time.fixedTime;
-    }
-
-    public void doUnlockShelter()
-    {
-        say("Точно! Вспомнил пароль");
-        Debug.Log("doUnlockShelter");
-
-        setAction(unlockShelter);
-
-        levelController.BossShelterPassIsKnown = true;
-    }
-    public void doGoToProgrammer()
-    {
-        say("Надо поговорить с программистом.");
-        Debug.Log("doGoToProgrammer");
-
-        setAction(goToProgrammer);
-
+        setAction(goToBossTable);
     }
     public void doTalkWithProgrammer()
     {
-        say("Что ты решил?");
-        Debug.Log("doTalkWithProgrammer");
-
         setAction(talkWithProgrammer);
 
     }
@@ -172,27 +155,17 @@ public class Boss1Script : ActingPerson
     {
         say("Что за мудак");
         Debug.Log("doFireProgrammer");
-        doReadPapers(); //Временно пока нет плана что будет когда увольняем
+        doGoToBossTable(); //Временно пока нет плана что будет когда увольняем
 
     }
 
     public void doAskSecretaryAboutCoffee()
     {
-        anim.SetBool("Sit", false);
         say("Хочу кофе");
         Debug.Log("doAskSecretaryAboutCoffee");
         setAction(askSecretaryAboutCoffee);
     }
-
-    public void doAskSecretaryAboutNewPapers()
-    {
-        anim.SetBool("Sit", false);
-        say("Твоюж мать");
-        Debug.Log("doAskSecretaryAboutNewPapers");
-        //Запустить движение к секретарше,
-        //Запустить анимацию просьбы
-        setAction(askSecretaryAboutNewPapers);
-    }
+    
     public void doAskSecretaryToRepairWindows()
     {
         say("Окна теперь новые ставить");
@@ -214,7 +187,7 @@ public class Boss1Script : ActingPerson
     {
         say("Пошли вон летучие крысы!");
         Debug.Log("doPigeonsGetOut");
-        prevAction = currentAction;
+        rememberedAction = currentAction;
         setAction(sayGoodbytoPigeons);
         timeOfTalkingWithPigeons = Time.fixedTime;
     }
@@ -243,10 +216,11 @@ public class Boss1Script : ActingPerson
         }
         if (other.CompareTag("2 floor"))
             levelController.BossOn2floor = true;
-        if (other.CompareTag("chair")) {
-            Debug.Log("Time to sit");
-            anim.SetBool("Sit", true);
-        }
+        //if (other.CompareTag("chair"))
+        //{
+        //    Debug.Log("Time to sit");
+        //    anim.SetBool("Sit", true);
+        //}
     }
 
     private void OnTriggerStay(Collider other)
@@ -270,18 +244,9 @@ public class Boss1Script : ActingPerson
         }
         if (other.CompareTag("2 floor"))
             levelController.BossOn2floor = false;
-        if (other.CompareTag("chair"))
-        {
-            anim.SetBool("Sit", false);
-        }
+        //if (other.CompareTag("chair"))
+        //{
+        //    anim.SetBool("Sit", false);
+        //}
     }
-
-    //public void doDrinkCoffee()
-    //{
-    //    Debug.Log("DrinkCoffee");
-    //    //Запускаем перемещение к столу и анимацию
-    //    actingPerson.setAction(drinkCoffee);
-    //    currentAction = drinkCoffee;
-    //    timeOfCoffeeDelivered = Time.fixedTime;
-    //}
 }
