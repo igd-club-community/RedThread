@@ -23,7 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201894385}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -1.284102e-16, w: 1}
   m_LocalPosition: {x: 0.089, y: 1.548, z: -0.102}
   m_LocalScale: {x: 0.09, y: 1.46, z: 2.02}
   m_Children: []
@@ -53,7 +53,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 269543732}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -1.284102e-16, w: 1}
   m_LocalPosition: {x: 0.031, y: 1.48, z: -0.47}
   m_LocalScale: {x: 0.09, y: 1.46, z: 2.02}
   m_Children: []
@@ -70,7 +70,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4074805191105650}
   - component: {fileID: 151076847}
-  - component: {fileID: 5220917362731235968}
   m_Layer: 0
   m_Name: Flipchart
   m_TagString: Untagged
@@ -109,18 +108,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.265517, y: 2.8268504, z: 1}
   m_Center: {x: -0.03529632, y: 1.5555727, z: -3.178389e-10}
---- !u!114 &5220917362731235968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1041128425132628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c241c4f8ff11d6f4dbdbf4c53efdda87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1231379660531138
 GameObject:
   m_ObjectHideFlags: 0

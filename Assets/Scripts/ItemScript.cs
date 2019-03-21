@@ -8,15 +8,20 @@ public abstract class ItemScript : MonoBehaviour
     private Color storedColor;
     private Renderer materialRenderer;
     bool hovered = false;
+    private bool hasMaterialRenderer = true;
 
     public void Start()
     {
         materialRenderer = gameObject.GetComponent<Renderer>();
+        if (materialRenderer == null)
+        {
+            hasMaterialRenderer = false;
+        }
     }
 
     public void onHover()
     {
-        if (!hovered)
+        if (!hovered && hasMaterialRenderer)
         {
             storedColor = materialRenderer.material.color;
             materialRenderer.material.color = Color.red;
@@ -26,7 +31,10 @@ public abstract class ItemScript : MonoBehaviour
 
     public void deselect()
     {
-        materialRenderer.material.color = storedColor;
+        if (hasMaterialRenderer)
+        {
+            materialRenderer.material.color = storedColor;
+        }
         hovered = false;
     }
 }
