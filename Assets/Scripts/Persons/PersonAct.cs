@@ -9,9 +9,15 @@ public class PersonAct
     public Transform target;
     public float targetDistance;
     public bool byTimer;
-    public float targetTimer;
+    public float targetTimer; //Время должно зависеть от количества диалогов
     public string animationName; //TODO: can be changed to think that convinient to describe animation
     public string[] phrases;
     public int phraseStageNum;
-    public string[][] phrases2;
+    public Phrases[] phrasesStorage;
+}
+
+[System.Serializable]
+public class Phrases
+{
+    public string[] phrases;
 }

@@ -18,7 +18,7 @@ public class ActingPerson : MonoBehaviour
     public bool isDialogSingle = false; //проходит ли этот диалог сам с собой
     public GameObject textBackground; //фон текста
     public Text bubbleText; //текстбокс
-    public int phraseNum; //номер текущей фразы
+    public int currentPhraseNum; //номер текущей фразы
     public float textMaxTime = 3; //время в течении которого отображается фраза
     public float sayTime = 0; //время начала отображения фразы
 
@@ -74,7 +74,7 @@ public class ActingPerson : MonoBehaviour
 
         if (Time.fixedTime - sayTime > textMaxTime)
         {
-            if (phraseNum >= currentAction.phrases.Length)
+            if (currentPhraseNum >= currentAction.phrases.Length)
             {
                 textBackground.SetActive(false);
                 bubbleText.text = "";
@@ -83,17 +83,17 @@ public class ActingPerson : MonoBehaviour
                 //Здесь нужно начать произносить все фразы
                 if (interlocutor != null) //значит будет диалог с кем-то
                 {
-                    if (phraseNum % 2 == 1)
-                        interlocutor.say(currentAction.phrases[phraseNum]);
+                    if (currentPhraseNum % 2 == 1)
+                        interlocutor.say(currentAction.phrases[currentPhraseNum]);
                     else
-                        say(currentAction.phrases[phraseNum]);
+                        say(currentAction.phrases[currentPhraseNum]);
                 }
                 else
                 {
                     //произносим фразы в монологе
-                    say(currentAction.phrases[phraseNum]);
+                    say(currentAction.phrases[currentPhraseNum]);
                 }
-                phraseNum += 1;
+                currentPhraseNum += 1;
             }
         }
     }
@@ -101,7 +101,7 @@ public class ActingPerson : MonoBehaviour
     {
         Debug.Log("Acting person next Action");
     }
-
+    public float clamp;
     void NavAgentUpdate()
     {
         //Debug.Log(navAgent.updatePosition);
@@ -120,7 +120,7 @@ public class ActingPerson : MonoBehaviour
         //float result = Vector3.SignedAngle(worldDeltaPosition, transform.forward, Vector3.up);
         Vector2 forward = new Vector2(transform.forward.x, transform.forward.z);
         //Debug.Log("forward = " + forward.x + " " + forward.y);
-        float resultAngle = Vector2.SignedAngle(smoothWorld2dDelta, forward);
+        float resultAngle = Vector2.SignedAngle(world2dDelta, forward);
         //Debug.Log("resultAngle = " + resultAngle);
         //Debug.Log("world2dDelta = " + world2dDelta.magnitude);
 
@@ -161,9 +161,12 @@ public class ActingPerson : MonoBehaviour
         //linearSpeed = world2dDelta.magnitude;
 
 
+        clamp = Math.Abs(angularSpeed) > 1 ? 0.7f : 1;
+        if (Math.Abs(angularSpeed) > 0.8f && Math.Abs(angularSpeed) < 1.5f)
+            angularSpeed *= 1.5f;
         //Debug.Log("Linear = " + linearSpeed + " angular " + angularSpeed);
-        anim.SetFloat("LinearSpeed", linearSpeed, 0.1f, Time.deltaTime);
-        anim.SetFloat("AngularSpeed", angularSpeed, 0.1f, Time.deltaTime);
+        anim.SetFloat("LinearSpeed", linearSpeed, 0.3f, Time.deltaTime);
+        anim.SetFloat("AngularSpeed", angularSpeed, clamp, Time.deltaTime);
 
         navAgent.nextPosition = transform.position;
         //transform.rotation = navAgent.transform.rotation;
@@ -183,7 +186,17 @@ public class ActingPerson : MonoBehaviour
     }
     public void setAction(PersonAct newAct)
     {
-        phraseNum = 0;
+        currentPhraseNum = 0;
+        if (currentAction.phrasesStorage.Length != 0)
+        {
+            currentAction.phraseStageNum = (currentAction.phraseStageNum + 1) % currentAction.phrasesStorage.Length;
+        }
+        else
+            currentAction.phraseStageNum = 0;
+
+        if (newAct.phrasesStorage.Length != 0)
+            newAct.phrases = newAct.phrasesStorage[newAct.phraseStageNum].phrases;
+
         //Debug.Log(newAct.name);
         currentAction = newAct;
         if (currentAction.byTimer)
