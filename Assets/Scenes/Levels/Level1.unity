@@ -941,230 +941,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 153528153}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &187871097
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5851814065759581629, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581629, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678988450544024872, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678988450544024872, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678988450544024872, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678988450544024872, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -40
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678988452152825170, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678988452152825170, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678988452152825170, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678988452152825170, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -135.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678988451607068921, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678988451607068921, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678988451607068921, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678988451607068921, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -230.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678988450401518436, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678988450401518436, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678988450401518436, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678988450401518436, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -325.59998
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678988450963851143, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678988450963851143, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678988450963851143, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678988450963851143, guid: d3e68b73f039c9642a3aa0a34c88b01a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -420.8
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d3e68b73f039c9642a3aa0a34c88b01a, type: 3}
 --- !u!1 &189563065
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,7 +1397,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 383625826}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalPosition: {x: 950.1, y: 540, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1836,7 +1612,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 550433227}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -9.900024, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2489,7 +2265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 735915467}
   m_LocalRotation: {x: 0.12267527, y: -0.016454525, z: 0.0020342094, w: 0.99230844}
-  m_LocalPosition: {x: 0.62, y: 10.68, z: -6.19}
+  m_LocalPosition: {x: -9.280025, y: 10.68, z: -6.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4710,7 +4486,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252825769}
   m_LocalRotation: {x: 0.9047854, y: -0.09061918, z: 0.24243648, w: 0.33819544}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: -9.900024, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5634,7 +5410,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525024830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -9.900024, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 730794199}
@@ -6720,7 +6496,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1787780131}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -9.900024, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 897729008}
@@ -7462,6 +7238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c034b3c92a156034aac20ca5e86f48f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundEmitter: {fileID: 1040668826}
 --- !u!1 &1989388085
 GameObject:
   m_ObjectHideFlags: 0
@@ -7883,6 +7660,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.phrases.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: goToBossTable.target
       value: 
       objectReference: {fileID: 1031852456}
@@ -7945,6 +7726,28 @@ PrefabInstance:
       propertyPath: askSecretaryAboutCoffee.targetTimer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.phrases.Array.data[0]
+      value: "\u041F\u0430\u0440\u043E\u043B\u044C, \u043F\u0430\u0440\u043E\u043B\u044C\u2026
+        \u043C\u043E\u0436\u0435\u0442 314159?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.phrases.Array.data[1]
+      value: "\u0421\u043D\u043E\u0432\u0430 \u043D\u0435 \u0442\u043E!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.phrases.Array.data[2]
+      value: "\u0425\u043E\u0440\u043E\u0448\u043E, \u0447\u0442\u043E \u043D\u0435\u043E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u043D\u043E\u0435
+        \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043F\u043E\u043F\u044B\u0442\u043E\u043A."
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.phrases.Array.data[3]
+      value: "\u0425\u043C, \u0430 \u043C\u043E\u0436\u0435\u0442 271821? "
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.phrases.Array.data[4]
+      value: "\u0412\u0441\u043F\u043E\u043C\u0438\u043D\u0430\u0439, \u0434\u0443\u0440\u0435\u043D\u044C!"
+      objectReference: {fileID: 0}
     - target: {fileID: 6588090960277016874, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f,
         type: 3}
       propertyPath: m_AngularSpeed
@@ -7998,6 +7801,7 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
   noAction: 0
   distance: 0
   timeOfStart: 0
@@ -8013,11 +7817,12 @@ MonoBehaviour:
   talkWithSecretary:
     name: 
     target: {fileID: 899361472}
-    targetDistance: 0
-    byTimer: 0
-    targetTimer: 0
+    targetDistance: 1
+    byTimer: 1
+    targetTimer: 300
     animationName: 
     phrases: []
+    phraseStageNum: 0
   putsHandfulOfSeeds:
     name: 
     target: {fileID: 1896565967}
@@ -8026,6 +7831,7 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
   washTheShelf:
     name: 
     target: {fileID: 1857632498}
@@ -8034,6 +7840,7 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
   bringPapersFrom2level:
     name: 
     target: {fileID: 434091958}
@@ -8042,6 +7849,7 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
   deliverPapers:
     name: 
     target: {fileID: 950924007}
@@ -8050,6 +7858,7 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
   fixBossGrass:
     name: 
     target: {fileID: 130261640}
@@ -8058,6 +7867,7 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
   fixCoolerOn1Level:
     name: 
     target: {fileID: 1902095932}
@@ -8066,6 +7876,7 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
   fixCoolerOn2Level:
     name: 
     target: {fileID: 659416298}
@@ -8074,6 +7885,7 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
   fixCoolerOn3Level:
     name: 
     target: {fileID: 802767518}
@@ -8082,6 +7894,7 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
   shelvesOnSecretaryTable: {fileID: 95437442}
   askedToBringPapers: 0
 --- !u!1001 &3545865210773215193
@@ -8247,6 +8060,7 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
   noAction: 0
   distance: 0
   timeOfStart: 0
@@ -8260,49 +8074,81 @@ MonoBehaviour:
   linearSpeed: 0
   angularSpeed: 0
   workWithPC:
-    name: 
+    name: "\u043A\u043E\u0434\u0438\u0442"
     target: {fileID: 1283196553}
-    targetDistance: 0
-    byTimer: 0
-    targetTimer: 0
+    targetDistance: 0.4
+    byTimer: 1
+    targetTimer: 12
     animationName: 
-    phrases: []
+    phrases:
+    - "\u041F\u043E\u0447\u0435\u043C\u0443 \u0436\u0435 \u043A\u043E\u0434 \u043D\u0435
+      \u043A\u043E\u043C\u043F\u0438\u043B\u0438\u0442\u0441\u044F? "
+    - "\u0410 \u043A\u0430\u043A \u0436\u0435 \u043A\u0440\u0438\u0442\u0435\u0440\u0438\u0439
+      \u0434\u043B\u044F \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0438 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430
+      \u0432\u043E \u0432\u0440\u0435\u043C\u0435\u043D\u0438?"
+    - "\u041D\u0443 \u0438 \u0447\u0442\u043E \u0442\u0435\u0431\u0435 \u043D\u0435
+      \u043D\u0440\u0430\u0432\u0438\u0442\u0441\u044F?"
+    phraseStageNum: 0
   watchOnDesk:
-    name: 
+    name: "\u0441\u043C\u043E\u0442\u0440\u0438\u0442 \u043D\u0430 \u0434\u043E\u0441\u043A\u0443"
     target: {fileID: 269543733}
-    targetDistance: 0
-    byTimer: 0
-    targetTimer: 0
+    targetDistance: 0.4
+    byTimer: 1
+    targetTimer: 3
     animationName: 
-    phrases: []
+    phrases:
+    - "\u0414\u0430, \u043F\u043E\u0447\u0435\u043C\u0443 \u043E\u043D\u043E \u0432\u044B\u0434\u0430\u0435\u0442
+      \u043F\u0440\u0438 \u0432\u044B\u0447\u0438\u0441\u043B\u0435\u043D\u0438\u0438
+      \u0440\u0435\u0433\u0440\u0435\u0441\u0441\u0438\u0438 \u043E\u0448\u0438\u0431\u043A\u0443?"
+    - "\u041D\u0435 \u043C\u043E\u0433\u0443 \u0434\u0443\u043C\u0430\u0442\u044C.
+      \u0427\u0442\u043E \u0436\u0435 \u044D\u0442\u043E \u0441\u043E \u043C\u043D\u043E\u0439?"
+    - "\u201C\u0421\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0439 \u0448\u0430\u0433\u201D,
+      \u0445\u043C."
+    - "\u041A\u043E\u0433\u0434\u0430-\u043D\u0438\u0431\u0443\u0434\u044C \u044F
+      \u0443\u0432\u043E\u043B\u044E\u0441\u044C \u043E\u0442\u0441\u044E\u0434\u0430,
+      \u043D\u043E \u043D\u0435 \u0441\u0435\u0433\u043E\u0434\u043D\u044F."
+    phraseStageNum: 0
   writeOnDesk:
-    name: 
+    name: "\u043F\u0438\u0448\u0435\u0442 \u043D\u0430 \u0434\u043E\u0441\u043A\u0435"
     target: {fileID: 269543733}
-    targetDistance: 0
-    byTimer: 0
-    targetTimer: 0
+    targetDistance: 0.4
+    byTimer: 1
+    targetTimer: 9
     animationName: 
-    phrases: []
+    phrases:
+    - "\u0410 \u0434\u0430\u043D\u043D\u044B\u0435 \u0432\u043E\u043E\u0431\u0449\u0435
+      \u0432\u0430\u043B\u0438\u0434\u043D\u044B\u0435? "
+    - "\u0421\u043A\u043E\u043B\u044C\u043A\u043E \u0442\u0430\u0441\u043A\u043E\u0432...
+      \u0418 \u0433\u0434\u0435 \u043D\u0430\u0439\u0442\u0438 \u0432\u0440\u0435\u043C\u044F?"
+    - "\u0422\u0430\u043A,  e = 2,71821"
+    phraseStageNum: 0
   watchOnCat:
-    name: 
+    name: "\u0441\u043C\u043E\u0442\u0440\u0438\u043C \u043D\u0430 \u043A\u043E\u0448\u043A\u0443"
     target: {fileID: 1896730347}
-    targetDistance: 0
-    byTimer: 0
-    targetTimer: 0
+    targetDistance: 0.4
+    byTimer: 1
+    targetTimer: 9
     animationName: 
-    phrases: []
+    phrases:
+    - "\u041D\u0443\u0436\u043D\u043E \u043D\u0435 \u0437\u0430\u0431\u044B\u0442\u044C
+      \u0441\u0445\u043E\u0434\u0438\u0442\u044C \u0432 \u043C\u0430\u0433\u0430\u0437\u0438\u043D
+      \u0438 \u043A\u0443\u043F\u0438\u0442\u044C \u0411\u0443\u0441\u0438\u043D\u043A\u0435
+      \u043A\u043E\u0440\u043C."
+    - "\u0418\u043D\u0442\u0435\u0440\u0435\u0441\u043D\u043E, \u0430 \u0443 \u041A\u0430\u0440\u0438\u043D\u044B
+      \u043D\u0435\u0442 \u0430\u043B\u043B\u0435\u0440\u0433\u0438\u0438 \u043D\u0430
+      \u043A\u043E\u0448\u0435\u043A?"
+    - " \u0423\u0436\u0435 \u0442\u0430\u043A \u043F\u043E\u0437\u0434\u043D\u043E,
+      \u043D\u0430\u0434\u043E \u0431\u044B \u0434\u043E\u043C\u043E\u0439 \u043F\u043E\u0439\u0442\u0438."
+    phraseStageNum: 0
   switchPowerOn:
     name: 
     target: {fileID: 1868588185}
-    targetDistance: 0
+    targetDistance: 0.4
     byTimer: 0
     targetTimer: 0
     animationName: 
     phrases: []
-  timeOfWorkingWithPC: 0
-  timeOfWatchingOnDesk: 0
-  timeOfWritingOnDesk: 0
-  timeOfWatchingOnCat: 0
+    phraseStageNum: 0
 --- !u!1 &6127175601340615165 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6127175601340615165, guid: f1fa95b98ea6ff14ca0f955bfdbc0c5d,
@@ -8329,6 +8175,7 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
   noAction: 0
   distance: 0
   timeOfStart: 0
@@ -8349,6 +8196,7 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
   printPapers:
     name: "\u0440\u0430\u0441\u043F\u0435\u0447\u0430\u0442\u0430\u0442\u044C \u0431\u0443\u043C\u0430\u0433\u0438"
     target: {fileID: 950924007}
@@ -8357,6 +8205,7 @@ MonoBehaviour:
     targetTimer: 5
     animationName: 
     phrases: []
+    phraseStageNum: 0
   bringPapersFrom2level:
     name: "\u0441\u0445\u043E\u0434\u0438\u0442\u044C \u0437\u0430 \u0431\u0443\u043C\u0430\u0433\u0430\u043C\u0438
       \u043D\u0430 2 \u044D\u0442\u0430\u0436"
@@ -8366,6 +8215,7 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
   bringPapersToPrinter:
     name: "\u043F\u0440\u0438\u043D\u0435\u0441\u0442\u0438 \u0431\u0443\u043C\u0430\u0433\u0438
       \u0441\u043E \u0432\u0442\u043E\u0440\u043E\u0433\u043E \u044D\u0442\u0430\u0436\u0430"
@@ -8375,6 +8225,7 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
   bringPapersToBoss:
     name: "\u043F\u0440\u0438\u043D\u0435\u0441\u0442\u0438 \u0431\u0443\u043C\u0430\u0433\u0438
       \u0431\u043E\u0441\u0441\u0443"
@@ -8384,6 +8235,7 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
   backToDesk:
     name: "\u0432\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F \u043A \u0441\u0442\u043E\u043B\u0443"
     target: {fileID: 1896565967}
@@ -8392,14 +8244,16 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
   prepareCoffee:
     name: "\u043F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u0438\u0442\u044C \u043A\u043E\u0444\u0435"
     target: {fileID: 1625024868}
     targetDistance: 0.4
     byTimer: 1
-    targetTimer: 5
+    targetTimer: 15
     animationName: 
     phrases: []
+    phraseStageNum: 0
   talkWithCleaner:
     name: "\u043F\u043E\u0433\u043E\u0432\u043E\u0440\u0438\u0442\u044C \u0441 \u0441\u0435\u043A\u0440\u0435\u0442\u0430\u0440\u0448\u0435\u0439"
     target: {fileID: 411139828}
@@ -8408,6 +8262,7 @@ MonoBehaviour:
     targetTimer: 30000
     animationName: 
     phrases: []
+    phraseStageNum: 0
   askCleanerToBringPapers:
     name: "\u043F\u043E\u043F\u0440\u043E\u0441\u0438\u0442\u044C \u0443\u0431\u043E\u0440\u0449\u0438\u0446\u0443
       \u043F\u0440\u0438\u043D\u0435\u0441\u0442\u0438 \u0431\u0443\u043C\u0430\u0433\u0443"
@@ -8417,6 +8272,7 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
   goForSugar:
     name: 
     target: {fileID: 0}
@@ -8425,6 +8281,7 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
   bringSugar:
     name: 
     target: {fileID: 0}
@@ -8433,6 +8290,7 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
   visionPoint: {fileID: 0}
   programmer: {fileID: 0}
   askedToPrintPapers: 0

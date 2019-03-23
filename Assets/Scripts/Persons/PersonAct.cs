@@ -12,4 +12,6 @@ public class PersonAct
     public float targetTimer;
     public string animationName; //TODO: can be changed to think that convinient to describe animation
     public string[] phrases;
+    public int phraseStageNum;
+    public string[][] phrases2;
 }

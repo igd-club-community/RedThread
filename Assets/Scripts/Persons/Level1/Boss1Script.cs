@@ -60,7 +60,7 @@ public class Boss1Script : ActingPerson
                 //Если чашку подвинули, значит босс проливает кофе и идёт просить новые бумаги
                 anim.SetBool("Sit", false);
 
-                //say("Твоюж мать");
+                say("Твоюж мать!");
                 setAction(goToSecretary);
                 rememberedAction = askSecretaryAboutNewPapers;
 

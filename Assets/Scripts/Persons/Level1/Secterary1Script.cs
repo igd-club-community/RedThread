@@ -189,7 +189,7 @@ public class Secterary1Script : ActingPerson
 
     public void doBringCoffeeToBoss()
     {
-        say("Не дай бог разолью");
+        //say("Не дай бог разолью");
         Debug.Log("doBringCoffeeToBoss");
         //Принести кофе боссу
         setAction(bringCoffee);
@@ -197,7 +197,7 @@ public class Secterary1Script : ActingPerson
 
     public void doBackToDesk()
     {
-        say("Можно и отдохнуть");
+        //say("Можно и отдохнуть");
         Debug.Log("doBackToDesk");
         setAction(backToDesk);
     }
