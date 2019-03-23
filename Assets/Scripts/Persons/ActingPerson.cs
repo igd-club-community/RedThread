@@ -13,6 +13,8 @@ public class ActingPerson : MonoBehaviour
     public float distance = 100;//начальное значение должно быть больше дистанции первой задачи, чтобы не сработал переход к следующей задаче пока навмешагент в первый раз просчитывает путь
     public float timeOfStart = 0;
 
+    public bool inDialog = false;
+    public bool isDialogSingle = false;
     public GameObject textBackground;
     public Text bubbleText;
 
@@ -44,31 +46,27 @@ public class ActingPerson : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        if (anim != null)
-            NavAgentUpdate();
-        if (noAction)
-        {
-            navAgent.enabled = false;
-        }
-        else
-        {
-            navAgent.enabled = true;
-            navAgent.SetDestination(currentAction.target.position);
-            if (!navAgent.pathPending)
-                distance = navAgent.remainingDistance;
-        }
+        NavAgentUpdate();
+
+        navAgent.SetDestination(currentAction.target.position);
+        if (!navAgent.pathPending)
+            distance = navAgent.remainingDistance;
+
         //Если мы долши до нужной точки
         //distance = Vector3.Distance(currentAction.target.position, transform.position);
         //if (distance < currentAction.targetDistance)
         //Если таймер не нулевой и дистанция не нулевая,
-        if (currentAction.byTimer && Time.fixedTime - timeOfStart > currentAction.targetTimer)
+        if (!inDialog)
         {
-            goToNextAction();
-        }
-        else if (!currentAction.byTimer && distance < currentAction.targetDistance)
-        {
-            if (!navAgent.pathPending)
+            if (currentAction.byTimer && Time.fixedTime - timeOfStart > currentAction.targetTimer)
+            {
                 goToNextAction();
+            }
+            else if (!currentAction.byTimer && distance < currentAction.targetDistance)
+            {
+                if (!navAgent.pathPending)
+                    goToNextAction();
+            }
         }
 
         //bubbleText.text = textBackground.gameObject.transform.rotation.ToString();
@@ -81,7 +79,8 @@ public class ActingPerson : MonoBehaviour
             bubbleText.text = "";
         }
     }
-    protected virtual void goToNextAction() {
+    protected virtual void goToNextAction()
+    {
         Debug.Log("Acting person next Action");
     }
 
@@ -128,7 +127,8 @@ public class ActingPerson : MonoBehaviour
             //Debug.Log("target reached");
             linearSpeed = 0;
             angularSpeed = 0;
-        } else if (Math.Abs(resultAngle) > 90)
+        }
+        else if (Math.Abs(resultAngle) > 90)
         {
             //Debug.Log("zero speed, turning");
             linearSpeed = 0;
@@ -149,7 +149,7 @@ public class ActingPerson : MonoBehaviour
 
         navAgent.nextPosition = transform.position;
         //transform.rotation = navAgent.transform.rotation;
-        
+
 
         //LookAt lookAt = GetComponent<LookAt>();
         //if (lookAt)
@@ -165,7 +165,7 @@ public class ActingPerson : MonoBehaviour
     }
     public void setAction(PersonAct newAct)
     {
-        Debug.Log(newAct.name);
+        //Debug.Log(newAct.name);
         currentAction = newAct;
         if (currentAction.byTimer)
             timeOfStart = Time.fixedTime;
@@ -214,6 +214,6 @@ public enum PersonState
 //        agent.updatePosition = false;
 //    }
 
-    
+
 
 //}
