@@ -9,14 +9,18 @@ public class ActingPerson : MonoBehaviour
 {
     public PersonAct currentAction;
     public bool noAction = false;
-    int curActNum = 0;
+    //int curActNum = 0;
     public float distance = 100;//начальное значение должно быть больше дистанции первой задачи, чтобы не сработал переход к следующей задаче пока навмешагент в первый раз просчитывает путь
-    public float timeOfStart = 0;
+    public float timeOfStart = 0; //Время начала выполнения задачи
 
-    public bool inDialog = false;
-    public bool isDialogSingle = false;
-    public GameObject textBackground;
-    public Text bubbleText;
+    ActingPerson interlocutor; //Человек с которым мы общаемся
+    public bool inDialog = false; //находится ли личность в диалоге
+    public bool isDialogSingle = false; //проходит ли этот диалог сам с собой
+    public GameObject textBackground; //фон текста
+    public Text bubbleText; //текстбокс
+    public int phraseNum; //номер текущей фразы
+    public float textMaxTime = 3; //время в течении которого отображается фраза
+    public float sayTime = 0; //время начала отображения фразы
 
     protected Animator anim;
     NavMeshAgent navAgent;
@@ -42,7 +46,6 @@ public class ActingPerson : MonoBehaviour
         }
     }
 
-    public float sayTime = 0;
     // Update is called once per frame
     protected virtual void Update()
     {
@@ -51,11 +54,8 @@ public class ActingPerson : MonoBehaviour
         navAgent.SetDestination(currentAction.target.position);
         if (!navAgent.pathPending)
             distance = navAgent.remainingDistance;
-
-        //Если мы долши до нужной точки
-        //distance = Vector3.Distance(currentAction.target.position, transform.position);
-        //if (distance < currentAction.targetDistance)
-        //Если таймер не нулевой и дистанция не нулевая,
+        
+        //Здесь может установиться новое состояние, которое сразу же можно будет использовать для обновления диалога
         if (!inDialog)
         {
             if (currentAction.byTimer && Time.fixedTime - timeOfStart > currentAction.targetTimer)
@@ -68,15 +68,33 @@ public class ActingPerson : MonoBehaviour
                     goToNextAction();
             }
         }
-
-        //bubbleText.text = textBackground.gameObject.transform.rotation.ToString();
+        
         textBackground.gameObject.transform.rotation = Quaternion.identity; //new Quaternion(0,0,0,1);
         bubbleText.gameObject.transform.rotation = Quaternion.identity;
 
-        if (Time.fixedTime - sayTime > 4)
+        if (Time.fixedTime - sayTime > textMaxTime)
         {
-            textBackground.SetActive(false);
-            bubbleText.text = "";
+            if (phraseNum >= currentAction.phrases.Length)
+            {
+                textBackground.SetActive(false);
+                bubbleText.text = "";
+            } else
+            {
+                //Здесь нужно начать произносить все фразы
+                if (interlocutor != null) //значит будет диалог с кем-то
+                {
+                    if (phraseNum % 2 == 1)
+                        interlocutor.say(currentAction.phrases[phraseNum]);
+                    else
+                        say(currentAction.phrases[phraseNum]);
+                }
+                else
+                {
+                    //произносим фразы в монологе
+                    say(currentAction.phrases[phraseNum]);
+                }
+                phraseNum += 1;
+            }
         }
     }
     protected virtual void goToNextAction()
@@ -165,11 +183,16 @@ public class ActingPerson : MonoBehaviour
     }
     public void setAction(PersonAct newAct)
     {
+        phraseNum = 0;
         //Debug.Log(newAct.name);
         currentAction = newAct;
         if (currentAction.byTimer)
             timeOfStart = Time.fixedTime;
+
+        interlocutor = newAct.target.GetComponent<ActingPerson>();
+        
         //say(newAct.phrases[UnityEngine.Random.Range(0, newAct.phrases.Length)]);
+
     }
 
     public void say(string text)
@@ -196,24 +219,3 @@ public enum PersonState
     Idle,
     Acting
 }
-
-
-//[RequireComponent(typeof(NavMeshAgent))]
-//[RequireComponent(typeof(Animator))]
-//public class MotionSimpleAgent : MonoBehaviour
-//{
-//    Animator anim;
-//    NavMeshAgent agent;
-//    Vector2 smoothDeltaPosition = Vector2.zero;
-//    Vector2 velocity = Vector2.zero;
-
-//    void Start()
-//    {
-//        anim = GetComponent<Animator>();
-//        agent = GetComponent<NavMeshAgent>();
-//        agent.updatePosition = false;
-//    }
-
-
-
-//}

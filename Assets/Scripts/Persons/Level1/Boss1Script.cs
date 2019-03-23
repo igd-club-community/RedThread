@@ -22,6 +22,8 @@ public class Boss1Script : ActingPerson
 
     Level1Controller levelController;
 
+    public bool wantCoffee = false;
+    public bool wantPapers = false;
     public bool passwordRemembered = false;
     public bool secretaryAskedToRepairWindow = false;
 
@@ -56,10 +58,9 @@ public class Boss1Script : ActingPerson
             if (levelController.BossCupMoved)
             {
                 //Если чашку подвинули, значит босс проливает кофе и идёт просить новые бумаги
-                if (anim != null)
-                    anim.SetBool("Sit", false);
+                anim.SetBool("Sit", false);
 
-                say("Твоюж мать");
+                //say("Твоюж мать");
                 setAction(goToSecretary);
                 rememberedAction = askSecretaryAboutNewPapers;
 
@@ -68,6 +69,8 @@ public class Boss1Script : ActingPerson
             }
         }
     }
+
+    //задания закончившиеся естественны образом, т.е. циклы
     protected override void goToNextAction()
     {
         Debug.Log("BossScript next Action");
@@ -79,8 +82,7 @@ public class Boss1Script : ActingPerson
         }
         else if (currentAction == readPapers)
         {
-            if (anim != null)
-                anim.SetBool("Sit", false);
+            anim.SetBool("Sit", false);
             setAction(goToSecretary);
             rememberedAction = askSecretaryAboutCoffee;
             //doAskSecretaryAboutCoffee();
@@ -158,13 +160,6 @@ public class Boss1Script : ActingPerson
         doGoToBossTable(); //Временно пока нет плана что будет когда увольняем
 
     }
-
-    public void doAskSecretaryAboutCoffee()
-    {
-        say("Хочу кофе");
-        Debug.Log("doAskSecretaryAboutCoffee");
-        setAction(askSecretaryAboutCoffee);
-    }
     
     public void doAskSecretaryToRepairWindows()
     {
@@ -176,7 +171,7 @@ public class Boss1Script : ActingPerson
 
     public void doRememberVaultPassword()
     {
-        say("Какой тут был пароль?");
+        //say("Какой тут был пароль?");
         Debug.Log("doRememberVaultPassword");
         if (!levelController.BossShelterLocked)
             Debug.Log("BossShelter Un Locked");
@@ -185,7 +180,7 @@ public class Boss1Script : ActingPerson
 
     public void doPigeonsGetOut()
     {
-        say("Пошли вон летучие крысы!");
+        //say("Пошли вон летучие крысы!");
         Debug.Log("doPigeonsGetOut");
         rememberedAction = currentAction;
         setAction(sayGoodbytoPigeons);

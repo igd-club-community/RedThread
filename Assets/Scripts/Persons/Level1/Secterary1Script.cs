@@ -134,7 +134,7 @@ public class Secterary1Script : ActingPerson
 
     public void doPrepareCoffee()
     {
-        say("Как же он вкусно пахнет!");
+        //say("Как же он вкусно пахнет!");
         Debug.Log("doPrepareCoffee");
         //Запустить анимацию приготовления кофе,
         //Animator.SetState("CookCoffee");
