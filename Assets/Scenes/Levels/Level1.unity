@@ -1699,8 +1699,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eb5cba50ffe24744b150791dfa90ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossCupFilled: 0
-  BossCupMoved: 0
+  BossCupFilled: 1
+  BossCupMoved: 1
   MusorSpawned: 0
   MusorInInvertory: 0
   PaperInPrinter: 1
@@ -5316,6 +5316,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1528037529
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1528037530}
+  m_Layer: 0
+  m_Name: visionPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1528037530
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528037529}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 8.48, z: 0.493}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 899361472}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1551580668
 GameObject:
   m_ObjectHideFlags: 0
@@ -7409,6 +7439,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossAnimation
       objectReference: {fileID: 0}
+    - target: {fileID: 7081038879332915909, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Person
+      objectReference: {fileID: 0}
     - target: {fileID: 505191574701531189, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7976,6 +8011,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6127175601340615165, guid: f1fa95b98ea6ff14ca0f955bfdbc0c5d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Person
+      objectReference: {fileID: 0}
     - target: {fileID: 3480776635821437709, guid: f1fa95b98ea6ff14ca0f955bfdbc0c5d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8378,8 +8418,8 @@ MonoBehaviour:
     phrases: []
     phraseStageNum: 0
     phrasesStorage: []
-  visionPoint: {fileID: 0}
-  programmer: {fileID: 0}
+  visionPoint: {fileID: 1528037530}
+  programmer: {fileID: 897729008}
   askedToPrintPapers: 0
   CleanerAskedToBringPapers: 0
 --- !u!1001 &6734260013304093901
@@ -8398,6 +8438,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127986583344671161, guid: 498a0d836606b6e4d94de17b39c5b724,
+        type: 3}
+      propertyPath: m_TagString
+      value: Person
       objectReference: {fileID: 0}
     - target: {fileID: 6633705196450141001, guid: 498a0d836606b6e4d94de17b39c5b724,
         type: 3}
@@ -8670,6 +8715,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 789035694128972722, guid: 78ed3ef02fab9374fba8cdc3307b4a26,
+        type: 3}
+      propertyPath: m_TagString
+      value: Person
       objectReference: {fileID: 0}
     - target: {fileID: 8049372477822728514, guid: 78ed3ef02fab9374fba8cdc3307b4a26,
         type: 3}
