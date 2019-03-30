@@ -11,11 +11,11 @@ public class UIController : MonoBehaviour
         Debug.Log("ChangeState");
         if (state)
         {
-            enable();
+            disable();
         }
         else
         {
-            disable();
+            enable();
         }
         state = !state;
         //target.SetActive(state);
