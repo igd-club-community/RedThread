@@ -177,10 +177,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: cf79dc37e6b76794db77b3e94346dee4,
+    m_HighlightedSprite: {fileID: 21300000, guid: db1b9d795926e2a4491bc3269250583b,
       type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: c2b1a86a89f9b854ba1d34dfa32cffdf, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: 7e8a81d7e82ed30409ae7ea6bc426646, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 714fcd7695ae04448aebf3865aff0b2c, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 18452f31684b3d24a9d1031a5cf88e11, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -268,15 +268,15 @@ RectTransform:
   m_GameObject: {fileID: 877839386}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.91, y: 1.91, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2092910825}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1008, y: 566}
+  m_SizeDelta: {x: 1920, y: 1532}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &877839388
 MonoBehaviour:
@@ -298,9 +298,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 2f673aa17387e7047a2c9dad8b030af2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4007c4cd03e46ea4aa6dd1e99a4fcb31, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -479,10 +479,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 5b688fc1e567b6a4eb8c5b46b5d64a02,
+    m_HighlightedSprite: {fileID: 21300000, guid: c6fb46b00dbaba5488fc99ac9a6e54e4,
       type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 4f4e66529687176429a1bb3689e491e6, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: b9d33e6fc5071f849acdf8892e95c5ad, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 804555d5f92ebe642a9cd9016f7693bb, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 0ba516fb395dbc7478ffc815b0e4cf37, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -680,7 +680,7 @@ GameObject:
   - component: {fileID: 1761502053}
   - component: {fileID: 1761502052}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -698,12 +698,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2092910825}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 16.210022, y: -17.460022}
+  m_SizeDelta: {x: 357, y: 434}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1761502052
 MonoBehaviour:
@@ -725,7 +725,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d80fad8c1af94854aaa10991eb6e7ec3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ba1b143d3e2ebe3479ebcda43ae97f70, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -807,10 +807,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 0a6616f2e7d9c4b44aa1f9b1bd9fe0a2,
+    m_HighlightedSprite: {fileID: 21300000, guid: 294ab72b026a9cb43b22c5c43eac3ad7,
       type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 94ded7627d2465a4795dfa6fc8af6109, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: 5b8ccd51a205fa843a255e3a87792a4c, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 3034d5b4c621f5f41a36701edae5b39f, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 3d263d3a901a576499f6bed6312a48df, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -926,10 +926,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 7f51528ba9aefcc40bd378c316cd2c85,
+    m_HighlightedSprite: {fileID: 21300000, guid: 14779788deb75354da8ee68e9b73ecb6,
       type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 662a2aea283284e429395c4a7dd8cf6b, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: ba4e26adda613864d9bffbbee8d33ee9, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 775fddacba192df49a5366885410834a, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 2effce827c863a3408e10d28e2871f4a, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -1074,10 +1074,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: ab9f3a952f8f23e47bebc12d1d9895e3,
+    m_HighlightedSprite: {fileID: 21300000, guid: 544d251920f0b3648a9cd9ad06cb3fe4,
       type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 968bc14ea44b0af4dab0c97f9adb7622, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: 25bd64ea2252d744f9399ea139d55e80, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: fe5907f2e0353204bba10663e5fd60d1, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: af9226913bcbc964f87d63c3f32bd93d, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -1121,7 +1121,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 30ddff7d6208bd84fb374a27c958abad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: af9226913bcbc964f87d63c3f32bd93d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1167,8 +1167,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1761502051}
   - {fileID: 877839387}
+  - {fileID: 1761502051}
   - {fileID: 1922803718}
   - {fileID: 1886854576}
   - {fileID: 1859040379}
