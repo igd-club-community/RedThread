@@ -18,12 +18,14 @@ public class PersonNavigationController : MonoBehaviour
     Transform target;
     public float minDistanceToTarget;
     public float distance = 100;//начальное значение должно быть больше дистанции первой задачи, чтобы не сработал переход к следующей задаче пока навмешагент в первый раз просчитывает путь
+    public bool talkingWithPerson;
 
     Vector2 smoothDeltaPosition = Vector2.zero;
     Vector2 smoothWorld2dDelta = Vector2.zero;
     Vector2 velocity = Vector2.zero;
     public float clamp;
 
+    public float maxLinearSpeed;
     public float linearSpeed;
     public float angularSpeed;
 
@@ -32,10 +34,10 @@ public class PersonNavigationController : MonoBehaviour
     {
         get
         {
-            if (navAgent.pathPending)
-                return false;
-            else
-                return _targetReached;
+            //    if (navAgent.pathPending)
+            //        return false;
+            //    else
+            return _targetReached;
         }
     }
 
@@ -49,10 +51,16 @@ public class PersonNavigationController : MonoBehaviour
 
     }
 
-    public void SetTarget(Transform target, float minDistanceToTarget)
+    public void SetTarget(Transform target, float minDistanceToTarget, bool talkingWithPerson)
     {
         this.target = target;
         this.minDistanceToTarget = minDistanceToTarget;
+        this.talkingWithPerson = talkingWithPerson;
+         startMoving = true;
+        onCourse = false;
+        inPlace = false;
+        _targetReached = false;
+        targetForward = new Vector2(target.transform.forward.x, target.transform.forward.z);
     }
     public Vector3 deciredVelocity;
     public Vector3 nextPosition;
@@ -61,6 +69,7 @@ public class PersonNavigationController : MonoBehaviour
     public float smooth;
     public Vector2 forward;
     public float resultAngle;
+    public Vector2 targetForward;
     // Update is called once per frame
     void Update()
     {
@@ -85,6 +94,7 @@ public class PersonNavigationController : MonoBehaviour
         //float result = Vector3.SignedAngle(worldDeltaPosition, transform.forward, Vector3.up);
         forward = new Vector2(transform.forward.x, transform.forward.z);
         resultAngle = Vector2.SignedAngle(world2dDelta, forward);
+        Debug.Log(resultAngle);
 
         if (Math.Abs(resultAngle) < 10)
         {
@@ -95,8 +105,8 @@ public class PersonNavigationController : MonoBehaviour
         {
             onCourse = false;
         }
-        if (Math.Abs(resultAngle) > 110)
-            startMoving = true;
+        //if (Math.Abs(resultAngle) > 110)
+        //    startMoving = true;
 
         //// Map 'worldDeltaPosition' to local space
         //float dx = Vector3.Dot(transform.right, worldDeltaPosition);
@@ -118,29 +128,33 @@ public class PersonNavigationController : MonoBehaviour
         {
             inPlace = true;
         }
-        else if (navAgent.remainingDistance < 1)
+        else if (navAgent.remainingDistance < 0.5f)
         {
             //Debug.Log("half speed");
-            linearSpeed = 0.5f;
+            linearSpeed = maxLinearSpeed / 2;
         }
         else
-            linearSpeed = 1;
+            linearSpeed = maxLinearSpeed;
 
+        //Цель достигнута, доворачиваем 
         if (inPlace)
         {
-            //Цель достигнута, доворачиваем 
-            //Debug.Log("target reached");
             linearSpeed = 0;
-            Vector2 targetForward = new Vector2(target.transform.forward.x, target.transform.forward.z);
-            resultAngle = Vector2.SignedAngle(targetForward, forward);
-            if (resultAngle < 10)
+            if (talkingWithPerson)
             {
                 _targetReached = true;
-                angularSpeed = 0;
+            } else
+            {
+                resultAngle = Vector2.SignedAngle(targetForward, forward);
+                if (Math.Abs(resultAngle) < 10)
+                {
+                    _targetReached = true;
+                    angularSpeed = 0;
+                }
             }
         }
-        else
-            angularSpeed = resultAngle / 180 * ((float)Math.PI);
+
+        angularSpeed = resultAngle / 180 * ((float)Math.PI);
         //else if (Math.Abs(resultAngle) > 90)
         //{
         //    //Debug.Log("zero speed, turning");
@@ -149,7 +163,7 @@ public class PersonNavigationController : MonoBehaviour
         //linearSpeed = world2dDelta.magnitude;
 
 
-        clamp = Math.Abs(angularSpeed) >= 1 ? 0.7f : 1;
+        //clamp = Math.Abs(angularSpeed) >= 1 ? 0.7f : 1;
         if (Math.Abs(angularSpeed) > 0.8f && Math.Abs(angularSpeed) < 1.5f)
             angularSpeed *= 1.5f;
         if (startMoving)
@@ -159,7 +173,7 @@ public class PersonNavigationController : MonoBehaviour
         if (onCourse)
             anim.SetFloat("AngularSpeed", angularSpeed, 0.3f, Time.deltaTime);
         else
-            anim.SetFloat("AngularSpeed", angularSpeed, clamp, Time.deltaTime);
+            anim.SetFloat("AngularSpeed", angularSpeed, 0.3f, Time.deltaTime);
 
         navAgent.nextPosition = transform.position;
         //transform.rotation = navAgent.transform.rotation;

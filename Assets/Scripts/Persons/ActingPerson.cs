@@ -85,7 +85,7 @@ public class ActingPerson : MonoBehaviour
     }
     public void setAction(PersonAct newAct)
     {
-        navigator.SetTarget(newAct.target, newAct.targetDistance);
+        navigator.SetTarget(newAct.target, newAct.targetDistance, newAct.talkingWithPerson);
 
         currentPhraseNum = 0;
         if (currentAction.phrasesStorage.Length != 0)

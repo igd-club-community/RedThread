@@ -8,6 +8,7 @@ public class PersonAct
     public string name;
     public Transform target;
     public float targetDistance;
+    public bool talkingWithPerson;
     public bool byTimer;
     public float targetTimer; //Время должно зависеть от количества диалогов
     public string animationName; //TODO: can be changed to think that convinient to describe animation

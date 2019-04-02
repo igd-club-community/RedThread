@@ -111,7 +111,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 5b648cc48bff6ce4a8b8fc5152220838, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 2ab093f8c91197f4fab42f9fe9d6c1dd, type: 2}
 --- !u!1001 &5086962
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1160,7 +1160,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213572669}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.37, y: 10.02, z: 2.79}
+  m_LocalPosition: {x: 5.37, y: 10.02, z: 3.4}
   m_LocalScale: {x: 1, y: 0.8, z: 2}
   m_Children:
   - {fileID: 1031852456}
@@ -7596,7 +7596,7 @@ PrefabInstance:
     - target: {fileID: 505191574701531189, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.6233339
       objectReference: {fileID: 0}
     - target: {fileID: 505191574701531189, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f,
         type: 3}
@@ -7606,7 +7606,7 @@ PrefabInstance:
     - target: {fileID: 505191574701531189, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7819559
       objectReference: {fileID: 0}
     - target: {fileID: 505191574701531189, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f,
         type: 3}
@@ -7621,7 +7621,7 @@ PrefabInstance:
     - target: {fileID: 505191574701531189, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 77.12
       objectReference: {fileID: 0}
     - target: {fileID: 505191574701531189, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f,
         type: 3}
@@ -7970,7 +7970,7 @@ PrefabInstance:
     - target: {fileID: 6588090960277016874, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f,
         type: 3}
       propertyPath: m_AngularSpeed
-      value: 120
+      value: 360
       objectReference: {fileID: 0}
     - target: {fileID: 6588090960277016874, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f,
         type: 3}
@@ -9783,11 +9783,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startMoving: 1
   onCourse: 0
+  inPlace: 0
   minDistanceToTarget: 0
   distance: 100
+  talkingWithPerson: 0
   clamp: 0
+  maxLinearSpeed: 1.5
   linearSpeed: 0
   angularSpeed: 0
+  _targetReached: 0
   deciredVelocity: {x: 0, y: 0, z: 0}
   nextPosition: {x: 0, y: 0, z: 0}
   worldDeltaPosition: {x: 0, y: 0, z: 0}
@@ -9795,6 +9799,7 @@ MonoBehaviour:
   smooth: 0
   forward: {x: 0, y: 0}
   resultAngle: 0
+  targetForward: {x: 0, y: 0}
 --- !u!1 &789035694128972722 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 789035694128972722, guid: 78ed3ef02fab9374fba8cdc3307b4a26,
@@ -9817,6 +9822,7 @@ MonoBehaviour:
     name: 
     target: {fileID: 0}
     targetDistance: 0
+    talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
     animationName: 
@@ -9836,6 +9842,7 @@ MonoBehaviour:
     name: 
     target: {fileID: 899361472}
     targetDistance: 1
+    talkingWithPerson: 0
     byTimer: 1
     targetTimer: 300
     animationName: 
@@ -9846,6 +9853,7 @@ MonoBehaviour:
     name: 
     target: {fileID: 1896565967}
     targetDistance: 0
+    talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
     animationName: 
@@ -9856,6 +9864,7 @@ MonoBehaviour:
     name: 
     target: {fileID: 1857632498}
     targetDistance: 0
+    talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
     animationName: 
@@ -9866,6 +9875,7 @@ MonoBehaviour:
     name: 
     target: {fileID: 434091958}
     targetDistance: 0
+    talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
     animationName: 
@@ -9876,6 +9886,7 @@ MonoBehaviour:
     name: 
     target: {fileID: 950924007}
     targetDistance: 0
+    talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
     animationName: 
@@ -9886,6 +9897,7 @@ MonoBehaviour:
     name: 
     target: {fileID: 130261640}
     targetDistance: 0
+    talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
     animationName: 
@@ -9896,6 +9908,7 @@ MonoBehaviour:
     name: 
     target: {fileID: 1902095932}
     targetDistance: 0
+    talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
     animationName: 
@@ -9906,6 +9919,7 @@ MonoBehaviour:
     name: 
     target: {fileID: 659416298}
     targetDistance: 0
+    talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
     animationName: 
@@ -9916,6 +9930,7 @@ MonoBehaviour:
     name: 
     target: {fileID: 802767518}
     targetDistance: 0
+    talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
     animationName: 
@@ -9938,11 +9953,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startMoving: 1
   onCourse: 0
+  inPlace: 0
   minDistanceToTarget: 0
   distance: 100
+  talkingWithPerson: 0
   clamp: 0
+  maxLinearSpeed: 0
   linearSpeed: 0
   angularSpeed: 0
+  _targetReached: 0
   deciredVelocity: {x: 0, y: 0, z: 0}
   nextPosition: {x: 0, y: 0, z: 0}
   worldDeltaPosition: {x: 0, y: 0, z: 0}
@@ -9950,6 +9969,7 @@ MonoBehaviour:
   smooth: 0
   forward: {x: 0, y: 0}
   resultAngle: 0
+  targetForward: {x: 0, y: 0}
 --- !u!1001 &3545865210773215193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9965,7 +9985,7 @@ PrefabInstance:
     - target: {fileID: 6127175601340615165, guid: f1fa95b98ea6ff14ca0f955bfdbc0c5d,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6127175601340615165, guid: f1fa95b98ea6ff14ca0f955bfdbc0c5d,
         type: 3}
@@ -11884,6 +11904,7 @@ MonoBehaviour:
     name: 
     target: {fileID: 0}
     targetDistance: 0
+    talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
     animationName: 
@@ -11903,6 +11924,7 @@ MonoBehaviour:
     name: "\u043A\u043E\u0434\u0438\u0442"
     target: {fileID: 1283196553}
     targetDistance: 0.4
+    talkingWithPerson: 0
     byTimer: 1
     targetTimer: 12
     animationName: 
@@ -11920,6 +11942,7 @@ MonoBehaviour:
     name: "\u0441\u043C\u043E\u0442\u0440\u0438\u0442 \u043D\u0430 \u0434\u043E\u0441\u043A\u0443"
     target: {fileID: 269543733}
     targetDistance: 0.4
+    talkingWithPerson: 0
     byTimer: 1
     targetTimer: 3
     animationName: 
@@ -11940,6 +11963,7 @@ MonoBehaviour:
     name: "\u043F\u0438\u0448\u0435\u0442 \u043D\u0430 \u0434\u043E\u0441\u043A\u0435"
     target: {fileID: 269543733}
     targetDistance: 0.4
+    talkingWithPerson: 0
     byTimer: 1
     targetTimer: 9
     animationName: 
@@ -11955,6 +11979,7 @@ MonoBehaviour:
     name: "\u0441\u043C\u043E\u0442\u0440\u0438\u043C \u043D\u0430 \u043A\u043E\u0448\u043A\u0443"
     target: {fileID: 1896730347}
     targetDistance: 0.4
+    talkingWithPerson: 0
     byTimer: 1
     targetTimer: 9
     animationName: 
@@ -11974,6 +11999,7 @@ MonoBehaviour:
     name: 
     target: {fileID: 1868588185}
     targetDistance: 0.4
+    talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
     animationName: 
@@ -11994,11 +12020,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startMoving: 1
   onCourse: 0
+  inPlace: 0
   minDistanceToTarget: 0
   distance: 100
+  talkingWithPerson: 0
   clamp: 0
+  maxLinearSpeed: 0
   linearSpeed: 0
   angularSpeed: 0
+  _targetReached: 0
   deciredVelocity: {x: 0, y: 0, z: 0}
   nextPosition: {x: 0, y: 0, z: 0}
   worldDeltaPosition: {x: 0, y: 0, z: 0}
@@ -12006,6 +12036,7 @@ MonoBehaviour:
   smooth: 0
   forward: {x: 0, y: 0}
   resultAngle: 0
+  targetForward: {x: 0, y: 0}
 --- !u!1 &6127175601340615165 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6127175601340615165, guid: f1fa95b98ea6ff14ca0f955bfdbc0c5d,
@@ -12028,6 +12059,7 @@ MonoBehaviour:
     name: 
     target: {fileID: 0}
     targetDistance: 0
+    talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
     animationName: 
@@ -12047,6 +12079,7 @@ MonoBehaviour:
     name: "\u041F\u0440\u0438\u043D\u0435\u0441\u0442\u0438 \u043A\u043E\u0444\u0435"
     target: {fileID: 947941091}
     targetDistance: 0.4
+    talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
     animationName: 
@@ -12057,6 +12090,7 @@ MonoBehaviour:
     name: "\u0440\u0430\u0441\u043F\u0435\u0447\u0430\u0442\u0430\u0442\u044C \u0431\u0443\u043C\u0430\u0433\u0438"
     target: {fileID: 950924007}
     targetDistance: 0.4
+    talkingWithPerson: 0
     byTimer: 1
     targetTimer: 5
     animationName: 
@@ -12068,6 +12102,7 @@ MonoBehaviour:
       \u043D\u0430 2 \u044D\u0442\u0430\u0436"
     target: {fileID: 434091958}
     targetDistance: 0.4
+    talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
     animationName: 
@@ -12079,6 +12114,7 @@ MonoBehaviour:
       \u0441\u043E \u0432\u0442\u043E\u0440\u043E\u0433\u043E \u044D\u0442\u0430\u0436\u0430"
     target: {fileID: 950924007}
     targetDistance: 0.4
+    talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
     animationName: 
@@ -12090,6 +12126,7 @@ MonoBehaviour:
       \u0431\u043E\u0441\u0441\u0443"
     target: {fileID: 947941091}
     targetDistance: 0.4
+    talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
     animationName: 
@@ -12100,6 +12137,7 @@ MonoBehaviour:
     name: "\u0432\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F \u043A \u0441\u0442\u043E\u043B\u0443"
     target: {fileID: 1896565967}
     targetDistance: 0.4
+    talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
     animationName: 
@@ -12110,6 +12148,7 @@ MonoBehaviour:
     name: "\u043F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u0438\u0442\u044C \u043A\u043E\u0444\u0435"
     target: {fileID: 1625024868}
     targetDistance: 0.4
+    talkingWithPerson: 0
     byTimer: 1
     targetTimer: 15
     animationName: 
@@ -12120,6 +12159,7 @@ MonoBehaviour:
     name: "\u043F\u043E\u0433\u043E\u0432\u043E\u0440\u0438\u0442\u044C \u0441 \u0441\u0435\u043A\u0440\u0435\u0442\u0430\u0440\u0448\u0435\u0439"
     target: {fileID: 411139828}
     targetDistance: 1
+    talkingWithPerson: 0
     byTimer: 1
     targetTimer: 30000
     animationName: 
@@ -12131,6 +12171,7 @@ MonoBehaviour:
       \u043F\u0440\u0438\u043D\u0435\u0441\u0442\u0438 \u0431\u0443\u043C\u0430\u0433\u0443"
     target: {fileID: 411139828}
     targetDistance: 1
+    talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
     animationName: 
@@ -12141,6 +12182,7 @@ MonoBehaviour:
     name: 
     target: {fileID: 0}
     targetDistance: 0
+    talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
     animationName: 
@@ -12151,6 +12193,7 @@ MonoBehaviour:
     name: 
     target: {fileID: 0}
     targetDistance: 0
+    talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
     animationName: 
@@ -12175,11 +12218,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startMoving: 1
   onCourse: 0
+  inPlace: 0
   minDistanceToTarget: 0
   distance: 100
+  talkingWithPerson: 0
   clamp: 0
+  maxLinearSpeed: 0
   linearSpeed: 0
   angularSpeed: 0
+  _targetReached: 0
   deciredVelocity: {x: 0, y: 0, z: 0}
   nextPosition: {x: 0, y: 0, z: 0}
   worldDeltaPosition: {x: 0, y: 0, z: 0}
@@ -12187,6 +12234,7 @@ MonoBehaviour:
   smooth: 0
   forward: {x: 0, y: 0}
   resultAngle: 0
+  targetForward: {x: 0, y: 0}
 --- !u!1001 &6734260013304093901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12202,7 +12250,7 @@ PrefabInstance:
     - target: {fileID: 4127986583344671161, guid: 498a0d836606b6e4d94de17b39c5b724,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4127986583344671161, guid: 498a0d836606b6e4d94de17b39c5b724,
         type: 3}
@@ -14237,7 +14285,7 @@ PrefabInstance:
     - target: {fileID: 789035694128972722, guid: 78ed3ef02fab9374fba8cdc3307b4a26,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 789035694128972722, guid: 78ed3ef02fab9374fba8cdc3307b4a26,
         type: 3}
