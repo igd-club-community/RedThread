@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: C:\Users\Vitaliy\Documents\FMOD Studio\test\tessproj\tessproj.fspro
-  SourceProjectPathUnformatted: C:\Users\Vitaliy\Documents\FMOD Studio\test\tessproj\tessproj.fspro
-  SourceBankPathUnformatted: C:\Users\Vitaliy\Documents\FMOD Studio\test\tessproj\Build
+  sourceProjectPath: C:\Users\admin\Desktop\FMOD Studio\red_thread\red_thread.fspro
+  SourceProjectPathUnformatted: C:\Users\admin\Desktop\FMOD Studio\red_thread\red_thread.fspro
+  SourceBankPathUnformatted: C:\Users\admin\Desktop\FMOD Studio\red_thread\Build
   AutomaticEventLoading: 1
   AutomaticSampleLoading: 0
   ImportType: 0
-  TargetAssetPath: Sounds
+  TargetAssetPath: 
   LoggingLevel: 2
   SpeakerModeSettings:
   - Platform: 2

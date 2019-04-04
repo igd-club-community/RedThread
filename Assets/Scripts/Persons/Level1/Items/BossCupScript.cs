@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossCupScript : ItemScript
 {
     private Level1Controller levelController;
+    public GameObject soundEmitter;
 
     new void Start()
     {
@@ -21,5 +22,6 @@ public class BossCupScript : ItemScript
             levelController.BossCupMoved = true;
             levelController.PaperInBossRoom = false;
         }
+        FMODUnity.RuntimeManager.PlayOneShot("event:/OnClick", GetComponent<Transform>().position);
     }
 }

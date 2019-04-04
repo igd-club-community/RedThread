@@ -16,6 +16,7 @@ public class KarnizScript : ItemScript
     public override void Act()
     {
         Debug.Log("KarnizScript");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/GlassBreak", GetComponent<Transform>().position);
         if (levelController.MusorInInvertory)
         {
             levelController.MusorOnBossKarniz = true;
