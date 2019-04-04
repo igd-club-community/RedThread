@@ -7,14 +7,19 @@ public class Boss1Script : ActingPerson
 {
     //public PersonAct prevAction;
     public PersonAct rememberedAction;
-    public PersonAct goToBossTable;
-    public PersonAct readPapers;
-    public PersonAct waitSecretary;
-    public PersonAct askSecretaryAboutCoffee;
-    public PersonAct goToVault;
-    public PersonAct tryToRememberPassword;
-    public PersonAct unlockShelter;
-    public PersonAct askSecretaryAboutNewPapers;
+
+    public PersonAct goToBossTable; //босс идёт читать бумаги один раз, в самом начале
+    public PersonAct readPapers; //Читает бумаги один раз в начале, после чего идёт просить кофе
+    //public PersonAct waitSecretary;
+    public PersonAct askSecretaryAboutCoffee; //просит секретаря сделать кофе, много раз по ходу цикла игры
+    public PersonAct goToVault; //идет к сейфу после просьбы сделать кофе, после этого возможны два варианта, в зависимости открыт сейф или нет
+    public PersonAct tryToRememberPassword; //пришел к сейфу и пытается вспомнить пароль
+    public PersonAct goToBossTableToDrinkCoffee; //Подходит к столу, садится, перекидывается парой слов в секретаршей и в коцне отпускает её
+    public PersonAct waitForSecretaryToLeave; //отпустив секретаршу говорим несколько слов вслед
+    public PersonAct grabCup; //берет кружку в руку и говорит что-то
+    public PersonAct drinkCoffee; //пара слов про то что кофе опять с сахаром, после чего идёт просить кофе снова
+    public PersonAct askSecretaryAboutNewPapers; //В процессе пока босс пил кофе оно было пролито
+    public PersonAct unlockShelter; //пришел к сейфу и открывает его
     public PersonAct goToProgrammer;
     public PersonAct talkWithProgrammer;
     public PersonAct sayGoodbytoPigeons;
@@ -43,12 +48,7 @@ public class Boss1Script : ActingPerson
     {
         setAction(askSecretaryAboutCoffee);
     }
-
-    public float timeOfReadingStarted;
-    public float timeOfCoffeeDelivered;
-    public float timeOfTalkingWithPigeons;
-    // Update is called once per frame
-
+    
     new void Update()
     {
         if (levelController.BossOffline)
@@ -59,20 +59,8 @@ public class Boss1Script : ActingPerson
         if (noAction && levelController.GrassInBossRoomIsFine)
             noAction = false;
 
-        if (currentAction == readPapers)
+        if (currentAction == waitForSecretaryToLeave)
         {
-            if (levelController.BossCupMoved)
-            {
-                //Если чашку подвинули, значит босс проливает кофе и идёт просить новые бумаги
-                anim.SetBool("Sit", false);
-
-                say("Твоюж мать!");
-                setAction(askSecretaryAboutNewPapers);
-                //rememberedAction = askSecretaryAboutNewPapers;
-
-                levelController.BossCupFilled = false;
-                levelController.BossCupMoved = false;
-            }
         }
     }
 
@@ -82,6 +70,10 @@ public class Boss1Script : ActingPerson
         if (currentAction == askSecretaryAboutCoffee)
         {
             levelController.generateNeedCoffeEvent();
+        }
+        else if (currentAction == goToBossTableToDrinkCoffee)
+        {
+            levelController.generateSecretaryCanGoToDesk();
         }
     }
 
@@ -108,20 +100,38 @@ public class Boss1Script : ActingPerson
         //}
         else if (currentAction == askSecretaryAboutCoffee)
         {
+            setAction(goToVault);
+        }
+        else if (currentAction == goToVault)
+        {
             doRememberVaultPassword();
+        }
+        else if (currentAction == goToBossTableToDrinkCoffee)
+        {
+            setAction(waitForSecretaryToLeave);
+        }
+        else if (currentAction == waitForSecretaryToLeave)
+        {
+            if (levelController.BossCupMoved)
+            {
+                //Если чашку подвинули, значит босс проливает кофе и идёт просить новые бумаги
+                //anim.SetBool("Sit", false);
+                setAction(askSecretaryAboutNewPapers);
+                levelController.BossCupFilled = false;
+                levelController.BossCupMoved = false;
+            } else
+            {
+                setAction(drinkCoffee);
+            }
+        }
+        else if (currentAction == drinkCoffee)
+        {
+            setAction(askSecretaryAboutCoffee);
         }
         else if (currentAction == askSecretaryAboutNewPapers)
         {
             levelController.generateNeedPapersEvent();
             setAction(unlockShelter);
-        }
-        else if (currentAction == askSecretaryToRepairWindows)
-        {
-            setAction(rememberedAction);
-        }
-        else if (currentAction == goToVault)
-        {
-            setAction(tryToRememberPassword);
         }
         else if (currentAction == unlockShelter)
         {
@@ -154,11 +164,15 @@ public class Boss1Script : ActingPerson
             else
                 setAction(rememberedAction);
         }
+        else if (currentAction == askSecretaryToRepairWindows)
+        {
+            setAction(rememberedAction);
+        }
     }
 
     public void doGoToBossTable()
     {
-        setAction(goToBossTable);
+        setAction(goToBossTableToDrinkCoffee);
     }
     public void doTalkWithProgrammer()
     {
@@ -186,7 +200,7 @@ public class Boss1Script : ActingPerson
         Debug.Log("doRememberVaultPassword");
         if (!levelController.BossShelterLocked)
             Debug.Log("BossShelter Un Locked");
-        setAction(goToVault);
+        setAction(tryToRememberPassword);
     }
 
     public void doPigeonsGetOut()
@@ -195,7 +209,6 @@ public class Boss1Script : ActingPerson
         Debug.Log("doPigeonsGetOut");
         rememberedAction = currentAction;
         setAction(sayGoodbytoPigeons);
-        timeOfTalkingWithPigeons = Time.fixedTime;
     }
 
     public void doCry()

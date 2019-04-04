@@ -34,6 +34,7 @@ public class Level1Controller : MonoBehaviour
     public event PersonEvent CoffeeDelivered;
     public event PersonEvent PapersDelivered;
     public event PersonEvent SecretaryIsBack;
+    public event PersonEvent SecretaryCanGoToDesk;
     public event PersonEvent PowerOff;
     public event PersonEvent PowerOn;
     public event PersonEvent PigeonsCameInBossRoom;
@@ -62,6 +63,12 @@ public class Level1Controller : MonoBehaviour
         SecretaryIsBisy = true;
         Debug.Log("generateNeedCoffeEvent");
         BossNeedsCoffee();
+    }
+
+    public void generateSecretaryCanGoToDesk()
+    {
+        Debug.Log("generateSecretaryCanGoToDesk");
+        SecretaryCanGoToDesk();
     }
 
     //Босс попросил секретаршу напечатать бумаги
