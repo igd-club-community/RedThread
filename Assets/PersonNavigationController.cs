@@ -94,7 +94,7 @@ public class PersonNavigationController : MonoBehaviour
         //float result = Vector3.SignedAngle(worldDeltaPosition, transform.forward, Vector3.up);
         forward = new Vector2(transform.forward.x, transform.forward.z);
         resultAngle = Vector2.SignedAngle(world2dDelta, forward);
-        Debug.Log(resultAngle);
+        //Debug.Log(resultAngle);
 
         if (Math.Abs(resultAngle) < 10)
         {
@@ -202,4 +202,11 @@ public class PersonNavigationController : MonoBehaviour
         transform.position = position;
         transform.rotation = anim.rootRotation;
     }
+}
+
+public enum NavigationState
+{
+    StartMoving,
+    OnCourse,
+    InPlace
 }

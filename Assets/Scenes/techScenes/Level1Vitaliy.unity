@@ -1417,13 +1417,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 269543732}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 7.2, y: -0.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1884564534}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &337474787 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 505191574701531189, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f,
@@ -4713,13 +4713,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283196552}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.70296043, z: 0, w: 0.71122897}
   m_LocalPosition: {x: 1.2, y: 0, z: -0.446}
   m_LocalScale: {x: 1.3803635, y: 1.1980878, z: 1.3566785}
   m_Children: []
   m_Father: {fileID: 575704544}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -89.33, z: 0}
 --- !u!1001 &1286854476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6759,13 +6759,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1868588184}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.47}
+  m_LocalRotation: {x: 0, y: 0.7023394, z: 0, w: 0.71184224}
+  m_LocalPosition: {x: -1.2, y: 0, z: -0.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2096293958}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 89.23, z: 0}
 --- !u!1 &1884564533
 GameObject:
   m_ObjectHideFlags: 0
@@ -7566,7 +7566,7 @@ PrefabInstance:
     - target: {fileID: 7081038879332915909, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f,
         type: 3}
       propertyPath: m_Name
-      value: BossAnimation
+      value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 7081038879332915909, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f,
         type: 3}
@@ -7691,6 +7691,42 @@ PrefabInstance:
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.phrasesStorage.Array.data[0].phrases.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialog.phrases.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[0].phrases.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[1].phrases.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[2].phrases.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[3].phrases.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[4].phrases.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: readPapers.dialogs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: readPapers.dialogs.Array.data[0].phrases.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: goToBossTable.target
@@ -7967,6 +8003,229 @@ PrefabInstance:
       propertyPath: goToBossTable.targetDistance
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: goToSecretary.talkingWithPerson
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.talkingWithPerson
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[0].phrases.Array.data[0].speech
+      value: "\u041A\u0430\u0440\u0438\u043D, \u0447\u0430\u0439 \u0431\u0435\u0437
+        \u0441\u0430\u0445\u0430\u0440\u0430 \u043C\u043D\u0435 \u043F\u0440\u0438\u043D\u0435\u0441\u0438.
+        \ "
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[0].phrases.Array.data[1].speech
+      value: "\u041A\u043E\u043D\u0435\u0447\u043D\u043E, \u0413\u0440\u0438\u0433\u043E\u0440\u0438\u0439
+        \u0410\u0440\u0438\u0441\u0442\u0430\u0440\u0445\u043E\u0432\u0438\u0447,
+        \u0441\u0435\u0439\u0447\u0430\u0441 \u0432\u0441\u0435 \u0431\u0443\u0434\u0435\u0442. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[0].phrases.Array.data[0].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[0].phrases.Array.data[1].sayer
+      value: 
+      objectReference: {fileID: 6127175601340615166}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[1].phrases.Array.data[0].speech
+      value: "\u041A\u0430\u0440\u0438\u043D\u0430, \u043E\u0442\u0432\u043B\u0435\u043A\u0438\u0441\u044C
+        \u043E\u0442 \u0431\u043E\u043B\u0442\u043E\u0432\u043D\u0438 \u0438 \u043F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u044C
+        \u043C\u043D\u0435 \u0447\u0430\u0439 \u0431\u0435\u0437 \u0441\u0430\u0445\u0430\u0440\u0430
+        \u043D\u0430 \u044D\u0442\u043E\u0442 \u0440\u0430\u0437. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[1].phrases.Array.data[1].speech
+      value: "\u041E\u043D \u043E\u043A\u0430\u0437\u0430\u043B\u0441\u044F \u0441
+        \u0441\u0430\u0445\u0430\u0440\u043E\u043C? \u041E\u0439-\u043E\u0439, \u0438\u0437\u0432\u0438\u043D\u0438\u0442\u0435,
+        \u043F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[1].phrases.Array.data[2].speech
+      value: "\u0411\u0443\u0434\u044C \u043F\u043E\u0432\u043D\u0438\u043C\u0430\u0442\u0435\u043B\u044C\u043D\u0435\u0435.
+        \u042F \u043D\u0435 \u043B\u044E\u0431\u043B\u044E \u0441\u0430\u0445\u0430\u0440."
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[1].phrases.Array.data[1].sayer
+      value: 
+      objectReference: {fileID: 6127175601340615166}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[1].phrases.Array.data[0].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[1].phrases.Array.data[2].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[2].phrases.Array.data[0].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[2].phrases.Array.data[0].speech
+      value: "\u041A\u0430\u0440\u0438\u043D\u0430, \u043F\u043E\u0441\u043B\u0443\u0448\u0430\u0439
+        \u043C\u0435\u043D\u044F \u0441\u0435\u0439\u0447\u0430\u0441, \u043F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430,
+        \u0435\u0449\u0435 \u0440\u0430\u0437! \u0427\u0430\u0439 \u043F\u0440\u0438\u043D\u0435\u0441\u0438
+        \u043C\u043D\u0435 \u0411\u0415\u0417 \u0441\u0430\u0445\u0430\u0440\u0430! "
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[2].phrases.Array.data[1].sayer
+      value: 
+      objectReference: {fileID: 6127175601340615166}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[2].phrases.Array.data[1].speech
+      value: "\u041E\u0439, \u0438\u0437\u0432\u0438\u043D\u0438\u0442\u0435, \u0413\u0440\u0438\u0433\u043E\u0440\u0438\u0439
+        \u0410\u0440\u0438\u0441\u0442\u0430\u0440\u0445\u043E\u0432\u0438\u0447.
+        \u042F \u0441\u0435\u0439\u0447\u0430\u0441 \u0432\u0441\u0435 \u0438\u0441\u043F\u0440\u0430\u0432\u043B\u044E."
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[2].phrases.Array.data[2].sayer
+      value: 
+      objectReference: {fileID: 466561784066382525}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[2].phrases.Array.data[2].speech
+      value: "\u0411\u0443\u0434\u044C \u043F\u043E\u0432\u043D\u0438\u043C\u0430\u0442\u0435\u043B\u044C\u043D\u0435\u0435.
+        \u042F \u043D\u0435 \u043B\u044E\u0431\u043B\u044E \u0441\u0430\u0445\u0430\u0440."
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[3].phrases.Array.data[0].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[3].phrases.Array.data[0].speech
+      value: "\u042F \u043D\u0435 \u0445\u043E\u0447\u0443 \u0434\u0435\u043B\u0430\u0442\u044C
+        \u043F\u043E\u0441\u043F\u0435\u0448\u043D\u044B\u0445 \u0432\u044B\u0432\u043E\u0434\u043E\u0432,
+        \u043D\u043E \u044F \u0442\u0435\u0431\u044F \u0441\u0435\u0439\u0447\u0430\u0441
+        \u0445\u043E\u0447\u0443 \u043F\u0440\u043E\u0441\u0442\u043E \u0443\u0432\u043E\u043B\u0438\u0442\u044C. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[3].phrases.Array.data[1].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[3].phrases.Array.data[1].speech
+      value: "\u042F \u043F\u043E\u043F\u0440\u043E\u0441\u0438\u043B \u0442\u0435\u0431\u044F
+        \u043F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u0438\u0442\u044C \u0447\u0430\u0439
+        \u0411\u0415\u0417 \u0421\u0410\u0425\u0410\u0420\u0410, \u041A\u0430\u0440\u0438\u043D\u0430,
+        \u0422\u0420\u0418 \u0420\u0410\u0417\u0410!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[3].phrases.Array.data[2].sayer
+      value: 
+      objectReference: {fileID: 6127175601340615166}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[3].phrases.Array.data[2].speech
+      value: "\u0413\u0440\u0438-\u0433\u0440\u0438\u0433\u043E\u0440\u0438\u0439
+        \u0410\u0440\u0438\u0441\u0442\u0430\u0440\u0445\u043E\u0432\u0438\u0447,
+        \u043F\u0435\u0440\u0435\u0441\u0442\u0430\u043D\u044C\u0442\u0435 \u043A\u0440\u0438\u0447\u0430\u0442\u044C. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[4].phrases.Array.data[0].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[4].phrases.Array.data[0].speech
+      value: "\u0417\u043D\u0430\u0435\u0448\u044C, \u041A\u0430\u0440\u0438\u043D\u0430,
+        \u0442\u044B \u0443\u0432\u043E\u043B\u0435\u043D\u0430! \u042F \u0442\u0435\u0431\u044F
+        \u0427\u0415\u0422\u042B\u0420\u0415 \u0420\u0410\u0417\u0410 \u041F\u041E\u041F\u0420\u041E\u0421\u0418\u041B
+        \u043F\u0440\u0438\u043D\u0435\u0441\u0442\u0438 \u043C\u043D\u0435 \u0447\u0430\u0439
+        \u0431\u0435\u0437 \u0441\u0430\u0445\u0430\u0440\u0430. \u042D\u0442\u043E
+        \u0431\u044B\u043B\u043E \u0442\u0430\u043A \u0441\u043B\u043E\u0436\u043D\u043E,
+        \u041A\u0430\u0440\u0438\u043D\u0430? "
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[4].phrases.Array.data[1].sayer
+      value: 
+      objectReference: {fileID: 6127175601340615166}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[4].phrases.Array.data[1].speech
+      value: " \u0413\u0440\u0438\u0433\u043E\u0440\u0438\u0439 \u0410\u0440\u0438\u0441\u0442\u0430\u0440\u0445\u043E\u0432\u0438\u0447,
+        \u043F\u0440\u043E\u0441\u0442\u0438\u0442\u0435 \u043C\u0435\u043D\u044F,
+        \u043F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u0442\u0430\u043A\u043E\u0435,
+        \u0447\u0435\u0441\u0442\u043D\u043E, \u0431\u043E\u043B\u044C\u0448\u0435
+        \u043D\u0435 \u043F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0441\u044F! "
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[4].phrases.Array.data[2].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[4].phrases.Array.data[2].speech
+      value: "\u041A\u043E\u043D\u0435\u0447\u043D\u043E, \u0432\u0435\u0434\u044C
+        \u0442\u044B \u0443\u0432\u043E\u043B\u0435\u043D\u0430. \u0423\u0445\u043E\u0434\u0438.
+        \u041D\u0430\u0441\u0442\u0440\u043E\u0435\u043D\u0438\u0435 \u043C\u043D\u0435
+        \u0442\u043E\u043B\u044C\u043A\u043E \u0438\u0441\u043F\u043E\u0440\u0442\u0438\u043B\u0430. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[3].phrases.Array.data[3].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[3].phrases.Array.data[3].speech
+      value: "\u0414\u0430\u044E \u0442\u0435\u0431\u0435 \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u044E\u044E
+        \u043F\u043E\u043F\u044B\u0442\u043A\u0443 \u0445\u043E\u0442\u044C \u043A\u0430\u043A-\u0442\u043E
+        \u0438\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u043D\u044B\u043D\u0435\u0448\u043D\u0435\u0435
+        \u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u0434\u0435\u043B. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[3].phrases.Array.data[4].sayer
+      value: 
+      objectReference: {fileID: 6127175601340615166}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[3].phrases.Array.data[4].speech
+      value: "\u041A\u0430\u043A \u0412\u0430\u043C \u0431\u0443\u0434\u0435\u0442
+        \u0443\u0433\u043E\u0434\u043D\u043E."
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: readPapers.dialogs.Array.data[0].currentPhraseNum
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: readPapers.dialogs.Array.data[0].phrases.Array.data[0].speech
+      value: "\u0413\u0434\u0435 \u0436\u0435 \u044D\u0442\u0430 \u0431\u0443\u043C\u0430\u0436\u043A\u0430
+        \u0441 \u043F\u0430\u0440\u043E\u043B\u0435\u043C? \u041E\u043D\u0430 \u0434\u043E\u043B\u0436\u043D\u0430
+        \u0431\u044B\u0442\u044C \u0433\u0434\u0435-\u0442\u043E \u0437\u0434\u0435\u0441\u044C..."
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: readPapers.dialogs.Array.data[0].phrases.Array.data[1].speech
+      value: "\u0410\u0439, \u043E\u043F\u044F\u0442\u044C \u043D\u0443\u0436\u043D\u043E
+        \u043F\u043E\u0434\u043F\u0438\u0441\u0430\u0442\u044C \u043A\u0443\u0447\u0443
+        \u0432\u0441\u044F\u043A\u0438\u0445 \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u043E\u0432\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: readPapers.dialogs.Array.data[0].phrases.Array.data[2].speech
+      value: "\u041F\u0440\u043E\u0435\u043A\u0442 \u201C\u0421\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0439
+        \u0448\u0430\u0433\u201D... \u0414\u0430, \u0440\u0435\u0431\u044F\u0442\u0430
+        \u043C\u043E\u043B\u043E\u0434\u0446\u044B, \u0441\u043F\u0430\u0441\u043B\u0438
+        \u043A\u043E\u043C\u043F\u0430\u043D\u0438\u044E\u2026 \u041D\u0430\u0434\u0435\u044E\u0441\u044C,
+        \u042E\u0440\u0430 \u0431\u0443\u0434\u0435\u0442 \u043F\u0440\u043E\u0434\u043E\u043B\u0436\u0430\u0442\u044C
+        \u0440\u0430\u0431\u043E\u0442\u0430\u0442\u044C \u0441 \u043D\u0430\u043C\u0438."
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: readPapers.dialogs.Array.data[0].phrases.Array.data[3].speech
+      value: "\u0427\u0442\u043E-\u0442\u043E \u0432 \u0433\u043E\u0440\u043B\u0435
+        \u043F\u0435\u0440\u0435\u0441\u043E\u0445\u043B\u043E."
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: readPapers.dialogs.Array.data[0].phrases.Array.data[0].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: readPapers.dialogs.Array.data[0].phrases.Array.data[1].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: readPapers.dialogs.Array.data[0].phrases.Array.data[2].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: readPapers.dialogs.Array.data[0].phrases.Array.data[3].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
     - target: {fileID: 6588090960277016874, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f,
         type: 3}
       propertyPath: m_AngularSpeed
@@ -9800,6 +10059,18 @@ MonoBehaviour:
   forward: {x: 0, y: 0}
   resultAngle: 0
   targetForward: {x: 0, y: 0}
+--- !u!114 &466561784066382528 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f,
+    type: 3}
+  m_PrefabInstance: {fileID: 466561784066382524}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466561784066382525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af1d19be4676164aab19f9715ac8e7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &789035694128972722 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 789035694128972722, guid: 78ed3ef02fab9374fba8cdc3307b4a26,
@@ -9827,15 +10098,20 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
+  state: 0
   noAction: 0
   timeOfStart: 0
+  isDialogPossible: 0
   inDialog: 0
-  isDialogSingle: 0
+  isDialogFinished: 0
   textBackground: {fileID: 103193155670459164}
   bubbleText: {fileID: 103193154611028914}
-  currentPhraseNum: 0
+  currentDialog:
+    currentPhraseNum: 0
+    phrases: []
   textMaxTime: 3
   sayTime: 0
   talkWithSecretary:
@@ -9847,8 +10123,9 @@ MonoBehaviour:
     targetTimer: 300
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   putsHandfulOfSeeds:
     name: 
     target: {fileID: 1896565967}
@@ -9858,8 +10135,9 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   washTheShelf:
     name: 
     target: {fileID: 1857632498}
@@ -9869,8 +10147,9 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   bringPapersFrom2level:
     name: 
     target: {fileID: 434091958}
@@ -9880,8 +10159,9 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   deliverPapers:
     name: 
     target: {fileID: 950924007}
@@ -9891,8 +10171,9 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   fixBossGrass:
     name: 
     target: {fileID: 130261640}
@@ -9902,8 +10183,9 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   fixCoolerOn1Level:
     name: 
     target: {fileID: 1902095932}
@@ -9913,8 +10195,9 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   fixCoolerOn2Level:
     name: 
     target: {fileID: 659416298}
@@ -9924,8 +10207,9 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   fixCoolerOn3Level:
     name: 
     target: {fileID: 802767518}
@@ -9935,8 +10219,9 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   shelvesOnSecretaryTable: {fileID: 95437442}
   askedToBringPapers: 0
 --- !u!114 &789035694128972724
@@ -9985,7 +10270,7 @@ PrefabInstance:
     - target: {fileID: 6127175601340615165, guid: f1fa95b98ea6ff14ca0f955bfdbc0c5d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6127175601340615165, guid: f1fa95b98ea6ff14ca0f955bfdbc0c5d,
         type: 3}
@@ -11909,21 +12194,26 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
+  state: 0
   noAction: 0
   timeOfStart: 0
+  isDialogPossible: 0
   inDialog: 0
-  isDialogSingle: 0
+  isDialogFinished: 0
   textBackground: {fileID: 3662595850963675415}
   bubbleText: {fileID: 3662595849909209529}
-  currentPhraseNum: 0
+  currentDialog:
+    currentPhraseNum: 0
+    phrases: []
   textMaxTime: 3
   sayTime: 0
   workWithPC:
     name: "\u043A\u043E\u0434\u0438\u0442"
     target: {fileID: 1283196553}
-    targetDistance: 0.4
+    targetDistance: 0.1
     talkingWithPerson: 0
     byTimer: 1
     targetTimer: 12
@@ -11936,12 +12226,13 @@ MonoBehaviour:
       \u0432\u043E \u0432\u0440\u0435\u043C\u0435\u043D\u0438?"
     - "\u041D\u0443 \u0438 \u0447\u0442\u043E \u0442\u0435\u0431\u0435 \u043D\u0435
       \u043D\u0440\u0430\u0432\u0438\u0442\u0441\u044F?"
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   watchOnDesk:
     name: "\u0441\u043C\u043E\u0442\u0440\u0438\u0442 \u043D\u0430 \u0434\u043E\u0441\u043A\u0443"
     target: {fileID: 269543733}
-    targetDistance: 0.4
+    targetDistance: 0.1
     talkingWithPerson: 0
     byTimer: 1
     targetTimer: 3
@@ -11957,12 +12248,13 @@ MonoBehaviour:
     - "\u041A\u043E\u0433\u0434\u0430-\u043D\u0438\u0431\u0443\u0434\u044C \u044F
       \u0443\u0432\u043E\u043B\u044E\u0441\u044C \u043E\u0442\u0441\u044E\u0434\u0430,
       \u043D\u043E \u043D\u0435 \u0441\u0435\u0433\u043E\u0434\u043D\u044F."
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   writeOnDesk:
     name: "\u043F\u0438\u0448\u0435\u0442 \u043D\u0430 \u0434\u043E\u0441\u043A\u0435"
     target: {fileID: 269543733}
-    targetDistance: 0.4
+    targetDistance: 0.1
     talkingWithPerson: 0
     byTimer: 1
     targetTimer: 9
@@ -11973,12 +12265,13 @@ MonoBehaviour:
     - "\u0421\u043A\u043E\u043B\u044C\u043A\u043E \u0442\u0430\u0441\u043A\u043E\u0432...
       \u0418 \u0433\u0434\u0435 \u043D\u0430\u0439\u0442\u0438 \u0432\u0440\u0435\u043C\u044F?"
     - "\u0422\u0430\u043A,  e = 2,71821"
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   watchOnCat:
     name: "\u0441\u043C\u043E\u0442\u0440\u0438\u043C \u043D\u0430 \u043A\u043E\u0448\u043A\u0443"
     target: {fileID: 1896730347}
-    targetDistance: 0.4
+    targetDistance: 0.1
     talkingWithPerson: 0
     byTimer: 1
     targetTimer: 9
@@ -11993,19 +12286,21 @@ MonoBehaviour:
       \u043A\u043E\u0448\u0435\u043A?"
     - " \u0423\u0436\u0435 \u0442\u0430\u043A \u043F\u043E\u0437\u0434\u043D\u043E,
       \u043D\u0430\u0434\u043E \u0431\u044B \u0434\u043E\u043C\u043E\u0439 \u043F\u043E\u0439\u0442\u0438."
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   switchPowerOn:
     name: 
     target: {fileID: 1868588185}
-    targetDistance: 0.4
+    targetDistance: 0.1
     talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
 --- !u!114 &4127986583344671163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12064,15 +12359,20 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
+  state: 0
   noAction: 0
   timeOfStart: 0
+  isDialogPossible: 0
   inDialog: 0
-  isDialogSingle: 0
+  isDialogFinished: 0
   textBackground: {fileID: 6815551348554926419}
   bubbleText: {fileID: 6815551347466168829}
-  currentPhraseNum: 0
+  currentDialog:
+    currentPhraseNum: 0
+    phrases: []
   textMaxTime: 3
   sayTime: 0
   bringCoffee:
@@ -12084,8 +12384,9 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   printPapers:
     name: "\u0440\u0430\u0441\u043F\u0435\u0447\u0430\u0442\u0430\u0442\u044C \u0431\u0443\u043C\u0430\u0433\u0438"
     target: {fileID: 950924007}
@@ -12095,8 +12396,9 @@ MonoBehaviour:
     targetTimer: 5
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   bringPapersFrom2level:
     name: "\u0441\u0445\u043E\u0434\u0438\u0442\u044C \u0437\u0430 \u0431\u0443\u043C\u0430\u0433\u0430\u043C\u0438
       \u043D\u0430 2 \u044D\u0442\u0430\u0436"
@@ -12107,8 +12409,9 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   bringPapersToPrinter:
     name: "\u043F\u0440\u0438\u043D\u0435\u0441\u0442\u0438 \u0431\u0443\u043C\u0430\u0433\u0438
       \u0441\u043E \u0432\u0442\u043E\u0440\u043E\u0433\u043E \u044D\u0442\u0430\u0436\u0430"
@@ -12119,8 +12422,9 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   bringPapersToBoss:
     name: "\u043F\u0440\u0438\u043D\u0435\u0441\u0442\u0438 \u0431\u0443\u043C\u0430\u0433\u0438
       \u0431\u043E\u0441\u0441\u0443"
@@ -12131,8 +12435,9 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   backToDesk:
     name: "\u0432\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F \u043A \u0441\u0442\u043E\u043B\u0443"
     target: {fileID: 1896565967}
@@ -12142,8 +12447,9 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   prepareCoffee:
     name: "\u043F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u0438\u0442\u044C \u043A\u043E\u0444\u0435"
     target: {fileID: 1625024868}
@@ -12153,8 +12459,9 @@ MonoBehaviour:
     targetTimer: 15
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   talkWithCleaner:
     name: "\u043F\u043E\u0433\u043E\u0432\u043E\u0440\u0438\u0442\u044C \u0441 \u0441\u0435\u043A\u0440\u0435\u0442\u0430\u0440\u0448\u0435\u0439"
     target: {fileID: 411139828}
@@ -12164,8 +12471,9 @@ MonoBehaviour:
     targetTimer: 30000
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   askCleanerToBringPapers:
     name: "\u043F\u043E\u043F\u0440\u043E\u0441\u0438\u0442\u044C \u0443\u0431\u043E\u0440\u0449\u0438\u0446\u0443
       \u043F\u0440\u0438\u043D\u0435\u0441\u0442\u0438 \u0431\u0443\u043C\u0430\u0433\u0443"
@@ -12176,8 +12484,9 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   goForSugar:
     name: 
     target: {fileID: 0}
@@ -12187,8 +12496,9 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   bringSugar:
     name: 
     target: {fileID: 0}
@@ -12198,8 +12508,9 @@ MonoBehaviour:
     targetTimer: 0
     animationName: 
     phrases: []
-    phraseStageNum: 0
+    currentDialogNum: 0
     phrasesStorage: []
+    dialogs: []
   visionPoint: {fileID: 1528037530}
   programmer: {fileID: 897729008}
   askedToPrintPapers: 0
@@ -12250,7 +12561,7 @@ PrefabInstance:
     - target: {fileID: 4127986583344671161, guid: 498a0d836606b6e4d94de17b39c5b724,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4127986583344671161, guid: 498a0d836606b6e4d94de17b39c5b724,
         type: 3}
@@ -14285,7 +14596,7 @@ PrefabInstance:
     - target: {fileID: 789035694128972722, guid: 78ed3ef02fab9374fba8cdc3307b4a26,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 789035694128972722, guid: 78ed3ef02fab9374fba8cdc3307b4a26,
         type: 3}

@@ -7,11 +7,11 @@ public class Boss1Script : ActingPerson
 {
     //public PersonAct prevAction;
     public PersonAct rememberedAction;
-    public PersonAct goToBossTable;
+    public PersonAct goToBossTable; //убрать
     public PersonAct readPapers;
-    public PersonAct goToSecretary;
+    public PersonAct goToSecretary; //убрать
     public PersonAct askSecretaryAboutCoffee;
-    public PersonAct goToVault;
+    public PersonAct goToVault; //убрать
     public PersonAct tryToRememberPassword;
     public PersonAct unlockShelter;
     public PersonAct askSecretaryAboutNewPapers;
@@ -71,6 +71,14 @@ public class Boss1Script : ActingPerson
     }
 
     //задания закончившиеся естественны образом, т.е. циклы
+    protected override void preFinishOfCurrentAction()
+    {
+        if (currentAction == askSecretaryAboutCoffee)
+        {
+            levelController.generateNeedCoffeEvent();
+        }
+    }
+
     protected override void goToNextAction()
     {
         Debug.Log("BossScript next Action");
@@ -85,8 +93,6 @@ public class Boss1Script : ActingPerson
             anim.SetBool("Sit", false);
             setAction(goToSecretary);
             rememberedAction = askSecretaryAboutCoffee;
-            //doAskSecretaryAboutCoffee();
-            //levelController.generateNeedCoffeEvent();
             levelController.BossCupFilled = false;
         }
         else if (currentAction == goToSecretary)
@@ -95,7 +101,6 @@ public class Boss1Script : ActingPerson
         }
         else if (currentAction == askSecretaryAboutCoffee)
         {
-            levelController.generateNeedCoffeEvent();
             doRememberVaultPassword();
         }
         else if (currentAction == askSecretaryAboutNewPapers)

@@ -10,16 +10,17 @@ public class ActingPerson : MonoBehaviour
     protected Animator anim;
     PersonNavigationController navigator;
     public PersonAct currentAction;
+    public PersonState state;
     public bool noAction = false;
     //int curActNum = 0;
     public float timeOfStart = 0; //Время начала выполнения задачи
 
-    ActingPerson interlocutor; //Человек с которым мы общаемся
+    public bool isDialogPossible = false;
     public bool inDialog = false; //находится ли личность в диалоге
-    public bool isDialogSingle = false; //проходит ли этот диалог сам с собой
+    public bool isDialogFinished = false; //проходит ли этот диалог сам с собой
     public GameObject textBackground; //фон текста
     public Text bubbleText; //текстбокс
-    public int currentPhraseNum; //номер текущей фразы
+    public Dialog currentDialog;
     public float textMaxTime = 3; //время в течении которого отображается фраза
     public float sayTime = 0; //время начала отображения фразы
 
@@ -33,78 +34,94 @@ public class ActingPerson : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         navigator = GetComponent<PersonNavigationController>();
+        state = PersonState.ReadyForDialog;
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        //Здесь может установиться новое состояние, которое сразу же можно будет использовать для обновления диалога
-        if (!inDialog)
+        switch (state)
         {
-            if (currentAction.byTimer && Time.fixedTime - timeOfStart > currentAction.targetTimer)
-            {
-                goToNextAction();
-            }
-            else if (!currentAction.byTimer && navigator.targetReached)
-            {
-                goToNextAction();
-            }
+            case PersonState.ReadyForDialog:
+                //Мы сначала проверяем можем ли мы войти в диалог
+                if (navigator.targetReached)
+                    state = PersonState.InDialog;
+                break;
+
+            case PersonState.InDialog:
+                //Если с момента сказания фразы прошло больше textMaxTime секунд
+                if (Time.fixedTime - sayTime > textMaxTime)
+                {
+                    //Тогда мы переходим к следующей фразе диалога
+                    if (currentDialog.currentPhraseNum >= currentDialog.phrases.Length)
+                    {
+                        //Если фраза была последняя, значит завершаем диалог
+                        //Сохраняем номер диалога который у нас был
+                        currentAction.currentDialogNum = (currentAction.currentDialogNum + 1) % currentAction.dialogs.Length;
+
+                        //стираем текст из текстбокса и убираем фон
+                        textBackground.SetActive(false);
+                        bubbleText.text = "";
+                        
+                        state = PersonState.DialogFinished;
+                    }
+                    else
+                    {
+                        //Если не последняя, значит переходим к следующей
+                        Phrase ph = currentDialog.phrases[currentDialog.currentPhraseNum];
+                        ph.sayer.say(ph.speech);
+                        currentDialog.currentPhraseNum += 1;
+                    }
+                }
+                break;
+                
+            //Если диалог закончился, тогда переходим к следующему действию
+            case PersonState.DialogFinished:
+                if (currentAction.byTimer && Time.fixedTime - timeOfStart > currentAction.targetTimer)
+                {
+                    goToNextAction();
+                }
+                else if (!currentAction.byTimer && navigator.targetReached)
+                {
+                    goToNextAction();
+                }
+                break;
         }
         
         textBackground.gameObject.transform.rotation = Quaternion.identity; //new Quaternion(0,0,0,1);
         bubbleText.gameObject.transform.rotation = Quaternion.identity;
 
-        if (Time.fixedTime - sayTime > textMaxTime)
-        {
-            if (currentPhraseNum >= currentAction.phrases.Length)
-            {
-                textBackground.SetActive(false);
-                bubbleText.text = "";
-            } else
-            {
-                //Здесь нужно начать произносить все фразы
-                if (interlocutor != null) //значит будет диалог с кем-то
-                {
-                    if (currentPhraseNum % 2 == 1)
-                        interlocutor.say(currentAction.phrases[currentPhraseNum]);
-                    else
-                        say(currentAction.phrases[currentPhraseNum]);
-                }
-                else
-                {
-                    //произносим фразы в монологе
-                    say(currentAction.phrases[currentPhraseNum]);
-                }
-                currentPhraseNum += 1;
-            }
-        }
     }
+    
+    protected virtual void preFinishOfCurrentAction()
+    {
+        Debug.Log("Acting person pre finish of current Action");
+    }
+
     protected virtual void goToNextAction()
     {
+        preFinishOfCurrentAction();
         Debug.Log("Acting person next Action");
     }
-    public void setAction(PersonAct newAct)
-    {
-        navigator.SetTarget(newAct.target, newAct.targetDistance, newAct.talkingWithPerson);
 
-        currentPhraseNum = 0;
-        if (currentAction.phrasesStorage.Length != 0)
+    //Начиная новое действие, мы должны не только установить что нужно идти к новой точке, 
+    //но и обозначить диалог который будем говорить когда дойдём до места
+    //Сохранив при этом что диалог предыдущего действия продлился на 1
+    public void setAction(PersonAct newAction)
+    {
+        navigator.SetTarget(newAction.target, newAction.targetDistance, newAction.talkingWithPerson);
+                    
+        if (newAction.dialogs.Length != 0)
         {
-            currentAction.phraseStageNum = (currentAction.phraseStageNum + 1) % currentAction.phrasesStorage.Length;
+            currentDialog = newAction.dialogs[newAction.currentDialogNum];
+            state = PersonState.ReadyForDialog;
         }
         else
-            currentAction.phraseStageNum = 0;
+            state = PersonState.DialogFinished;
 
-        if (newAct.phrasesStorage.Length != 0)
-            newAct.phrases = newAct.phrasesStorage[newAct.phraseStageNum].phrases;
-
-        //Debug.Log(newAct.name);
-        currentAction = newAct;
+        currentAction = newAction;
         if (currentAction.byTimer)
             timeOfStart = Time.fixedTime;
-
-        interlocutor = newAct.target.GetComponent<ActingPerson>();
-        
     }
 
     public void say(string text)
@@ -117,6 +134,7 @@ public class ActingPerson : MonoBehaviour
 
 public enum PersonState
 {
-    Idle,
-    Acting
+    ReadyForDialog,
+    InDialog,
+    DialogFinished
 }
