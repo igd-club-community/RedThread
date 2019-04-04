@@ -7,11 +7,11 @@ public class Boss1Script : ActingPerson
 {
     //public PersonAct prevAction;
     public PersonAct rememberedAction;
-    public PersonAct goToBossTable; //убрать
+    public PersonAct goToBossTable;
     public PersonAct readPapers;
-    public PersonAct goToSecretary; //убрать
+    public PersonAct waitSecretary;
     public PersonAct askSecretaryAboutCoffee;
-    public PersonAct goToVault; //убрать
+    public PersonAct goToVault;
     public PersonAct tryToRememberPassword;
     public PersonAct unlockShelter;
     public PersonAct askSecretaryAboutNewPapers;
@@ -35,7 +35,13 @@ public class Boss1Script : ActingPerson
         levelController.CoffeeDelivered += doGoToBossTable;
         //levelController.PapersDelivered += doReadPapers;
 
-        doGoToBossTable();
+        //doGoToBossTable();
+        DebugStart();
+    }
+
+    public void DebugStart()
+    {
+        setAction(askSecretaryAboutCoffee);
     }
 
     public float timeOfReadingStarted;
@@ -61,8 +67,8 @@ public class Boss1Script : ActingPerson
                 anim.SetBool("Sit", false);
 
                 say("Твоюж мать!");
-                setAction(goToSecretary);
-                rememberedAction = askSecretaryAboutNewPapers;
+                setAction(askSecretaryAboutNewPapers);
+                //rememberedAction = askSecretaryAboutNewPapers;
 
                 levelController.BossCupFilled = false;
                 levelController.BossCupMoved = false;
@@ -81,6 +87,7 @@ public class Boss1Script : ActingPerson
 
     protected override void goToNextAction()
     {
+        base.goToNextAction();
         Debug.Log("BossScript next Action");
         if (currentAction == goToBossTable)
         {
@@ -91,14 +98,14 @@ public class Boss1Script : ActingPerson
         else if (currentAction == readPapers)
         {
             anim.SetBool("Sit", false);
-            setAction(goToSecretary);
-            rememberedAction = askSecretaryAboutCoffee;
+            setAction(askSecretaryAboutCoffee);
+            //rememberedAction = askSecretaryAboutCoffee;
             levelController.BossCupFilled = false;
         }
-        else if (currentAction == goToSecretary)
-        {
-            setAction(rememberedAction);
-        }
+        //else if (currentAction == goToSecretary)
+        //{
+        //    setAction(rememberedAction);
+        //}
         else if (currentAction == askSecretaryAboutCoffee)
         {
             doRememberVaultPassword();
@@ -156,7 +163,6 @@ public class Boss1Script : ActingPerson
     public void doTalkWithProgrammer()
     {
         setAction(talkWithProgrammer);
-
     }
     public void doFireProgrammer()
     {

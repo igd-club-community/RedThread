@@ -56,7 +56,7 @@ public class PersonNavigationController : MonoBehaviour
         this.target = target;
         this.minDistanceToTarget = minDistanceToTarget;
         this.talkingWithPerson = talkingWithPerson;
-         startMoving = true;
+        startMoving = true;
         onCourse = false;
         inPlace = false;
         _targetReached = false;

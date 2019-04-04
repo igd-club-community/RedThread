@@ -8,6 +8,7 @@ public class Secterary1Script : ActingPerson
     //Секретарша подписывается на событие босса когда он хочет кофе.
 
     public PersonAct bringCoffee;
+    //public PersonAct giveCoffeeToBoss;
     public PersonAct printPapers;
     public PersonAct bringPapersFrom2level;
     public PersonAct bringPapersToPrinter;
@@ -77,13 +78,13 @@ public class Secterary1Script : ActingPerson
         }
         else if (currentAction == prepareCoffee)
         {
-                doBringCoffeeToBoss();
+            doBringCoffeeToBoss();
         }
         else if (currentAction == bringCoffee)
         {
             levelController.BossCupFilled = true;
             levelController.generateCoffeeDelivered();
-            doBackToDesk();
+            //doBackToDesk();
         }
         else if (currentAction == talkWithCleaner)
         {
@@ -94,7 +95,7 @@ public class Secterary1Script : ActingPerson
 
             else if (levelController.CleanerIsBisy)
                 doBackToDesk();
-            
+
             setAction(talkWithCleaner);
         }
         else if (currentAction == goForSugar)

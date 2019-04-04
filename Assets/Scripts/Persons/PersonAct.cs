@@ -12,9 +12,7 @@ public class PersonAct
     public bool byTimer;
     public float targetTimer; //Время должно зависеть от количества диалогов
     public string animationName; //TODO: can be changed to think that convinient to describe animation
-    public string[] phrases;
     public int currentDialogNum;
-    public Phrases[] phrasesStorage;
     public Dialog[] dialogs;
 }
 

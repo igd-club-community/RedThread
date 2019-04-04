@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels.unity
     guid: 93275ba02204dd54cbe699cd165c100f
   - enabled: 1
+    path: Assets/Scenes/techScenes/Level1Vitaliy.unity
+    guid: 37e2da2f81ec69b42afe21c54743c48e
+  - enabled: 0
     path: Assets/Scenes/Levels/Level1.unity
     guid: 3295ad0aead8c894982146c5b9dd1fd7
   - enabled: 1

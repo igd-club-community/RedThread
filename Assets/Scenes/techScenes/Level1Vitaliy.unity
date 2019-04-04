@@ -6149,13 +6149,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625024867}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.09, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 1.0900002, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 919823417}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &1638868606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7698,7 +7698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.size
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[0].phrases.Array.size
@@ -7714,11 +7714,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[3].phrases.Array.size
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[4].phrases.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: readPapers.dialogs.Array.size
@@ -7727,6 +7727,34 @@ PrefabInstance:
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: readPapers.dialogs.Array.data[0].phrases.Array.size
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[5].phrases.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[6].phrases.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[7].phrases.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[2].phrases.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[1].phrases.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[0].phrases.Array.size
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: goToBossTable.target
@@ -8014,14 +8042,11 @@ PrefabInstance:
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[0].phrases.Array.data[0].speech
       value: "\u041A\u0430\u0440\u0438\u043D, \u0447\u0430\u0439 \u0431\u0435\u0437
-        \u0441\u0430\u0445\u0430\u0440\u0430 \u043C\u043D\u0435 \u043F\u0440\u0438\u043D\u0435\u0441\u0438.
-        \ "
+        \u0441\u0430\u0445\u0430\u0440\u0430 \u043C\u043D\u0435 \u043F\u0440\u0438\u043D\u0435\u0441\u0438. "
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[0].phrases.Array.data[1].speech
-      value: "\u041A\u043E\u043D\u0435\u0447\u043D\u043E, \u0413\u0440\u0438\u0433\u043E\u0440\u0438\u0439
-        \u0410\u0440\u0438\u0441\u0442\u0430\u0440\u0445\u043E\u0432\u0438\u0447,
-        \u0441\u0435\u0439\u0447\u0430\u0441 \u0432\u0441\u0435 \u0431\u0443\u0434\u0435\u0442. "
+      value: "\u0421\u0435\u0439\u0447\u0430\u0441-\u0441\u0435\u0439\u0447\u0430\u0441."
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[0].phrases.Array.data[0].sayer
@@ -8034,9 +8059,8 @@ PrefabInstance:
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[1].phrases.Array.data[0].speech
       value: "\u041A\u0430\u0440\u0438\u043D\u0430, \u043E\u0442\u0432\u043B\u0435\u043A\u0438\u0441\u044C
-        \u043E\u0442 \u0431\u043E\u043B\u0442\u043E\u0432\u043D\u0438 \u0438 \u043F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u044C
-        \u043C\u043D\u0435 \u0447\u0430\u0439 \u0431\u0435\u0437 \u0441\u0430\u0445\u0430\u0440\u0430
-        \u043D\u0430 \u044D\u0442\u043E\u0442 \u0440\u0430\u0437. "
+        \u0438 \u043D\u0430 \u044D\u0442\u043E\u0442 \u0440\u0430\u0437 \u043F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u044C
+        \u043C\u043D\u0435 \u0447\u0430\u0439 \u0431\u0435\u0437 \u0441\u0430\u0445\u0430\u0440\u0430."
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[1].phrases.Array.data[1].speech
@@ -8046,8 +8070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[1].phrases.Array.data[2].speech
-      value: "\u0411\u0443\u0434\u044C \u043F\u043E\u0432\u043D\u0438\u043C\u0430\u0442\u0435\u043B\u044C\u043D\u0435\u0435.
-        \u042F \u043D\u0435 \u043B\u044E\u0431\u043B\u044E \u0441\u0430\u0445\u0430\u0440."
+      value: "\u0411\u0443\u0434\u044C \u043F\u043E\u0432\u043D\u0438\u043C\u0430\u0442\u0435\u043B\u044C\u043D\u0435\u0435."
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[1].phrases.Array.data[1].sayer
@@ -8067,10 +8090,8 @@ PrefabInstance:
       objectReference: {fileID: 466561784066382528}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[2].phrases.Array.data[0].speech
-      value: "\u041A\u0430\u0440\u0438\u043D\u0430, \u043F\u043E\u0441\u043B\u0443\u0448\u0430\u0439
-        \u043C\u0435\u043D\u044F \u0441\u0435\u0439\u0447\u0430\u0441, \u043F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430,
-        \u0435\u0449\u0435 \u0440\u0430\u0437! \u0427\u0430\u0439 \u043F\u0440\u0438\u043D\u0435\u0441\u0438
-        \u043C\u043D\u0435 \u0411\u0415\u0417 \u0441\u0430\u0445\u0430\u0440\u0430! "
+      value: "\u041A\u0430\u0440\u0438\u043D\u0430, \u043F\u0440\u0438\u043D\u0435\u0441\u0438
+        \u043C\u043D\u0435 \u0447\u0430\u0439 \u0411\u0415\u0417 \u0441\u0430\u0445\u0430\u0440\u0430! "
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[2].phrases.Array.data[1].sayer
@@ -8078,9 +8099,8 @@ PrefabInstance:
       objectReference: {fileID: 6127175601340615166}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[2].phrases.Array.data[1].speech
-      value: "\u041E\u0439, \u0438\u0437\u0432\u0438\u043D\u0438\u0442\u0435, \u0413\u0440\u0438\u0433\u043E\u0440\u0438\u0439
-        \u0410\u0440\u0438\u0441\u0442\u0430\u0440\u0445\u043E\u0432\u0438\u0447.
-        \u042F \u0441\u0435\u0439\u0447\u0430\u0441 \u0432\u0441\u0435 \u0438\u0441\u043F\u0440\u0430\u0432\u043B\u044E."
+      value: "\u041E\u0439, \u0438\u0437\u0432\u0438\u043D\u0438\u0442\u0435, \u044F
+        \u0441\u0435\u0439\u0447\u0430\u0441 \u0432\u0441\u0435 \u0438\u0441\u043F\u0440\u0430\u0432\u043B\u044E."
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[2].phrases.Array.data[2].sayer
@@ -8097,10 +8117,8 @@ PrefabInstance:
       objectReference: {fileID: 466561784066382528}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[3].phrases.Array.data[0].speech
-      value: "\u042F \u043D\u0435 \u0445\u043E\u0447\u0443 \u0434\u0435\u043B\u0430\u0442\u044C
-        \u043F\u043E\u0441\u043F\u0435\u0448\u043D\u044B\u0445 \u0432\u044B\u0432\u043E\u0434\u043E\u0432,
-        \u043D\u043E \u044F \u0442\u0435\u0431\u044F \u0441\u0435\u0439\u0447\u0430\u0441
-        \u0445\u043E\u0447\u0443 \u043F\u0440\u043E\u0441\u0442\u043E \u0443\u0432\u043E\u043B\u0438\u0442\u044C. "
+      value: "\u0422\u044B \u043C\u0435\u043D\u044F \u0443\u0431\u0438\u0442\u044C
+        \u0445\u043E\u0447\u0435\u0448\u044C? "
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[3].phrases.Array.data[1].sayer
@@ -8108,10 +8126,8 @@ PrefabInstance:
       objectReference: {fileID: 466561784066382528}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[3].phrases.Array.data[1].speech
-      value: "\u042F \u043F\u043E\u043F\u0440\u043E\u0441\u0438\u043B \u0442\u0435\u0431\u044F
-        \u043F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u0438\u0442\u044C \u0447\u0430\u0439
-        \u0411\u0415\u0417 \u0421\u0410\u0425\u0410\u0420\u0410, \u041A\u0430\u0440\u0438\u043D\u0430,
-        \u0422\u0420\u0418 \u0420\u0410\u0417\u0410!"
+      value: "\u041D\u0435\u0442, \u043A\u0430\u043A \u0412\u044B \u0442\u0430\u043A\u043E\u0435
+        \u043C\u043E\u0433\u043B\u0438 \u043F\u043E\u0434\u0443\u043C\u0430\u0442\u044C?!"
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[3].phrases.Array.data[2].sayer
@@ -8119,9 +8135,8 @@ PrefabInstance:
       objectReference: {fileID: 6127175601340615166}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[3].phrases.Array.data[2].speech
-      value: "\u0413\u0440\u0438-\u0433\u0440\u0438\u0433\u043E\u0440\u0438\u0439
-        \u0410\u0440\u0438\u0441\u0442\u0430\u0440\u0445\u043E\u0432\u0438\u0447,
-        \u043F\u0435\u0440\u0435\u0441\u0442\u0430\u043D\u044C\u0442\u0435 \u043A\u0440\u0438\u0447\u0430\u0442\u044C. "
+      value: "\u0427\u0410\u0419 \u0411\u0415\u0417 \u0421\u0410\u0425\u0410\u0420\u0410
+        \u041C\u041D\u0415 \u041F\u0420\u0418\u041D\u0415\u0421\u0418!"
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[4].phrases.Array.data[0].sayer
@@ -8129,13 +8144,9 @@ PrefabInstance:
       objectReference: {fileID: 466561784066382528}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[4].phrases.Array.data[0].speech
-      value: "\u0417\u043D\u0430\u0435\u0448\u044C, \u041A\u0430\u0440\u0438\u043D\u0430,
-        \u0442\u044B \u0443\u0432\u043E\u043B\u0435\u043D\u0430! \u042F \u0442\u0435\u0431\u044F
-        \u0427\u0415\u0422\u042B\u0420\u0415 \u0420\u0410\u0417\u0410 \u041F\u041E\u041F\u0420\u041E\u0421\u0418\u041B
-        \u043F\u0440\u0438\u043D\u0435\u0441\u0442\u0438 \u043C\u043D\u0435 \u0447\u0430\u0439
-        \u0431\u0435\u0437 \u0441\u0430\u0445\u0430\u0440\u0430. \u042D\u0442\u043E
-        \u0431\u044B\u043B\u043E \u0442\u0430\u043A \u0441\u043B\u043E\u0436\u043D\u043E,
-        \u041A\u0430\u0440\u0438\u043D\u0430? "
+      value: "\u0422\u0430\u043A \u0441\u043B\u043E\u0436\u043D\u043E \u043F\u0440\u0438\u043D\u0435\u0441\u0442\u0438
+        \u0447\u0430\u0439 \u0431\u0435\u0437 \u0441\u0430\u0445\u0430\u0440\u0430,
+        \u041A\u0430\u0440\u0438\u043D\u0430?"
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[4].phrases.Array.data[1].sayer
@@ -8143,10 +8154,8 @@ PrefabInstance:
       objectReference: {fileID: 6127175601340615166}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[4].phrases.Array.data[1].speech
-      value: " \u0413\u0440\u0438\u0433\u043E\u0440\u0438\u0439 \u0410\u0440\u0438\u0441\u0442\u0430\u0440\u0445\u043E\u0432\u0438\u0447,
-        \u043F\u0440\u043E\u0441\u0442\u0438\u0442\u0435 \u043C\u0435\u043D\u044F,
-        \u043F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u0442\u0430\u043A\u043E\u0435,
-        \u0447\u0435\u0441\u0442\u043D\u043E, \u0431\u043E\u043B\u044C\u0448\u0435
+      value: "\u041F\u0440\u043E\u0441\u0442\u0438\u0442\u0435 \u043C\u0435\u043D\u044F,
+        \u043F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u0431\u043E\u043B\u044C\u0448\u0435
         \u043D\u0435 \u043F\u043E\u0432\u0442\u043E\u0440\u0438\u0442\u0441\u044F! "
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
@@ -8192,18 +8201,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: readPapers.dialogs.Array.data[0].phrases.Array.data[1].speech
-      value: "\u0410\u0439, \u043E\u043F\u044F\u0442\u044C \u043D\u0443\u0436\u043D\u043E
-        \u043F\u043E\u0434\u043F\u0438\u0441\u0430\u0442\u044C \u043A\u0443\u0447\u0443
-        \u0432\u0441\u044F\u043A\u0438\u0445 \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u043E\u0432\u2026"
+      value: "\u0410\u0439, \u043A\u0443\u0447\u0430 \u0432\u0441\u044F\u043A\u0438\u0445
+        \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u043E\u0432\u2026"
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: readPapers.dialogs.Array.data[0].phrases.Array.data[2].speech
-      value: "\u041F\u0440\u043E\u0435\u043A\u0442 \u201C\u0421\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0439
-        \u0448\u0430\u0433\u201D... \u0414\u0430, \u0440\u0435\u0431\u044F\u0442\u0430
-        \u043C\u043E\u043B\u043E\u0434\u0446\u044B, \u0441\u043F\u0430\u0441\u043B\u0438
-        \u043A\u043E\u043C\u043F\u0430\u043D\u0438\u044E\u2026 \u041D\u0430\u0434\u0435\u044E\u0441\u044C,
-        \u042E\u0440\u0430 \u0431\u0443\u0434\u0435\u0442 \u043F\u0440\u043E\u0434\u043E\u043B\u0436\u0430\u0442\u044C
-        \u0440\u0430\u0431\u043E\u0442\u0430\u0442\u044C \u0441 \u043D\u0430\u043C\u0438."
+      value: "\u0410\u0433\u0430, \u0434\u043E\u0433\u043E\u0432\u043E\u0440... \u041F\u0440\u043E\u0435\u043A\u0442
+        \u201C\u0421\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0439 \u0448\u0430\u0433\u201D... "
       objectReference: {fileID: 0}
     - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
       propertyPath: readPapers.dialogs.Array.data[0].phrases.Array.data[3].speech
@@ -8226,6 +8230,223 @@ PrefabInstance:
       propertyPath: readPapers.dialogs.Array.data[0].phrases.Array.data[3].sayer
       value: 
       objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[5].phrases.Array.data[0].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[5].phrases.Array.data[0].speech
+      value: "\u0422\u0430\u043A \u043B\u0430\u0434\u043D\u043E, \u043D\u0430 \u044D\u0442\u043E\u0442
+        \u0440\u0430\u0437 \u043F\u0440\u0438\u043D\u0435\u0441\u0438 \u043C\u043D\u0435
+        \u043A\u043E\u0444\u0435 \u0441 \u0441\u0430\u0445\u0430\u0440\u043E\u043C."
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[5].phrases.Array.data[1].sayer
+      value: 
+      objectReference: {fileID: 6127175601340615166}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[5].phrases.Array.data[1].speech
+      value: "\u041F\u043E\u043D\u044F\u043B\u0430."
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[6].phrases.Array.data[0].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[6].phrases.Array.data[0].speech
+      value: "\u041F\u0440\u0438\u043D\u0435\u0441\u0438 \u043C\u043D\u0435 \u043A\u043E\u0444\u0435
+        \u0431\u0435\u0437 \u043A\u043E\u0444\u0435."
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[6].phrases.Array.data[1].sayer
+      value: 
+      objectReference: {fileID: 6127175601340615166}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[6].phrases.Array.data[1].speech
+      value: "\u0427\u0442\u043E?! "
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[7].phrases.Array.data[0].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[7].phrases.Array.data[0].speech
+      value: "\u041F\u0440\u0438\u043D\u0435\u0441\u0438 \u043C\u043D\u0435 \u043A\u043E\u0444\u0435
+        \u0431\u0435\u0437 \u043A\u043E\u0444\u0435."
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[7].phrases.Array.data[1].sayer
+      value: 
+      objectReference: {fileID: 6127175601340615166}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[7].phrases.Array.data[1].speech
+      value: "\u0421 \u0441\u0430\u0445\u0430\u0440\u043E\u043C?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[5].currentPhraseNum
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[6].phrases.Array.data[2].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[6].phrases.Array.data[2].speech
+      value: "\u0422\u044B \u043C\u0435\u043D\u044F \u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u043E
+        \u043F\u043E\u043D\u044F\u043B\u0430."
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[7].phrases.Array.data[2].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: askSecretaryAboutCoffee.dialogs.Array.data[7].phrases.Array.data[2].speech
+      value: "\u0410\u0440\u0433\u0445\u2026 \u2026 ... \u041D\u0435\u0442."
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.targetDistance
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[0].phrases.Array.data[0].speech
+      value: "\u041F\u0430\u0440\u043E\u043B\u044C, \u043F\u0430\u0440\u043E\u043B\u044C\u2026
+        \u041A\u0430\u043A  \u0442\u0430\u043C \u0431\u044B\u043B\u043E\u2026 \u201C\u0427\u0442\u043E(3)
+        \u042F(1) \u0437\u043D\u0430\u044E(4) \u043E(1) \u043A\u0440\u0443\u0433\u0430\u0445(5)?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[0].phrases.Array.data[1].speech
+      value: "\u0421\u043D\u043E\u0432\u0430 \u043D\u0435 \u0442\u043E! "
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[0].phrases.Array.data[2].speech
+      value: " \u0425\u043E\u0440\u043E\u0448\u043E, \u0447\u0442\u043E \u043D\u0435\u043E\u0433\u0440\u0430\u043D\u0438\u0447\u0435\u043D\u043D\u043E\u0435
+        \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043F\u043E\u043F\u044B\u0442\u043E\u043A."
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[0].phrases.Array.data[3].speech
+      value: "\u0425\u043C, \u0434\u0432\u0430(2), \u0441\u0435\u043C\u044C(7), \u041B\u0435\u0432
+        \u0422\u043E\u043B\u0441\u0442\u043E\u0439(1825). "
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[0].phrases.Array.data[4].speech
+      value: "\u0412\u0441\u043F\u043E\u043C\u0438\u043D\u0430\u0439, \u0434\u0443\u0440\u0435\u043D\u044C!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[0].phrases.Array.data[0].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[0].phrases.Array.data[1].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[0].phrases.Array.data[2].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[0].phrases.Array.data[3].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[0].phrases.Array.data[4].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[1].phrases.Array.data[0].speech
+      value: "\u0422\u0430\u043A \u043F\u043E\u043F\u0440\u043E\u0431\u0443\u0435\u043C
+        \u0447\u0442\u043E-\u043D\u0438\u0431\u0443\u0434\u044C \u043F\u043E\u043F\u0440\u043E\u0449\u0435.
+        111111"
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[1].phrases.Array.data[1].speech
+      value: "\u0414\u0430, \u0441\u043A\u043E\u043B\u044C\u043A\u043E \u043C\u043E\u0436\u043D\u043E
+        \u0443\u0436\u0435. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[1].phrases.Array.data[2].speech
+      value: "\u041A\u043E\u0433\u0434\u0430 \u044F \u0432 \u043F\u0440\u043E\u0448\u043B\u044B\u0439
+        \u0440\u0430\u0437 \u043F\u043E\u043C\u0435\u043D\u044F\u043B \u043F\u0430\u0440\u043E\u043B\u044C?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[1].phrases.Array.data[3].speech
+      value: "\u041F\u043E\u0441\u043B\u0435 \u043F\u0440\u0438\u0445\u043E\u0434\u0430
+        \u0431\u0440\u0430\u0442\u0446\u0430. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[1].phrases.Array.data[4].speech
+      value: "\u041E\u043D \u0436\u0435 \u043D\u0435 \u0432\u0438\u0434\u0435\u043B
+        \u043D\u043E\u0432\u044B\u0439?... "
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[1].phrases.Array.data[0].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[1].phrases.Array.data[1].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[1].phrases.Array.data[2].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[1].phrases.Array.data[3].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[1].phrases.Array.data[4].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[2].phrases.Array.data[0].speech
+      value: "\u041D\u0443, \u043F\u043E\u043F\u0440\u043E\u0431\u0443\u0435\u043C
+        \u0434\u0430\u0442\u0443 \u0440\u043E\u0436\u0434\u0435\u043D\u0438\u044F:
+        161093"
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[2].phrases.Array.data[1].speech
+      value: "\u0410\u0440\u0440! \u041C\u043E\u0436\u0435\u0442 \u043A\u0443\u043B\u044C\u0442\u0438\u0441\u0442\u044B
+        \u043E\u043F\u044F\u0442\u044C \u043F\u0430\u0440\u043E\u043B\u044C \u043F\u043E\u0434\u043C\u0435\u043D\u0438\u043B\u0438?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[2].phrases.Array.data[2].speech
+      value: "\u0422\u0430\u043A \u0432\u0447\u0435\u0440\u0430 \u043D\u043E\u0447\u044C\u044E
+        \u044F \u0437\u0430\u0445\u043E\u0434\u0438\u043B \u0432 \u043E\u0444\u0438\u0441.
+        \u0414\u043E \u044D\u0442\u043E\u0433\u043E \u0431\u044B\u043B \u0432 \u0431\u0430\u0440\u0435. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[2].phrases.Array.data[3].speech
+      value: "\u0410! \u0422\u0430\u043A! \u041F\u043E\u043F\u044B\u0442\u043A\u0430
+        - \u043D\u0435 \u043F\u044B\u0442\u043A\u0430. 123456"
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[2].phrases.Array.data[4].speech
+      value: "\u0417\u0430\u0440\u0430\u0437\u0430!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[2].phrases.Array.data[0].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[2].phrases.Array.data[1].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[2].phrases.Array.data[2].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[2].phrases.Array.data[3].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: tryToRememberPassword.dialogs.Array.data[2].phrases.Array.data[4].sayer
+      value: 
+      objectReference: {fileID: 466561784066382528}
+    - target: {fileID: 337474789, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f, type: 3}
+      propertyPath: waitSecretary.target
+      value: 
+      objectReference: {fileID: 1031852456}
     - target: {fileID: 6588090960277016874, guid: 6707d1fd8ef3b6841bcf4dfc41618f5f,
         type: 3}
       propertyPath: m_AngularSpeed
@@ -10097,9 +10318,7 @@ MonoBehaviour:
     byTimer: 0
     targetTimer: 0
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   state: 0
   noAction: 0
@@ -10122,9 +10341,7 @@ MonoBehaviour:
     byTimer: 1
     targetTimer: 300
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   putsHandfulOfSeeds:
     name: 
@@ -10134,9 +10351,7 @@ MonoBehaviour:
     byTimer: 0
     targetTimer: 0
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   washTheShelf:
     name: 
@@ -10146,9 +10361,7 @@ MonoBehaviour:
     byTimer: 0
     targetTimer: 0
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   bringPapersFrom2level:
     name: 
@@ -10158,9 +10371,7 @@ MonoBehaviour:
     byTimer: 0
     targetTimer: 0
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   deliverPapers:
     name: 
@@ -10170,9 +10381,7 @@ MonoBehaviour:
     byTimer: 0
     targetTimer: 0
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   fixBossGrass:
     name: 
@@ -10182,9 +10391,7 @@ MonoBehaviour:
     byTimer: 0
     targetTimer: 0
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   fixCoolerOn1Level:
     name: 
@@ -10194,9 +10401,7 @@ MonoBehaviour:
     byTimer: 0
     targetTimer: 0
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   fixCoolerOn2Level:
     name: 
@@ -10206,9 +10411,7 @@ MonoBehaviour:
     byTimer: 0
     targetTimer: 0
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   fixCoolerOn3Level:
     name: 
@@ -10218,9 +10421,7 @@ MonoBehaviour:
     byTimer: 0
     targetTimer: 0
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   shelvesOnSecretaryTable: {fileID: 95437442}
   askedToBringPapers: 0
@@ -10243,7 +10444,7 @@ MonoBehaviour:
   distance: 100
   talkingWithPerson: 0
   clamp: 0
-  maxLinearSpeed: 0
+  maxLinearSpeed: 1
   linearSpeed: 0
   angularSpeed: 0
   _targetReached: 0
@@ -12193,9 +12394,7 @@ MonoBehaviour:
     byTimer: 0
     targetTimer: 0
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   state: 0
   noAction: 0
@@ -12218,16 +12417,7 @@ MonoBehaviour:
     byTimer: 1
     targetTimer: 12
     animationName: 
-    phrases:
-    - "\u041F\u043E\u0447\u0435\u043C\u0443 \u0436\u0435 \u043A\u043E\u0434 \u043D\u0435
-      \u043A\u043E\u043C\u043F\u0438\u043B\u0438\u0442\u0441\u044F? "
-    - "\u0410 \u043A\u0430\u043A \u0436\u0435 \u043A\u0440\u0438\u0442\u0435\u0440\u0438\u0439
-      \u0434\u043B\u044F \u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0438 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u0430
-      \u0432\u043E \u0432\u0440\u0435\u043C\u0435\u043D\u0438?"
-    - "\u041D\u0443 \u0438 \u0447\u0442\u043E \u0442\u0435\u0431\u0435 \u043D\u0435
-      \u043D\u0440\u0430\u0432\u0438\u0442\u0441\u044F?"
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   watchOnDesk:
     name: "\u0441\u043C\u043E\u0442\u0440\u0438\u0442 \u043D\u0430 \u0434\u043E\u0441\u043A\u0443"
@@ -12237,19 +12427,7 @@ MonoBehaviour:
     byTimer: 1
     targetTimer: 3
     animationName: 
-    phrases:
-    - "\u0414\u0430, \u043F\u043E\u0447\u0435\u043C\u0443 \u043E\u043D\u043E \u0432\u044B\u0434\u0430\u0435\u0442
-      \u043F\u0440\u0438 \u0432\u044B\u0447\u0438\u0441\u043B\u0435\u043D\u0438\u0438
-      \u0440\u0435\u0433\u0440\u0435\u0441\u0441\u0438\u0438 \u043E\u0448\u0438\u0431\u043A\u0443?"
-    - "\u041D\u0435 \u043C\u043E\u0433\u0443 \u0434\u0443\u043C\u0430\u0442\u044C.
-      \u0427\u0442\u043E \u0436\u0435 \u044D\u0442\u043E \u0441\u043E \u043C\u043D\u043E\u0439?"
-    - "\u201C\u0421\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0439 \u0448\u0430\u0433\u201D,
-      \u0445\u043C."
-    - "\u041A\u043E\u0433\u0434\u0430-\u043D\u0438\u0431\u0443\u0434\u044C \u044F
-      \u0443\u0432\u043E\u043B\u044E\u0441\u044C \u043E\u0442\u0441\u044E\u0434\u0430,
-      \u043D\u043E \u043D\u0435 \u0441\u0435\u0433\u043E\u0434\u043D\u044F."
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   writeOnDesk:
     name: "\u043F\u0438\u0448\u0435\u0442 \u043D\u0430 \u0434\u043E\u0441\u043A\u0435"
@@ -12259,14 +12437,7 @@ MonoBehaviour:
     byTimer: 1
     targetTimer: 9
     animationName: 
-    phrases:
-    - "\u0410 \u0434\u0430\u043D\u043D\u044B\u0435 \u0432\u043E\u043E\u0431\u0449\u0435
-      \u0432\u0430\u043B\u0438\u0434\u043D\u044B\u0435? "
-    - "\u0421\u043A\u043E\u043B\u044C\u043A\u043E \u0442\u0430\u0441\u043A\u043E\u0432...
-      \u0418 \u0433\u0434\u0435 \u043D\u0430\u0439\u0442\u0438 \u0432\u0440\u0435\u043C\u044F?"
-    - "\u0422\u0430\u043A,  e = 2,71821"
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   watchOnCat:
     name: "\u0441\u043C\u043E\u0442\u0440\u0438\u043C \u043D\u0430 \u043A\u043E\u0448\u043A\u0443"
@@ -12276,18 +12447,7 @@ MonoBehaviour:
     byTimer: 1
     targetTimer: 9
     animationName: 
-    phrases:
-    - "\u041D\u0443\u0436\u043D\u043E \u043D\u0435 \u0437\u0430\u0431\u044B\u0442\u044C
-      \u0441\u0445\u043E\u0434\u0438\u0442\u044C \u0432 \u043C\u0430\u0433\u0430\u0437\u0438\u043D
-      \u0438 \u043A\u0443\u043F\u0438\u0442\u044C \u0411\u0443\u0441\u0438\u043D\u043A\u0435
-      \u043A\u043E\u0440\u043C."
-    - "\u0418\u043D\u0442\u0435\u0440\u0435\u0441\u043D\u043E, \u0430 \u0443 \u041A\u0430\u0440\u0438\u043D\u044B
-      \u043D\u0435\u0442 \u0430\u043B\u043B\u0435\u0440\u0433\u0438\u0438 \u043D\u0430
-      \u043A\u043E\u0448\u0435\u043A?"
-    - " \u0423\u0436\u0435 \u0442\u0430\u043A \u043F\u043E\u0437\u0434\u043D\u043E,
-      \u043D\u0430\u0434\u043E \u0431\u044B \u0434\u043E\u043C\u043E\u0439 \u043F\u043E\u0439\u0442\u0438."
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   switchPowerOn:
     name: 
@@ -12297,9 +12457,7 @@ MonoBehaviour:
     byTimer: 0
     targetTimer: 0
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
 --- !u!114 &4127986583344671163
 MonoBehaviour:
@@ -12320,7 +12478,7 @@ MonoBehaviour:
   distance: 100
   talkingWithPerson: 0
   clamp: 0
-  maxLinearSpeed: 0
+  maxLinearSpeed: 1
   linearSpeed: 0
   angularSpeed: 0
   _targetReached: 0
@@ -12358,9 +12516,7 @@ MonoBehaviour:
     byTimer: 0
     targetTimer: 0
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   state: 0
   noAction: 0
@@ -12383,9 +12539,7 @@ MonoBehaviour:
     byTimer: 0
     targetTimer: 0
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   printPapers:
     name: "\u0440\u0430\u0441\u043F\u0435\u0447\u0430\u0442\u0430\u0442\u044C \u0431\u0443\u043C\u0430\u0433\u0438"
@@ -12395,9 +12549,7 @@ MonoBehaviour:
     byTimer: 1
     targetTimer: 5
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   bringPapersFrom2level:
     name: "\u0441\u0445\u043E\u0434\u0438\u0442\u044C \u0437\u0430 \u0431\u0443\u043C\u0430\u0433\u0430\u043C\u0438
@@ -12408,9 +12560,7 @@ MonoBehaviour:
     byTimer: 0
     targetTimer: 0
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   bringPapersToPrinter:
     name: "\u043F\u0440\u0438\u043D\u0435\u0441\u0442\u0438 \u0431\u0443\u043C\u0430\u0433\u0438
@@ -12421,9 +12571,7 @@ MonoBehaviour:
     byTimer: 0
     targetTimer: 0
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   bringPapersToBoss:
     name: "\u043F\u0440\u0438\u043D\u0435\u0441\u0442\u0438 \u0431\u0443\u043C\u0430\u0433\u0438
@@ -12434,9 +12582,7 @@ MonoBehaviour:
     byTimer: 0
     targetTimer: 0
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   backToDesk:
     name: "\u0432\u0435\u0440\u043D\u0443\u0442\u044C\u0441\u044F \u043A \u0441\u0442\u043E\u043B\u0443"
@@ -12446,9 +12592,7 @@ MonoBehaviour:
     byTimer: 0
     targetTimer: 0
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   prepareCoffee:
     name: "\u043F\u0440\u0438\u0433\u043E\u0442\u043E\u0432\u0438\u0442\u044C \u043A\u043E\u0444\u0435"
@@ -12458,9 +12602,7 @@ MonoBehaviour:
     byTimer: 1
     targetTimer: 15
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   talkWithCleaner:
     name: "\u043F\u043E\u0433\u043E\u0432\u043E\u0440\u0438\u0442\u044C \u0441 \u0441\u0435\u043A\u0440\u0435\u0442\u0430\u0440\u0448\u0435\u0439"
@@ -12470,9 +12612,7 @@ MonoBehaviour:
     byTimer: 1
     targetTimer: 30000
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   askCleanerToBringPapers:
     name: "\u043F\u043E\u043F\u0440\u043E\u0441\u0438\u0442\u044C \u0443\u0431\u043E\u0440\u0449\u0438\u0446\u0443
@@ -12483,9 +12623,7 @@ MonoBehaviour:
     byTimer: 0
     targetTimer: 0
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   goForSugar:
     name: 
@@ -12495,9 +12633,7 @@ MonoBehaviour:
     byTimer: 0
     targetTimer: 0
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   bringSugar:
     name: 
@@ -12507,9 +12643,7 @@ MonoBehaviour:
     byTimer: 0
     targetTimer: 0
     animationName: 
-    phrases: []
     currentDialogNum: 0
-    phrasesStorage: []
     dialogs: []
   visionPoint: {fileID: 1528037530}
   programmer: {fileID: 897729008}
@@ -12534,7 +12668,7 @@ MonoBehaviour:
   distance: 100
   talkingWithPerson: 0
   clamp: 0
-  maxLinearSpeed: 0
+  maxLinearSpeed: 1
   linearSpeed: 0
   angularSpeed: 0
   _targetReached: 0

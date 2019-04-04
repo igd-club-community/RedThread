@@ -19,6 +19,10 @@ public class LevelsLoader : MonoBehaviour
         SceneManager.LoadScene("Credits");
     }
 
+    public void LoadLevel1Vitaliy()
+    {
+        SceneManager.LoadScene("Level1Vitaliy");
+    }
     public void LoadLevel(int i)
     {
         SceneManager.LoadScene("Level" + i.ToString());
