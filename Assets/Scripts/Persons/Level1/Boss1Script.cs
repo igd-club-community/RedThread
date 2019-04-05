@@ -41,6 +41,7 @@ public class Boss1Script : ActingPerson
         //levelController.PapersDelivered += doReadPapers;
 
         //doGoToBossTable();
+        name = "boss";
         DebugStart();
     }
 

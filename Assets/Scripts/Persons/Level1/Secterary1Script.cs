@@ -38,6 +38,7 @@ public class Secterary1Script : ActingPerson
         levelController.BossNeedsToRepairWindow += doCallToRepair;
         levelController.SecretaryCanGoToDesk += doBackToDesk;
 
+        name = "secret";
         setAction(talkWithCleaner);
     }
 

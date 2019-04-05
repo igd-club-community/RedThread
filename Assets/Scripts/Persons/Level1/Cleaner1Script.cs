@@ -32,6 +32,8 @@ public class Cleaner1Script : ActingPerson
 
         setAction(talkWithSecretary);
         currentAction = talkWithSecretary;
+
+        name = "cleaner";
     }
 
     new void Update()

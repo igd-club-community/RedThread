@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class ActingPerson : MonoBehaviour
 {
+    public string name;
     protected Animator anim;
     PersonNavigationController navigator;
     public PersonAct currentAction;

@@ -20,6 +20,7 @@ public class Programmer1Script : ActingPerson
         levelController.PowerOff += doSwitchPowerOn;
 
         doWorkWirkPC();
+        name = "program";
     }
 
     // Update is called once per frame
