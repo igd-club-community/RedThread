@@ -59,6 +59,7 @@ public class ActingPerson : MonoBehaviour
                         //Если фраза была последняя, значит завершаем диалог
                         //Сохраняем номер диалога который у нас был
                         currentAction.currentDialogNum = (currentAction.currentDialogNum + 1) % currentAction.dialogs.Length;
+                        currentDialog.currentPhraseNum = 0;
 
                         //стираем текст из текстбокса и убираем фон
                         textBackground.SetActive(false);
