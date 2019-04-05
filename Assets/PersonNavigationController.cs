@@ -10,6 +10,7 @@ public class PersonNavigationController : MonoBehaviour
 {
     protected Animator anim;
     NavMeshAgent navAgent;
+    public NavigationState navState;
 
     public bool startMoving = true;
     public bool onCourse;
@@ -48,6 +49,7 @@ public class PersonNavigationController : MonoBehaviour
         navAgent = GetComponent<NavMeshAgent>();
         navAgent.updatePosition = false;
         navAgent.updateRotation = false;
+        navState = NavigationState.StartMoving;
 
     }
 
@@ -56,9 +58,7 @@ public class PersonNavigationController : MonoBehaviour
         this.target = target;
         this.minDistanceToTarget = minDistanceToTarget;
         this.talkingWithPerson = talkingWithPerson;
-        startMoving = true;
-        onCourse = false;
-        inPlace = false;
+        navState = NavigationState.StartMoving;
         _targetReached = false;
         targetForward = new Vector2(target.transform.forward.x, target.transform.forward.z);
     }
@@ -95,18 +95,49 @@ public class PersonNavigationController : MonoBehaviour
         forward = new Vector2(transform.forward.x, transform.forward.z);
         resultAngle = Vector2.SignedAngle(world2dDelta, forward);
         //Debug.Log(resultAngle);
+        angularSpeed = resultAngle / 180 * ((float)Math.PI);
+        linearSpeed = maxLinearSpeed;
 
-        if (Math.Abs(resultAngle) < 10)
+        if (navAgent.remainingDistance < minDistanceToTarget)
         {
-            startMoving = false;
-            onCourse = true;
+            navState = NavigationState.InPlace;
         }
-        else
+
+        switch (navState)
         {
-            onCourse = false;
+            case NavigationState.StartMoving:
+                if (Math.Abs(resultAngle) < 25)
+                    navState = NavigationState.Moving;
+                linearSpeed = 0;
+                break;
+
+            case NavigationState.Moving:
+                if (navAgent.remainingDistance < 0.5f)
+                    linearSpeed = maxLinearSpeed / 2;
+                break;
+
+            case NavigationState.OnCourse:
+                break;
+
+            //Цель достигнута, доворачиваем 
+            case NavigationState.InPlace:
+                linearSpeed = 0;
+                if (talkingWithPerson)
+                {
+                    _targetReached = true;
+                }
+                else
+                {
+                    resultAngle = Vector2.SignedAngle(targetForward, forward);
+                    if (Math.Abs(resultAngle) < 10)
+                    {
+                        _targetReached = true;
+                        angularSpeed = 0; //Возможно стоит закомментировать
+                    }
+                }
+                break;
         }
-        //if (Math.Abs(resultAngle) > 110)
-        //    startMoving = true;
+
 
         //// Map 'worldDeltaPosition' to local space
         //float dx = Vector3.Dot(transform.right, worldDeltaPosition);
@@ -121,40 +152,8 @@ public class PersonNavigationController : MonoBehaviour
 
         //bool shouldMove = velocity.magnitude > 0.5f && navAgent.remainingDistance > navAgent.radius;
 
-        //Debug.Log("navAgent.remainingDistance = " + navAgent.remainingDistance);
-        // Update animation parameters
-        angularSpeed = resultAngle / 180 * ((float)Math.PI);
-        if (navAgent.remainingDistance < minDistanceToTarget)
-        {
-            inPlace = true;
-        }
-        else if (navAgent.remainingDistance < 0.5f)
-        {
-            //Debug.Log("half speed");
-            linearSpeed = maxLinearSpeed / 2;
-        }
-        else
-            linearSpeed = maxLinearSpeed;
 
-        //Цель достигнута, доворачиваем 
-        if (inPlace)
-        {
-            linearSpeed = 0;
-            if (talkingWithPerson)
-            {
-                _targetReached = true;
-            } else
-            {
-                resultAngle = Vector2.SignedAngle(targetForward, forward);
-                if (Math.Abs(resultAngle) < 10)
-                {
-                    _targetReached = true;
-                    angularSpeed = 0;
-                }
-            }
-        }
 
-        angularSpeed = resultAngle / 180 * ((float)Math.PI);
         //else if (Math.Abs(resultAngle) > 90)
         //{
         //    //Debug.Log("zero speed, turning");
@@ -166,14 +165,9 @@ public class PersonNavigationController : MonoBehaviour
         //clamp = Math.Abs(angularSpeed) >= 1 ? 0.7f : 1;
         if (Math.Abs(angularSpeed) > 0.8f && Math.Abs(angularSpeed) < 1.5f)
             angularSpeed *= 1.5f;
-        if (startMoving)
-            linearSpeed = 0;
         //Debug.Log("Linear = " + linearSpeed + " angular " + angularSpeed);
         anim.SetFloat("LinearSpeed", linearSpeed, 0.3f, Time.deltaTime);
-        if (onCourse)
-            anim.SetFloat("AngularSpeed", angularSpeed, 0.3f, Time.deltaTime);
-        else
-            anim.SetFloat("AngularSpeed", angularSpeed, 0.3f, Time.deltaTime);
+        anim.SetFloat("AngularSpeed", angularSpeed, 0.3f, Time.deltaTime);
 
         navAgent.nextPosition = transform.position;
         //transform.rotation = navAgent.transform.rotation;
@@ -207,6 +201,7 @@ public class PersonNavigationController : MonoBehaviour
 public enum NavigationState
 {
     StartMoving,
+    Moving,
     OnCourse,
     InPlace
 }
