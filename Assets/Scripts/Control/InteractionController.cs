@@ -12,12 +12,18 @@ public class InteractionController : MonoBehaviour {
 
 	void Update () {
 		if (Input.GetMouseButtonDown(0)) {
-			Interactive interactionObject = GetInteractionObject();
-			if (interactionObject != null) {
-				Debug.Log("Interaction with " + interactionObject.gameObject.name + ".");
-				interactionObject.SendMessage("Interact");
-			}		
-		}
+            
+            Interactive interactionObject = GetInteractionObject();
+            if (interactionObject != null)
+            {
+                Debug.Log("Interaction with " + interactionObject.gameObject.name + ".");
+                interactionObject.SendMessage("Interact");
+            }
+            else
+            {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/OnClick", GetComponent<Transform>().position);
+            }
+            }
 	}
 
 	private Interactive GetInteractionObject() {
