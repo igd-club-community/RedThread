@@ -5,16 +5,33 @@ using UnityEngine;
 public class UIController : MonoBehaviour
 {
     public GameObject target;
-
+    public bool state = false;
     public void ChangeState()
     {
-        bool state = target.activeSelf;
-        target.SetActive(!state);
+        Debug.Log("ChangeState");
+        if (state)
+        {
+            disable();
+        }
+        else
+        {
+            enable();
+        }
+        state = !state;
+        //target.SetActive(state);
+    }
+    public void enable()
+    {
+        target.SetActive(true);
+    }
+    public void disable()
+    {
+        target.SetActive(false);
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

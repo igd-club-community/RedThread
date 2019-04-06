@@ -1,0 +1,823 @@
+fileFormatVersion: 2
+guid: 9664e738bc624db4c8f8ca0dfac9e77f
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: camera2
+    100002: curve1
+    100004: curve10
+    100006: curve11
+    100008: curve12
+    100010: curve13
+    100012: curve14
+    100014: curve15
+    100016: curve16
+    100018: curve17
+    100020: curve18
+    100022: curve19
+    100024: curve2
+    100026: curve20
+    100028: curve21
+    100030: curve22
+    100032: curve23
+    100034: curve24
+    100036: curve25
+    100038: curve26
+    100040: curve27
+    100042: curve28
+    100044: curve29
+    100046: curve3
+    100048: curve30
+    100050: curve4
+    100052: curve5
+    100054: curve6
+    100056: curve7
+    100058: curve8
+    100060: curve9
+    100062: directionalLight1
+    100064: directionalLight5
+    100066: group13
+    100068: group15
+    100070: group16
+    100072: group17
+    100074: group18
+    100076: group19
+    100078: group43
+    100080: group5
+    100082: ikHandle1
+    100084: ikHandle10
+    100086: ikHandle11
+    100088: ikHandle12
+    100090: ikHandle13
+    100092: ikHandle14
+    100094: ikHandle15
+    100096: ikHandle16
+    100098: ikHandle17
+    100100: ikHandle18
+    100102: ikHandle19
+    100104: ikHandle2
+    100106: ikHandle20
+    100108: ikHandle21
+    100110: ikHandle22
+    100112: ikHandle23
+    100114: ikHandle24
+    100116: ikHandle25
+    100118: ikHandle3
+    100120: ikHandle4
+    100122: ikHandle5
+    100124: ikHandle6
+    100126: ikHandle7
+    100128: ikHandle8
+    100130: ikHandle9
+    100132: joint1
+    100134: joint10
+    100136: joint100
+    100138: joint101
+    100140: joint102
+    100142: joint103
+    100144: joint104
+    100146: joint105
+    100148: joint106
+    100150: joint107
+    100152: joint108
+    100154: joint11
+    100156: joint112
+    100158: joint113
+    100160: joint114
+    100162: joint115
+    100164: joint116
+    100166: joint117
+    100168: joint118
+    100170: joint119
+    100172: joint12
+    100174: joint120
+    100176: joint121
+    100178: joint122
+    100180: joint123
+    100182: joint124
+    100184: joint125
+    100186: joint126
+    100188: joint127
+    100190: joint128
+    100192: joint129
+    100194: joint13
+    100196: joint130
+    100198: joint131
+    100200: joint132
+    100202: joint133
+    100204: joint134
+    100206: joint135
+    100208: joint136
+    100210: joint137
+    100212: joint138
+    100214: joint139
+    100216: joint14
+    100218: joint140
+    100220: joint141
+    100222: joint142
+    100224: joint143
+    100226: joint144
+    100228: joint145
+    100230: joint146
+    100232: joint147
+    100234: joint148
+    100236: joint149
+    100238: joint15
+    100240: joint150
+    100242: joint151
+    100244: joint152
+    100246: joint153
+    100248: joint154
+    100250: joint155
+    100252: joint156
+    100254: joint157
+    100256: joint158
+    100258: joint159
+    100260: joint16
+    100262: joint160
+    100264: joint161
+    100266: joint17
+    100268: joint172
+    100270: joint173
+    100272: joint174
+    100274: joint175
+    100276: joint176
+    100278: joint177
+    100280: joint178
+    100282: joint179
+    100284: joint18
+    100286: joint180
+    100288: joint181
+    100290: joint182
+    100292: joint183
+    100294: joint184
+    100296: joint185
+    100298: joint19
+    100300: joint2
+    100302: joint20
+    100304: joint3
+    100306: joint36
+    100308: joint37
+    100310: joint38
+    100312: joint39
+    100314: joint40
+    100316: joint41
+    100318: joint42
+    100320: joint43
+    100322: joint44
+    100324: joint45
+    100326: joint46
+    100328: joint47
+    100330: joint48
+    100332: joint49
+    100334: joint5
+    100336: joint50
+    100338: joint51
+    100340: joint52
+    100342: joint53
+    100344: joint54
+    100346: joint55
+    100348: joint56
+    100350: joint57
+    100352: joint58
+    100354: joint59
+    100356: joint6
+    100358: joint60
+    100360: joint61
+    100362: joint62
+    100364: joint63
+    100366: joint64
+    100368: joint69
+    100370: joint7
+    100372: joint70
+    100374: joint71
+    100376: joint72
+    100378: joint73
+    100380: joint74
+    100382: joint75
+    100384: joint76
+    100386: joint77
+    100388: joint78
+    100390: joint79
+    100392: joint8
+    100394: joint80
+    100396: joint81
+    100398: joint82
+    100400: joint83
+    100402: joint84
+    100404: joint85
+    100406: joint86
+    100408: joint87
+    100410: joint88
+    100412: joint89
+    100414: joint9
+    100416: joint90
+    100418: joint91
+    100420: joint92
+    100422: joint93
+    100424: joint94
+    100426: joint95
+    100428: joint96
+    100430: joint97
+    100432: joint98
+    100434: joint99
+    100436: loftedSurface45
+    100438: loftedSurface45 1
+    100440: loftedSurface46
+    100442: loftedSurface46 1
+    100444: loftedSurface47
+    100446: loftedSurface47 1
+    100448: loftedSurface48
+    100450: loftedSurface48 1
+    100452: loftedSurface49
+    100454: loftedSurface49 1
+    100456: loftedSurface50
+    100458: loftedSurface50 1
+    100460: loftedSurface51
+    100462: loftedSurface51 1
+    100464: loftedSurface52
+    100466: loftedSurface52 1
+    100468: loftedSurface53
+    100470: loftedSurface53 1
+    100472: loftedSurface54
+    100474: loftedSurface54 1
+    100476: loftedSurface55
+    100478: loftedSurface55 1
+    100480: loftedSurface56
+    100482: loftedSurface56 1
+    100484: loftedSurface57
+    100486: loftedSurface57 1
+    100488: loftedSurface58
+    100490: loftedSurface58 1
+    100492: loftedSurface59
+    100494: loftedSurface59 1
+    100496: loftedSurface60
+    100498: loftedSurface60 1
+    100500: loftedSurface61
+    100502: loftedSurface61 1
+    100504: loftedSurface62
+    100506: loftedSurface62 1
+    100508: loftedSurface63
+    100510: loftedSurface63 1
+    100512: loftedSurface64
+    100514: loftedSurface64 1
+    100516: loftedSurface65
+    100518: loftedSurface65 1
+    100520: loftedSurface66
+    100522: loftedSurface66 1
+    100524: loftedSurface67
+    100526: loftedSurface67 1
+    100528: loftedSurface68
+    100530: loftedSurface68 1
+    100532: loftedSurface69
+    100534: loftedSurface69 1
+    100536: loftedSurface70
+    100538: loftedSurface70 1
+    100540: loftedSurface71
+    100542: loftedSurface71 1
+    100544: loftedSurface72
+    100546: loftedSurface72 1
+    100548: loftedSurface73
+    100550: loftedSurface73 1
+    100552: loftedSurface74
+    100554: loftedSurface74 1
+    100556: loftedSurface75
+    100558: loftedSurface75 1
+    100560: loftedSurface76
+    100562: loftedSurface76 1
+    100564: loftedSurface77
+    100566: loftedSurface77 1
+    100568: loftedSurface78
+    100570: loftedSurface78 1
+    100572: loftedSurface79
+    100574: loftedSurface79 1
+    100576: loftedSurface80
+    100578: loftedSurface80 1
+    100580: loftedSurface81
+    100582: loftedSurface81 1
+    100584: loftedSurface82
+    100586: loftedSurface82 1
+    100588: loftedSurface83
+    100590: loftedSurface83 1
+    100592: loftedSurface84
+    100594: loftedSurface84 1
+    100596: loftedSurface85
+    100598: loftedSurface85 1
+    100600: loftedSurface86
+    100602: loftedSurface86 1
+    100604: MeshPingeon
+    100606: null1
+    100608: nurbsCircle1
+    100610: nurbsCircle13
+    100612: nurbsCircle2
+    100614: nurbsCircle20
+    100616: nurbsCircle21
+    100618: nurbsCircle28
+    100620: nurbsCircle29
+    100622: nurbsCircle30
+    100624: nurbsCircle31
+    100626: nurbsCircle32
+    100628: nurbsCircle33
+    100630: nurbsCircle34
+    100632: nurbsCircle39
+    100634: nurbsCircle40
+    100636: nurbsCircle41
+    100638: nurbsCircle42
+    100640: nurbsCircle43
+    100642: nurbsCircle44
+    100644: nurbsSphere1
+    100646: nurbsSphere2
+    100648: nurbsToPoly1
+    100650: nurbsToPoly10
+    100652: nurbsToPoly2
+    100654: nurbsToPoly3
+    100656: nurbsToPoly4
+    100658: nurbsToPoly5
+    100660: nurbsToPoly6
+    100662: nurbsToPoly7
+    100664: nurbsToPoly8
+    100666: nurbsToPoly9
+    100668: //RootNode
+    100670: polySurface9
+    100672: SkeletonPingeon
+    400000: camera2
+    400002: curve1
+    400004: curve10
+    400006: curve11
+    400008: curve12
+    400010: curve13
+    400012: curve14
+    400014: curve15
+    400016: curve16
+    400018: curve17
+    400020: curve18
+    400022: curve19
+    400024: curve2
+    400026: curve20
+    400028: curve21
+    400030: curve22
+    400032: curve23
+    400034: curve24
+    400036: curve25
+    400038: curve26
+    400040: curve27
+    400042: curve28
+    400044: curve29
+    400046: curve3
+    400048: curve30
+    400050: curve4
+    400052: curve5
+    400054: curve6
+    400056: curve7
+    400058: curve8
+    400060: curve9
+    400062: directionalLight1
+    400064: directionalLight5
+    400066: group13
+    400068: group15
+    400070: group16
+    400072: group17
+    400074: group18
+    400076: group19
+    400078: group43
+    400080: group5
+    400082: ikHandle1
+    400084: ikHandle10
+    400086: ikHandle11
+    400088: ikHandle12
+    400090: ikHandle13
+    400092: ikHandle14
+    400094: ikHandle15
+    400096: ikHandle16
+    400098: ikHandle17
+    400100: ikHandle18
+    400102: ikHandle19
+    400104: ikHandle2
+    400106: ikHandle20
+    400108: ikHandle21
+    400110: ikHandle22
+    400112: ikHandle23
+    400114: ikHandle24
+    400116: ikHandle25
+    400118: ikHandle3
+    400120: ikHandle4
+    400122: ikHandle5
+    400124: ikHandle6
+    400126: ikHandle7
+    400128: ikHandle8
+    400130: ikHandle9
+    400132: joint1
+    400134: joint10
+    400136: joint100
+    400138: joint101
+    400140: joint102
+    400142: joint103
+    400144: joint104
+    400146: joint105
+    400148: joint106
+    400150: joint107
+    400152: joint108
+    400154: joint11
+    400156: joint112
+    400158: joint113
+    400160: joint114
+    400162: joint115
+    400164: joint116
+    400166: joint117
+    400168: joint118
+    400170: joint119
+    400172: joint12
+    400174: joint120
+    400176: joint121
+    400178: joint122
+    400180: joint123
+    400182: joint124
+    400184: joint125
+    400186: joint126
+    400188: joint127
+    400190: joint128
+    400192: joint129
+    400194: joint13
+    400196: joint130
+    400198: joint131
+    400200: joint132
+    400202: joint133
+    400204: joint134
+    400206: joint135
+    400208: joint136
+    400210: joint137
+    400212: joint138
+    400214: joint139
+    400216: joint14
+    400218: joint140
+    400220: joint141
+    400222: joint142
+    400224: joint143
+    400226: joint144
+    400228: joint145
+    400230: joint146
+    400232: joint147
+    400234: joint148
+    400236: joint149
+    400238: joint15
+    400240: joint150
+    400242: joint151
+    400244: joint152
+    400246: joint153
+    400248: joint154
+    400250: joint155
+    400252: joint156
+    400254: joint157
+    400256: joint158
+    400258: joint159
+    400260: joint16
+    400262: joint160
+    400264: joint161
+    400266: joint17
+    400268: joint172
+    400270: joint173
+    400272: joint174
+    400274: joint175
+    400276: joint176
+    400278: joint177
+    400280: joint178
+    400282: joint179
+    400284: joint18
+    400286: joint180
+    400288: joint181
+    400290: joint182
+    400292: joint183
+    400294: joint184
+    400296: joint185
+    400298: joint19
+    400300: joint2
+    400302: joint20
+    400304: joint3
+    400306: joint36
+    400308: joint37
+    400310: joint38
+    400312: joint39
+    400314: joint40
+    400316: joint41
+    400318: joint42
+    400320: joint43
+    400322: joint44
+    400324: joint45
+    400326: joint46
+    400328: joint47
+    400330: joint48
+    400332: joint49
+    400334: joint5
+    400336: joint50
+    400338: joint51
+    400340: joint52
+    400342: joint53
+    400344: joint54
+    400346: joint55
+    400348: joint56
+    400350: joint57
+    400352: joint58
+    400354: joint59
+    400356: joint6
+    400358: joint60
+    400360: joint61
+    400362: joint62
+    400364: joint63
+    400366: joint64
+    400368: joint69
+    400370: joint7
+    400372: joint70
+    400374: joint71
+    400376: joint72
+    400378: joint73
+    400380: joint74
+    400382: joint75
+    400384: joint76
+    400386: joint77
+    400388: joint78
+    400390: joint79
+    400392: joint8
+    400394: joint80
+    400396: joint81
+    400398: joint82
+    400400: joint83
+    400402: joint84
+    400404: joint85
+    400406: joint86
+    400408: joint87
+    400410: joint88
+    400412: joint89
+    400414: joint9
+    400416: joint90
+    400418: joint91
+    400420: joint92
+    400422: joint93
+    400424: joint94
+    400426: joint95
+    400428: joint96
+    400430: joint97
+    400432: joint98
+    400434: joint99
+    400436: loftedSurface45
+    400438: loftedSurface45 1
+    400440: loftedSurface46
+    400442: loftedSurface46 1
+    400444: loftedSurface47
+    400446: loftedSurface47 1
+    400448: loftedSurface48
+    400450: loftedSurface48 1
+    400452: loftedSurface49
+    400454: loftedSurface49 1
+    400456: loftedSurface50
+    400458: loftedSurface50 1
+    400460: loftedSurface51
+    400462: loftedSurface51 1
+    400464: loftedSurface52
+    400466: loftedSurface52 1
+    400468: loftedSurface53
+    400470: loftedSurface53 1
+    400472: loftedSurface54
+    400474: loftedSurface54 1
+    400476: loftedSurface55
+    400478: loftedSurface55 1
+    400480: loftedSurface56
+    400482: loftedSurface56 1
+    400484: loftedSurface57
+    400486: loftedSurface57 1
+    400488: loftedSurface58
+    400490: loftedSurface58 1
+    400492: loftedSurface59
+    400494: loftedSurface59 1
+    400496: loftedSurface60
+    400498: loftedSurface60 1
+    400500: loftedSurface61
+    400502: loftedSurface61 1
+    400504: loftedSurface62
+    400506: loftedSurface62 1
+    400508: loftedSurface63
+    400510: loftedSurface63 1
+    400512: loftedSurface64
+    400514: loftedSurface64 1
+    400516: loftedSurface65
+    400518: loftedSurface65 1
+    400520: loftedSurface66
+    400522: loftedSurface66 1
+    400524: loftedSurface67
+    400526: loftedSurface67 1
+    400528: loftedSurface68
+    400530: loftedSurface68 1
+    400532: loftedSurface69
+    400534: loftedSurface69 1
+    400536: loftedSurface70
+    400538: loftedSurface70 1
+    400540: loftedSurface71
+    400542: loftedSurface71 1
+    400544: loftedSurface72
+    400546: loftedSurface72 1
+    400548: loftedSurface73
+    400550: loftedSurface73 1
+    400552: loftedSurface74
+    400554: loftedSurface74 1
+    400556: loftedSurface75
+    400558: loftedSurface75 1
+    400560: loftedSurface76
+    400562: loftedSurface76 1
+    400564: loftedSurface77
+    400566: loftedSurface77 1
+    400568: loftedSurface78
+    400570: loftedSurface78 1
+    400572: loftedSurface79
+    400574: loftedSurface79 1
+    400576: loftedSurface80
+    400578: loftedSurface80 1
+    400580: loftedSurface81
+    400582: loftedSurface81 1
+    400584: loftedSurface82
+    400586: loftedSurface82 1
+    400588: loftedSurface83
+    400590: loftedSurface83 1
+    400592: loftedSurface84
+    400594: loftedSurface84 1
+    400596: loftedSurface85
+    400598: loftedSurface85 1
+    400600: loftedSurface86
+    400602: loftedSurface86 1
+    400604: MeshPingeon
+    400606: null1
+    400608: nurbsCircle1
+    400610: nurbsCircle13
+    400612: nurbsCircle2
+    400614: nurbsCircle20
+    400616: nurbsCircle21
+    400618: nurbsCircle28
+    400620: nurbsCircle29
+    400622: nurbsCircle30
+    400624: nurbsCircle31
+    400626: nurbsCircle32
+    400628: nurbsCircle33
+    400630: nurbsCircle34
+    400632: nurbsCircle39
+    400634: nurbsCircle40
+    400636: nurbsCircle41
+    400638: nurbsCircle42
+    400640: nurbsCircle43
+    400642: nurbsCircle44
+    400644: nurbsSphere1
+    400646: nurbsSphere2
+    400648: nurbsToPoly1
+    400650: nurbsToPoly10
+    400652: nurbsToPoly2
+    400654: nurbsToPoly3
+    400656: nurbsToPoly4
+    400658: nurbsToPoly5
+    400660: nurbsToPoly6
+    400662: nurbsToPoly7
+    400664: nurbsToPoly8
+    400666: nurbsToPoly9
+    400668: //RootNode
+    400670: polySurface9
+    400672: SkeletonPingeon
+    2000000: camera2
+    2100000: shen
+    2100002: wei
+    2100004: shen1
+    4300000: nurbsToPoly10
+    4300002: nurbsToPoly1
+    4300004: nurbsToPoly2
+    4300006: nurbsToPoly3
+    4300008: nurbsToPoly4
+    4300010: nurbsToPoly5
+    4300012: nurbsToPoly6
+    4300014: nurbsToPoly7
+    4300016: nurbsToPoly8
+    4300018: nurbsToPoly9
+    4300020: polySurface9
+    7400000: Take 001
+    9500000: //RootNode
+    10800000: directionalLight1
+    10800002: directionalLight5
+    13700000: nurbsToPoly1
+    13700002: nurbsToPoly10
+    13700004: nurbsToPoly2
+    13700006: nurbsToPoly3
+    13700008: nurbsToPoly4
+    13700010: nurbsToPoly5
+    13700012: nurbsToPoly6
+    13700014: nurbsToPoly7
+    13700016: nurbsToPoly8
+    13700018: nurbsToPoly9
+    13700020: polySurface9
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 5
+      lastFrame: 31
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 10
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.5
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
