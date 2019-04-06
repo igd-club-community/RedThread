@@ -147,28 +147,13 @@ public class PersonNavigationController : MonoBehaviour
                 break;
         }
 
-
-        //// Map 'worldDeltaPosition' to local space
-        //float dx = Vector3.Dot(transform.right, worldDeltaPosition);
-        //float dy = Vector3.Dot(transform.forward, worldDeltaPosition);
-        //Vector2 deltaPosition = new Vector2(dx, dy);
-        //Debug.Log("new deltaPosition = " + deltaPosition.x + " " + deltaPosition.y);
-
-
+        
         // Update velocity if delta time is safe
         //if (Time.deltaTime > 1e-5f)
         //    velocity = smoothDeltaPosition / Time.deltaTime;
 
         //bool shouldMove = velocity.magnitude > 0.5f && navAgent.remainingDistance > navAgent.radius;
-
-
-
-        //else if (Math.Abs(resultAngle) > 90)
-        //{
-        //    //Debug.Log("zero speed, turning");
-        //    linearSpeed = 0;
-        //}
-        //linearSpeed = world2dDelta.magnitude;
+        
 
 
         //clamp = Math.Abs(angularSpeed) >= 1 ? 0.7f : 1;
