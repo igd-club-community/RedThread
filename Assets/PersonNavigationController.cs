@@ -69,6 +69,7 @@ public class PersonNavigationController : MonoBehaviour
     public float smooth;
     public Vector2 forward;
     public float resultAngle;
+    public float newResultAngle;
     public Vector2 targetForward;
     // Update is called once per frame
     void Update()
@@ -125,15 +126,23 @@ public class PersonNavigationController : MonoBehaviour
                 if (talkingWithPerson)
                 {
                     _targetReached = true;
+                    angularSpeed = 0;
                 }
                 else
                 {
-                    resultAngle = Vector2.SignedAngle(targetForward, forward);
-                    if (Math.Abs(resultAngle) < 10)
+                    newResultAngle = Vector2.SignedAngle(targetForward, forward);
+                    if (newResultAngle * resultAngle < 0) //Значит направление угла через ноль не перешло, продолжаем доворачивать
+                    {
+                        resultAngle = newResultAngle;
+                        angularSpeed = resultAngle / 180 * ((float)Math.PI);
+                        angularSpeed *= 2f;
+                    }
+                    else
                     {
                         _targetReached = true;
-                        angularSpeed = 0; //Возможно стоит закомментировать
+                        angularSpeed = 0; //Возможно стоит закомментировать, чтобы анимация могла идеально точно встать
                     }
+
                 }
                 break;
         }
@@ -163,8 +172,8 @@ public class PersonNavigationController : MonoBehaviour
 
 
         //clamp = Math.Abs(angularSpeed) >= 1 ? 0.7f : 1;
-        if (Math.Abs(angularSpeed) > 0.8f && Math.Abs(angularSpeed) < 1.5f)
-            angularSpeed *= 1.5f;
+        //if (Math.Abs(angularSpeed) > 0.05f && Math.Abs(angularSpeed) < 1f)
+        //    angularSpeed *= 2f;
         //Debug.Log("Linear = " + linearSpeed + " angular " + angularSpeed);
         anim.SetFloat("LinearSpeed", linearSpeed, 0.3f, Time.deltaTime);
         anim.SetFloat("AngularSpeed", angularSpeed, 0.3f, Time.deltaTime);
