@@ -21,100 +21,152 @@ public class Cleaner1Script : ActingPerson
 
     public bool askedToBringPapers = false;
 
+    public Stack<PersonAct> rememberedActions = new Stack<PersonAct>();
+
     new void Start()
     {
         base.Start();
         levelController = FindObjectOfType<Level1Controller>();
-        //levelController.SecretaryIsBack += doTalkWithSecretary;
-        //levelController.BossNeedsCoffee += doPutsHandfulOfSeeds;
-        //levelController.BossNeedsPapers += doPutsHandfulOfSeeds;
+        //levelController.SecretaryIsBack += doTalkWithSecretary; //не всегда. Если уборщица убирается гдето то она не должна реагировать на возврат секретарши
+        levelController.BossNeedsCoffee += doPutsHandfulOfSeeds;
+        levelController.BossNeedsPapers += doPutsHandfulOfSeeds;
         levelController.CleanerBringPapers += doRememberToBringPapersFrom2level;
 
-        setAction(talkWithSecretary);
-        currentAction = talkWithSecretary;
+        doTalkWithSecretary();
 
         name = "cleaner";
     }
 
     new void Update()
     {
-        //base.Update();
-        //noAction = false;
-        //distance = Vector3.Distance(currentAction.target.position, transform.position);
-        ////Если сломалось растение или один из кулеров а у нас задача принести бумагу, то после ремонта надо таки принести бумагу
-        //if (!levelController.GrassInBossRoomIsFine)
-        //{
-        //    if (currentAction == fixBossGrass && distance < 1)
-        //        levelController.GrassInBossRoomIsFine = true;
-        //    else 
-        //        doFixBossGrass();
-        //}
-        //else if (!levelController.CoolerOnFirstFloorIsFine)
-        //{
-        //    if (currentAction == fixCoolerOn1Level && distance < 1)
-        //        levelController.CoolerOnFirstFloorIsFine = true;
-        //    else
-        //        doFixCoolerOn1Level();
-        //}
-        //else if (!levelController.CoolerOnSecondFloorIsFine)
-        //{
-        //    if (currentAction == fixCoolerOn2Level && distance < 1)
-        //        levelController.CoolerOnSecondFloorIsFine = true;
-        //    else
-        //        doFixCoolerOn2Level();
-        //}
-        //else if (!levelController.CoolerOnThirdFloorIsFine)
-        //{
-        //    if (currentAction == fixCoolerOn3Level && distance < 1)
-        //        levelController.CoolerOnThirdFloorIsFine = true;
-        //    else
-        //        doFixCoolerOn3Level();
-        //}
+        //Уборщица должна реагировать на каждое изменение в сцене. Даже стек не понадобится на самом деле
+        //Если у нас стейт говорить с уборщицей или мыть полки,
+        //То при появлении события что гдето пролита вода или появилась грязь убощица должна немедленно выдвигаться.
+        base.Update();
+
+        if (currentAction == talkWithSecretary || currentAction == washTheShelf)
+        {
+            problemSelector();
+        }
+        if (currentAction == washTheShelf && !levelController.SecretaryIsBisy)
+        {
+            doTalkWithSecretary();
+        }
+
+
+
         //else if (askedToBringPapers)
         //{
         //    if (currentAction == bringPapersFrom2level)
         //    {
-        //        if (distance < 1)
-        //            doDeliverPapers();
+        //        doDeliverPapers();
         //    }
         //    else if (currentAction == deliverPapers)
         //    {
-        //        if (distance < 1)
-        //        {
-        //            levelController.generatePapersToPrinterDelivered();
-        //            askedToBringPapers = false;
-        //        }
+        //        levelController.generatePapersToPrinterDelivered();
+        //        askedToBringPapers = false;
         //    }
         //    else
         //        doBringPapersFrom2level();
         //}
         //else if (!levelController.SecretaryIsBisy)
         //    doTalkWithSecretary();
-        //else if (levelController.MusorSpawned || levelController.MusorInInvertory || levelController.MusorOnBossKarniz)
-        //    doWashTheShelf(); //стабильное состояние где уборщица может находиться сколько угодно долго, пока секретарша не освободится
-        //else if (currentAction == putsHandfulOfSeeds && distance < 1)
-        //{
-        //    shelvesOnSecretaryTable.SetActive(true);
-        //    levelController.MusorSpawned = true; //После этого вступит в силу условие с мытьем полок
-        //}
-        //else
-        //{
-        //    doPutsHandfulOfSeeds();
-        //}
+    }
+
+    public bool problemSelector()
+    {
+        if (!levelController.GrassInBossRoomIsFine)
+        {
+            //if (currentAction == fixBossGrass)
+            //    levelController.GrassInBossRoomIsFine = true;
+            //else
+            doFixBossGrass();
+            return true;
+        }
+        else if (!levelController.CoolerOnFirstFloorIsFine)
+        {
+            doFixCoolerOn1Level();
+            return true;
+        }
+        else if (!levelController.CoolerOnSecondFloorIsFine)
+        {
+            doFixCoolerOn2Level();
+            return true;
+        }
+        else if (!levelController.CoolerOnThirdFloorIsFine)
+        {
+            doFixCoolerOn3Level();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void restSelector()
+    {
+        if (levelController.SecretaryIsBisy)
+            doWashTheShelf();
+        else
+            doTalkWithSecretary();
+    }
+
+    //задания закончившиеся естественны образом, т.е. циклы
+    protected override void preFinishOfCurrentAction()
+    {
+        if (currentAction == fixBossGrass)
+        {
+            levelController.GrassInBossRoomIsFine = true;
+        }
+        else if (currentAction == fixCoolerOn1Level)
+        {
+            levelController.CoolerOnFirstFloorIsFine = true;
+        }
+        else if (currentAction == fixCoolerOn2Level)
+        {
+            levelController.CoolerOnSecondFloorIsFine = true;
+        }
+        if (currentAction == fixCoolerOn3Level)
+        {
+            levelController.CoolerOnThirdFloorIsFine = true;
+        }
+        else if (currentAction == putsHandfulOfSeeds)
+        {
+            shelvesOnSecretaryTable.SetActive(true);
+            levelController.MusorSpawned = true; //После этого вступит в силу условие с мытьем полок
+        }
+    }
+    protected override void goToNextAction()
+    {
+        base.goToNextAction();
+        ////Если сломалось растение или один из кулеров а у нас задача принести бумагу, то после ремонта надо таки принести бумагу
+        if (currentAction == fixBossGrass || currentAction == fixCoolerOn1Level || currentAction == fixCoolerOn2Level || currentAction == fixCoolerOn3Level)
+        {
+            if (!problemSelector())
+            {
+                restSelector();
+            }
+        }
+        else if (currentAction == putsHandfulOfSeeds)
+        {
+            doWashTheShelf();
+        }
     }
 
     public void doTalkWithSecretary()
     {
-        //Debug.Log("doTalkWithSecretary");
-        //if (distance > 2)
-        //    setAction(talkWithSecretary);
-        //else
-        //    noAction = true;
+        Debug.Log("doTalkWithSecretary");
+        setAction(talkWithSecretary);
+        levelController.CleanerIsBisy = false;
     }
     public void doPutsHandfulOfSeeds()
     {
-        //Debug.Log("doPutsHandfulOfSeeds");
-        setAction(putsHandfulOfSeeds);
+        Debug.Log("doPutsHandfulOfSeeds");
+        if (levelController.MusorSpawned || levelController.MusorInInvertory || levelController.MusorOnBossKarniz) //или если окно разбито
+            doWashTheShelf(); //стабильное состояние где уборщица может находиться сколько угодно долго, пока секретарша не освободится
+        else 
+           setAction(putsHandfulOfSeeds);
     }
     public void doWashTheShelf()
     {

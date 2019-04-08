@@ -37,6 +37,7 @@ public class Programmer1Script : ActingPerson
     //задания закончившиеся естественны образом, т.е. циклы
     protected override void goToNextAction()
     {
+        base.goToNextAction();
         if (currentAction == workWithPC)
         {
             doWatchOnDesk();

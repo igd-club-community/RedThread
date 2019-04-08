@@ -33,7 +33,7 @@ public class Level1Controller : MonoBehaviour
     public event PersonEvent CleanerBringPapers;
     public event PersonEvent CoffeeDelivered;
     public event PersonEvent PapersDelivered;
-    public event PersonEvent SecretaryIsBack;
+    //public event PersonEvent SecretaryIsBack;
     public event PersonEvent SecretaryCanGoToDesk;
     public event PersonEvent PowerOff;
     public event PersonEvent PowerOn;
@@ -102,12 +102,11 @@ public class Level1Controller : MonoBehaviour
     }
 
 
-    public void generateSecretaryIsBack()
-    {
-        SecretaryIsBisy = false;
-        Debug.Log("generateSecretaryIsBack");
-        //SecretaryIsBack();
-    }
+    //public void generateSecretaryIsBack()
+    //{
+    //    Debug.Log("generateSecretaryIsBack");
+    //    //SecretaryIsBack();
+    //}
 
     //Просьба секретарши к уборщице принести бумаги
     public void generateCleanerBringPapersEvent()

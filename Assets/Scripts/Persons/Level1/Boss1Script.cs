@@ -18,7 +18,8 @@ public class Boss1Script : ActingPerson
     public PersonAct waitForSecretaryToLeave; //отпустив секретаршу говорим несколько слов вслед
     public PersonAct grabCup; //берет кружку в руку и говорит что-то
     public PersonAct drinkCoffee; //пара слов про то что кофе опять с сахаром, после чего идёт просить кофе снова
-    public PersonAct askSecretaryAboutNewPapers; //В процессе пока босс пил кофе оно было пролито
+    public PersonAct spillСoffee; //В процессе пока босс пил кофе оно было пролито
+    public PersonAct askSecretaryAboutNewPapers; //просим новые бумаги если пролили кофе
     public PersonAct unlockShelter; //пришел к сейфу и открывает его
     public PersonAct goToProgrammer;
     public PersonAct talkWithProgrammer;
@@ -116,8 +117,8 @@ public class Boss1Script : ActingPerson
             if (levelController.BossCupMoved)
             {
                 //Если чашку подвинули, значит босс проливает кофе и идёт просить новые бумаги
-                //anim.SetBool("Sit", false);
-                setAction(askSecretaryAboutNewPapers);
+                anim.SetBool("Sit", false);
+                setAction(spillСoffee);
                 levelController.BossCupFilled = false;
                 levelController.BossCupMoved = false;
             } else
@@ -129,7 +130,11 @@ public class Boss1Script : ActingPerson
         {
             setAction(askSecretaryAboutCoffee);
         }
-        else if (currentAction == askSecretaryAboutNewPapers)
+        else if (currentAction == spillСoffee)
+        {
+            setAction(askSecretaryAboutNewPapers);
+        }
+        else if (currentAction == askSecretaryAboutNewPapers) 
         {
             levelController.generateNeedPapersEvent();
             setAction(unlockShelter);

@@ -28,6 +28,7 @@ public class Secterary1Script : ActingPerson
     public bool askedToPrintPapers = false;
     public bool CleanerAskedToBringPapers = false;
 
+
     new void Start()
     {
         base.Start();
@@ -70,6 +71,7 @@ public class Secterary1Script : ActingPerson
 
     protected override void goToNextAction()
     {
+        base.goToNextAction();
         //если нас попросили напечатать бумагу, то мы идём к принтеру. Если бумаги в нём нет, то идём за ней
         if (currentAction == printPapers)
         {
@@ -110,7 +112,8 @@ public class Secterary1Script : ActingPerson
         }
         else if (currentAction == backToDesk)// && levelController.PaperInPrinter)
         {
-            levelController.generateSecretaryIsBack();
+            levelController.SecretaryIsBisy = false;
+            //levelController.generateSecretaryIsBack();
             if (!levelController.CleanerIsBisy)
                 doTalkWithCleaner();
         }
@@ -146,7 +149,7 @@ public class Secterary1Script : ActingPerson
     }
     public void doTalkWithCleaner()
     {
-        say("Как дела?");
+        //say("Как дела?");
         Debug.Log("doTalkWithCleaner");
         if (!levelController.SecretaryIsBisy)
             setAction(talkWithCleaner);
@@ -155,13 +158,13 @@ public class Secterary1Script : ActingPerson
     }
     public void doCallToRepair()
     {
-        say("Хорошо, вызову на завтра.");
+        //say("Хорошо, вызову на завтра.");
         Debug.Log("doCallToRepair");
     }
     public void doPrintPapers()
     {
         askedToPrintPapers = true;
-        say("Бумажки, бумажки, я несу бумажки");
+        //say("Бумажки, бумажки, я несу бумажки");
         Debug.Log("doPrintPapers");
 
         setAction(printPapers);
@@ -169,14 +172,14 @@ public class Secterary1Script : ActingPerson
 
     public void doBringPapersFrom2level()
     {
-        say("Надо взять бумаги.");
+        //say("Надо взять бумаги.");
         Debug.Log("doBringPapersFrom2level");
         setAction(bringPapersFrom2level);
     }
 
     public void doBringPapersToPrinter()
     {
-        say("Нашла!");
+        //say("Нашла!");
         Debug.Log("doBringPapersToPrinter");
 
         setAction(bringPapersToPrinter);
@@ -184,7 +187,7 @@ public class Secterary1Script : ActingPerson
 
     public void doAskCleanerToBringPapers()
     {
-        say("Не-не-не, я туда сама не пойду");
+        //say("Не-не-не, я туда сама не пойду");
         Debug.Log("doAskCleanerToBringPapers");
 
         setAction(askCleanerToBringPapers);
@@ -207,13 +210,13 @@ public class Secterary1Script : ActingPerson
     public void doGoForSugar()
     {
         levelController.SecretaryIsBisy = true;
-        say("Сахар кончился");
+        //say("Сахар кончился");
         Debug.Log("doGoForSugar");
         setAction(goForSugar);
     }
     public void doBringSugar()
     {
-        say("Налью себе чаю");
+        //say("Налью себе чаю");
         Debug.Log("doBringSugar");
         setAction(bringSugar);
     }

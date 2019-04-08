@@ -10,20 +10,16 @@ public class ActingPerson : MonoBehaviour
     public string name;
     protected Animator anim;
     PersonNavigationController navigator;
+    PersonDialogController dialogue;
     public PersonAct currentAction;
     public PersonState state;
     public bool noAction = false;
     //int curActNum = 0;
     public float timeOfStart = 0; //Время начала выполнения задачи
-
-    public bool isDialogPossible = false;
-    public bool inDialog = false; //находится ли личность в диалоге
-    public bool isDialogFinished = false; //проходит ли этот диалог сам с собой
+    
     public GameObject textBackground; //фон текста
     public Text bubbleText; //текстбокс
     public Dialog currentDialog;
-    public float textMaxTime = 3; //время в течении которого отображается фраза
-    public float sayTime = 0; //время начала отображения фразы
 
 
     //У персоны есть его целевая позиция куда он хочет идти
@@ -35,6 +31,7 @@ public class ActingPerson : MonoBehaviour
     {
         anim = GetComponentInChildren<Animator>();
         navigator = GetComponent<PersonNavigationController>();
+        dialogue = GetComponent<PersonDialogController>();
         state = PersonState.ReadyForDialog;
     }
 
@@ -46,35 +43,26 @@ public class ActingPerson : MonoBehaviour
             case PersonState.ReadyForDialog:
                 //Мы сначала проверяем можем ли мы войти в диалог
                 if (navigator.targetReached)
+                {
+                    //прежде чем начать диалог, надо закончить диалог цели, если он был
+                    ActingPerson targetPerson = currentAction.target.GetComponent<ActingPerson>();
+                    if (targetPerson != null)
+                        targetPerson.GetComponent<PersonDialogController>().EndDialog();
+                    dialogue.StartDialog(currentDialog);
                     state = PersonState.InDialog;
+                }
                 break;
 
             case PersonState.InDialog:
-                //Если с момента сказания фразы прошло больше textMaxTime секунд
-                if (Time.fixedTime - sayTime > textMaxTime)
+                if (dialogue.ended)
                 {
-                    //Тогда мы переходим к следующей фразе диалога
-                    if (currentDialog.currentPhraseNum >= currentDialog.phrases.Length)
-                    {
-                        //Если фраза была последняя, значит завершаем диалог
-                        //Сохраняем номер диалога который у нас был
-                        currentAction.currentDialogNum = (currentAction.currentDialogNum + 1) % currentAction.dialogs.Length;
-                        currentDialog.currentPhraseNum = 0;
-
-                        //стираем текст из текстбокса и убираем фон
-                        textBackground.SetActive(false);
-                        bubbleText.text = "";
-                        
-                        state = PersonState.DialogFinished;
-                    }
-                    else
-                    {
-                        //Если не последняя, значит переходим к следующей
-                        Phrase ph = currentDialog.phrases[currentDialog.currentPhraseNum];
-                        ph.sayer.say(ph.speech);
-                        currentDialog.currentPhraseNum += 1;
-                    }
+                    state = PersonState.DialogFinished;
+                    //Если фраза была последняя, значит завершаем диалог
+                    //Сохраняем номер диалога который у нас был
+                    currentAction.currentDialogNum = (currentAction.currentDialogNum + 1) % currentAction.dialogs.Length;
+                    currentDialog.currentPhraseNum = 0;
                 }
+                
                 break;
                 
             //Если диалог закончился, тогда переходим к следующему действию
@@ -111,6 +99,11 @@ public class ActingPerson : MonoBehaviour
     //Сохранив при этом что диалог предыдущего действия продлился на 1
     public void setAction(PersonAct newAction)
     {
+        //Если персонаж в диалоге, то диалог надо остановить. Такое происходит если секретарша говорила с уборщицей, а пришла задача от босса.
+        //if (state == PersonState.InDialog)
+        //    dialogue.EndDialog();
+        //А вот не всегда
+
         navigator.SetTarget(newAction.target, newAction.targetDistance, newAction.talkingWithPerson);
                     
         if (newAction.dialogs.Length != 0)
@@ -130,7 +123,11 @@ public class ActingPerson : MonoBehaviour
     {
         textBackground.SetActive(true);
         bubbleText.text = text;
-        sayTime = Time.fixedTime;
+    }
+    public void cleanSay()
+    {
+        textBackground.SetActive(false);
+        bubbleText.text = "";
     }
 }
 
