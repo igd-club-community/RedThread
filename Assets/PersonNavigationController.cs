@@ -67,6 +67,7 @@ public class PersonNavigationController : MonoBehaviour
     public Vector3 deciredVelocity;
     public Vector3 nextPosition;
     public Vector3 worldDeltaPosition;
+    public float worldDeltaPositionMagn;
     public Vector2 world2dDelta;
     public float smooth;
     public Vector2 forward;
@@ -79,7 +80,7 @@ public class PersonNavigationController : MonoBehaviour
     void Update()
     {
         navAgent.SetDestination(target.position);
-        if (navAgent.pathPending)
+        if (navAgent.pathPending) //В принципе можно заменить одним вычислением длинны дельты позиции которое уже применяется дальше
         {
             return;
         }
@@ -90,6 +91,9 @@ public class PersonNavigationController : MonoBehaviour
         nextPosition = navAgent.nextPosition;
 
         worldDeltaPosition = navAgent.nextPosition - transform.position;
+        worldDeltaPositionMagn = worldDeltaPosition.magnitude;
+        if (worldDeltaPositionMagn < 0.0001f)
+            return;
 
         world2dDelta = new Vector2(worldDeltaPosition.x, worldDeltaPosition.z);
 
