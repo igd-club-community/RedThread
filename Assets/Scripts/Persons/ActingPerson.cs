@@ -100,9 +100,8 @@ public class ActingPerson : MonoBehaviour
     public void setAction(PersonAct newAction)
     {
         //Если персонаж в диалоге, то диалог надо остановить. Такое происходит если секретарша говорила с уборщицей, а пришла задача от босса.
-        //if (state == PersonState.InDialog)
-        //    dialogue.EndDialog();
-        //А вот не всегда
+        if (state == PersonState.InDialog)
+            dialogue.EndDialog();
 
         navigator.SetTarget(newAction.target, newAction.targetDistance, newAction.talkingWithPerson);
                     
