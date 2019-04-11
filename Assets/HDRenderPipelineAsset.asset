@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: HDRenderPipelineAsset
   m_EditorClassIdentifier: 
   m_Version: 1
-  m_RenderPipelineResources: {fileID: 11400000, guid: 00000000000000000000000000000000,
-    type: 0}
+  m_RenderPipelineResources: {fileID: 11400000, guid: 3ce144cff5783da45aa5d4fdc2da14b7,
+    type: 2}
   m_FrameSettings:
     overrides: 0
     enableShadow: 1
@@ -202,4 +202,5 @@ MonoBehaviour:
   allowShaderVariantStripping: 1
   enableSRPBatcher: 0
   enableVariantStrippingLog: 0
-  diffusionProfileSettings: {fileID: 0}
+  diffusionProfileSettings: {fileID: 11400000, guid: 404820c4cf36ad944862fa59c56064f0,
+    type: 2}
