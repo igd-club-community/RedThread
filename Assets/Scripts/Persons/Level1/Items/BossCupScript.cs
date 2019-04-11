@@ -13,11 +13,11 @@ public class BossCupScript : ItemScript
     }
     public override void Act()
     {
-        Debug.Log("BossCupScript");
         //Изменить положение чашки
         //Изменить состояние сцены
         if (levelController.BossCupFilled)
         {
+            Debug.Log("BossCupScript");
             levelController.BossCupMoved = true;
             levelController.PaperInBossRoom = false;
         }
