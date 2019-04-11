@@ -21,6 +21,7 @@ public class PersonNavigationController : MonoBehaviour
     public float minDistanceToTarget;
     public float distance = 100;//начальное значение должно быть больше дистанции первой задачи, чтобы не сработал переход к следующей задаче пока навмешагент в первый раз просчитывает путь
     public bool talkingWithPerson;
+    public string animationName = "";
 
     Vector2 smoothDeltaPosition = Vector2.zero;
     Vector2 smoothWorld2dDelta = Vector2.zero;
@@ -55,11 +56,16 @@ public class PersonNavigationController : MonoBehaviour
 
     }
 
-    public void SetTarget(Transform target, float minDistanceToTarget, bool talkingWithPerson)
+    public void SetTarget(Transform target, float minDistanceToTarget, bool talkingWithPerson, string animationName)
     {
         this.target = target;
         this.minDistanceToTarget = minDistanceToTarget;
         this.talkingWithPerson = talkingWithPerson;
+
+        if (!this.animationName.Equals(animationName))
+            anim.SetBool(this.animationName, false);
+        this.animationName = animationName;
+
         navState = NavigationState.StartMoving;
         _targetReached = false;
         targetForward = new Vector2(target.transform.forward.x, target.transform.forward.z);
@@ -118,7 +124,7 @@ public class PersonNavigationController : MonoBehaviour
         {
             case NavigationState.StartMoving:
                 linearSpeed = 0;
-                if (angleToTarget * prevAngleToTarget > 0 && Math.Abs(angleToTarget) > 120) //Если по каким то причинам направление угла изменилось и оно гдето сзади, то это глюки поиска пути. игнорим новый угол
+                if (angleToTarget * prevAngleToTarget < 0 && Math.Abs(angleToTarget) > 120) //Если по каким то причинам направление угла изменилось и оно гдето сзади, то это глюки поиска пути. игнорим новый угол
                 {
                     angularSpeed = prevAngleToTarget / 180 * ((float)Math.PI);
                 }
@@ -126,6 +132,7 @@ public class PersonNavigationController : MonoBehaviour
                 {
                     angularSpeed = angleToTarget / 180 * ((float)Math.PI);
                 }
+                angularSpeed *= 2f;
                 if (Math.Abs(angleToTarget) < 25)
                     navState = NavigationState.Moving;
                 break;
@@ -166,15 +173,17 @@ public class PersonNavigationController : MonoBehaviour
                 else
                 {
                     angleToTarget = Vector2.SignedAngle(targetForward, forward);
-                    if (angleToTarget * prevAngleToTarget > 0) //Значит направление угла через ноль не перешло, продолжаем доворачивать
-                    {
-                        angularSpeed = angleToTarget / 180 * ((float)Math.PI);
-                        angularSpeed *= 2f;
-                    }
-                    else
+                    if (angleToTarget * prevAngleToTarget < 0 || Math.Abs(angleToTarget) < 2) //Значит направление угла через ноль не перешло, продолжаем доворачивать
                     {
                         _targetReached = true;
                         angularSpeed = 0; //Возможно стоит закомментировать, чтобы анимация могла идеально точно встать
+                        if (!animationName.Equals(""))
+                            anim.SetBool(animationName, true);
+                    }
+                    else
+                    {
+                        angularSpeed = angleToTarget / 180 * ((float)Math.PI);
+                        angularSpeed *= 3f;
                     }
 
                 }
@@ -196,8 +205,10 @@ public class PersonNavigationController : MonoBehaviour
         //    angularSpeed *= 2f;
         //Debug.Log("Linear = " + linearSpeed + " angular " + angularSpeed);
         //Скорость должна иметь возможность мгновенно изменяться чтобы не промахнуться к цели
-        anim.SetFloat("LinearSpeed", linearSpeed, 0.1f, Time.deltaTime);
-        anim.SetFloat("AngularSpeed", angularSpeed, 0.5f, Time.deltaTime);
+        anim.SetFloat("LinearSpeed", linearSpeed, 0.3f, Time.deltaTime);
+        anim.SetFloat("AngularSpeed", angularSpeed, 0.7f, Time.deltaTime);
+        //anim.SetFloat("LinearSpeed", linearSpeed);
+        //anim.SetFloat("AngularSpeed", angularSpeed);
 
         navAgent.nextPosition = transform.position;
         //transform.rotation = navAgent.transform.rotation;
