@@ -1,10 +1,6 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/StreamingAssets/Master Bank.bank.meta
-guid: 749eb0819afd06443aa4a1f81125f412
-=======
-guid: f38f6d0064233f04d8f3a670db65b2a3
+guid: 50438e4f92b40c64f8752918e8d00a5d
 folderAsset: yes
->>>>>>> origin/action_system_HDRP:Assets/Models/HDRP/Textures.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
