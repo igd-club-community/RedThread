@@ -655,8 +655,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorDef: {fileID: 2800000, guid: 378ecb5a28a50e14fbb7f1b1a5020dab, type: 3}
-  cursorHand: {fileID: 2800000, guid: 74c6b7535fbfb05438ea209d9b50e16f, type: 3}
-  cursorUse: {fileID: 2800000, guid: f6f11827cc3957846a2dceab2e1a1802, type: 3}
 --- !u!4 &1638599895
 Transform:
   m_ObjectHideFlags: 0

@@ -5,6 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class LevelsLoader : MonoBehaviour
 {
+    public Texture2D cursorDef;
+
+    // Start is called before the first frame update
+    protected virtual void Start()
+    {
+        Cursor.SetCursor(cursorDef, Vector2.zero, CursorMode.Auto);
+    }
+
     // Play the game scene.
     public void LoadLevels()
     {

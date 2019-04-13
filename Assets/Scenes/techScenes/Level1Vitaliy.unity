@@ -4050,7 +4050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leftBar: {fileID: 0}
-  journalUI: {fileID: 0}
+  journalUI: {fileID: 1005558386}
   winScreen: {fileID: 0}
   looseScreen: {fileID: 0}
   state: 0
