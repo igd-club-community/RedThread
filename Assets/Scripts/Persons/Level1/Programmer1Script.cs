@@ -11,7 +11,9 @@ public class Programmer1Script : ActingPerson
     public PersonAct writeOnDesk;
     public PersonAct watchOnCat;
     public PersonAct switchPowerOn;
-    
+    public PersonAct complainAboutYourLove;
+    public PersonAct resign;
+
     // Start is called before the first frame update
     new void Start()
     {
@@ -32,6 +34,11 @@ public class Programmer1Script : ActingPerson
             noAction = true;
 
 
+        if (currentAction == watchOnDesk || currentAction == writeOnDesk)
+        {
+            if (!levelController.ProgrammerDeskClear)
+                setAction(complainAboutYourLove);
+        }
     }
 
     //задания закончившиеся естественны образом, т.е. циклы
@@ -45,12 +52,10 @@ public class Programmer1Script : ActingPerson
         else if (currentAction == watchOnDesk)
         {
             doWriteOnDesk();
-
         }
         else if (currentAction == writeOnDesk)
         {
             doWatchOnCat();
-
         }
         else if (currentAction == watchOnCat)
         {
@@ -60,6 +65,10 @@ public class Programmer1Script : ActingPerson
         {
             levelController.generatePowerOn();
             doWorkWirkPC();
+        }
+        else if (currentAction == complainAboutYourLove)
+        {
+            levelController.loose();
         }
     }
 

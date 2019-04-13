@@ -51,7 +51,21 @@ public class Secterary1Script : ActingPerson
         base.Update();
         noAction = false;
 
-        if (currentAction == bringPapersFrom2level)
+        if (currentAction == talkWithCleaner)
+        {
+            if (levelController.CleanerIsBisy)
+            {
+                setAction(wait);
+            }
+        }
+        else if (currentAction == wait)
+        {
+            if (!levelController.CleanerIsBisy)
+            {
+                setAction(talkWithCleaner);
+            }
+        }
+        else if (currentAction == bringPapersFrom2level)
         {
             RaycastHit hit;
             Vector3 direction = programmer.position - visionPoint.position;
@@ -99,8 +113,8 @@ public class Secterary1Script : ActingPerson
 
             else if (levelController.CleanerIsBisy)
                 doBackToDesk();
-
-            setAction(talkWithCleaner);
+            else
+                setAction(talkWithCleaner);
         }
         else if (currentAction == goForSugar)
         {
@@ -147,6 +161,7 @@ public class Secterary1Script : ActingPerson
         setAction(prepareCoffee);
         timeCoffeePreparingStarted = Time.fixedTime;
     }
+
     public void doTalkWithCleaner()
     {
         //say("Как дела?");
@@ -156,6 +171,7 @@ public class Secterary1Script : ActingPerson
         levelController.SecretaryIsBisy = false;
         timeTalkingWithCleaner = Time.fixedTime;
     }
+
     public void doCallToRepair()
     {
         //say("Хорошо, вызову на завтра.");
@@ -207,6 +223,7 @@ public class Secterary1Script : ActingPerson
         Debug.Log("doBackToDesk");
         setAction(backToDesk);
     }
+
     public void doGoForSugar()
     {
         levelController.SecretaryIsBisy = true;
@@ -214,6 +231,7 @@ public class Secterary1Script : ActingPerson
         Debug.Log("doGoForSugar");
         setAction(goForSugar);
     }
+
     public void doBringSugar()
     {
         //say("Налью себе чаю");

@@ -25,10 +25,12 @@ public class Level1Controller : MonoBehaviour
     public bool CoolerOnFirstFloorIsFine;
     public bool CoolerOnSecondFloorIsFine;
     public bool CoolerOnThirdFloorIsFine;
-    public bool BossShelterEmpty;
+    public bool passwordRemembered = false;
+    public bool documentsStolen = false;
 
     public event PersonEvent BossNeedsCoffee;
     public event PersonEvent BossNeedsPapers;
+    public event PersonEvent PasswordRemembered;
     public event PersonEvent BossNeedsToRepairWindow;
     public event PersonEvent CleanerBringPapers;
     public event PersonEvent CoffeeDelivered;
@@ -39,7 +41,7 @@ public class Level1Controller : MonoBehaviour
     public event PersonEvent PowerOn;
     public event PersonEvent PigeonsCameInBossRoom;
 
-    //состояния связанные с персонажами
+    //состояния связанные с положением персонажей
     public bool SecretaryIsBisy;
     public bool CleanerIsBisy;
     public bool SecretaryOn2floor;
@@ -50,11 +52,15 @@ public class Level1Controller : MonoBehaviour
     public bool BossOffline;
 
     public GameObject pigeons;
+    public GameObject window;
+
+    UIController uIController;
+    public GameState state = GameState.playing;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        uIController = FindObjectOfType<UIController>();
     }
 
     //Босс попросил секретаршу сделать кофе
@@ -77,6 +83,13 @@ public class Level1Controller : MonoBehaviour
         SecretaryIsBisy = true;
         Debug.Log("generateNeedPapersEvent");
         BossNeedsPapers();
+    }
+
+    //Босс попросил секретаршу напечатать бумаги
+    public void generatePasswordRemembered()
+    {
+        Debug.Log("generatePasswordRemembered");
+        PasswordRemembered();
     }
 
     //Секретарша принесла кофе
@@ -142,18 +155,53 @@ public class Level1Controller : MonoBehaviour
     public void generatePigeonsInBossRoom()
     {
         Debug.Log("generatePigeonsInBossRoom");
-        //PigeonsCameInBossRoom();
+        if (!BossWindowBroken)
+        {
+            //здесь так же запускать звуки и анимацию ломания стекла
+            window.GetComponent<MeshRenderer>().enabled = true;
+            BossWindowBroken = true;
+        }
+
         if (!BossShelterLocked)
-            BossShelterEmpty = true;
+        {
+            generateDocumentStolen();
+        }
+
         PigeonsInBossRoom = true;
-        pigeons.GetComponent<MeshRenderer>().enabled = true;
+        //вызывать менеджера голубей который запустит их анимацию.
+        pigeons.SetActive(true);
     }
-    
+    public void generateDocumentStolen()
+    {
+        Debug.Log("generateDocumentStolen");
+
+        documentsStolen = true;
+        //вызывать менеджера голубей который запустит анимацию кражи
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (SecretaryOn2floor && ProgrammerOn2floor && !BossOn2floor && !CleanerOn2floor)
-            FindObjectOfType<LevelsLoader>().LoadCredits();
+        if (BossOffline && SecretaryOn2floor && ProgrammerOn2floor && !BossOn2floor && !CleanerOn2floor)
+            //FindObjectOfType<LevelsLoader>().LoadCredits();
+            win();
     }
 
+    public void win()
+    {
+        uIController.enableWin();
+        state = GameState.win;
+    }
+    public void loose()
+    {
+        uIController.enableLoose();
+        state = GameState.loose;
+    }
+}
+
+public enum GameState
+{
+    playing,
+    win,
+    loose
 }

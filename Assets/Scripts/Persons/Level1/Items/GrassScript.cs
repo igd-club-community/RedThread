@@ -15,8 +15,9 @@ public class GrassScript : ItemScript
     {
         Debug.Log("GrassScript");
 
-        //if (states.BossInBossRoom)
-        levelController.GrassInBossRoomIsFine = false;
+        //трава просыпается только если босс в порядке иначе это не имеет смысла
+        if (!levelController.BossOffline)
+            levelController.GrassInBossRoomIsFine = false;
 
     }
 }

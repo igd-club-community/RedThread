@@ -12,6 +12,8 @@ public class ActingPerson : MonoBehaviour
     PersonNavigationController navigator;
     PersonDialogController dialogue;
     public PersonAct currentAction;
+    public PersonAct rememberedAction;
+    public PersonAct wait;
     public PersonState state;
     public bool noAction = false;
     //int curActNum = 0;
@@ -47,7 +49,9 @@ public class ActingPerson : MonoBehaviour
                     //прежде чем начать диалог, надо закончить диалог цели, если он был
                     ActingPerson targetPerson = currentAction.target.GetComponent<ActingPerson>();
                     if (targetPerson != null)
-                        targetPerson.GetComponent<PersonDialogController>().EndDialog();
+                        targetPerson.GetComponent<PersonDialogController>().EndDialog(); //прекращаем диалог человека к которому подходим
+                    //надо заставить его ещё и развернуться к тебе
+                    //перевести его в стейт conversation а когда диалог кончится вернуть в предыдущий стейт
                     dialogue.StartDialog(currentDialog);
                     state = PersonState.InDialog;
                 }
@@ -60,7 +64,8 @@ public class ActingPerson : MonoBehaviour
                     //Если фраза была последняя, значит завершаем диалог
                     //Сохраняем номер диалога который у нас был
                     currentAction.currentDialogNum = (currentAction.currentDialogNum + 1) % currentAction.dialogs.Length;
-                    currentDialog.currentPhraseNum = 0;
+                    if (currentAction.dialogs.Length != 1)
+                        currentDialog.currentPhraseNum = 0;
                 }
                 
                 break;
@@ -85,13 +90,24 @@ public class ActingPerson : MonoBehaviour
     
     protected virtual void preFinishOfCurrentAction()
     {
-        Debug.Log("Acting person pre finish of current Action");
+        //Debug.Log("Acting person pre finish of current Action");
     }
 
     protected virtual void goToNextAction()
     {
         preFinishOfCurrentAction();
-        Debug.Log("Acting person next Action");
+        //Debug.Log("Acting person next Action");
+    }
+    public void forceToAnswer()
+    {
+        Debug.Log("forceToAnswer");
+        rememberedAction = currentAction;
+        setAction(wait);
+    }
+    public void releaseFromAnswer()
+    {
+        Debug.Log("releaseFromAnswer");
+        setAction(rememberedAction);
     }
 
     //Начиная новое действие, мы должны не только установить что нужно идти к новой точке, 
@@ -100,10 +116,10 @@ public class ActingPerson : MonoBehaviour
     public void setAction(PersonAct newAction)
     {
         //Если персонаж в диалоге, то диалог надо остановить. Такое происходит если секретарша говорила с уборщицей, а пришла задача от босса.
-        if (state == PersonState.InDialog)
+        if (state == PersonState.InDialog) //прекращаем свой диалог
             dialogue.EndDialog();
 
-        navigator.SetTarget(newAction.target, newAction.targetDistance, newAction.talkingWithPerson);
+        navigator.SetTarget(newAction.target, newAction.targetDistance, newAction.talkingWithPerson, newAction.animationName);
                     
         if (newAction.dialogs.Length != 0)
         {

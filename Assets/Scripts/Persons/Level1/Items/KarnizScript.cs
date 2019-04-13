@@ -22,7 +22,8 @@ public class KarnizScript : ItemScript
             levelController.MusorInInvertory = false;
             shelves.SetActive(true);
             levelController.PigeonsInBossRoom = true;
-            //levelController.generatePigeonsInBossRoom();
+            if (!levelController.BossInBossRoom)
+                levelController.generatePigeonsInBossRoom();
         }
     }
 }

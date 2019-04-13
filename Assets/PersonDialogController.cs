@@ -13,7 +13,7 @@ public class PersonDialogController : MonoBehaviour
     public GameObject textBackground; //фон текста
     public Text bubbleText; //текстбокс
     public Dialog currentDialog;
-    Phrase ph;
+    public Phrase ph;
 
     // Start is called before the first frame update
     void Start()
@@ -26,30 +26,34 @@ public class PersonDialogController : MonoBehaviour
     {
         if (ended)
             return;
-
-        //Если с момента сказания фразы прошло больше textMaxTime секунд
-        if (Time.fixedTime - sayTime > textMaxTime)
+        else
         {
-            //стираем текст из текстбокса предыдущей фразы и убираем фон
-            if (ph != null)
-                ph.sayer.cleanSay();
+            //Если с момента сказания фразы прошло больше textMaxTime секунд
+            if (Time.fixedTime - sayTime > textMaxTime)
+            {
+                //стираем текст из текстбокса предыдущей фразы и убираем фон
+                if (ph != null)
+                    if (ph.sayer != null)
+                        ph.sayer.cleanSay();
 
-            //Тогда мы переходим к следующей фразе диалога
-            if (currentDialog.currentPhraseNum >= currentDialog.phrases.Length)
-            {
-                ended = true;
-                currentDialog.currentPhraseNum = 0;
-                ph.sayer.cleanSay();
-            }
-            else
-            {
-                //Если не последняя, значит переходим к следующей
-                ph = currentDialog.phrases[currentDialog.currentPhraseNum];
-                ph.sayer.say(ph.speech);
-                currentDialog.currentPhraseNum += 1;
-                sayTime = Time.fixedTime;
+                //Тогда мы переходим к следующей фразе диалога
+                if (currentDialog.currentPhraseNum >= currentDialog.phrases.Length)
+                {
+                    ended = true;
+                    currentDialog.currentPhraseNum = 0;
+                    ph.sayer.cleanSay();
+                }
+                else
+                {
+                    //Если не последняя, значит переходим к следующей
+                    ph = currentDialog.phrases[currentDialog.currentPhraseNum];
+                    ph.sayer.say(ph.speech);
+                    currentDialog.currentPhraseNum += 1;
+                    sayTime = Time.fixedTime;
+                }
             }
         }
+        
     }
 
     public void StartDialog(Dialog currentDialog)
@@ -61,7 +65,8 @@ public class PersonDialogController : MonoBehaviour
     public void EndDialog()
     {
         if (ph != null)
-            ph.sayer.cleanSay();
+            if (ph.sayer != null)
+                ph.sayer.cleanSay();    
         ended = true;
     }
 }

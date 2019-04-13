@@ -8,8 +8,10 @@ public class Cleaner1Script : ActingPerson
     public PersonAct talkWithSecretary;
     public PersonAct putsHandfulOfSeeds;
     public PersonAct washTheShelf;
+    public PersonAct talkWithBoss; 
     public PersonAct bringPapersFrom2level;
     public PersonAct deliverPapers;
+    public PersonAct somethingHappened;
     public PersonAct fixBossGrass;
     public PersonAct fixCoolerOn1Level;
     public PersonAct fixCoolerOn2Level;
@@ -29,7 +31,7 @@ public class Cleaner1Script : ActingPerson
         levelController = FindObjectOfType<Level1Controller>();
         //levelController.SecretaryIsBack += doTalkWithSecretary; //не всегда. Если уборщица убирается гдето то она не должна реагировать на возврат секретарши
         levelController.BossNeedsCoffee += doPutsHandfulOfSeeds;
-        levelController.BossNeedsPapers += doPutsHandfulOfSeeds;
+        levelController.BossNeedsPapers += doTalkWithBoss;
         levelController.CleanerBringPapers += doRememberToBringPapersFrom2level;
 
         doTalkWithSecretary();
@@ -46,7 +48,12 @@ public class Cleaner1Script : ActingPerson
 
         if (currentAction == talkWithSecretary || currentAction == washTheShelf)
         {
-            problemSelector();
+            if (!levelController.GrassInBossRoomIsFine || !levelController.CoolerOnFirstFloorIsFine ||
+                !levelController.CoolerOnSecondFloorIsFine || !levelController.CoolerOnThirdFloorIsFine)
+            {
+                levelController.CleanerIsBisy = true;
+                setAction(somethingHappened);
+            }
         }
         if (currentAction == washTheShelf && !levelController.SecretaryIsBisy)
         {
@@ -127,7 +134,7 @@ public class Cleaner1Script : ActingPerson
         {
             levelController.CoolerOnSecondFloorIsFine = true;
         }
-        if (currentAction == fixCoolerOn3Level)
+        else if(currentAction == fixCoolerOn3Level)
         {
             levelController.CoolerOnThirdFloorIsFine = true;
         }
@@ -141,7 +148,11 @@ public class Cleaner1Script : ActingPerson
     {
         base.goToNextAction();
         ////Если сломалось растение или один из кулеров а у нас задача принести бумагу, то после ремонта надо таки принести бумагу
-        if (currentAction == fixBossGrass || currentAction == fixCoolerOn1Level || currentAction == fixCoolerOn2Level || currentAction == fixCoolerOn3Level)
+        if (currentAction == somethingHappened)
+        {
+            problemSelector();
+        }
+        else if (currentAction == fixBossGrass || currentAction == fixCoolerOn1Level || currentAction == fixCoolerOn2Level || currentAction == fixCoolerOn3Level)
         {
             if (!problemSelector())
             {
@@ -152,6 +163,11 @@ public class Cleaner1Script : ActingPerson
         {
             doWashTheShelf();
         }
+        else if (currentAction == talkWithBoss)
+        {
+            levelController.generatePasswordRemembered();
+            restSelector();
+        }
     }
 
     public void doTalkWithSecretary()
@@ -160,8 +176,23 @@ public class Cleaner1Script : ActingPerson
         setAction(talkWithSecretary);
         levelController.CleanerIsBisy = false;
     }
+    public void doTalkWithBoss()
+    {
+        if (levelController.passwordRemembered)
+        {
+            Debug.Log("passwordRemembered. go to rest");
+            restSelector();
+        }
+        else
+        {
+            Debug.Log("doTalkWithBoss");
+            setAction(talkWithBoss);
+        }
+    }
     public void doPutsHandfulOfSeeds()
     {
+        if (levelController.CleanerIsBisy)
+            return;
         Debug.Log("doPutsHandfulOfSeeds");
         if (levelController.MusorSpawned || levelController.MusorInInvertory || levelController.MusorOnBossKarniz) //или если окно разбито
             doWashTheShelf(); //стабильное состояние где уборщица может находиться сколько угодно долго, пока секретарша не освободится
@@ -191,25 +222,21 @@ public class Cleaner1Script : ActingPerson
     }
     public void doFixBossGrass()
     {
-        levelController.CleanerIsBisy = true;
         Debug.Log("doFixBossGrass");
         setAction(fixBossGrass);
     }
     public void doFixCoolerOn1Level()
     {
-        levelController.CleanerIsBisy = true;
         Debug.Log("doFixCoolerOn1Level");
         setAction(fixCoolerOn1Level);
     }
     public void doFixCoolerOn2Level()
     {
-        levelController.CleanerIsBisy = true;
         Debug.Log("doFixCoolerOn2Level");
         setAction(fixCoolerOn2Level);
     }
     public void doFixCoolerOn3Level()
     {
-        levelController.CleanerIsBisy = true;
         Debug.Log("doFixCoolerOn3Level");
         setAction(fixCoolerOn3Level);
     }

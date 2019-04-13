@@ -16,6 +16,10 @@ public class VaultScript : ItemScript
         Debug.Log("VaultScript");
 
         if (levelController.BossShelterPassIsKnown)
+        {
             levelController.BossShelterLocked = false;
+            if (levelController.PigeonsInBossRoom || !levelController.BossInBossRoom)
+                levelController.generateDocumentStolen();
+        }
     }
 }
