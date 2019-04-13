@@ -9,6 +9,7 @@ public abstract class ItemScript : MonoBehaviour
     private Renderer materialRenderer;
     bool hovered = false;
     private bool hasMaterialRenderer = true;
+    public bool canBePickedInInventory = false;
 
     public void Start()
     {
