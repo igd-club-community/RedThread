@@ -79,9 +79,14 @@ public class PersonNavigationController : MonoBehaviour
     public Vector2 forward;
     public float prevAngleToTarget;
     public float angleToTarget;
-    public Vector2 targetForward; 
+    public Vector2 targetForward;
     public Vector3 vectorToTargetDelta;
     public Vector2 vectorToTarget;
+
+
+    public Vector3 gizmo_nextPosition;
+    public Vector3 gizmo_transformPosition;
+    public Vector3 gizmo_worldDeltaPosition;
     // Update is called once per frame
     void Update()
     {
@@ -98,8 +103,12 @@ public class PersonNavigationController : MonoBehaviour
 
         worldDeltaPosition = navAgent.nextPosition - transform.position;
         worldDeltaPositionMagn = worldDeltaPosition.magnitude;
-        if (worldDeltaPositionMagn < 0.0001f)
+        if (navState == NavigationState.StartMoving && worldDeltaPositionMagn < 0.0001f)
             return;
+
+        gizmo_nextPosition = nextPosition;
+        gizmo_transformPosition = transform.position;
+        gizmo_worldDeltaPosition = worldDeltaPosition;
 
         world2dDelta = new Vector2(worldDeltaPosition.x, worldDeltaPosition.z);
 
@@ -150,6 +159,7 @@ public class PersonNavigationController : MonoBehaviour
                 {
                     angularSpeed = angleToTarget / 180 * ((float)Math.PI);
                 }
+                angularSpeed *= 2f;
                 break;
 
             case NavigationState.OnCourse:
@@ -205,12 +215,13 @@ public class PersonNavigationController : MonoBehaviour
         //    angularSpeed *= 2f;
         //Debug.Log("Linear = " + linearSpeed + " angular " + angularSpeed);
         //Скорость должна иметь возможность мгновенно изменяться чтобы не промахнуться к цели
-        anim.SetFloat("LinearSpeed", linearSpeed, 0.3f, Time.deltaTime);
-        anim.SetFloat("AngularSpeed", angularSpeed, 0.7f, Time.deltaTime);
+        anim.SetFloat("LinearSpeed", linearSpeed, 0.2f, Time.deltaTime);
+        anim.SetFloat("AngularSpeed", angularSpeed, 0.2f, Time.deltaTime);
         //anim.SetFloat("LinearSpeed", linearSpeed);
         //anim.SetFloat("AngularSpeed", angularSpeed);
 
-        navAgent.nextPosition = transform.position;
+        //navAgent.nextPosition = transform.position;
+
         //transform.rotation = navAgent.transform.rotation;
 
 
@@ -226,16 +237,29 @@ public class PersonNavigationController : MonoBehaviour
         //if (worldDeltaPosition.magnitude > navAgent.radius)
         //    navAgent.nextPosition = transform.position + 0.9f * worldDeltaPosition;
     }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(gizmo_nextPosition, Vector3.one * 0.2f);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(gizmo_transformPosition, Vector3.one * 0.2f);
+        Gizmos.color = Color.blue;
+        Vector3 posGizmo = gizmo_transformPosition + gizmo_worldDeltaPosition * 5f;
+        Gizmos.DrawWireCube(posGizmo, Vector3.one * 0.2f);
+    }
+
     void OnAnimatorMove()
     {
         // Update postion to agent position
-        transform.position = navAgent.nextPosition;
+        //transform.position = navAgent.nextPosition;
 
         // Update position based on animation movement using navigation surface height
         Vector3 position = anim.rootPosition;
         position.y = navAgent.nextPosition.y;
         transform.position = position;
         transform.rotation = anim.rootRotation;
+
+        navAgent.nextPosition = transform.position;
     }
 }
 
