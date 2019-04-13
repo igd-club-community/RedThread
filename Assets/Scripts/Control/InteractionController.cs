@@ -16,6 +16,7 @@ public class InteractionController : MonoBehaviour {
             Interactive interactionObject = GetInteractionObject();
             if (interactionObject != null)
             {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/OnClick", GetComponent<Transform>().position);
                 Debug.Log("Interaction with " + interactionObject.gameObject.name + ".");
                 interactionObject.SendMessage("Interact");
             }

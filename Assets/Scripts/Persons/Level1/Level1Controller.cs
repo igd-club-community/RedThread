@@ -125,7 +125,7 @@ public class Level1Controller : MonoBehaviour
     {
         Electropower = false;
         Debug.Log("generatePowerOff");
-        PowerOff();
+        //PowerOff();
     }
     public void generatePowerOn()
     {
@@ -148,6 +148,15 @@ public class Level1Controller : MonoBehaviour
     {
         if (SecretaryOn2floor && ProgrammerOn2floor && !BossOn2floor && !CleanerOn2floor)
             FindObjectOfType<LevelsLoader>().LoadCredits();
+        if(checkLoose())
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Bad End", GetComponent<Transform>().position);
+            //FindObjectOfType<LevelsLoader>().LoadCredits();
+        }
     }
-
+    bool checkLoose()
+    {
+        //TODO ADD УСЛОВИЯ ПОРАЖЕНИЯ
+        return false;
+    }
 }

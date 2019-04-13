@@ -15,7 +15,7 @@ public class PrinterScript : ItemScript
     public override void Act()
     {
         Debug.Log("PrinterScript");
-        soundEmitter.SetActive(!soundEmitter.activeSelf);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Print files", GetComponent<Transform>().position);
         levelController.PaperInPrinter = false;
     }
 }

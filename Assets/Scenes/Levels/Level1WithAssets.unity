@@ -264,6 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfc3fe39e0a64744180497f70dcd9d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundEmitter: {fileID: 0}
 --- !u!65 &80703542
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -703,7 +704,7 @@ Transform:
   - {fileID: 1357437850}
   - {fileID: 749824283}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &250162655
 GameObject:
@@ -1354,7 +1355,7 @@ PrefabInstance:
     - target: {fileID: 480206511843132657, guid: 23a584daf1c02cf409198f972f27047f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3438173544247990131, guid: 23a584daf1c02cf409198f972f27047f,
         type: 3}
@@ -1453,40 +1454,81 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8dc45356ac35ea4e85d77900e3f68be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions: []
   currentAction:
+    name: 
     target: {fileID: 0}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   noAction: 0
-  distance: 0
+  timeOfStart: 0
+  inDialog: 0
+  isDialogSingle: 0
   textBackground: {fileID: 474247707}
   bubbleText: {fileID: 474247706}
+  currentPhraseNum: 0
+  textMaxTime: 3
   sayTime: 0
   workWithPC:
+    name: 
     target: {fileID: 411375173}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   watchOnDesk:
+    name: 
     target: {fileID: 1062500121}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   writeOnDesk:
+    name: 
     target: {fileID: 1062500121}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   watchOnCat:
+    name: 
     target: {fileID: 222351343}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   switchPowerOn:
+    name: 
     target: {fileID: 731945679}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
-  timeOfWorkingWithPC: 0
-  timeOfWatchingOnDesk: 0
-  timeOfWritingOnDesk: 0
-  timeOfWatchingOnCat: 0
+    phraseStageNum: 0
+    phrasesStorage: []
 --- !u!54 &456373816
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1503,6 +1545,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &456373818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456373814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eefee482b13fd2543a9334b01975c35c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMoving: 1
+  onCourse: 0
+  inPlace: 0
+  minDistanceToTarget: 0
+  distance: 100
+  talkingWithPerson: 0
+  clamp: 0
+  maxLinearSpeed: 0
+  linearSpeed: 0
+  angularSpeed: 0
+  _targetReached: 0
+  deciredVelocity: {x: 0, y: 0, z: 0}
+  nextPosition: {x: 0, y: 0, z: 0}
+  worldDeltaPosition: {x: 0, y: 0, z: 0}
+  world2dDelta: {x: 0, y: 0}
+  smooth: 0
+  forward: {x: 0, y: 0}
+  resultAngle: 0
+  targetForward: {x: 0, y: 0}
 --- !u!1001 &474247705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2345,7 +2418,7 @@ Transform:
   - {fileID: 933350382}
   - {fileID: 1335331603}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &603639309
 GameObject:
@@ -2427,7 +2500,7 @@ PrefabInstance:
     - target: {fileID: 480206511843132657, guid: 23a584daf1c02cf409198f972f27047f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3438173544247990131, guid: 23a584daf1c02cf409198f972f27047f,
         type: 3}
@@ -2521,52 +2594,125 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e2ffefa9b1daf440888e59a5ea07051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions: []
   currentAction:
+    name: 
     target: {fileID: 0}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   noAction: 0
-  distance: 0
+  timeOfStart: 0
+  inDialog: 0
+  isDialogSingle: 0
   textBackground: {fileID: 1821888028}
   bubbleText: {fileID: 1821888027}
+  currentPhraseNum: 0
+  textMaxTime: 3
   sayTime: 0
   talkWithSecretary:
+    name: 
     target: {fileID: 1357437850}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   putsHandfulOfSeeds:
+    name: 
     target: {fileID: 1647398841}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   washTheShelf:
+    name: 
     target: {fileID: 1372149733}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   bringPapersFrom2level:
+    name: 
     target: {fileID: 1509198086}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   deliverPapers:
+    name: 
     target: {fileID: 991073229}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   fixBossGrass:
+    name: 
     target: {fileID: 1088214158}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   fixCoolerOn1Level:
+    name: 
     target: {fileID: 1660036306}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   fixCoolerOn2Level:
+    name: 
     target: {fileID: 334683322}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   fixCoolerOn3Level:
+    name: 
     target: {fileID: 994163524}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   shelvesOnSecretaryTable: {fileID: 1952959800}
   askedToBringPapers: 0
 --- !u!54 &749824286
@@ -2585,6 +2731,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &749824288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749824284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eefee482b13fd2543a9334b01975c35c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMoving: 1
+  onCourse: 0
+  inPlace: 0
+  minDistanceToTarget: 0
+  distance: 100
+  talkingWithPerson: 0
+  clamp: 0
+  maxLinearSpeed: 0
+  linearSpeed: 0
+  angularSpeed: 0
+  _targetReached: 0
+  deciredVelocity: {x: 0, y: 0, z: 0}
+  nextPosition: {x: 0, y: 0, z: 0}
+  worldDeltaPosition: {x: 0, y: 0, z: 0}
+  world2dDelta: {x: 0, y: 0}
+  smooth: 0
+  forward: {x: 0, y: 0}
+  resultAngle: 0
+  targetForward: {x: 0, y: 0}
 --- !u!1001 &764996361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3105,6 +3282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 261139343}
+  state: 0
 --- !u!114 &931013204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3302,6 +3480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  state: 0
 --- !u!4 &961664643
 Transform:
   m_ObjectHideFlags: 0
@@ -3314,7 +3493,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &982554757
 GameObject:
@@ -3895,115 +4074,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1536549615}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1094397188
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1094397192}
-  - component: {fileID: 1094397191}
-  - component: {fileID: 1094397190}
-  - component: {fileID: 1094397189}
-  m_Layer: 0
-  m_Name: Main Camera (1)
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1094397189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1094397188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5c65c4b9ae38584598b92ebb260a541, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  border: 10
-  sensivityXY: 10
-  sensivityZoom: 100
-  sensivityMidMouse: 0.2
-  minX: -5
-  minY: -5
-  minZ: -5
-  maxX: 5
-  maxY: 2
-  maxZ: 5
-  currentPosition: {x: 0, y: 0}
-  deltaPosition: {x: 0, y: 0}
-  newDeltaPosition: {x: 0, y: 0, z: 0}
-  lastPosition: {x: 0, y: 0}
---- !u!81 &1094397190
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1094397188}
-  m_Enabled: 1
---- !u!20 &1094397191
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1094397188}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &1094397192
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1094397188}
-  m_LocalRotation: {x: 0.12268094, y: -0.011908921, z: 0.0014722089, w: 0.99237365}
-  m_LocalPosition: {x: 0.62, y: 10.68, z: -6.19}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1109097100
 GameObject:
@@ -4712,75 +4782,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.0604427, y: 2.0354939, z: 2.0680697}
   m_Center: {x: -0.10038878, y: 1.0218959, z: 0.6093072}
---- !u!1 &1294133771
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1294133773}
-  - component: {fileID: 1294133772}
-  m_Layer: 0
-  m_Name: Directional Light (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &1294133772
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1294133771}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 2
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &1294133773
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1294133771}
-  m_LocalRotation: {x: 0.9047854, y: -0.09061918, z: 0.24243648, w: 0.33819544}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 139.01, y: -30, z: 0}
 --- !u!1 &1294307811
 GameObject:
   m_ObjectHideFlags: 0
@@ -5004,7 +5005,7 @@ PrefabInstance:
     - target: {fileID: 480206511843132657, guid: 23a584daf1c02cf409198f972f27047f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3438173544247990131, guid: 23a584daf1c02cf409198f972f27047f,
         type: 3}
@@ -5098,60 +5099,147 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1037a3a7f9ce8b1478f5165e98f484f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions: []
   currentAction:
+    name: 
     target: {fileID: 0}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   noAction: 0
-  distance: 0
+  timeOfStart: 0
+  inDialog: 0
+  isDialogSingle: 0
   textBackground: {fileID: 583126670}
   bubbleText: {fileID: 583126669}
+  currentPhraseNum: 0
+  textMaxTime: 3
   sayTime: 0
   bringCoffee:
+    name: 
     target: {fileID: 1272469824}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   printPapers:
+    name: 
     target: {fileID: 991073229}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   bringPapersFrom2level:
+    name: 
     target: {fileID: 1509198086}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   bringPapersToPrinter:
+    name: 
     target: {fileID: 991073229}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   bringPapersToBoss:
+    name: 
     target: {fileID: 1272469824}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   backToDesk:
+    name: 
     target: {fileID: 1647398841}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   prepareCoffee:
+    name: 
     target: {fileID: 1330079264}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   talkWithCleaner:
+    name: 
     target: {fileID: 749824283}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   askCleanerToBringPapers:
+    name: 
     target: {fileID: 749824283}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   goForSugar:
+    name: 
     target: {fileID: 0}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   bringSugar:
+    name: 
     target: {fileID: 0}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   visionPoint: {fileID: 1808106893}
   programmer: {fileID: 603639310}
   askedToPrintPapers: 0
@@ -5172,6 +5260,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1357437855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357437851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eefee482b13fd2543a9334b01975c35c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMoving: 1
+  onCourse: 0
+  inPlace: 0
+  minDistanceToTarget: 0
+  distance: 100
+  talkingWithPerson: 0
+  clamp: 0
+  maxLinearSpeed: 0
+  linearSpeed: 0
+  angularSpeed: 0
+  _targetReached: 0
+  deciredVelocity: {x: 0, y: 0, z: 0}
+  nextPosition: {x: 0, y: 0, z: 0}
+  worldDeltaPosition: {x: 0, y: 0, z: 0}
+  world2dDelta: {x: 0, y: 0}
+  smooth: 0
+  forward: {x: 0, y: 0}
+  resultAngle: 0
+  targetForward: {x: 0, y: 0}
 --- !u!1 &1372149732
 GameObject:
   m_ObjectHideFlags: 0
@@ -5327,7 +5446,7 @@ RectTransform:
   - {fileID: 1824833845}
   - {fileID: 1695522641}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5617,6 +5736,8 @@ GameObject:
   - component: {fileID: 1548661904}
   - component: {fileID: 1548661903}
   - component: {fileID: 1548661902}
+  - component: {fileID: 1548661905}
+  - component: {fileID: 1548661906}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5682,12 +5803,51 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1548661901}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: -0.17, y: 6.36, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1548661905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548661901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c65c4b9ae38584598b92ebb260a541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  border: 10
+  sensivityXY: 10
+  sensivityZoom: 30
+  sensivityMidMouse: 1
+  minX: -5
+  minY: -5
+  minZ: -5
+  maxX: 5
+  maxY: 5
+  maxZ: 5
+  currentPosition: {x: 0, y: 0}
+  deltaPosition: {x: 0, y: 0}
+  newDeltaPosition: {x: 0, y: 0, z: 0}
+  lastPosition: {x: 0, y: 0}
+--- !u!114 &1548661906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548661901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: 0
 --- !u!1001 &1554541389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5781,6 +5941,7 @@ GameObject:
   - component: {fileID: 1586955452}
   - component: {fileID: 1586955451}
   - component: {fileID: 1586955450}
+  - component: {fileID: 1586955453}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -5851,8 +6012,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1586955453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586955449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5f3ebeae7cb4e449b4ef3750cb63b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRaycastRange: 100
 --- !u!1 &1647398840
 GameObject:
   m_ObjectHideFlags: 0
@@ -5968,7 +6142,7 @@ PrefabInstance:
     - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5851814065759581601, guid: d3e68b73f039c9642a3aa0a34c88b01a,
         type: 3}
@@ -6735,6 +6909,43 @@ RectTransform:
   m_AnchoredPosition: {x: -6.08, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1872238190 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2170695729994083428, guid: 105a0baa4b4e92f4284251b2a3d4aebe,
+    type: 3}
+  m_PrefabInstance: {fileID: 764996361}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1872238194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872238190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eefee482b13fd2543a9334b01975c35c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMoving: 1
+  onCourse: 0
+  inPlace: 0
+  minDistanceToTarget: 0
+  distance: 100
+  talkingWithPerson: 0
+  clamp: 0
+  maxLinearSpeed: 0
+  linearSpeed: 0
+  angularSpeed: 0
+  _targetReached: 0
+  deciredVelocity: {x: 0, y: 0, z: 0}
+  nextPosition: {x: 0, y: 0, z: 0}
+  worldDeltaPosition: {x: 0, y: 0, z: 0}
+  world2dDelta: {x: 0, y: 0}
+  smooth: 0
+  forward: {x: 0, y: 0}
+  resultAngle: 0
+  targetForward: {x: 0, y: 0}
 --- !u!1 &1900534273
 GameObject:
   m_ObjectHideFlags: 0
@@ -6800,6 +7011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1824833844}
+  state: 0
 --- !u!114 &1926240893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7190,6 +7402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c034b3c92a156034aac20ca5e86f48f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundEmitter: {fileID: 0}
 --- !u!65 &1977682150
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7412,6 +7625,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossAnimation
       objectReference: {fileID: 0}
+    - target: {fileID: 7223043865803994267, guid: dc299f9ab7b1ba842bf3af69d140eece,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 106752098943307371, guid: dc299f9ab7b1ba842bf3af69d140eece,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7535,64 +7753,172 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af1d19be4676164aab19f9715ac8e7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actions: []
   currentAction:
+    name: 
     target: {fileID: 0}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   noAction: 0
-  distance: 0
+  timeOfStart: 0
+  inDialog: 0
+  isDialogSingle: 0
   textBackground: {fileID: 764996363}
   bubbleText: {fileID: 764996362}
+  currentPhraseNum: 0
+  textMaxTime: 3
   sayTime: 0
-  prevAction:
+  rememberedAction:
+    name: 
     target: {fileID: 0}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
+  goToBossTable:
+    name: 
+    target: {fileID: 0}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
+    animationName: 
+    phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
   readPapers:
+    name: 
     target: {fileID: 425229971}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
-  drinkCoffee:
-    target: {fileID: 425229971}
-    animationName: 
-    phrases: []
-  askSecretaryAboutCoffee:
-    target: {fileID: 1357437850}
-    animationName: 
-    phrases: []
-  goToVault:
-    target: {fileID: 529482497}
-    animationName: 
-    phrases: []
-  unlockShelter:
-    target: {fileID: 529482497}
-    animationName: 
-    phrases: []
-  askSecretaryAboutNewPapers:
-    target: {fileID: 1357437850}
-    animationName: 
-    phrases: []
-  goToBossCabinet:
+    phraseStageNum: 0
+    phrasesStorage: []
+  goToSecretary:
+    name: 
     target: {fileID: 0}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
-  goToProgrammer:
-    target: {fileID: 1062500120}
-    animationName: 
-    phrases: []
-  talkWithProgrammer:
-    target: {fileID: 456373813}
-    animationName: 
-    phrases: []
-  sayGoodbytoPigeons:
-    target: {fileID: 1163071684}
-    animationName: 
-    phrases: []
-  askSecretaryToRepairWindows:
+    phraseStageNum: 0
+    phrasesStorage: []
+  askSecretaryAboutCoffee:
+    name: 
     target: {fileID: 1357437850}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
     animationName: 
     phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
+  goToVault:
+    name: 
+    target: {fileID: 529482497}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
+    animationName: 
+    phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
+  tryToRememberPassword:
+    name: 
+    target: {fileID: 0}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
+    animationName: 
+    phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
+  unlockShelter:
+    name: 
+    target: {fileID: 529482497}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
+    animationName: 
+    phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
+  askSecretaryAboutNewPapers:
+    name: 
+    target: {fileID: 1357437850}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
+    animationName: 
+    phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
+  goToProgrammer:
+    name: 
+    target: {fileID: 1062500120}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
+    animationName: 
+    phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
+  talkWithProgrammer:
+    name: 
+    target: {fileID: 456373813}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
+    animationName: 
+    phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
+  sayGoodbytoPigeons:
+    name: 
+    target: {fileID: 1163071684}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
+    animationName: 
+    phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
+  askSecretaryToRepairWindows:
+    name: 
+    target: {fileID: 1357437850}
+    targetDistance: 0
+    talkingWithPerson: 0
+    byTimer: 0
+    targetTimer: 0
+    animationName: 
+    phrases: []
+    phraseStageNum: 0
+    phrasesStorage: []
+  wantCoffee: 0
+  wantPapers: 0
+  passwordRemembered: 0
   secretaryAskedToRepairWindow: 0
   timeOfReadingStarted: 0
   timeOfCoffeeDelivered: 0
@@ -7627,6 +7953,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2028026186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028026179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eefee482b13fd2543a9334b01975c35c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMoving: 1
+  onCourse: 0
+  inPlace: 0
+  minDistanceToTarget: 0
+  distance: 100
+  talkingWithPerson: 0
+  clamp: 0
+  maxLinearSpeed: 0
+  linearSpeed: 0
+  angularSpeed: 0
+  _targetReached: 0
+  deciredVelocity: {x: 0, y: 0, z: 0}
+  nextPosition: {x: 0, y: 0, z: 0}
+  worldDeltaPosition: {x: 0, y: 0, z: 0}
+  world2dDelta: {x: 0, y: 0}
+  smooth: 0
+  forward: {x: 0, y: 0}
+  resultAngle: 0
+  targetForward: {x: 0, y: 0}
 --- !u!1 &2055844094
 GameObject:
   m_ObjectHideFlags: 0
@@ -7691,7 +8048,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2059492108
 GameObject:
@@ -7734,7 +8091,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2064789940
 GameObject:
