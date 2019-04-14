@@ -31,7 +31,7 @@ public class ActingPerson : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        anim = GetComponentInChildren<Animator>();
+        anim = GetComponent<Animator>();
         navigator = GetComponent<PersonNavigationController>();
         dialogue = GetComponent<PersonDialogController>();
         state = PersonState.ReadyForDialog;

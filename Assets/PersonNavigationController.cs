@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 //По идее, навигатору нужно только ставить цель, после чего он каждый фрейм должен пересчитывать необходимые аниматору параметры
 //ActingPerson соответственно должен выполняться позже навигатора, брать из него результаты вычислений и передавать аниматору
 public class PersonNavigationController : MonoBehaviour
 {
     public string name;
-    protected Animator anim;
+    public Animator anim;
     NavMeshAgent navAgent;
     public NavigationState navState;
 
@@ -47,8 +48,8 @@ public class PersonNavigationController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        name = GetComponentInChildren<ActingPerson>().name;
-        anim = GetComponentInChildren<Animator>();
+        name = GetComponent<ActingPerson>().name;
+        anim = GetComponent<Animator>();
         navAgent = GetComponent<NavMeshAgent>();
         navAgent.updatePosition = false;
         navAgent.updateRotation = false;
@@ -61,7 +62,7 @@ public class PersonNavigationController : MonoBehaviour
         this.target = target;
         this.minDistanceToTarget = minDistanceToTarget;
         this.talkingWithPerson = talkingWithPerson;
-
+        
         if (!this.animationName.Equals(animationName))
             anim.SetBool(this.animationName, false);
         this.animationName = animationName;
@@ -69,6 +70,7 @@ public class PersonNavigationController : MonoBehaviour
         navState = NavigationState.StartMoving;
         _targetReached = false;
         targetForward = new Vector2(target.transform.forward.x, target.transform.forward.z);
+        //if (debugText3 != null) debugText3.text = targetForward.ToString();
     }
     public Vector3 deciredVelocity;
     public Vector3 nextPosition;
@@ -83,7 +85,10 @@ public class PersonNavigationController : MonoBehaviour
     public Vector3 vectorToTargetDelta;
     public Vector2 vectorToTarget;
 
-
+    public Text debugText1;
+    public Text debugText2;
+    public Text debugText3;
+    public Text debugText4;
     public Vector3 gizmo_nextPosition;
     public Vector3 gizmo_transformPosition;
     public Vector3 gizmo_worldDeltaPosition;
@@ -97,13 +102,16 @@ public class PersonNavigationController : MonoBehaviour
         }
         distance = navAgent.remainingDistance;
 
+        //if (debugText1 != null) debugText1.text = distance.ToString();
+        //if (debugText2 != null) debugText2.text = navState.ToString();
+
         //полезная штука, потом может пригодиться
         deciredVelocity = navAgent.desiredVelocity;
         nextPosition = navAgent.nextPosition;
 
         worldDeltaPosition = navAgent.nextPosition - transform.position;
         worldDeltaPositionMagn = worldDeltaPosition.magnitude;
-        if (navState == NavigationState.StartMoving && worldDeltaPositionMagn < 0.0001f)
+        if (worldDeltaPositionMagn < 0.0001f)
             return;
 
         gizmo_nextPosition = nextPosition;
@@ -120,7 +128,9 @@ public class PersonNavigationController : MonoBehaviour
         //float result = Vector3.SignedAngle(worldDeltaPosition, transform.forward, Vector3.up);
         forward = new Vector2(transform.forward.x, transform.forward.z);
         angleToTarget = Vector2.SignedAngle(world2dDelta, forward); //Этому углу доверять особо нельзя. Он постоянно пляшет
-        //Debug.Log(resultAngle);
+                                                                    //Debug.Log(resultAngle);
+
+        //if (debugText4 != null) debugText4.text = forward.ToString();
 
         if (navAgent.remainingDistance < minDistanceToTarget)
         {
@@ -237,16 +247,16 @@ public class PersonNavigationController : MonoBehaviour
         //if (worldDeltaPosition.magnitude > navAgent.radius)
         //    navAgent.nextPosition = transform.position + 0.9f * worldDeltaPosition;
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(gizmo_nextPosition, Vector3.one * 0.2f);
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(gizmo_transformPosition, Vector3.one * 0.2f);
-        Gizmos.color = Color.blue;
-        Vector3 posGizmo = gizmo_transformPosition + gizmo_worldDeltaPosition * 5f;
-        Gizmos.DrawWireCube(posGizmo, Vector3.one * 0.2f);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.green;
+    //    Gizmos.DrawWireCube(gizmo_nextPosition, Vector3.one * 0.2f);
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawWireCube(gizmo_transformPosition, Vector3.one * 0.2f);
+    //    Gizmos.color = Color.blue;
+    //    Vector3 posGizmo = gizmo_transformPosition + gizmo_worldDeltaPosition * 5f;
+    //    Gizmos.DrawWireCube(posGizmo, Vector3.one * 0.2f);
+    //}
 
     void OnAnimatorMove()
     {
