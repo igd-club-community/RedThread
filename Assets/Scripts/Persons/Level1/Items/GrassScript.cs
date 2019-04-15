@@ -13,11 +13,13 @@ public class GrassScript : ItemScript
     }
     public override void Act()
     {
-        Debug.Log("GrassScript");
 
         //трава просыпается только если босс в порядке иначе это не имеет смысла
-        if (!levelController.BossOffline)
+        if (!levelController.BossIsBisy && levelController.BossInBossRoom)
+        {
+            Debug.Log("GrassScript");
             levelController.GrassInBossRoomIsFine = false;
+        }
 
     }
 }

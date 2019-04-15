@@ -7,7 +7,6 @@ public class Boss1Script : ActingPerson
 {
     public PersonAct goToBossTable; //босс идёт читать бумаги один раз, в самом начале
     public PersonAct readPapers; //Читает бумаги один раз в начале, после чего идёт просить кофе
-    //public PersonAct waitSecretary;
     public PersonAct askSecretaryAboutCoffee; //просит секретаря сделать кофе, много раз по ходу цикла игры
     public PersonAct goToVault; //идет к сейфу после просьбы сделать кофе, после этого возможны два варианта, в зависимости открыт сейф или нет
     public PersonAct tryToRememberPassword; //пришел к сейфу и пытается вспомнить пароль
@@ -21,6 +20,7 @@ public class Boss1Script : ActingPerson
     public PersonAct openShelter; //пришел к сейфу и открывает его
     public PersonAct closeShelter; //пришел к сейфу и видит что он открыт
     public PersonAct cryNearShelter; //пришел к сейфу и видит что документы украдены
+    public PersonAct waitForClearFloor; //ждем пока уборщица нас пропустит
     public PersonAct goToProgrammer;
     public PersonAct talkWithProgrammer;
     public PersonAct sayGoodbytoPigeons;
@@ -53,21 +53,21 @@ public class Boss1Script : ActingPerson
     
     new void Update()
     {
-        if (levelController.BossOffline)
-            return;
         base.Update();
         noAction = false;
         //Если у нас растение было сломано и мы ждали что оно починится, то начинаем двигаться.
-        if (noAction && levelController.GrassInBossRoomIsFine)
-            noAction = false;
+        //if (noAction && levelController.GrassInBossRoomIsFine)
+        //    noAction = false;
 
         if (currentAction == goToProgrammer)
         {
             if (levelController.ProgrammerOn2floor)
                 doTalkWithProgrammer();
         }
-        if (currentAction == waitForSecretaryToLeave)
+        if (currentAction == waitForClearFloor && levelController.GrassInBossRoomIsFine)
         {
+            setAction(rememberedAction);
+            levelController.BossIsBisy = false;
         }
     }
 
@@ -150,7 +150,7 @@ public class Boss1Script : ActingPerson
             else if (levelController.documentsStolen)
             {
                 setAction(cryNearShelter);
-                levelController.BossOffline = true;
+                levelController.BossIsBisy = true;
             }
         }
         else if (currentAction == unlockShelter || currentAction == openShelter || currentAction == closeShelter)
@@ -241,7 +241,7 @@ public class Boss1Script : ActingPerson
 
     public void doCry()
     {
-        levelController.BossOffline = true;
+        levelController.BossIsBisy = true;
         setAction(cryNearShelter);
         //say("АААааыыыыаааа!!");
         //Debug.Log("doCry");
@@ -266,25 +266,15 @@ public class Boss1Script : ActingPerson
             levelController.BossOn2floor = true;
         if (other.CompareTag("Boss room"))
             levelController.BossInBossRoom = true;
-        //if (other.CompareTag("chair"))
-        //{
-        //    Debug.Log("Time to sit");
-        //    anim.SetBool("Sit", true);
-        //}
-    }
 
-    private void OnTriggerStay(Collider other)
-    {
         if (!levelController.GrassInBossRoomIsFine && other.CompareTag("grass"))
         {
-            noAction = true;
-        }
-        else
-        {
-            noAction = false;
+            rememberedAction = currentAction;
+            setAction(waitForClearFloor);
+            levelController.BossIsBisy = true;
         }
     }
-
+    
     public void OnTriggerExit(Collider other)
     {
         if (levelController.PigeonsInBossRoom && other.CompareTag("Boss room"))
@@ -296,9 +286,5 @@ public class Boss1Script : ActingPerson
             levelController.BossOn2floor = false;
         if (other.CompareTag("Boss room"))
             levelController.BossInBossRoom = false;
-        //if (other.CompareTag("chair"))
-        //{
-        //    anim.SetBool("Sit", false);
-        //}
     }
 }

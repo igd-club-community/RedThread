@@ -17,6 +17,7 @@ public class Secterary1Script : ActingPerson
     public PersonAct prepareCoffee;
     public PersonAct talkWithCleaner;
     public PersonAct askCleanerToBringPapers;
+    public PersonAct waitForClearFloor; //ждем пока уборщица нас пропустит
     public PersonAct goForSugar;
     public PersonAct bringSugar;
 
@@ -106,7 +107,7 @@ public class Secterary1Script : ActingPerson
         }
         else if (currentAction == talkWithCleaner)
         {
-            if (levelController.BossOffline)
+            if (levelController.BossIsBisy)
                 doGoForSugar();
             //Если уборщица занята, то есть если сломан один из кулеров или растение у босса,
             //то Мы вместо того чтобы поговорить с уборщицей ничего не делаем
@@ -154,6 +155,7 @@ public class Secterary1Script : ActingPerson
 
     public void doPrepareCoffee()
     {
+        levelController.SecretaryIsBisy = true;
         //say("Как же он вкусно пахнет!");
         Debug.Log("doPrepareCoffee");
         //Запустить анимацию приготовления кофе,
@@ -179,6 +181,7 @@ public class Secterary1Script : ActingPerson
     }
     public void doPrintPapers()
     {
+        levelController.SecretaryIsBisy = true;
         askedToPrintPapers = true;
         //say("Бумажки, бумажки, я несу бумажки");
         Debug.Log("doPrintPapers");
@@ -243,17 +246,11 @@ public class Secterary1Script : ActingPerson
     {
         if (other.CompareTag("2 floor"))
             levelController.SecretaryOn2floor = true;
-    }
 
-    private void OnTriggerStay(Collider other)
-    {
         if (!levelController.GrassInBossRoomIsFine && other.CompareTag("grass"))
         {
-            noAction = true;
-        }
-        else
-        {
-            noAction = false;
+            rememberedAction = currentAction;
+            setAction(waitForClearFloor);
         }
     }
 

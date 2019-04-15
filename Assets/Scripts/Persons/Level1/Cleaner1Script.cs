@@ -8,11 +8,12 @@ public class Cleaner1Script : ActingPerson
     public PersonAct talkWithSecretary;
     public PersonAct putsHandfulOfSeeds;
     public PersonAct washTheShelf;
-    public PersonAct talkWithBoss; 
+    public PersonAct talkWithBoss;
     public PersonAct bringPapersFrom2level;
     public PersonAct deliverPapers;
     public PersonAct somethingHappened;
     public PersonAct fixBossGrass;
+    public PersonAct blockBoss;
     public PersonAct fixCoolerOn1Level;
     public PersonAct fixCoolerOn2Level;
     public PersonAct fixCoolerOn3Level;
@@ -60,24 +61,6 @@ public class Cleaner1Script : ActingPerson
             doTalkWithSecretary();
         }
 
-
-
-        //else if (askedToBringPapers)
-        //{
-        //    if (currentAction == bringPapersFrom2level)
-        //    {
-        //        doDeliverPapers();
-        //    }
-        //    else if (currentAction == deliverPapers)
-        //    {
-        //        levelController.generatePapersToPrinterDelivered();
-        //        askedToBringPapers = false;
-        //    }
-        //    else
-        //        doBringPapersFrom2level();
-        //}
-        //else if (!levelController.SecretaryIsBisy)
-        //    doTalkWithSecretary();
     }
 
     public bool problemSelector()
@@ -105,6 +88,11 @@ public class Cleaner1Script : ActingPerson
             doFixCoolerOn3Level();
             return true;
         }
+        else if (askedToBringPapers)
+        {
+            doBringPapersFrom2level();
+            return true;
+        }
         else
         {
             return false;
@@ -122,7 +110,7 @@ public class Cleaner1Script : ActingPerson
     //задания закончившиеся естественны образом, т.е. циклы
     protected override void preFinishOfCurrentAction()
     {
-        if (currentAction == fixBossGrass)
+        if (currentAction == blockBoss)
         {
             levelController.GrassInBossRoomIsFine = true;
         }
@@ -134,7 +122,7 @@ public class Cleaner1Script : ActingPerson
         {
             levelController.CoolerOnSecondFloorIsFine = true;
         }
-        else if(currentAction == fixCoolerOn3Level)
+        else if (currentAction == fixCoolerOn3Level)
         {
             levelController.CoolerOnThirdFloorIsFine = true;
         }
@@ -143,6 +131,10 @@ public class Cleaner1Script : ActingPerson
             shelvesOnSecretaryTable.SetActive(true);
             levelController.MusorSpawned = true; //После этого вступит в силу условие с мытьем полок
         }
+        //else if (currentAction == blockBoss)
+        //{
+        //    levelController.FloorIsWetInBossRoom = false;
+        //}
     }
     protected override void goToNextAction()
     {
@@ -152,7 +144,13 @@ public class Cleaner1Script : ActingPerson
         {
             problemSelector();
         }
-        else if (currentAction == fixBossGrass || currentAction == fixCoolerOn1Level || currentAction == fixCoolerOn2Level || currentAction == fixCoolerOn3Level)
+        else if (currentAction == fixBossGrass)
+        {
+            //ждать пока мокрое высохнет и никого не пускать
+            //levelController.FloorIsWetInBossRoom = true;
+            setAction(blockBoss);
+        }
+        else if (currentAction == blockBoss || currentAction == fixCoolerOn1Level || currentAction == fixCoolerOn2Level || currentAction == fixCoolerOn3Level)
         {
             if (!problemSelector())
             {
@@ -167,6 +165,16 @@ public class Cleaner1Script : ActingPerson
         {
             levelController.generatePasswordRemembered();
             restSelector();
+        }
+        else if (currentAction == bringPapersFrom2level)
+        {
+            doDeliverPapers();
+        }
+        else if (currentAction == deliverPapers)
+        {
+            levelController.generatePapersToPrinterDelivered();
+            askedToBringPapers = false;
+            setAction(washTheShelf);
         }
     }
 
@@ -196,8 +204,8 @@ public class Cleaner1Script : ActingPerson
         Debug.Log("doPutsHandfulOfSeeds");
         if (levelController.MusorSpawned || levelController.MusorInInvertory || levelController.MusorOnBossKarniz) //или если окно разбито
             doWashTheShelf(); //стабильное состояние где уборщица может находиться сколько угодно долго, пока секретарша не освободится
-        else 
-           setAction(putsHandfulOfSeeds);
+        else
+            setAction(putsHandfulOfSeeds);
     }
     public void doWashTheShelf()
     {
@@ -209,9 +217,14 @@ public class Cleaner1Script : ActingPerson
     {
         Debug.Log("doRememberToBringPapersFrom2level");
         askedToBringPapers = true;
+        if (currentAction == washTheShelf)
+        {
+            doBringPapersFrom2level();
+        }
     }
     public void doBringPapersFrom2level()
     {
+        levelController.CleanerIsBisy = true;
         Debug.Log("doBringPapersFrom2level");
         setAction(bringPapersFrom2level);
     }

@@ -27,6 +27,7 @@ public class Level1Controller : MonoBehaviour
     public bool CoolerOnThirdFloorIsFine;
     public bool passwordRemembered = false;
     public bool documentsStolen = false;
+    //public bool FloorIsWetInBossRoom = false;
 
     public event PersonEvent BossNeedsCoffee;
     public event PersonEvent BossNeedsPapers;
@@ -49,7 +50,7 @@ public class Level1Controller : MonoBehaviour
     public bool BossOn2floor;
     public bool CleanerOn2floor;
     public bool BossInBossRoom;
-    public bool BossOffline;
+    public bool BossIsBisy;
 
     public GameObject pigeons;
     public GameObject window;
@@ -124,8 +125,8 @@ public class Level1Controller : MonoBehaviour
     //Просьба секретарши к уборщице принести бумаги
     public void generateCleanerBringPapersEvent()
     {
-        CleanerIsBisy = true;
-        SecretaryIsBisy = false; //В принципе не обязательно, так как сразу секретарша пойдет к столу и станет свободна
+        //CleanerIsBisy = true;
+        //SecretaryIsBisy = false; //В принципе не обязательно, так как сразу секретарша пойдет к столу и станет свободна
         Debug.Log("generateCleanerBringPapersEvent");
         CleanerBringPapers();
     }
@@ -134,7 +135,7 @@ public class Level1Controller : MonoBehaviour
     public void generatePapersToPrinterDelivered()
     {
         CleanerIsBisy = false;
-        SecretaryIsBisy = true;
+        //SecretaryIsBisy = true;
         PaperInPrinter = true;
         Debug.Log("generatePapersToPrinterDelivered");
         PapersDelivered();
@@ -182,7 +183,7 @@ public class Level1Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (BossOffline && SecretaryOn2floor && ProgrammerOn2floor && !BossOn2floor && !CleanerOn2floor)
+        if (BossIsBisy && SecretaryOn2floor && ProgrammerOn2floor && !BossOn2floor && !CleanerOn2floor)
             //FindObjectOfType<LevelsLoader>().LoadCredits();
             win();
     }
