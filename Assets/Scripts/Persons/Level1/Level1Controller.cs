@@ -41,6 +41,7 @@ public class Level1Controller : MonoBehaviour
     public event PersonEvent PowerOff;
     public event PersonEvent PowerOn;
     public event PersonEvent PigeonsCameInBossRoom;
+    public event PersonEvent EndDialogWithBoss;
 
     //состояния связанные с положением персонажей
     public bool SecretaryIsBisy;
@@ -180,6 +181,11 @@ public class Level1Controller : MonoBehaviour
         //вызывать менеджера голубей который запустит анимацию кражи
     }
 
+    internal void generateBossSecrProgrEngDialog()
+    {
+        EndDialogWithBoss();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -198,6 +204,7 @@ public class Level1Controller : MonoBehaviour
         uIController.enableLoose();
         state = GameState.loose;
     }
+
 }
 
 public enum GameState

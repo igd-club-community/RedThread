@@ -20,6 +20,7 @@ public class Programmer1Script : ActingPerson
         base.Start();
         levelController = FindObjectOfType<Level1Controller>();
         levelController.PowerOff += doSwitchPowerOn;
+        levelController.EndDialogWithBoss += () => { setAction(wait); };
 
         doWorkWirkPC();
         name = "program";

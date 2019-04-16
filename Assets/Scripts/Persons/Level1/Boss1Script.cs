@@ -24,9 +24,10 @@ public class Boss1Script : ActingPerson
     public PersonAct goToProgrammer;
     public PersonAct talkWithProgrammer;
     public PersonAct sayGoodbytoPigeons;
-    public PersonAct askSecretaryToRepairWindows;
+    public PersonAct askSecretaryToRepairWindows; 
+    public PersonAct talkWithSecretaryAndProgrammer; 
 
-    Level1Controller levelController;
+     Level1Controller levelController;
 
     public bool wantCoffee = false;
     public bool wantPapers = false;
@@ -58,11 +59,16 @@ public class Boss1Script : ActingPerson
         //Если у нас растение было сломано и мы ждали что оно починится, то начинаем двигаться.
         //if (noAction && levelController.GrassInBossRoomIsFine)
         //    noAction = false;
-
+        
         if (currentAction == goToProgrammer)
         {
             if (levelController.ProgrammerOn2floor)
-                doTalkWithProgrammer();
+            {
+                if (levelController.BossOn2floor && levelController.SecretaryOn2floor)
+                    doTalkWithSecretaryAndProgrammer();
+                else
+                    doTalkWithProgrammer();
+            }
         }
         if (currentAction == waitForClearFloor && levelController.GrassInBossRoomIsFine)
         {
@@ -191,6 +197,10 @@ public class Boss1Script : ActingPerson
         {
             setAction(rememberedAction);
         }
+        else if (currentAction == talkWithSecretaryAndProgrammer)
+        {
+            levelController.loose();
+        }
     }
 
     public void doGoToBossTableToDrinkCoffee()
@@ -200,6 +210,12 @@ public class Boss1Script : ActingPerson
     public void doUnlockShelter()
     {
         setAction(unlockShelter);
+    }
+    
+    public void doTalkWithSecretaryAndProgrammer()
+    {
+        levelController.generateBossSecrProgrEngDialog();
+        setAction(talkWithSecretaryAndProgrammer);
     }
     public void doTalkWithProgrammer()
     {

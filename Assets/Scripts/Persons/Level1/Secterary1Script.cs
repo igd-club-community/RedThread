@@ -10,12 +10,14 @@ public class Secterary1Script : ActingPerson
     public PersonAct bringCoffee;
     public PersonAct waitOfBoss;
     public PersonAct printPapers;
+    public PersonAct goto2level;
     public PersonAct bringPapersFrom2level;
     public PersonAct bringPapersToPrinter;
     public PersonAct bringPapersToBoss;
     public PersonAct backToDesk;
     public PersonAct prepareCoffee;
     public PersonAct talkWithCleaner;
+    public PersonAct beAfraidOfProgrammer;
     public PersonAct askCleanerToBringPapers;
     public PersonAct waitForClearFloor; //ждем пока уборщица нас пропустит
     public PersonAct goForSugar;
@@ -39,6 +41,7 @@ public class Secterary1Script : ActingPerson
         levelController.PapersDelivered += doPrintPapers;
         levelController.BossNeedsToRepairWindow += doCallToRepair;
         levelController.SecretaryCanGoToDesk += doBackToDesk;
+        levelController.EndDialogWithBoss += ()=> { setAction(waitOfBoss); };
 
         name = "secret";
         setAction(talkWithCleaner);
@@ -66,7 +69,7 @@ public class Secterary1Script : ActingPerson
                 setAction(talkWithCleaner);
             }
         }
-        else if (currentAction == bringPapersFrom2level)
+        else if (currentAction == goto2level)
         {
             RaycastHit hit;
             Vector3 direction = programmer.position - visionPoint.position;
@@ -77,7 +80,7 @@ public class Secterary1Script : ActingPerson
                 {
                     if (hit.collider.gameObject.GetComponentInParent<Programmer1Script>() != null)
                     {
-                        doAskCleanerToBringPapers();
+                        setAction(beAfraidOfProgrammer);
                     }
                 }
             }
@@ -137,16 +140,24 @@ public class Secterary1Script : ActingPerson
             levelController.generatePapersToBossDelivered();
             doBackToDesk();
         }
+        else if (currentAction == goto2level)
+        {
+            setAction(bringPapersFrom2level);
+        }
         else if (currentAction == bringPapersFrom2level)
         {
-            doBringPapersToPrinter();
+            setAction(bringPapersToPrinter);
         }
         else if (currentAction == bringPapersToPrinter)
         {
             levelController.PaperInPrinter = true;
             doPrintPapers();
         }
-        else if (currentAction == askCleanerToBringPapers)
+        else if (currentAction == beAfraidOfProgrammer)
+        {
+            setAction(askCleanerToBringPapers);
+        }
+        else if (currentAction == askCleanerToBringPapers) 
         {
             levelController.generateCleanerBringPapersEvent();
             doBackToDesk();
@@ -193,24 +204,9 @@ public class Secterary1Script : ActingPerson
     {
         //say("Надо взять бумаги.");
         Debug.Log("doBringPapersFrom2level");
-        setAction(bringPapersFrom2level);
+        setAction(goto2level);
     }
-
-    public void doBringPapersToPrinter()
-    {
-        //say("Нашла!");
-        Debug.Log("doBringPapersToPrinter");
-
-        setAction(bringPapersToPrinter);
-    }
-
-    public void doAskCleanerToBringPapers()
-    {
-        //say("Не-не-не, я туда сама не пойду");
-        Debug.Log("doAskCleanerToBringPapers");
-
-        setAction(askCleanerToBringPapers);
-    }
+    
 
     public void doBringCoffeeToBoss()
     {
