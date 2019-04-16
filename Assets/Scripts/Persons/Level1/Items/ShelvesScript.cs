@@ -5,11 +5,13 @@ using UnityEngine;
 public class ShelvesScript : ItemScript
 {
     private Level1Controller levelController;
+    public UIController UIController;
 
     new void Start()
     {
         base.Start();
         levelController = FindObjectOfType<Level1Controller>();
+        UIController = FindObjectOfType<UIController>();
     }
     public override void Act()
     {
@@ -18,6 +20,7 @@ public class ShelvesScript : ItemScript
         {
             levelController.MusorSpawned = false;
             levelController.MusorInInvertory = true;
+            UIController.shelvesIcon.SetActive(true);
             gameObject.SetActive(false);
         }
     }

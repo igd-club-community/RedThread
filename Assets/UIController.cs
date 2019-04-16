@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour
     public GameObject journalUI;
     public GameObject winScreen;
     public GameObject looseScreen;
+    public GameObject shelvesIcon;
     public bool state = false;
     public void ChangeStateOfJournal()
     {
