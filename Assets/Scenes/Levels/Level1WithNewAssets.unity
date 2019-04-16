@@ -679,6 +679,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossAnimation
       objectReference: {fileID: 0}
+    - target: {fileID: 7223043865803994267, guid: dc299f9ab7b1ba842bf3af69d140eece,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 106752098943307371, guid: dc299f9ab7b1ba842bf3af69d140eece,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6351,7 +6356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1541562042
 Transform:
   m_ObjectHideFlags: 0
