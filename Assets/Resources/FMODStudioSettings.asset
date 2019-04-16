@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: C:\Users\admin\Desktop\FMOD Studio\red_thread\red_thread.fspro
-  SourceProjectPathUnformatted: C:\Users\admin\Desktop\FMOD Studio\red_thread\red_thread.fspro
-  SourceBankPathUnformatted: C:\Users\admin\Desktop\FMOD Studio\red_thread\Build
+  sourceProjectPath: "C:\\Users\\brisi\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\red_thread\\red_thread.fspro"
+  SourceProjectPathUnformatted: "C:\\Users\\brisi\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\red_thread\\red_thread.fspro"
+  SourceBankPathUnformatted: "C:\\Users\\brisi\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\red_thread\\Build"
   AutomaticEventLoading: 1
   AutomaticSampleLoading: 0
   ImportType: 0
@@ -59,6 +59,5 @@ MonoBehaviour:
   - Platform: 2
     Value: 32
   Plugins: []
-  MasterBanks:
-  - Master Bank
+  MasterBanks: []
   Banks: []

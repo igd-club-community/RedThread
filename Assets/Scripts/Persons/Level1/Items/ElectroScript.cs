@@ -17,6 +17,5 @@ public class ElectroScript : ItemScript
         FMODUnity.RuntimeManager.PlayOneShot("event:/Electricity", GetComponent<Transform>().position);
         levelController.Electropower = false; // !states.Electropower;
         levelController.generatePowerOff();
-        
     }
 }
