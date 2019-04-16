@@ -348,6 +348,8 @@ MonoBehaviour:
   winScreen: {fileID: 2140531267}
   looseScreen: {fileID: 1855482068}
   shelvesIcon: {fileID: 1945522065}
+  HeartIcon1: {fileID: 1614102889}
+  HeartIcon2: {fileID: 387633595}
   state: 0
 --- !u!4 &61272426
 Transform:
@@ -688,6 +690,12 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7410206273478997699, guid: 711aa188046359c488d4703c730bfc55,
     type: 3}
   m_PrefabInstance: {fileID: 111890618}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &114462801 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3662595850318261717, guid: 498a0d836606b6e4d94de17b39c5b724,
+    type: 3}
+  m_PrefabInstance: {fileID: 6734260013304093901}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &130261639
 GameObject:
@@ -1698,6 +1706,80 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &387633595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 387633596}
+  - component: {fileID: 387633598}
+  - component: {fileID: 387633597}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &387633596
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387633595}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.008, y: 0.008, z: 0.1}
+  m_Children: []
+  m_Father: {fileID: 2014634149}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &387633597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387633595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: ebf49ec16bfe8d54aa7ec8b721d13aaf, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &387633598
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387633595}
+  m_CullTransparentMesh: 0
 --- !u!4 &411139828 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8049372477822728514, guid: 78ed3ef02fab9374fba8cdc3307b4a26,
@@ -3912,6 +3994,8 @@ MonoBehaviour:
   winScreen: {fileID: 0}
   looseScreen: {fileID: 0}
   shelvesIcon: {fileID: 0}
+  HeartIcon1: {fileID: 0}
+  HeartIcon2: {fileID: 0}
   state: 0
 --- !u!114 &1027739235
 MonoBehaviour:
@@ -6460,6 +6544,80 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1593108314}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1614102889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1614102890}
+  - component: {fileID: 1614102892}
+  - component: {fileID: 1614102891}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1614102890
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614102889}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.008, y: 0.008, z: 0.1}
+  m_Children: []
+  m_Father: {fileID: 114462801}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1614102891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614102889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: ebf49ec16bfe8d54aa7ec8b721d13aaf, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1614102892
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614102889}
+  m_CullTransparentMesh: 0
 --- !u!1 &1625024867
 GameObject:
   m_ObjectHideFlags: 0
@@ -7581,6 +7739,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBePickedInInventory: 0
   soundEmitter: {fileID: 1040668826}
+--- !u!224 &2014634149 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6815551349200342417, guid: f1fa95b98ea6ff14ca0f955bfdbc0c5d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3545865210773215193}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2096293957
 GameObject:
   m_ObjectHideFlags: 0
@@ -14346,6 +14510,26 @@ MonoBehaviour:
     animationName: 
     currentDialogNum: 0
     dialogs: []
+  talkWithSecretary:
+    name: "\u043F\u043E\u0431\u0435\u0434\u043D\u044B\u0439 \u0434\u0438\u0430\u043B\u043E\u0433"
+    target: {fileID: 899361472}
+    targetDistance: 4
+    talkingWithPerson: 1
+    byTimer: 0
+    targetTimer: 0
+    animationName: 
+    currentDialogNum: 0
+    dialogs:
+    - currentPhraseNum: 0
+      phrases:
+      - sayer: {fileID: 4127986583344671162}
+        speech: "\u041F\u043E\u0441\u0442\u043E\u0439, \u041A\u0430\u0440\u0438\u043D\u0430.
+          \u041F\u043E\u0447\u0435\u043C\u0443 \u0442\u044B \u043C\u0435\u043D\u044F
+          \u0438\u0437\u0431\u0435\u0433\u0430\u0435\u0448\u044C?"
+      - sayer: {fileID: 6127175601340615166}
+        speech: "\u041D\u0435 \u0437\u043D\u0430\u044E. \u041D\u0430\u0432\u0435\u0440\u043D\u043E\u0435,
+          \u0431\u043E\u044E\u0441\u044C \u2026 \u0422\u0435\u0431\u044F\u2026 \u0421\u0432\u043E\u0438\u0445
+          \u0447\u0443\u0432\u0441\u0442\u0432\u2026 "
 --- !u!114 &4127986583344671163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14528,12 +14712,16 @@ MonoBehaviour:
       \u043D\u0430 2 \u044D\u0442\u0430\u0436"
     target: {fileID: 434091958}
     targetDistance: 1.5
-    talkingWithPerson: 0
-    byTimer: 0
-    targetTimer: 0
+    talkingWithPerson: 1
+    byTimer: 1
+    targetTimer: 15
     animationName: 
     currentDialogNum: 0
-    dialogs: []
+    dialogs:
+    - currentPhraseNum: 0
+      phrases:
+      - sayer: {fileID: 6127175601340615166}
+        speech: "\u0413\u0434\u0435 \u0436\u0435 \u043E\u043D\u0438"
   bringPapersToPrinter:
     name: "\u043F\u0440\u0438\u043D\u0435\u0441\u0442\u0438 \u0431\u0443\u043C\u0430\u0433\u0438
       \u0441\u043E \u0432\u0442\u043E\u0440\u043E\u0433\u043E \u044D\u0442\u0430\u0436\u0430"
@@ -14816,12 +15004,33 @@ MonoBehaviour:
       - sayer: {fileID: 6127175601340615166}
         speech: "\u0412\u043E\u0442 \u043E\u043D"
   bringSugar:
-    name: 
-    target: {fileID: 0}
-    targetDistance: 0
+    name: "\u0432\u043E\u0437\u0432\u0440\u0430\u0449\u0430\u0435\u043C\u0441\u044F
+      \u0441 \u0441\u0430\u0445\u0430\u0440\u043E\u043C"
+    target: {fileID: 1896565967}
+    targetDistance: 2
     talkingWithPerson: 0
     byTimer: 0
     targetTimer: 0
+    animationName: 
+    currentDialogNum: 0
+    dialogs: []
+  waitOnEndDialog:
+    name: "\u0434\u0438\u0430\u043B\u043E\u0433 \u043F\u0440\u043E\u0433\u0440\u044B\u0448\u0430"
+    target: {fileID: 337474787}
+    targetDistance: 5
+    talkingWithPerson: 1
+    byTimer: 1
+    targetTimer: 30000
+    animationName: 
+    currentDialogNum: 0
+    dialogs: []
+  winDialog:
+    name: "\u043F\u043E\u0431\u0435\u0434\u0430"
+    target: {fileID: 899361472}
+    targetDistance: 5
+    talkingWithPerson: 1
+    byTimer: 1
+    targetTimer: 30000
     animationName: 
     currentDialogNum: 0
     dialogs: []

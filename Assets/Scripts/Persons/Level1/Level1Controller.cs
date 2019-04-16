@@ -42,6 +42,7 @@ public class Level1Controller : MonoBehaviour
     public event PersonEvent PowerOn;
     public event PersonEvent PigeonsCameInBossRoom;
     public event PersonEvent EndDialogWithBoss;
+    public event PersonEvent WinDialog;
 
     //состояния связанные с положением персонажей
     public bool SecretaryIsBisy;
@@ -190,8 +191,11 @@ public class Level1Controller : MonoBehaviour
     void Update()
     {
         if (BossIsBisy && SecretaryOn2floor && ProgrammerOn2floor && !BossOn2floor && !CleanerOn2floor)
+        {
+            WinDialog();
+            uIController.enableHearts();
+        }
             //FindObjectOfType<LevelsLoader>().LoadCredits();
-            win();
     }
 
     public void win()

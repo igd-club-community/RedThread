@@ -24,10 +24,10 @@ public class Boss1Script : ActingPerson
     public PersonAct goToProgrammer;
     public PersonAct talkWithProgrammer;
     public PersonAct sayGoodbytoPigeons;
-    public PersonAct askSecretaryToRepairWindows; 
-    public PersonAct talkWithSecretaryAndProgrammer; 
+    public PersonAct askSecretaryToRepairWindows;
+    public PersonAct talkWithSecretaryAndProgrammer;
 
-     Level1Controller levelController;
+    Level1Controller levelController;
 
     public bool wantCoffee = false;
     public bool wantPapers = false;
@@ -51,7 +51,7 @@ public class Boss1Script : ActingPerson
     {
         setAction(askSecretaryAboutCoffee);
     }
-    
+
     new void Update()
     {
         base.Update();
@@ -59,12 +59,12 @@ public class Boss1Script : ActingPerson
         //Если у нас растение было сломано и мы ждали что оно починится, то начинаем двигаться.
         //if (noAction && levelController.GrassInBossRoomIsFine)
         //    noAction = false;
-        
+
         if (currentAction == goToProgrammer)
         {
-            if (levelController.ProgrammerOn2floor)
+            if (levelController.BossOn2floor && levelController.ProgrammerOn2floor)
             {
-                if (levelController.BossOn2floor && levelController.SecretaryOn2floor)
+                if (levelController.SecretaryOn2floor)
                     doTalkWithSecretaryAndProgrammer();
                 else
                     doTalkWithProgrammer();
@@ -126,7 +126,8 @@ public class Boss1Script : ActingPerson
                 setAction(spillСoffee);
                 levelController.BossCupFilled = false;
                 levelController.BossCupMoved = false;
-            } else
+            }
+            else
             {
                 setAction(drinkCoffee);
             }
@@ -166,12 +167,12 @@ public class Boss1Script : ActingPerson
         }
         else if (currentAction == goToProgrammer)
         {
-            if (levelController.ProgrammerDeskClear)
-            {
-                //здесь мы просто ждём, пока программист вернётся и проверяем это в апдейте
-            }
-            else
-                doFireProgrammer();
+            //здесь мы просто ждём, пока программист вернётся и проверяем это в апдейте
+            //if (levelController.ProgrammerDeskClear)
+            //{
+            //}
+            //else
+            //doFireProgrammer();
         }
         else if (currentAction == talkWithProgrammer)
         {
@@ -181,7 +182,6 @@ public class Boss1Script : ActingPerson
             //if (levelController.PaperInBossRoom)
             //    doGoToBossTableToDrinkCoffee();
             // нет, будем говорить пока диалог не закончится
-
         }
         else if (currentAction == sayGoodbytoPigeons)
         {
@@ -211,7 +211,7 @@ public class Boss1Script : ActingPerson
     {
         setAction(unlockShelter);
     }
-    
+
     public void doTalkWithSecretaryAndProgrammer()
     {
         levelController.generateBossSecrProgrEngDialog();
@@ -222,14 +222,13 @@ public class Boss1Script : ActingPerson
         talkWithProgrammer.target.GetComponent<ActingPerson>().forceToAnswer();
         setAction(talkWithProgrammer);
     }
-    public void doFireProgrammer()
-    {
-        //say("Что за мудак");
-        Debug.Log("doFireProgrammer");
-        doGoToBossTableToDrinkCoffee(); //Временно пока нет плана что будет когда увольняем
+    //public void doFireProgrammer()
+    //{
+    //    //say("Что за мудак");
+    //    Debug.Log("doFireProgrammer");
+    //    doGoToBossTableToDrinkCoffee(); //Временно пока нет плана что будет когда увольняем
+    //}
 
-    }
-    
     public void doAskSecretaryToRepairWindows()
     {
         //say("Окна теперь новые ставить");
@@ -290,13 +289,12 @@ public class Boss1Script : ActingPerson
             levelController.BossIsBisy = true;
         }
     }
-    
+
     public void OnTriggerExit(Collider other)
     {
         if (levelController.PigeonsInBossRoom && other.CompareTag("Boss room"))
         {
             levelController.generatePigeonsInBossRoom();
-
         }
         if (other.CompareTag("2 floor"))
             levelController.BossOn2floor = false;

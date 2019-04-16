@@ -13,6 +13,7 @@ public class Programmer1Script : ActingPerson
     public PersonAct switchPowerOn;
     public PersonAct complainAboutYourLove;
     public PersonAct resign;
+    public PersonAct talkWithSecretary;
 
     // Start is called before the first frame update
     new void Start()
@@ -21,6 +22,7 @@ public class Programmer1Script : ActingPerson
         levelController = FindObjectOfType<Level1Controller>();
         levelController.PowerOff += doSwitchPowerOn;
         levelController.EndDialogWithBoss += () => { setAction(wait); };
+        levelController.WinDialog += () => { setAction(talkWithSecretary); };
 
         doWorkWirkPC();
         name = "program";
@@ -71,6 +73,11 @@ public class Programmer1Script : ActingPerson
         {
             levelController.loose();
         }
+        else if (currentAction == talkWithSecretary)
+        {
+            levelController.win();
+        }
+        
     }
 
     void doWorkWirkPC()

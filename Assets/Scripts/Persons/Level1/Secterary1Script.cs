@@ -22,6 +22,8 @@ public class Secterary1Script : ActingPerson
     public PersonAct waitForClearFloor; //ждем пока уборщица нас пропустит
     public PersonAct goForSugar;
     public PersonAct bringSugar;
+    public PersonAct waitOnEndDialog;
+    public PersonAct winDialog;
 
     public Transform visionPoint;
     public Transform programmer;
@@ -41,7 +43,7 @@ public class Secterary1Script : ActingPerson
         levelController.PapersDelivered += doPrintPapers;
         levelController.BossNeedsToRepairWindow += doCallToRepair;
         levelController.SecretaryCanGoToDesk += doBackToDesk;
-        levelController.EndDialogWithBoss += ()=> { setAction(waitOfBoss); };
+        levelController.EndDialogWithBoss += ()=> { setAction(waitOnEndDialog); };
 
         name = "secret";
         setAction(talkWithCleaner);
@@ -59,7 +61,10 @@ public class Secterary1Script : ActingPerson
         {
             if (levelController.CleanerIsBisy)
             {
-                setAction(wait);
+                if (levelController.BossIsBisy)
+                    doGoForSugar();
+                else
+                    setAction(wait);
             }
         }
         else if (currentAction == wait)
@@ -122,7 +127,7 @@ public class Secterary1Script : ActingPerson
         }
         else if (currentAction == goForSugar)
         {
-            doBringSugar();
+            setAction(bringSugar);
         }
         else if (currentAction == bringSugar)
         {
@@ -134,6 +139,8 @@ public class Secterary1Script : ActingPerson
             //levelController.generateSecretaryIsBack();
             if (!levelController.CleanerIsBisy)
                 doTalkWithCleaner();
+            else
+                setAction(wait);
         }
         else if (currentAction == bringPapersToBoss)
         {
@@ -142,7 +149,10 @@ public class Secterary1Script : ActingPerson
         }
         else if (currentAction == goto2level)
         {
-            setAction(bringPapersFrom2level);
+            if (levelController.BossIsBisy)
+                setAction(goForSugar);
+            else
+                setAction(bringPapersFrom2level);
         }
         else if (currentAction == bringPapersFrom2level)
         {
@@ -227,17 +237,10 @@ public class Secterary1Script : ActingPerson
     {
         levelController.SecretaryIsBisy = true;
         //say("Сахар кончился");
-        Debug.Log("doGoForSugar");
-        setAction(goForSugar);
+        Debug.Log("goto2level");
+        setAction(goto2level);
     }
-
-    public void doBringSugar()
-    {
-        //say("Налью себе чаю");
-        Debug.Log("doBringSugar");
-        setAction(bringSugar);
-    }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("2 floor"))

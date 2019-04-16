@@ -9,6 +9,8 @@ public class UIController : MonoBehaviour
     public GameObject winScreen;
     public GameObject looseScreen;
     public GameObject shelvesIcon;
+    public GameObject HeartIcon1;
+    public GameObject HeartIcon2;
     public bool state = false;
     public void ChangeStateOfJournal()
     {
@@ -32,7 +34,13 @@ public class UIController : MonoBehaviour
     {
         journalUI.SetActive(false);
     }
+    
 
+    public void enableHearts()
+    {
+        HeartIcon1.SetActive(true);
+        HeartIcon2.SetActive(true);
+    }
     public void enableWin()
     {
         leftBar.SetActive(false);
