@@ -22,7 +22,9 @@ public class Programmer1Script : ActingPerson
         levelController = FindObjectOfType<Level1Controller>();
         levelController.PowerOff += doSwitchPowerOn;
         levelController.EndDialogWithBoss += () => { setAction(wait); };
-        levelController.WinDialog += () => { setAction(talkWithSecretary); };
+        levelController.WinDialog += () => {
+            setAction(talkWithSecretary);
+        };
 
         doWorkWirkPC();
         name = "program";
@@ -75,7 +77,8 @@ public class Programmer1Script : ActingPerson
         }
         else if (currentAction == talkWithSecretary)
         {
-            levelController.win();
+            levelController.secretaryWinDialog();
+            setAction(wait);
         }
         
     }

@@ -28,12 +28,14 @@ public class Level1Controller : MonoBehaviour
     public bool passwordRemembered = false;
     public bool documentsStolen = false;
     //public bool FloorIsWetInBossRoom = false;
+    public bool isWin = false;
 
     public event PersonEvent BossNeedsCoffee;
     public event PersonEvent BossNeedsPapers;
     public event PersonEvent PasswordRemembered;
     public event PersonEvent BossNeedsToRepairWindow;
     public event PersonEvent CleanerBringPapers;
+    public event PersonEvent CleanerBringSugar;
     public event PersonEvent CoffeeDelivered;
     public event PersonEvent PapersDelivered;
     //public event PersonEvent SecretaryIsBack;
@@ -43,6 +45,7 @@ public class Level1Controller : MonoBehaviour
     public event PersonEvent PigeonsCameInBossRoom;
     public event PersonEvent EndDialogWithBoss;
     public event PersonEvent WinDialog;
+    public event PersonEvent SecretaryWinDialog;
 
     //состояния связанные с положением персонажей
     public bool SecretaryIsBisy;
@@ -53,6 +56,7 @@ public class Level1Controller : MonoBehaviour
     public bool CleanerOn2floor;
     public bool BossInBossRoom;
     public bool BossIsBisy;
+    public bool CleanerIsBringingSugar;
 
     public GameObject pigeons;
     public GameObject window;
@@ -132,7 +136,14 @@ public class Level1Controller : MonoBehaviour
         Debug.Log("generateCleanerBringPapersEvent");
         CleanerBringPapers();
     }
-
+    public void generateCleanerBringSugarEvent()
+    {
+        //CleanerIsBisy = true;
+        //SecretaryIsBisy = false; //В принципе не обязательно, так как сразу секретарша пойдет к столу и станет свободна
+        Debug.Log("generateCleanerBringPapersEvent");
+        CleanerBringSugar();
+    }
+    
     //Просьба уборщица принесла бумаги
     public void generatePapersToPrinterDelivered()
     {
@@ -190,12 +201,18 @@ public class Level1Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (BossIsBisy && SecretaryOn2floor && ProgrammerOn2floor && !BossOn2floor && !CleanerOn2floor)
+        if (BossIsBisy && SecretaryOn2floor && ProgrammerOn2floor && !BossOn2floor && !CleanerOn2floor && !isWin)
         {
+            isWin = true;
             WinDialog();
             uIController.enableHearts();
         }
-            //FindObjectOfType<LevelsLoader>().LoadCredits();
+        //FindObjectOfType<LevelsLoader>().LoadCredits();
+    }
+
+    public void secretaryWinDialog()
+    {
+        SecretaryWinDialog();
     }
 
     public void win()

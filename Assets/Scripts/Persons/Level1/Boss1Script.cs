@@ -49,7 +49,8 @@ public class Boss1Script : ActingPerson
 
     public void DebugStart()
     {
-        setAction(askSecretaryAboutCoffee);
+        doCry();
+        //setAction(askSecretaryAboutCoffee);
     }
 
     new void Update()

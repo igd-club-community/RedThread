@@ -17,6 +17,8 @@ public class Cleaner1Script : ActingPerson
     public PersonAct fixCoolerOn1Level;
     public PersonAct fixCoolerOn2Level;
     public PersonAct fixCoolerOn3Level;
+    public PersonAct goforSugar;
+    public PersonAct bringSugar;
 
     public GameObject shelvesOnSecretaryTable;
 
@@ -34,6 +36,11 @@ public class Cleaner1Script : ActingPerson
         levelController.BossNeedsCoffee += doPutsHandfulOfSeeds;
         levelController.BossNeedsPapers += doTalkWithBoss;
         levelController.CleanerBringPapers += doRememberToBringPapersFrom2level;
+        levelController.CleanerBringSugar += ()=> {
+            levelController.CleanerIsBisy = true;
+            levelController.CleanerIsBringingSugar = true;
+            setAction(goforSugar);
+        };
 
         doTalkWithSecretary();
 
@@ -175,6 +182,15 @@ public class Cleaner1Script : ActingPerson
             levelController.generatePapersToPrinterDelivered();
             askedToBringPapers = false;
             setAction(washTheShelf);
+        }
+        else if (currentAction == goforSugar)
+        {
+            setAction(bringSugar);
+        }
+        else if (currentAction == bringSugar)
+        {
+            levelController.CleanerIsBringingSugar = false;
+            doTalkWithSecretary();
         }
     }
 

@@ -18,8 +18,10 @@ public class Secterary1Script : ActingPerson
     public PersonAct prepareCoffee;
     public PersonAct talkWithCleaner;
     public PersonAct beAfraidOfProgrammer;
-    public PersonAct askCleanerToBringPapers;
+    public PersonAct askCleanerToBringPapers; 
+    public PersonAct askCleanerToBringSugar;
     public PersonAct waitForClearFloor; //ждем пока уборщица нас пропустит
+    public PersonAct sayAboutSugar;
     public PersonAct goForSugar;
     public PersonAct bringSugar;
     public PersonAct waitOnEndDialog;
@@ -33,7 +35,6 @@ public class Secterary1Script : ActingPerson
     public bool askedToPrintPapers = false;
     public bool CleanerAskedToBringPapers = false;
 
-
     new void Start()
     {
         base.Start();
@@ -43,7 +44,8 @@ public class Secterary1Script : ActingPerson
         levelController.PapersDelivered += doPrintPapers;
         levelController.BossNeedsToRepairWindow += doCallToRepair;
         levelController.SecretaryCanGoToDesk += doBackToDesk;
-        levelController.EndDialogWithBoss += ()=> { setAction(waitOnEndDialog); };
+        levelController.EndDialogWithBoss += () => { setAction(waitOnEndDialog); };
+        levelController.SecretaryWinDialog += () => { setAction(winDialog); };
 
         name = "secret";
         setAction(talkWithCleaner);
@@ -61,8 +63,8 @@ public class Secterary1Script : ActingPerson
         {
             if (levelController.CleanerIsBisy)
             {
-                if (levelController.BossIsBisy)
-                    doGoForSugar();
+                if (levelController.BossIsBisy && !levelController.CleanerIsBringingSugar)
+                    setAction(sayAboutSugar);
                 else
                     setAction(wait);
             }
@@ -116,7 +118,7 @@ public class Secterary1Script : ActingPerson
         else if (currentAction == talkWithCleaner)
         {
             if (levelController.BossIsBisy)
-                doGoForSugar();
+                setAction(sayAboutSugar);
             //Если уборщица занята, то есть если сломан один из кулеров или растение у босса,
             //то Мы вместо того чтобы поговорить с уборщицей ничего не делаем
 
@@ -124,6 +126,10 @@ public class Secterary1Script : ActingPerson
                 doBackToDesk();
             else
                 setAction(talkWithCleaner);
+        }
+        else if (currentAction == sayAboutSugar)
+        {
+            doGoForSugar();
         }
         else if (currentAction == goForSugar)
         {
@@ -165,12 +171,24 @@ public class Secterary1Script : ActingPerson
         }
         else if (currentAction == beAfraidOfProgrammer)
         {
-            setAction(askCleanerToBringPapers);
+            if (levelController.BossIsBisy)
+                setAction(askCleanerToBringSugar);
+            else
+                setAction(askCleanerToBringPapers);
         }
-        else if (currentAction == askCleanerToBringPapers) 
+        else if (currentAction == askCleanerToBringPapers)
         {
             levelController.generateCleanerBringPapersEvent();
             doBackToDesk();
+        }
+        else if (currentAction == askCleanerToBringSugar)
+        {
+            levelController.generateCleanerBringSugarEvent();
+            doBackToDesk();
+        }
+        else if (currentAction == winDialog)
+        {
+            levelController.win();
         }
     }
 
@@ -216,7 +234,7 @@ public class Secterary1Script : ActingPerson
         Debug.Log("doBringPapersFrom2level");
         setAction(goto2level);
     }
-    
+
 
     public void doBringCoffeeToBoss()
     {
@@ -240,11 +258,20 @@ public class Secterary1Script : ActingPerson
         Debug.Log("goto2level");
         setAction(goto2level);
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("2 floor"))
-            levelController.SecretaryOn2floor = true;
+        {
+            if (levelController.ProgrammerOn2floor)
+            {
+                setAction(beAfraidOfProgrammer);
+            }
+            else
+            {
+                levelController.SecretaryOn2floor = true;
+            }
+        }
 
         if (!levelController.GrassInBossRoomIsFine && other.CompareTag("grass"))
         {
