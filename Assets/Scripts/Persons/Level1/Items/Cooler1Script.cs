@@ -14,7 +14,7 @@ public class Cooler1Script : ItemScript
     public override void Act()
     {
         Debug.Log("Cooler1Script");
-
+        this.GetComponent<FMODUnity.StudioEventEmitter>().Play();
         levelController.CoolerOnFirstFloorIsFine = false;
     }
 }

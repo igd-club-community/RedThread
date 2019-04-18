@@ -14,8 +14,6 @@ public class ElectroScript : ItemScript
     public override void Act()
     {
         Debug.Log("ElectroScript");
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Electricity", GetComponent<Transform>().position);
-        levelController.Electropower = false; // !states.Electropower;
         levelController.generatePowerOff();
     }
 }

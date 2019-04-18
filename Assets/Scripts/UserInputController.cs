@@ -18,7 +18,10 @@ public class UserInputController : MonoBehaviour
     {
         //if (Input.GetKeyDown(KeyCode.W))
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+        if (Input.GetMouseButtonDown(0))
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/OnClick");
+        }
         if (Physics.Raycast(ray, out hit, 100f, LayerMask.GetMask("ActionItems")))
         {
             selectedItem = hit.collider.gameObject;
@@ -39,6 +42,7 @@ public class UserInputController : MonoBehaviour
         }
         else
         {
+           
             if (prevSelectedItem != null) prevSelectedItem.GetComponent<ItemScript>().deselect();
         }
     }

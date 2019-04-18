@@ -14,7 +14,7 @@ public class Cooler2Script : ItemScript
     public override void Act()
     {
         Debug.Log("Cooler2Script");
-
+        this.GetComponent<FMODUnity.StudioEventEmitter>().Play();
         levelController.CoolerOnSecondFloorIsFine = false;
     }
 }

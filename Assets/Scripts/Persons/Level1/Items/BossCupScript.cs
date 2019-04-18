@@ -19,9 +19,9 @@ public class BossCupScript : ItemScript
         //Изменить состояние сцены
         if (levelController.BossCupFilled)
         {
+            this.GetComponent<FMODUnity.StudioEventEmitter>().Play();
             levelController.BossCupMoved = true;
             levelController.PaperInBossRoom = false;
         }
-        FMODUnity.RuntimeManager.PlayOneShot("event:/OnClick", GetComponent<Transform>().position);
     }
 }

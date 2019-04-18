@@ -18,7 +18,7 @@ public class Level1Controller : MonoBehaviour
     public bool ProgrammerDeskClear;
     public bool BossShelterLocked;
     public bool BossShelterPassIsKnown;
-    public bool Electropower;
+    public bool ElectropowerOn;
     public bool BossWindowBroken;
     public bool PigeonsInBossRoom;
     public bool GrassInBossRoomIsFine;
@@ -49,6 +49,7 @@ public class Level1Controller : MonoBehaviour
     public bool BossOffline;
 
     public GameObject pigeons;
+    public ElectroScript FuseBox;
 
     // Start is called before the first frame update
     void Start()
@@ -123,15 +124,18 @@ public class Level1Controller : MonoBehaviour
 
     public void generatePowerOff()
     {
-        Electropower = false;
         Debug.Log("generatePowerOff");
-        //PowerOff();
+        if (ElectropowerOn)
+        {
+            FuseBox.GetComponent<FMODUnity.StudioEventEmitter>().Play();
+            ElectropowerOn = false; // !states.Electropower;
+        }
     }
     public void generatePowerOn()
     {
-        Electropower = true;
+        ElectropowerOn = true;
         Debug.Log("generatePowerOn");
-        //PowerOn();
+        FuseBox.GetComponent<FMODUnity.StudioEventEmitter>().Play();
     }
     public void generatePigeonsInBossRoom()
     {

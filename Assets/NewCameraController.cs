@@ -33,7 +33,7 @@ public class NewCameraController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {/*
         // правый край
         if (Input.mousePosition.x >= Screen.width - border)
         {
@@ -57,7 +57,7 @@ public class NewCameraController : MonoBehaviour
         {
             // Move the camera
             transform.position -= transform.up * Time.deltaTime * sensivityXY;
-        }
+        }*/
         // приближение и удаление
         float mouseWheel = Input.GetAxis("Mouse ScrollWheel");
         transform.position += transform.forward * Time.deltaTime * sensivityZoom * mouseWheel;

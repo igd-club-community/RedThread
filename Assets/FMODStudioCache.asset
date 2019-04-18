@@ -35,11 +35,13 @@ MonoBehaviour:
   - {fileID: 114533362065331694}
   - {fileID: 114461519177676444}
   - {fileID: 114390901892233304}
+  - {fileID: 114935758962903138}
+  - {fileID: 114406761816879358}
   MasterBanks:
   - {fileID: 114678000110889220}
   StringsBanks:
   - {fileID: 114080222223060138}
-  stringsBankWriteTime: 636910453807047245
+  stringsBankWriteTime: 636912102887178447
   cacheVersion: 3
 --- !u!114 &114003541084267810
 MonoBehaviour:
@@ -189,11 +191,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: "C:\\Users\\brisi\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\red_thread\\Build\\Desktop\\Master
     Bank.strings.bank"
-  lastModified: 636910453807047245
+  lastModified: 636912102887178447
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1518
+    Value: 1610
   Exists: 1
 --- !u!114 &114085609522864362
 MonoBehaviour:
@@ -605,6 +607,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &114406761816879358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/WaterFlowing
+  guid: 647302dba769c544a02842bd0ed771b1
+  Banks:
+  - {fileID: 114678000110889220}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 7999
 --- !u!114 &114424734646515562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -987,11 +1012,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: "C:\\Users\\brisi\\OneDrive\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\red_thread\\Build\\Desktop\\Master
     Bank.bank"
-  lastModified: 636910453806477145
+  lastModified: 636912102887048393
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 10967424
+    Value: 11188960
   Exists: 1
 --- !u!114 &114681762614671568
 MonoBehaviour:
@@ -1292,6 +1317,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 57054
+--- !u!114 &114935758962903138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/MoveCup
+  guid: d08cb18f298bfb4f8e6cb36d3a5e42f0
+  Banks:
+  - {fileID: 114678000110889220}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 950
 --- !u!114 &114939180815550054
 MonoBehaviour:
   m_ObjectHideFlags: 0
